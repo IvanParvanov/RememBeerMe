@@ -1,3 +1,4 @@
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
@@ -7,7 +8,7 @@ using RememBeer.Models;
 
 namespace RememBeer.Data.DbContexts.Contracts
 {
-    public interface IRememBeerMeDbContext
+    public interface IRememBeerMeDbContext : IDisposable
     {
         IDbSet<Beer> Beers { get; set; }
 

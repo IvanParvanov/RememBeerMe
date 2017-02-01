@@ -1,10 +1,12 @@
-﻿using RememBeer.Data.Repositories.Base;
+﻿using System.Linq;
+
+using RememBeer.Data.Repositories.Base;
 using RememBeer.Models;
 
 namespace RememBeer.Data.Repositories.Contracts
 {
     public interface IBeersData
     {
-        IGenericRepository<Beer> Beers { get; set; }
+        IQueryable<Beer> Beers { get; }
     }
 }

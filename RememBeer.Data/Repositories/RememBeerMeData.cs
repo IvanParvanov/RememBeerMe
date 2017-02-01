@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System.Linq;
+
+using Microsoft.AspNet.Identity.EntityFramework;
 
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Data.Repositories.Contracts;
@@ -8,12 +10,12 @@ namespace RememBeer.Data.Repositories
 {
     public class RememBeerMeData : IRememBeerMeData
     {
-        private IGenericRepository<ApplicationUser> users;
-        private IGenericRepository<IdentityRole> roles;
-        private IGenericRepository<Beer> beers;
-        private IGenericRepository<BeerReview> beerReviews;
-        private IGenericRepository<BeerType> beerTypes;
-        private IGenericRepository<Brewery> breweries;
+        private readonly IGenericRepository<ApplicationUser> users;
+        private readonly IGenericRepository<IdentityRole> roles;
+        private readonly IGenericRepository<Beer> beers;
+        private readonly IGenericRepository<BeerReview> beerReviews;
+        private readonly IGenericRepository<BeerType> beerTypes;
+        private readonly IGenericRepository<Brewery> breweries;
 
         public RememBeerMeData(
             IGenericRepository<ApplicationUser> users,
@@ -31,40 +33,16 @@ namespace RememBeer.Data.Repositories
             this.breweries = breweries;
         }
 
-        public IGenericRepository<IdentityRole> Roles
-        {
-            get { return this.roles; }
-            set { this.roles = value; }
-        }
+        public IQueryable<IdentityRole> Roles => this.roles.All;
 
-        public IGenericRepository<ApplicationUser> Users
-        {
-            get { return this.users; }
-            set { this.users = value; }
-        }
+        public IQueryable<ApplicationUser> Users => this.users.All;
 
-        public IGenericRepository<Beer> Beers
-        {
-            get { return this.beers; }
-            set { this.beers = value; }
-        }
+        public IQueryable<Beer> Beers => this.beers.All;
 
-        public IGenericRepository<BeerReview> BeerReviews
-        {
-            get { return this.beerReviews; }
-            set { this.beerReviews = value; }
-        }
+        public IQueryable<BeerReview> BeerReviews => this.beerReviews.All;
 
-        public IGenericRepository<BeerType> BeerTypes
-        {
-            get { return this.beerTypes; }
-            set { this.beerTypes = value; }
-        }
+        public IQueryable<BeerType> BeerTypes => this.beerTypes.All;
 
-        public IGenericRepository<Brewery> Breweries
-        {
-            get { return this.breweries; }
-            set { this.breweries = value; }
-        }
+        public IQueryable<Brewery> Breweries => this.breweries.All;
     }
 }

@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System.Linq;
 
-using RememBeer.Data.Repositories.Base;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace RememBeer.Data.Repositories.Contracts
 {
     public interface IRolesData
     {
-        IGenericRepository<IdentityRole> Roles { get; set; }
+        IQueryable<IdentityRole> Roles { get; }
 
     }
 }

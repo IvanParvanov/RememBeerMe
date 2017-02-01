@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 using Ninject;
 using Ninject.Extensions.Conventions;
+using Ninject.Syntax;
 
 using RememBeer.CompositionRoot.NinjectModules;
 
@@ -14,6 +13,18 @@ namespace RememBeer.CompositionRoot
     public class DefaultComposition
     {
         public void RegisterServices(IKernel kernel)
+        {
+            BindDefaultInterfaces(kernel);
+            LoadModules(kernel);
+        }
+
+        private static void LoadModules(IKernel kernel)
+        {
+            kernel.Load(new BusinessNinjectModule());
+            kernel.Load(new DataNinjectModule());
+        }
+
+        private static void BindDefaultInterfaces(IBindingRoot kernel)
         {
             kernel.Bind(x =>
                         {
@@ -31,8 +42,8 @@ namespace RememBeer.CompositionRoot
                             }
                         });
 
-            kernel.Load(new BusinessNinjectModule());
-            kernel.Load(new DataNinjectModule());
+            kernel.Bind<IKernel>()
+                  .ToMethod(ctx => ctx.Kernel);
         }
     }
 }

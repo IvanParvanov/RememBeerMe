@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 using Ninject;
 
+using RememBeer.Data.Repositories;
 using RememBeer.Data.Repositories.Contracts;
 
 namespace RememBeer.WebClient
@@ -15,7 +17,11 @@ namespace RememBeer.WebClient
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var users = this.UserRepo.Users.All.ToList();
+        }
+
+        protected void UserDataSource_OnContextCreating(object sender, LinqDataSourceContextEventArgs e)
+        {
+            e.ObjectInstance = this.UserRepo;
         }
     }
 }

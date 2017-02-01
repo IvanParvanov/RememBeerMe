@@ -6,17 +6,19 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
+
+using Ninject;
+
 using Owin;
 
 using RememBeer.Data;
 using RememBeer.Data.DbContexts;
+using RememBeer.Data.DbContexts.Contracts;
 
 namespace RememBeer.WebClient
 {
     public partial class Startup
     {
-        //public readonly IDataContextFactory dbContextFactory;
-
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301883
         public void ConfigureAuth(IAppBuilder app)
         {
