@@ -31,7 +31,12 @@ namespace RememBeer.WebClient.App_Start
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
+            bootstrapper.Initialize(() =>
+                                    {
+                                        var kernel = CreateKernel();
+
+                                        return kernel;
+                                    });
         }
 
         /// <summary>
@@ -46,7 +51,7 @@ namespace RememBeer.WebClient.App_Start
         /// Creates the kernel that will manage your application.
         /// </summary>
         /// <returns>The created kernel.</returns>
-        private static IKernel CreateKernel()
+        public static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
             try

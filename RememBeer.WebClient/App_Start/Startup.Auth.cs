@@ -14,17 +14,22 @@ using Owin;
 using RememBeer.Data;
 using RememBeer.Data.DbContexts;
 using RememBeer.Data.DbContexts.Contracts;
+using RememBeer.WebClient.App_Start;
+
+using WebFormsMvp.Binder;
 
 namespace RememBeer.WebClient
 {
     public partial class Startup
     {
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301883
-        public void ConfigureAuth(IAppBuilder app)
+        public void ConfigureAuth(IAppBuilder app, IKernel kernel)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(RememBeerMeDbContext.Create);
+            app.CreatePerOwinContext(() => kernel.Get<RememBeerMeDbContext>());
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            //app.CreatePerOwinContext(() => kernel.Get<IRememBeerMeDbContext>());
+            //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
