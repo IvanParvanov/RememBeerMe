@@ -22,7 +22,7 @@ namespace RememBeer.WebClient.Account
                     return;
                 }
                 // Request a redirect to the external login provider
-                string redirectUrl = this.ResolveUrl(String.Format(CultureInfo.InvariantCulture, "~/Account/RegisterExternalLogin?{0}={1}&returnUrl={2}", IdentityHelper.ProviderNameKey, provider, this.ReturnUrl));
+                string redirectUrl = this.ResolveUrl(string.Format(CultureInfo.InvariantCulture, "~/Account/RegisterExternalLogin?{0}={1}&returnUrl={2}", IdentityHelper.ProviderNameKey, provider, this.ReturnUrl));
                 var properties = new AuthenticationProperties() { RedirectUri = redirectUrl };
                 // Add xsrf verification when linking accounts
                 if (this.Context.User.Identity.IsAuthenticated)

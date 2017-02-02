@@ -8,6 +8,8 @@ using Ninject.Syntax;
 
 using RememBeer.CompositionRoot.NinjectModules;
 
+using WebFormsMvp.Binder;
+
 namespace RememBeer.CompositionRoot
 {
     public class DefaultComposition
@@ -28,9 +30,9 @@ namespace RememBeer.CompositionRoot
         {
             kernel.Bind(x =>
                         {
-                            var assemblies =
-                                AppDomain.CurrentDomain.GetAssemblies()
-                                         .Where(a => a.FullName.StartsWith("RememBeer."));
+                            var assemblies = AppDomain.CurrentDomain
+                                                      .GetAssemblies()
+                                                      .Where(a => a.FullName.StartsWith("RememBeer."));
 
                             foreach (var assembly in assemblies)
                             {

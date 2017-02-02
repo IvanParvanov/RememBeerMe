@@ -24,5 +24,7 @@ namespace RememBeer.Data.Repositories.Base
         void Update(T entity);
 
         void Delete(T entity);
+
+        void SaveChanges();
     }
 }

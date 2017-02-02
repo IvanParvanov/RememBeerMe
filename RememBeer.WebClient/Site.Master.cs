@@ -54,13 +54,13 @@ namespace RememBeer.WebClient
             {
                 // Set Anti-XSRF token
                 this.ViewState[AntiXsrfTokenKey] = this.Page.ViewStateUserKey;
-                this.ViewState[AntiXsrfUserNameKey] = this.Context.User.Identity.Name ?? String.Empty;
+                this.ViewState[AntiXsrfUserNameKey] = this.Context.User.Identity.Name ?? string.Empty;
             }
             else
             {
                 // Validate the Anti-XSRF token
                 if ((string)this.ViewState[AntiXsrfTokenKey] != this._antiXsrfTokenValue
-                    || (string)this.ViewState[AntiXsrfUserNameKey] != (this.Context.User.Identity.Name ?? String.Empty))
+                    || (string)this.ViewState[AntiXsrfUserNameKey] != (this.Context.User.Identity.Name ?? string.Empty))
                 {
                     throw new InvalidOperationException("Validation of Anti-XSRF token failed.");
                 }

@@ -13,13 +13,13 @@ namespace RememBeer.WebClient.Account
     {
         protected string ProviderName
         {
-            get { return (string)this.ViewState["ProviderName"] ?? String.Empty; }
+            get { return (string)this.ViewState["ProviderName"] ?? string.Empty; }
             private set { this.ViewState["ProviderName"] = value; }
         }
 
         protected string ProviderAccountKey
         {
-            get { return (string)this.ViewState["ProviderAccountKey"] ?? String.Empty; }
+            get { return (string)this.ViewState["ProviderAccountKey"] ?? string.Empty; }
             private set { this.ViewState["ProviderAccountKey"] = value; }
         }
 
@@ -32,7 +32,7 @@ namespace RememBeer.WebClient.Account
         {
             // Process the result from an auth provider in the request
             this.ProviderName = IdentityHelper.GetProviderNameFromRequest(this.Request);
-            if (String.IsNullOrEmpty(this.ProviderName))
+            if (string.IsNullOrEmpty(this.ProviderName))
             {
                 this.RedirectOnFail();
                 return;

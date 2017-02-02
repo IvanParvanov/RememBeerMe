@@ -1,16 +1,43 @@
 ﻿using System;
 using System.Web;
-using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
 
-using RememBeer.Data;
+using RememBeer.Business.Account.ForgotPassword;
+using RememBeer.Business.Account.ForgotPassword.Contracts;
+
+using WebFormsMvp;
+using WebFormsMvp.Web;
 
 namespace RememBeer.WebClient.Account
 {
-    public partial class ForgotPassword : Page
+    [PresenterBinding(typeof(ForgotPasswordPresenter))]
+    public partial class ForgotPassword : MvpPage<ForgotPasswordViewModel>, IForgotPasswordView
     {
+        public event EventHandler<ForgottenPasswordEventArgs> OnForgot;
+
+        public string FailureMessage
+        {
+            get { return this.FailureText.Text; }
+            set { this.FailureText.Text = value; }
+        }
+
+        public bool ErrorMessageVisible
+        {
+            get { return this.ErrorMessage.Visible; }
+            set { this.ErrorMessage.Visible = value; }
+        }
+
+        public bool LoginFormVisible
+        {
+            get { return this.loginForm.Visible; }
+            set { this.loginForm.Visible = value; }
+        }
+
+        public bool DisplayEmailVisible
+        {
+            get { return this.DisplayEmail.Visible; }
+            set { this.DisplayEmail.Visible = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }
@@ -19,22 +46,8 @@ namespace RememBeer.WebClient.Account
         {
             if (this.IsValid)
             {
-                // Validate the user's email address
-                var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                ApplicationUser user = manager.FindByName(this.Email.Text);
-                if (user == null || !manager.IsEmailConfirmed(user.Id))
-                {
-                    this.FailureText.Text = "The user either does not exist or is not confirmed.";
-                    this.ErrorMessage.Visible = true;
-                    return;
-                }
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                // Send email with the code and the redirect to reset password page
-                //string code = manager.GeneratePasswordResetToken(user.Id);
-                //string callbackUrl = IdentityHelper.GetResetPasswordRedirectUrl(code, Request);
-                //manager.SendEmail(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>.");
-                this.loginForm.Visible = false;
-                this.DisplayEmail.Visible = true;
+                var context = this.Context.GetOwinContext();
+                this.OnForgot?.Invoke(this, new ForgottenPasswordEventArgs(context, this.Email.Text));
             }
         }
     }

@@ -34,8 +34,8 @@ namespace RememBeer.WebClient.Account
             var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             this.CanRemoveExternalLogins = manager.GetLogins(this.User.Identity.GetUserId()).Count() > 1;
 
-            this.SuccessMessage = String.Empty;
-            this.successMessage.Visible = !String.IsNullOrEmpty(this.SuccessMessage);
+            this.SuccessMessage = string.Empty;
+            this.successMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
         }
 
         public IEnumerable<UserLoginInfo> GetLogins()
@@ -51,7 +51,7 @@ namespace RememBeer.WebClient.Account
             var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = this.Context.GetOwinContext().Get<ApplicationSignInManager>();
             var result = manager.RemoveLogin(this.User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
-            string msg = String.Empty;
+            string msg = string.Empty;
             if (result.Succeeded)
             {
                 var user = manager.FindById(this.User.Identity.GetUserId());

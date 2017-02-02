@@ -38,17 +38,13 @@ namespace RememBeer.WebClient.Account
         {
             var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
-            this.HasPhoneNumber = String.IsNullOrEmpty(manager.GetPhoneNumber(this.User.Identity.GetUserId()));
-
-            // Enable this after setting up two-factor authentientication
-            //PhoneNumber.Text = manager.GetPhoneNumber(User.Identity.GetUserId()) ?? String.Empty;
+            this.HasPhoneNumber = string.IsNullOrEmpty(manager.GetPhoneNumber(this.User.Identity.GetUserId()));
 
             this.TwoFactorEnabled = manager.GetTwoFactorEnabled(this.User.Identity.GetUserId());
 
             this.LoginsCount = manager.GetLogins(this.User.Identity.GetUserId()).Count;
 
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
-
             if (!this.IsPostBack)
             {
                 // Determine the sections to render
@@ -75,8 +71,8 @@ namespace RememBeer.WebClient.Account
                         : message == "RemoveLoginSuccess" ? "The account was removed."
                         : message == "AddPhoneNumberSuccess" ? "Phone number has been added"
                         : message == "RemovePhoneNumberSuccess" ? "Phone number was removed"
-                        : String.Empty;
-                    this.successMessage.Visible = !String.IsNullOrEmpty(this.SuccessMessage);
+                        : string.Empty;
+                    this.successMessage.Visible = !string.IsNullOrEmpty(this.SuccessMessage);
                 }
             }
         }
@@ -106,24 +102,6 @@ namespace RememBeer.WebClient.Account
                 signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
                 this.Response.Redirect("/Account/Manage?m=RemovePhoneNumberSuccess");
             }
-        }
-
-        // DisableTwoFactorAuthentication
-        protected void TwoFactorDisable_Click(object sender, EventArgs e)
-        {
-            var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            manager.SetTwoFactorEnabled(this.User.Identity.GetUserId(), false);
-
-            this.Response.Redirect("/Account/Manage");
-        }
-
-        //EnableTwoFactorAuthentication 
-        protected void TwoFactorEnable_Click(object sender, EventArgs e)
-        {
-            var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            manager.SetTwoFactorEnabled(this.User.Identity.GetUserId(), true);
-
-            this.Response.Redirect("/Account/Manage");
         }
     }
 }

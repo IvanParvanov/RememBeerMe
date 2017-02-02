@@ -91,6 +91,11 @@ namespace RememBeer.Data.Repositories.Base
             entry.State = EntityState.Deleted;
         }
 
+        public void SaveChanges()
+        {
+            this.Context.SaveChanges();
+        }
+
         private DbEntityEntry AttachIfDetached(T entity)
         {
             var entry = this.Context.Entry(entity);

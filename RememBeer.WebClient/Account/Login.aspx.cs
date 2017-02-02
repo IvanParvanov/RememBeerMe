@@ -18,7 +18,7 @@ namespace RememBeer.WebClient.Account
             //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
             this.OpenAuthLogin.ReturnUrl = this.Request.QueryString["ReturnUrl"];
             var returnUrl = HttpUtility.UrlEncode(this.Request.QueryString["ReturnUrl"]);
-            if (!String.IsNullOrEmpty(returnUrl))
+            if (!string.IsNullOrEmpty(returnUrl))
             {
                 this.RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
@@ -45,7 +45,7 @@ namespace RememBeer.WebClient.Account
                         this.Response.Redirect("/Account/Lockout");
                         break;
                     case SignInStatus.RequiresVerification:
-                        this.Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", this.Request.QueryString["ReturnUrl"], this.RememberMe.Checked),
+                        this.Response.Redirect(string.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", this.Request.QueryString["ReturnUrl"], this.RememberMe.Checked),
                                           true);
                         break;
                     case SignInStatus.Failure:
