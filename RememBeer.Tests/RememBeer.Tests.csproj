@@ -119,7 +119,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Business\Account\ForgotPassword\ForgotPasswordPresenterTests.cs" />
+    <Compile Include="Business\Account\Confirm\Presenter_OnSubmit_Should.cs" />
+    <Compile Include="Business\Account\Fakes\MockedApplicationUser.cs" />
+    <Compile Include="Business\Account\Fakes\MockedApplicationUserManager.cs" />
+    <Compile Include="Business\Account\ForgotPassword\Presenter_OnForgot_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

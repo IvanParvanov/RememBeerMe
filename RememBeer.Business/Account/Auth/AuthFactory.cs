@@ -9,14 +9,14 @@ namespace RememBeer.Business.Account.Auth
 {
     public class AuthFactory : IAuthFactory
     {
-        public IApplicationUserManager CreateApplicationUserManager(IOwinContext ctx)
+        public IApplicationUserManager CreateApplicationUserManager(IOwinContext context)
         {
-            if (ctx == null)
+            if (context == null)
             {
-                throw new ArgumentNullException(nameof(ctx));
+                throw new ArgumentNullException(nameof(context));
             }
 
-            return ctx.Get<ApplicationUserManager>();
+            return OwinContextExtensions.Get<IApplicationUserManager>(context);
         }
     }
 }

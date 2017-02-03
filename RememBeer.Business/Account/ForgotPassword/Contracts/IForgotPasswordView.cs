@@ -7,7 +7,7 @@ namespace RememBeer.Business.Account.ForgotPassword.Contracts
 {
     public interface IForgotPasswordView : IView<ForgotPasswordViewModel>
     {
-        event EventHandler<ForgottenPasswordEventArgs> OnForgot;
+        event EventHandler<IForgottenPasswordEventArgs> OnForgot;
 
         string FailureMessage { get; set; }
 

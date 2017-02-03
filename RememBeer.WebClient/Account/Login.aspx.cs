@@ -3,6 +3,9 @@ using System.Web;
 using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+
+using Ninject;
+
 using Owin;
 
 using RememBeer.Data;
@@ -11,6 +14,9 @@ namespace RememBeer.WebClient.Account
 {
     public partial class Login : Page
     {
+        [Inject]
+        public IIdentityHelper IdentityHelper { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             this.RegisterHyperLink.NavigateUrl = "Register";
@@ -32,9 +38,7 @@ namespace RememBeer.WebClient.Account
                 var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var signinManager = this.Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
 
-                // This doen't count login failures towards account lockout
-                // To enable password failures to trigger lockout, change to shouldLockout: true
-                var result = signinManager.PasswordSignIn(this.Email.Text, this.Password.Text, this.RememberMe.Checked, shouldLockout: false);
+                var result = signinManager.PasswordSignIn(this.Email.Text, this.Password.Text, this.RememberMe.Checked, shouldLockout: true);
 
                 switch (result)
                 {

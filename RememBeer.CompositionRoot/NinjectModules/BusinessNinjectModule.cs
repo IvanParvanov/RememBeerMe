@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 
 using Microsoft.AspNet.Identity.Owin;
@@ -10,6 +11,7 @@ using Ninject.Extensions.Factory;
 using Ninject.Modules;
 using Ninject.Parameters;
 
+using RememBeer.Business.Account.Auth;
 using RememBeer.Business.MvpPresenter;
 using RememBeer.Data;
 
@@ -34,6 +36,23 @@ namespace RememBeer.CompositionRoot.NinjectModules
                 .NamedLikeFactoryMethod(
                                         (IMvpPresenterFactory factory) => factory.GetPresenter(null, null)
                 );
+
+            this.Bind<IIdentityFactory>().ToFactory();
+
+            this.Rebind<ApplicationUserManager>()
+                .ToMethod(ctx =>
+                          {
+                              var parameters = ctx.Parameters.ToList();
+                              var options = (IdentityFactoryOptions<ApplicationUserManager>)parameters[0]
+                                  .GetValue(ctx, null);
+
+                              var owinContext = (IOwinContext)parameters[1].GetValue(ctx, null);
+
+                              return ApplicationUserManager.Create(options, owinContext);
+                          })
+                .NamedLikeFactoryMethod((IIdentityFactory f) => f.GetApplicationUserManager(null, null));
+
+            this.Rebind<IIdentityHelper>().To<IdentityHelper>().InSingletonScope();
         }
 
         private static IPresenter GetPresenter(IContext context)

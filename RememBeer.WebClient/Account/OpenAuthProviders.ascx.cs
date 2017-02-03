@@ -6,12 +6,17 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
+using Ninject;
+
 using RememBeer.Data;
 
 namespace RememBeer.WebClient.Account
 {
     public partial class OpenAuthProviders : System.Web.UI.UserControl
     {
+        [Inject]
+        public IIdentityHelper IdentityHelper { private get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (this.IsPostBack)

@@ -3,6 +3,9 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+
+using Ninject;
+
 using Owin;
 
 using RememBeer.Data;
@@ -11,6 +14,9 @@ namespace RememBeer.WebClient.Account
 {
     public partial class RegisterExternalLogin : System.Web.UI.Page
     {
+        [Inject]
+        public IIdentityHelper IdentityHelper { get; set; }
+
         protected string ProviderName
         {
             get { return (string)this.ViewState["ProviderName"] ?? string.Empty; }

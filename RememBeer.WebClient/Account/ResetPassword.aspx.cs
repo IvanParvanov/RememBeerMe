@@ -4,6 +4,9 @@ using System.Web;
 using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+
+using Ninject;
+
 using Owin;
 
 using RememBeer.Data;
@@ -17,6 +20,9 @@ namespace RememBeer.WebClient.Account
             get;
             private set;
         }
+
+        [Inject]
+        public IIdentityHelper IdentityHelper { get; set; }
 
         protected void Reset_Click(object sender, EventArgs e)
         {

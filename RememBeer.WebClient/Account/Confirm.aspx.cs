@@ -1,39 +1,37 @@
 ﻿using System;
 using System.Web;
-using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
+
+using Ninject;
 
 using RememBeer.Data;
+using RememBeer.Business.Account.Confirm;
+using RememBeer.Business.Account.Confirm.Contracts;
+using RememBeer.WebClient.BasePages;
+
+using WebFormsMvp;
+using WebFormsMvp.Web;
 
 namespace RememBeer.WebClient.Account
 {
-    public partial class Confirm : Page
+    [PresenterBinding(typeof(ConfirmPresenter))]
+    public partial class Confirm : IdentityHelperPage<ConfirmViewModel>, IConfirmView
     {
-        protected string StatusMessage
-        {
-            get;
-            private set;
-        }
+        public event EventHandler<IConfirmEventArgs> OnSubmit;
+
+        public bool SuccessPanelVisible { get; set; }
+
+        public bool ErrorPanelVisible { get; set; }
+
+        public string StatusMessage { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string code = IdentityHelper.GetCodeFromRequest(this.Request);
-            string userId = IdentityHelper.GetUserIdFromRequest(this.Request);
-            if (code != null && userId != null)
-            {
-                var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var result = manager.ConfirmEmail(userId, code);
-                if (result.Succeeded)
-                {
-                    this.successPanel.Visible = true;
-                    return;
-                }
-            }
+            var code = this.IdentityHelper.GetCodeFromRequest(this.Request);
+            var userId = this.IdentityHelper.GetUserIdFromRequest(this.Request);
+            var ctx = this.Context.GetOwinContext();
+            var args = new ConfirmEventArgs(userId, code, ctx);
 
-            this.successPanel.Visible = false;
-            this.errorPanel.Visible = true;
+            this.OnSubmit?.Invoke(this, args);
         }
     }
 }

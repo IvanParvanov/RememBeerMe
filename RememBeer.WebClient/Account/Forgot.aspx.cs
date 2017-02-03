@@ -12,7 +12,7 @@ namespace RememBeer.WebClient.Account
     [PresenterBinding(typeof(ForgotPasswordPresenter))]
     public partial class ForgotPassword : MvpPage<ForgotPasswordViewModel>, IForgotPasswordView
     {
-        public event EventHandler<ForgottenPasswordEventArgs> OnForgot;
+        public event EventHandler<IForgottenPasswordEventArgs> OnForgot;
 
         public string FailureMessage
         {

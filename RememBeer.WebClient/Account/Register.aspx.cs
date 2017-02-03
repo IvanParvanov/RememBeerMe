@@ -4,6 +4,9 @@ using System.Web;
 using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+
+using Ninject;
+
 using Owin;
 
 using RememBeer.Data;
@@ -12,6 +15,9 @@ namespace RememBeer.WebClient.Account
 {
     public partial class Register : Page
     {
+        [Inject]
+        public IIdentityHelper IdentityHelper { get; set; }
+
         protected void CreateUser_Click(object sender, EventArgs e)
         {
             var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
