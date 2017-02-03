@@ -5,9 +5,9 @@ using RememBeer.Business.Account.ForgotPassword.Contracts;
 
 namespace RememBeer.Business.Account.ForgotPassword
 {
-    public class ForgottenPasswordEventArgs : OwinContextEventArgs, IForgottenPasswordEventArgs
+    public class ForgotPasswordEventArgs : OwinContextEventArgs, IForgotPasswordEventArgs
     {
-        public ForgottenPasswordEventArgs(IOwinContext context, string email)
+        public ForgotPasswordEventArgs(IOwinContext context, string email)
             : base(context)
         {
             this.Email = email;

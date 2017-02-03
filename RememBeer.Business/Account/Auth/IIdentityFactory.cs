@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-using RememBeer.Data;
-using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Contracts;
 
 namespace RememBeer.Business.Account.Auth

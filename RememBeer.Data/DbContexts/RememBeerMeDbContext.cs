@@ -3,7 +3,6 @@ using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 using RememBeer.Data.DbContexts.Contracts;
-using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Models;
 using RememBeer.Models;
 

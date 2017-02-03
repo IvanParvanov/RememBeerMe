@@ -16,6 +16,8 @@ namespace RememBeer.Data.Identity.Contracts
 
         void RedirectToReturnUrl(string returnUrl, HttpResponse response);
 
+        void RedirectToReturnUrl(string returnUrl, HttpResponseBase response);
+
         string XsrfKey { get; }
 
         string ProviderNameKey { get; }

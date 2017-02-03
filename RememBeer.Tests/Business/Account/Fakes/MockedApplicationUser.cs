@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Microsoft.AspNet.Identity.EntityFramework;
 
-using RememBeer.Data;
-using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Models;
 
 namespace RememBeer.Tests.Business.Account.Fakes

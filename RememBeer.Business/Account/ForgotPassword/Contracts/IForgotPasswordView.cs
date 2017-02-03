@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Web;
+
+using RememBeer.Business.Account.Common.ViewModels;
 
 using WebFormsMvp;
 
 namespace RememBeer.Business.Account.ForgotPassword.Contracts
 {
-    public interface IForgotPasswordView : IView<ForgotPasswordViewModel>
+    public interface IForgotPasswordView : IView<StatelessViewModel>
     {
-        event EventHandler<IForgottenPasswordEventArgs> OnForgot;
+        event EventHandler<IForgotPasswordEventArgs> OnForgot;
 
         string FailureMessage { get; set; }
 

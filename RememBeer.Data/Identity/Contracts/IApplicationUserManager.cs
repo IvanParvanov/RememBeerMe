@@ -24,6 +24,8 @@ namespace RememBeer.Data.Identity.Contracts
 
         Task<ApplicationUser> FindByNameAsync(string userName);
 
+        ApplicationUser FindByName(string email);
+
         Task<IdentityResult> CreateAsync(ApplicationUser user, string password);
 
         Task<ApplicationUser> FindAsync(string userName, string password);
@@ -82,7 +84,11 @@ namespace RememBeer.Data.Identity.Contracts
 
         Task<IdentityResult> ConfirmEmailAsync(string userId, string token);
 
+        IdentityResult ConfirmEmail(string userId, string token);
+
         Task<bool> IsEmailConfirmedAsync(string userId);
+
+        bool IsEmailConfirmed(string userId);
 
         Task<string> GetPhoneNumberAsync(string userId);
 

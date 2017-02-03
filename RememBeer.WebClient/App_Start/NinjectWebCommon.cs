@@ -1,9 +1,3 @@
-using System.IO;
-using System.Reflection;
-
-using Ninject.Extensions.Conventions;
-using Ninject.Syntax;
-
 using RememBeer.CompositionRoot;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(RememBeer.WebClient.App_Start.NinjectWebCommon), "Start")]

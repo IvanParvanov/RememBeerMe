@@ -1,7 +1,7 @@
 ﻿using RememBeer.Business.Account.ForgotPassword.Contracts;
 
 using RememBeer.Business.Account.Auth;
-using RememBeer.Business.Account.Common;
+using RememBeer.Business.Account.Common.Presenters;
 
 namespace RememBeer.Business.Account.ForgotPassword
 {
@@ -13,11 +13,11 @@ namespace RememBeer.Business.Account.ForgotPassword
             this.View.OnForgot += this.OnForgot;
         }
 
-        private async void OnForgot(object sender, IForgottenPasswordEventArgs args)
+        private void OnForgot(object sender, IForgotPasswordEventArgs args)
         {
             var manager = this.AuthFactory.CreateApplicationUserManager(args.Context);
-            var user = await manager.FindByNameAsync(args.Email);
-            if (user == null || !await manager.IsEmailConfirmedAsync(user.Id))
+            var user = manager.FindByName(args.Email);
+            if (user == null || !manager.IsEmailConfirmed(user.Id))
             {
                 this.View.FailureMessage = "The user does not exist or the email is not confirmed.";
                 this.View.ErrorMessageVisible = true;

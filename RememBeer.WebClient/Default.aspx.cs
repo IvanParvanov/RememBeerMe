@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using Ninject;
 
-using RememBeer.Data.Repositories;
 using RememBeer.Data.Repositories.Contracts;
 
 namespace RememBeer.WebClient

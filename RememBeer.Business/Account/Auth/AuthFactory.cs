@@ -23,9 +23,9 @@ namespace RememBeer.Business.Account.Auth
             return OwinContextExtensions.Get<IApplicationSignInManager>(context);
         }
 
-        public static void ThrowIfNull(object obj)
+        private static void ThrowIfNull(object obj)
         {
-            if (obj == null)
+            if ( obj == null )
             {
                 throw new ArgumentNullException(nameof(obj));
             }

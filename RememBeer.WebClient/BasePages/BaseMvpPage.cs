@@ -7,7 +7,7 @@ using WebFormsMvp.Web;
 
 namespace RememBeer.WebClient.BasePages
 {
-    public class IdentityHelperPage<TModel> : MvpPage<TModel> where TModel : class, new()
+    public class BaseMvpPage<TModel> : MvpPage<TModel> where TModel : class, new()
     {
         [Inject]
         public IIdentityHelper IdentityHelper { protected get; set; }

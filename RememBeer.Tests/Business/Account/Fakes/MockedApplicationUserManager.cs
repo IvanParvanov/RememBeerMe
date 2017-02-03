@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.AspNet.Identity;
 
-using RememBeer.Data;
 using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Models;
 

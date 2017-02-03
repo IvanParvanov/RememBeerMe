@@ -32,6 +32,8 @@ namespace RememBeer.Data.Identity.Contracts
 
         Task<SignInStatus> PasswordSignInAsync(string userName, string password, bool isPersistent, bool shouldLockout);
 
+        SignInStatus PasswordSignIn(string email, string password, bool isPersistent);
+
         string AuthenticationType { get; set; }
 
         UserManager<ApplicationUser, string> UserManager { get; set; }

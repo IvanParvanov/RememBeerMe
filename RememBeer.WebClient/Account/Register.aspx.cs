@@ -7,9 +7,6 @@ using Microsoft.AspNet.Identity.Owin;
 
 using Ninject;
 
-using Owin;
-
-using RememBeer.Data;
 using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Contracts;
 using RememBeer.Data.Identity.Models;

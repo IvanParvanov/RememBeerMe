@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
 
 using Microsoft.AspNet.Identity.Owin;
@@ -14,7 +13,6 @@ using Ninject.Parameters;
 using RememBeer.Business.Account;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.MvpPresenter;
-using RememBeer.Data;
 using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Contracts;
 using RememBeer.Data.Identity.Models;

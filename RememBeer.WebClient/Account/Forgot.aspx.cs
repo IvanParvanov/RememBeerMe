@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Web;
 
+using RememBeer.Business.Account.Common.ViewModels;
 using RememBeer.Business.Account.ForgotPassword;
 using RememBeer.Business.Account.ForgotPassword.Contracts;
 using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;
-using WebFormsMvp.Web;
 
 namespace RememBeer.WebClient.Account
 {
     [PresenterBinding(typeof(ForgotPasswordPresenter))]
-    public partial class ForgotPassword : IdentityHelperPage<ForgotPasswordViewModel>, IForgotPasswordView
+    public partial class ForgotPassword : BaseMvpPage<StatelessViewModel>, IForgotPasswordView
     {
-        public event EventHandler<IForgottenPasswordEventArgs> OnForgot;
+        public event EventHandler<IForgotPasswordEventArgs> OnForgot;
 
         public string FailureMessage
         {

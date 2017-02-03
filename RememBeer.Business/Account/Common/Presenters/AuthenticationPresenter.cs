@@ -4,7 +4,7 @@ using RememBeer.Business.Account.Auth;
 
 using WebFormsMvp;
 
-namespace RememBeer.Business.Account.Common
+namespace RememBeer.Business.Account.Common.Presenters
 {
     public class AuthenticationPresenter<TView> : Presenter<TView> where TView : class, IView
     {

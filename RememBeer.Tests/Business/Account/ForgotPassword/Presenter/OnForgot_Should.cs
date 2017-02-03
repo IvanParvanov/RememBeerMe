@@ -11,13 +11,12 @@ using RememBeer.Business.Account.ForgotPassword;
 using RememBeer.Business.Account.ForgotPassword.Contracts;
 using RememBeer.Data.Identity.Contracts;
 using RememBeer.Data.Identity.Models;
-
 using RememBeer.Tests.Business.Account.Fakes;
 
-namespace RememBeer.Tests.Business.Account.ForgotPassword
+namespace RememBeer.Tests.Business.Account.ForgotPassword.Presenter
 {
     [TestFixture]
-    public class Presenter_OnForgot_Should
+    public class OnForgot_Should
     {
         [Test]
         public void CallFactoryCreateApplicationUserManagerMethodOnce()
@@ -30,7 +29,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword
             mockedUserManager.Setup(m => m.FindByNameAsync(Email)).Returns(Task.FromResult<ApplicationUser>(null));
             mockedUserManager.Setup(m => m.IsEmailConfirmedAsync("id")).Returns(Task.FromResult(false));
 
-            var mockedArgs = new Mock<IForgottenPasswordEventArgs>();
+            var mockedArgs = new Mock<IForgotPasswordEventArgs>();
 
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);
@@ -53,10 +52,10 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword
 
             var mockedContext = new Mock<IOwinContext>();
             var mockedUserManager = new Mock<IApplicationUserManager>();
-            mockedUserManager.Setup(m => m.FindByNameAsync(Email)).Returns(Task.FromResult<ApplicationUser>(null));
-            mockedUserManager.Setup(m => m.IsEmailConfirmedAsync("id")).Returns(Task.FromResult(false));
+            mockedUserManager.Setup(m => m.FindByName(Email)).Returns((ApplicationUser)null);
+            mockedUserManager.Setup(m => m.IsEmailConfirmed("id")).Returns(false);
 
-            var mockedArgs = new Mock<IForgottenPasswordEventArgs>();
+            var mockedArgs = new Mock<IForgotPasswordEventArgs>();
 
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);
@@ -68,7 +67,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword
             new ForgotPasswordPresenter(mockedAuthFactory.Object, mockedView.Object);
             mockedView.Raise(x => x.OnForgot += null, mockedView.Object, mockedArgs.Object);
 
-            mockedUserManager.Verify(x => x.FindByNameAsync(Email), Times.Once());
+            mockedUserManager.Verify(x => x.FindByName(Email), Times.Once());
         }
 
         [Test]
@@ -81,9 +80,9 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword
 
             var mockedContext = new Mock<IOwinContext>();
             var mockedUserManager = new Mock<IApplicationUserManager>();
-            mockedUserManager.Setup(m => m.FindByNameAsync(Email)).Returns(Task.FromResult<ApplicationUser>(null));
+            mockedUserManager.Setup(m => m.FindByName(Email)).Returns((ApplicationUser)null);
 
-            var mockedArgs = new Mock<IForgottenPasswordEventArgs>();
+            var mockedArgs = new Mock<IForgotPasswordEventArgs>();
 
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);
@@ -112,10 +111,10 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword
             var mockedUserManager = new Mock<IApplicationUserManager>();
             var mockedUser = new MockedApplicationUser();
 
-            mockedUserManager.Setup(m => m.FindByNameAsync(Email)).Returns(Task.FromResult<ApplicationUser>(mockedUser));
-            mockedUserManager.Setup(m => m.IsEmailConfirmedAsync(mockedUser.Id)).Returns(Task.FromResult(true));
+            mockedUserManager.Setup(m => m.FindByName(Email)).Returns(mockedUser);
+            mockedUserManager.Setup(m => m.IsEmailConfirmed(mockedUser.Id)).Returns(true);
 
-            var mockedArgs = new Mock<IForgottenPasswordEventArgs>();
+            var mockedArgs = new Mock<IForgotPasswordEventArgs>();
 
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);

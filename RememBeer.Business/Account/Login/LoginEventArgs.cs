@@ -7,7 +7,7 @@ namespace RememBeer.Business.Account.Login
 {
     public class LoginEventArgs : OwinContextEventArgs, ILoginEventArgs
     {
-        public LoginEventArgs(IOwinContext context, string email, string password, bool rememberMe) 
+        public LoginEventArgs(IOwinContext context, string email, string password, bool rememberMe)
             : base(context)
         {
             this.Email = email;

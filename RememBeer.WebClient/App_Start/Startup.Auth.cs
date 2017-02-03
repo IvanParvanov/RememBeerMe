@@ -1,27 +1,19 @@
 ﻿using System;
 
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.DataProtection;
-using Microsoft.Owin.Security.Google;
 
 using Ninject;
 
 using Owin;
 
 using RememBeer.Business.Account.Auth;
-using RememBeer.Data;
 using RememBeer.Data.DbContexts;
-using RememBeer.Data.DbContexts.Contracts;
 using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Contracts;
 using RememBeer.Data.Identity.Models;
-using RememBeer.WebClient.App_Start;
-
-using WebFormsMvp.Binder;
 
 namespace RememBeer.WebClient
 {

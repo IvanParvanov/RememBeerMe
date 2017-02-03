@@ -4,7 +4,7 @@ using Moq;
 
 using NUnit.Framework;
 
-using RememBeer.Business.Account.Common;
+using RememBeer.Business.Account.Common.Presenters;
 using RememBeer.Business.Account.Confirm.Contracts;
 
 namespace RememBeer.Tests.Business.Account.Common

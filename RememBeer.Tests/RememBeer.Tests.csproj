@@ -94,14 +94,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="Telerik.JustMock, Version=2016.2.426.1, Culture=neutral, PublicKeyToken=721b6c5bc0326b3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\JustMock.2016.2.426.1\lib\Net35\Telerik.JustMock.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Telerik.JustMock.EntityFramework, Version=2015.3.929.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\JustMock.EntityFramework.2015.3.929.5\lib\Net45\Telerik.JustMock.EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
     <Reference Include="WebFormsMvp, Version=1.4.5.0, Culture=neutral, PublicKeyToken=537f18701145dff0, processorArchitecture=MSIL">
       <HintPath>..\packages\WebFormsMvp.1.4.5.0\lib\WebFormsMvp.dll</HintPath>
       <Private>True</Private>
@@ -120,11 +114,28 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Business\Account\Auth\AuthFactory\CreateApplicationSignInManager_Should.cs" />
+    <Compile Include="Business\Account\Auth\AuthFactory\CreateApplicationUserManager_Should.cs" />
     <Compile Include="Business\Account\Common\AuthenticationPresenterTests.cs" />
-    <Compile Include="Business\Account\Confirm\Presenter_OnSubmit_Should.cs" />
+    <Compile Include="Business\Account\Confirm\EventArgs\Ctor_Should.cs" />
+    <Compile Include="Business\Account\Confirm\Presenter\OnSubmit_Should.cs" />
     <Compile Include="Business\Account\Fakes\MockedApplicationUser.cs" />
     <Compile Include="Business\Account\Fakes\MockedApplicationUserManager.cs" />
-    <Compile Include="Business\Account\ForgotPassword\Presenter_OnForgot_Should.cs" />
+    <Compile Include="Business\Account\ForgotPassword\EventArgs\Ctor_Should.cs" />
+    <Compile Include="Business\Account\ForgotPassword\Presenter\OnForgot_Should.cs" />
+    <Compile Include="Business\Account\Login\EventArgs\Ctor_Should.cs" />
+    <Compile Include="Business\Account\Login\Presenter\Ctor_Should.cs" />
+    <Compile Include="Business\Account\Login\Presenter\OnLogin_Should.cs" />
+    <Compile Include="Business\Mocks\IDisposablePresenter.cs" />
+    <Compile Include="Business\MvpPresenterFactory\Create_Should.cs" />
+    <Compile Include="Business\MvpPresenterFactory\Release_Should.cs" />
+    <Compile Include="Common\MockedClasses\MockedHttpContextBase.cs" />
+    <Compile Include="Common\MockedClasses\MockedHttpRequest.cs" />
+    <Compile Include="Common\MockedClasses\MockedHttpResponse.cs" />
+    <Compile Include="Models\BeerReviewTests.cs" />
+    <Compile Include="Models\BeerTests.cs" />
+    <Compile Include="Models\BeerTypeTests.cs" />
+    <Compile Include="Models\BreweryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 
+using RememBeer.Business.Account.Common.ViewModels;
 using RememBeer.Business.Account.Confirm;
 using RememBeer.Business.Account.Confirm.Contracts;
 using RememBeer.WebClient.BasePages;
@@ -10,7 +11,7 @@ using WebFormsMvp;
 namespace RememBeer.WebClient.Account
 {
     [PresenterBinding(typeof(ConfirmPresenter))]
-    public partial class Confirm : IdentityHelperPage<ConfirmViewModel>, IConfirmView
+    public partial class Confirm : BaseMvpPage<StatelessViewModel>, IConfirmView
     {
         public event EventHandler<IConfirmEventArgs> OnSubmit;
 

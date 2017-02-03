@@ -24,5 +24,10 @@ namespace RememBeer.Data.Identity
         {
             return new ApplicationSignInManager((ApplicationUserManager)context.GetUserManager<IApplicationUserManager>(), context.Authentication);
         }
+
+        public virtual SignInStatus PasswordSignIn(string email, string password, bool isPersistent)
+        {
+            return SignInManagerExtensions.PasswordSignIn(this, email, password, isPersistent, true);
+        }
     }
 }

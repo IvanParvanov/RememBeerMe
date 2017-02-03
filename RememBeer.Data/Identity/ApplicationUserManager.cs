@@ -63,5 +63,20 @@ namespace RememBeer.Data.Identity
             }
             return manager;
         }
+
+        public virtual IdentityResult ConfirmEmail(string userId, string token)
+        {
+            return UserManagerExtensions.ConfirmEmail(this, userId, token);
+        }
+
+        public virtual bool IsEmailConfirmed(string userId)
+        {
+            return UserManagerExtensions.IsEmailConfirmed(this, userId);
+        }
+
+        public virtual ApplicationUser FindByName(string email)
+        {
+            return UserManagerExtensions.FindByName(this, email);
+        }
     }
 }

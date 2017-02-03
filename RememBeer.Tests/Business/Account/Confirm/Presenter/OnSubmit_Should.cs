@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
@@ -11,16 +10,14 @@ using NUnit.Framework;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.Confirm;
 using RememBeer.Business.Account.Confirm.Contracts;
-using RememBeer.Data;
-using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Contracts;
 using RememBeer.Data.Identity.Models;
 using RememBeer.Tests.Business.Account.Fakes;
 
-namespace RememBeer.Tests.Business.Account.Confirm
+namespace RememBeer.Tests.Business.Account.Confirm.Presenter
 {
     [TestFixture]
-    public class Presenter_OnSubmit_Should
+    public class OnSubmit_Should
     {
         [Test]
         public void ChangeMessagesVisibility_WhenNotSuccessfull()
@@ -38,8 +35,8 @@ namespace RememBeer.Tests.Business.Account.Confirm
             mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);
 
             var mockedUserManager = new Mock<IApplicationUserManager>();
-            mockedUserManager.Setup(m => m.FindByNameAsync(Email)).Returns(Task.FromResult<ApplicationUser>(null));
-            mockedUserManager.Setup(m => m.IsEmailConfirmedAsync("id")).Returns(Task.FromResult(false));
+            mockedUserManager.Setup(m => m.FindByName(Email)).Returns((ApplicationUser)null);
+            mockedUserManager.Setup(m => m.IsEmailConfirmed("id")).Returns(false);
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
@@ -70,8 +67,8 @@ namespace RememBeer.Tests.Business.Account.Confirm
             var mockedUser = new MockedApplicationUser();
             var mockedUserManager = new Mock<IApplicationUserManager>();
 
-            mockedUserManager.Setup(m => m.FindByNameAsync(Email)).Returns(Task.FromResult<ApplicationUser>(mockedUser));
-            mockedUserManager.Setup(m => m.ConfirmEmailAsync(Id, Code)).Returns(Task.FromResult(new IdentityResult(new List<string>())));
+            mockedUserManager.Setup(m => m.FindByName(Email)).Returns(mockedUser);
+            mockedUserManager.Setup(m => m.ConfirmEmail(Id, Code)).Returns(new IdentityResult(new List<string>()));
 
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
@@ -82,7 +79,7 @@ namespace RememBeer.Tests.Business.Account.Confirm
             mockedView.Raise(x => x.OnSubmit += null, mockedView.Object, mockedArgs.Object);
 
             mockedAuthFactory.Verify(f => f.CreateApplicationUserManager(mockedContext.Object), Times.Once());
-            mockedUserManager.Verify(f => f.ConfirmEmailAsync(Id, Code), Times.Once());
+            mockedUserManager.Verify(f => f.ConfirmEmail(Id, Code), Times.Once());
         }
 
         [Test]
@@ -104,8 +101,8 @@ namespace RememBeer.Tests.Business.Account.Confirm
             var mockedUser = new MockedApplicationUser();
             var mockedUserManager = new Mock<IApplicationUserManager>();
 
-            mockedUserManager.Setup(m => m.FindByNameAsync(Email)).Returns(Task.FromResult<ApplicationUser>(mockedUser));
-            mockedUserManager.Setup(m => m.ConfirmEmailAsync(Id, Code)).Returns(Task.FromResult(IdentityResult.Success));
+            mockedUserManager.Setup(m => m.FindByName(Email)).Returns(mockedUser);
+            mockedUserManager.Setup(m => m.ConfirmEmail(Id, Code)).Returns(IdentityResult.Success);
 
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
@@ -116,7 +113,7 @@ namespace RememBeer.Tests.Business.Account.Confirm
             mockedView.Raise(x => x.OnSubmit += null, mockedView.Object, mockedArgs.Object);
 
             mockedAuthFactory.Verify(f => f.CreateApplicationUserManager(mockedContext.Object), Times.Once());
-            mockedUserManager.Verify(f => f.ConfirmEmailAsync(Id, Code), Times.Once());
+            mockedUserManager.Verify(f => f.ConfirmEmail(Id, Code), Times.Once());
             mockedView.VerifySet(v => v.SuccessPanelVisible = true);
         }
     }

@@ -1,10 +1,12 @@
 ﻿using System;
 
+using RememBeer.Business.Account.Common.ViewModels;
+
 using WebFormsMvp;
 
 namespace RememBeer.Business.Account.Confirm.Contracts
 {
-    public interface IConfirmView : IView<ConfirmViewModel>
+    public interface IConfirmView : IView<StatelessViewModel>
     {
         event EventHandler<IConfirmEventArgs> OnSubmit;
 

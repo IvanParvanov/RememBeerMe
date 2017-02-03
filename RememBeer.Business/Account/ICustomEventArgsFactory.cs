@@ -10,7 +10,7 @@ namespace RememBeer.Business.Account
     {
         IConfirmEventArgs CreateConfirmEventArgs(IOwinContext context, string userId, string code);
 
-        IForgottenPasswordEventArgs CreateForgottenPasswordEventArgs(IOwinContext context, string email);
+        IForgotPasswordEventArgs CreateForgottenPasswordEventArgs(IOwinContext context, string email);
 
         ILoginEventArgs CreateLoginEventArgs(IOwinContext context, string email, string password, bool rememberMe);
     }

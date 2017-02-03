@@ -2,7 +2,7 @@
 
 namespace RememBeer.Business.Account.ForgotPassword.Contracts
 {
-    public interface IForgottenPasswordEventArgs : IOwinContextEventArgs
+    public interface IForgotPasswordEventArgs : IOwinContextEventArgs
     {
         string Email { get; }
     }

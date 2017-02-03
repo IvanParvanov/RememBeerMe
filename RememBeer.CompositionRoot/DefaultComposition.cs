@@ -8,8 +8,6 @@ using Ninject.Syntax;
 
 using RememBeer.CompositionRoot.NinjectModules;
 
-using WebFormsMvp.Binder;
-
 namespace RememBeer.CompositionRoot
 {
     public class DefaultComposition
