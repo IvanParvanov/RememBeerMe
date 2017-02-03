@@ -1,51 +1,10 @@
 ﻿using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using System.Web;
 
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using RememBeer.Data.Identity.Contracts;
 
-namespace RememBeer.Data
-{ // You can add User data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-
-    public class ApplicationUser : IdentityUser
-    {
-        public virtual ClaimsIdentity GenerateUserIdentity(ApplicationUserManager manager)
-        {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = manager.CreateIdentity<ApplicationUser, string>(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
-            return userIdentity;
-        }
-
-        public virtual Task<ClaimsIdentity> GenerateUserIdentityAsync(ApplicationUserManager manager)
-        {
-            return Task.FromResult(this.GenerateUserIdentity(manager));
-        }
-    }
-
-    #region Helpers
-
-    public interface IIdentityHelper
-    {
-        string GetProviderNameFromRequest(HttpRequest request);
-
-        string GetCodeFromRequest(HttpRequest request);
-
-        string GetUserIdFromRequest(HttpRequest request);
-
-        string GetResetPasswordRedirectUrl(string code, HttpRequest request);
-
-        string GetUserConfirmationRedirectUrl(string code, string userId, HttpRequest request);
-
-        void RedirectToReturnUrl(string returnUrl, HttpResponse response);
-
-        string XsrfKey { get; }
-
-        string ProviderNameKey { get; }
-    }
-
+namespace RememBeer.Data.Identity.Models
+{
     public class IdentityHelper : IIdentityHelper
     {
         // Used for XSRF when linking external logins
@@ -54,7 +13,7 @@ namespace RememBeer.Data
         public string ProviderNameKey => "providerName";
         public string GetProviderNameFromRequest(HttpRequest request)
         {
-            return request.QueryString[ProviderNameKey];
+            return request.QueryString[this.ProviderNameKey];
         }
 
         public const string CodeKey = "code";
@@ -88,7 +47,7 @@ namespace RememBeer.Data
 
         public void RedirectToReturnUrl(string returnUrl, HttpResponse response)
         {
-            if (!string.IsNullOrEmpty(returnUrl) && IsLocalUrl(returnUrl))
+            if (!string.IsNullOrEmpty(returnUrl) && this.IsLocalUrl(returnUrl))
             {
                 response.Redirect(returnUrl);
             }
@@ -98,6 +57,4 @@ namespace RememBeer.Data
             }
         }
     }
-
-    #endregion
 }

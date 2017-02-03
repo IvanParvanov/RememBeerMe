@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using Owin;
 
 using RememBeer.Data;
+using RememBeer.Data.Identity;
 
 namespace RememBeer.WebClient.Account
 {

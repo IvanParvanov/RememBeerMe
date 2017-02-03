@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Web;
-using System.Web.UI;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
-using Ninject;
+using RememBeer.Business.Account.Login;
+using RememBeer.Business.Account.Login.Contracts;
+using RememBeer.Data.Identity;
+using RememBeer.Data.Identity.Contracts;
+using RememBeer.WebClient.BasePages;
 
-using Owin;
-
-using RememBeer.Data;
+using WebFormsMvp;
 
 namespace RememBeer.WebClient.Account
 {
-    public partial class Login : Page
+    [PresenterBinding(typeof(LoginPresenter))]
+    public partial class Login : IdentityHelperPage<LoginViewModel>, ILoginView
     {
-        [Inject]
-        public IIdentityHelper IdentityHelper { get; set; }
+        public event EventHandler<ILoginEventArgs> OnLogin;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,20 +30,19 @@ namespace RememBeer.WebClient.Account
             }
         }
 
-        protected void LogIn(object sender, EventArgs e)
+        protected async void LogIn(object sender, EventArgs e)
         {
             if (this.IsValid)
             {
                 // Validate the user password
-                var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var signinManager = this.Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
+                //var manager = this.Context.GetOwinContext().GetUserManager<IApplicationUserManager>();
+                var signinManager = this.Context.GetOwinContext().GetUserManager<IApplicationSignInManager>();
 
-                var result = signinManager.PasswordSignIn(this.Email.Text, this.Password.Text, this.RememberMe.Checked, shouldLockout: true);
-
+                var result = await signinManager.PasswordSignInAsync(this.Email.Text, this.Password.Text, this.RememberMe.Checked, shouldLockout: true);
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        IdentityHelper.RedirectToReturnUrl(this.Request.QueryString["ReturnUrl"], this.Response);
+                        this.IdentityHelper.RedirectToReturnUrl(this.Request.QueryString["ReturnUrl"], this.Response);
                         break;
                     case SignInStatus.LockedOut:
                         this.Response.Redirect("/Account/Lockout");

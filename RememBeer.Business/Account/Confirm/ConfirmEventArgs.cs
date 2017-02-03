@@ -1,19 +1,18 @@
 ﻿using Microsoft.Owin;
 
+using RememBeer.Business.Account.Common.EventArcs;
 using RememBeer.Business.Account.Confirm.Contracts;
 
 namespace RememBeer.Business.Account.Confirm
 {
-    public class ConfirmEventArgs : IConfirmEventArgs
+    public class ConfirmEventArgs : OwinContextEventArgs, IConfirmEventArgs
     {
-        public ConfirmEventArgs(string userId, string code, IOwinContext context)
+        public ConfirmEventArgs(IOwinContext context, string userId, string code)
+            : base(context)
         {
             this.UserId = userId;
             this.Code = code;
-            this.Context = context;
         }
-
-        public IOwinContext Context { get; set; }
 
         public string UserId { get; set; }
 

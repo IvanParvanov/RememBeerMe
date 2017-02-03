@@ -2,11 +2,15 @@
 using Microsoft.Owin;
 
 using RememBeer.Data;
+using RememBeer.Data.Identity;
+using RememBeer.Data.Identity.Contracts;
 
 namespace RememBeer.Business.Account.Auth
 {
     public interface IIdentityFactory
     {
-        ApplicationUserManager GetApplicationUserManager(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context);
+        IApplicationUserManager GetApplicationUserManager(IdentityFactoryOptions<IApplicationUserManager> options, IOwinContext context);
+
+        IApplicationSignInManager GetApplicationSignInManager(IdentityFactoryOptions<IApplicationSignInManager> options, IOwinContext context);
     }
 }

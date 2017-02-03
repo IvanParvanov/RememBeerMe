@@ -9,6 +9,9 @@ using Microsoft.Owin.Security;
 using Ninject;
 
 using RememBeer.Data;
+using RememBeer.Data.Identity;
+using RememBeer.Data.Identity.Contracts;
+using RememBeer.Data.Identity.Models;
 
 namespace RememBeer.WebClient.Account
 {

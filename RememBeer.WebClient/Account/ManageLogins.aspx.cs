@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 using RememBeer.Data;
+using RememBeer.Data.Identity;
 
 namespace RememBeer.WebClient.Account
 {

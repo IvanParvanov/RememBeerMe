@@ -12,6 +12,9 @@ using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.Confirm;
 using RememBeer.Business.Account.Confirm.Contracts;
 using RememBeer.Data;
+using RememBeer.Data.Identity;
+using RememBeer.Data.Identity.Contracts;
+using RememBeer.Data.Identity.Models;
 using RememBeer.Tests.Business.Account.Fakes;
 
 namespace RememBeer.Tests.Business.Account.Confirm
@@ -41,10 +44,9 @@ namespace RememBeer.Tests.Business.Account.Confirm
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
 
-
             var presnter = new ConfirmPresenter(mockedAuthFactory.Object, mockedView.Object);
 
-            mockedView.Raise(x => x.OnSubmit += null, mockedView.Object, new ConfirmEventArgs(null, null, mockedContext.Object));
+            mockedView.Raise(x => x.OnSubmit += null, mockedView.Object, mockedArgs.Object);
 
             mockedView.VerifySet(v => v.SuccessPanelVisible = false);
             mockedView.VerifySet(v => v.ErrorPanelVisible = true);
@@ -75,11 +77,9 @@ namespace RememBeer.Tests.Business.Account.Confirm
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
 
-
             var presnter = new ConfirmPresenter(mockedAuthFactory.Object, mockedView.Object);
 
-            var args = new ConfirmEventArgs(Id, Code, mockedContext.Object);
-            mockedView.Raise(x => x.OnSubmit += null, mockedView.Object, args);
+            mockedView.Raise(x => x.OnSubmit += null, mockedView.Object, mockedArgs.Object);
 
             mockedAuthFactory.Verify(f => f.CreateApplicationUserManager(mockedContext.Object), Times.Once());
             mockedUserManager.Verify(f => f.ConfirmEmailAsync(Id, Code), Times.Once());
@@ -113,8 +113,7 @@ namespace RememBeer.Tests.Business.Account.Confirm
 
 
             var presnter = new ConfirmPresenter(mockedAuthFactory.Object, mockedView.Object);
-            var args = new ConfirmEventArgs(Id, Code, mockedContext.Object);
-            mockedView.Raise(x => x.OnSubmit += null, mockedView.Object, args);
+            mockedView.Raise(x => x.OnSubmit += null, mockedView.Object, mockedArgs.Object);
 
             mockedAuthFactory.Verify(f => f.CreateApplicationUserManager(mockedContext.Object), Times.Once());
             mockedUserManager.Verify(f => f.ConfirmEmailAsync(Id, Code), Times.Once());

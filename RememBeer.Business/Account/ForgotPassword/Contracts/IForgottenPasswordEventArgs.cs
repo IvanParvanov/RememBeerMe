@@ -1,11 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using RememBeer.Business.Account.Common.EventArcs.Contracts;
 
 namespace RememBeer.Business.Account.ForgotPassword.Contracts
 {
-    public interface IForgottenPasswordEventArgs
+    public interface IForgottenPasswordEventArgs : IOwinContextEventArgs
     {
-        IOwinContext Context { get; }
-
         string Email { get; }
     }
 }

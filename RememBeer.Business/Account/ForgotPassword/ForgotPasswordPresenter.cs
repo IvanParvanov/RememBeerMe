@@ -1,28 +1,21 @@
 ﻿using RememBeer.Business.Account.ForgotPassword.Contracts;
-using RememBeer.Data;
-
-using Microsoft.AspNet.Identity.Owin;
 
 using RememBeer.Business.Account.Auth;
-
-using WebFormsMvp;
+using RememBeer.Business.Account.Common;
 
 namespace RememBeer.Business.Account.ForgotPassword
 {
-    public class ForgotPasswordPresenter : Presenter<IForgotPasswordView>
+    public class ForgotPasswordPresenter : AuthenticationPresenter<IForgotPasswordView>
     {
-        private readonly IAuthFactory authFactory;
-
         public ForgotPasswordPresenter(IAuthFactory authFactory, IForgotPasswordView view)
-            : base(view)
+            : base(authFactory, view)
         {
-            this.authFactory = authFactory;
             this.View.OnForgot += this.OnForgot;
         }
 
         private async void OnForgot(object sender, IForgottenPasswordEventArgs args)
         {
-            var manager = this.authFactory.CreateApplicationUserManager(args.Context);
+            var manager = this.AuthFactory.CreateApplicationUserManager(args.Context);
             var user = await manager.FindByNameAsync(args.Email);
             if (user == null || !await manager.IsEmailConfirmedAsync(user.Id))
             {

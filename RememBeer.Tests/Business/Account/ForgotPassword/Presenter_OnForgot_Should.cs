@@ -9,7 +9,9 @@ using NUnit.Framework;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.ForgotPassword;
 using RememBeer.Business.Account.ForgotPassword.Contracts;
-using RememBeer.Data;
+using RememBeer.Data.Identity.Contracts;
+using RememBeer.Data.Identity.Models;
+
 using RememBeer.Tests.Business.Account.Fakes;
 
 namespace RememBeer.Tests.Business.Account.ForgotPassword
@@ -38,13 +40,13 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword
                              .Returns(mockedUserManager.Object);
 
             new ForgotPasswordPresenter(mockedAuthFactory.Object, mockedView.Object);
-            mockedView.Raise(x => x.OnForgot += null, mockedView.Object, new ForgottenPasswordEventArgs(mockedContext.Object, Email));
+            mockedView.Raise(x => x.OnForgot += null, mockedView.Object, mockedArgs.Object);
 
             mockedAuthFactory.Verify(x => x.CreateApplicationUserManager(mockedContext.Object), Times.Once());
         }
 
         [Test]
-        public void ShouldCallUserManagerFindByNameMethodOnce()
+        public void CallUserManagerFindByNameMethodOnce()
         {
             const string Email = "test@abv.bg";
             var mockedView = new Mock<IForgotPasswordView>();
@@ -64,13 +66,13 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword
                              .Returns(mockedUserManager.Object);
 
             new ForgotPasswordPresenter(mockedAuthFactory.Object, mockedView.Object);
-            mockedView.Raise(x => x.OnForgot += null, mockedView.Object, new ForgottenPasswordEventArgs(mockedContext.Object, Email));
+            mockedView.Raise(x => x.OnForgot += null, mockedView.Object, mockedArgs.Object);
 
             mockedUserManager.Verify(x => x.FindByNameAsync(Email), Times.Once());
         }
 
         [Test]
-        public void ShouldSetViewProperties_WhenUserIsNotFound()
+        public void SetViewProperties_WhenUserIsNotFound()
         {
             const string Email = "test@abv.bg";
             var mockedView = new Mock<IForgotPasswordView>();
@@ -91,7 +93,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword
                              .Returns(mockedUserManager.Object);
 
             new ForgotPasswordPresenter(mockedAuthFactory.Object, mockedView.Object);
-            mockedView.Raise(x => x.OnForgot += null, mockedView.Object, new ForgottenPasswordEventArgs(mockedContext.Object, Email));
+            mockedView.Raise(x => x.OnForgot += null, mockedView.Object, mockedArgs.Object);
 
             mockedView.VerifySet(v => v.FailureMessage = It.IsAny<string>());
             mockedView.VerifySet(v => v.ErrorMessageVisible = true);
@@ -99,7 +101,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword
 
 
         [Test]
-        public void ShouldSetViewProperties_WhenUserIsFound()
+        public void SetViewProperties_WhenUserIsFound()
         {
             const string Email = "test@abv.bg";
             var mockedView = new Mock<IForgotPasswordView>();
@@ -123,7 +125,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword
                              .Returns(mockedUserManager.Object);
 
             new ForgotPasswordPresenter(mockedAuthFactory.Object, mockedView.Object);
-            mockedView.Raise(x => x.OnForgot += null, mockedView.Object, new ForgottenPasswordEventArgs(mockedContext.Object, Email));
+            mockedView.Raise(x => x.OnForgot += null, mockedView.Object, mockedArgs.Object);
 
             mockedView.VerifySet(v => v.LoginFormVisible = false);
             mockedView.VerifySet(v => v.DisplayEmailVisible = true);

@@ -1,6 +1,7 @@
 ﻿using Ninject;
 
-using RememBeer.Data;
+using RememBeer.Business.Account;
+using RememBeer.Data.Identity.Contracts;
 
 using WebFormsMvp.Web;
 
@@ -10,5 +11,8 @@ namespace RememBeer.WebClient.BasePages
     {
         [Inject]
         public IIdentityHelper IdentityHelper { protected get; set; }
+
+        [Inject]
+        public ICustomEventArgsFactory EventArgsFactory { protected get; set; }
     }
 }

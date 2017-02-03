@@ -16,6 +16,9 @@ using RememBeer.Business.Account.Auth;
 using RememBeer.Data;
 using RememBeer.Data.DbContexts;
 using RememBeer.Data.DbContexts.Contracts;
+using RememBeer.Data.Identity;
+using RememBeer.Data.Identity.Contracts;
+using RememBeer.Data.Identity.Models;
 using RememBeer.WebClient.App_Start;
 
 using WebFormsMvp.Binder;
@@ -29,15 +32,14 @@ namespace RememBeer.WebClient
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(() => kernel.Get<RememBeerMeDbContext>());
-            app.CreatePerOwinContext<ApplicationUserManager>(
+            app.CreatePerOwinContext<IApplicationUserManager>(
                                                               (a, b) =>
                                                                   kernel.Get<IIdentityFactory>()
                                                                         .GetApplicationUserManager(a, b));
-            //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
-            //app.CreatePerOwinContext(() => kernel.Get<IRememBeerMeDbContext>());
-            //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            app.CreatePerOwinContext<IApplicationSignInManager>((a, b) =>
+                                                                  kernel.Get<IIdentityFactory>()
+                                                                        .GetApplicationSignInManager(a, b));
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider

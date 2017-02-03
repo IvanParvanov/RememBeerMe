@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Web;
 
-using Ninject;
-
-using RememBeer.Data;
 using RememBeer.Business.Account.Confirm;
 using RememBeer.Business.Account.Confirm.Contracts;
 using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;
-using WebFormsMvp.Web;
 
 namespace RememBeer.WebClient.Account
 {
@@ -29,7 +25,7 @@ namespace RememBeer.WebClient.Account
             var code = this.IdentityHelper.GetCodeFromRequest(this.Request);
             var userId = this.IdentityHelper.GetUserIdFromRequest(this.Request);
             var ctx = this.Context.GetOwinContext();
-            var args = new ConfirmEventArgs(userId, code, ctx);
+            var args = this.EventArgsFactory.CreateConfirmEventArgs(ctx, userId, code);
 
             this.OnSubmit?.Invoke(this, args);
         }

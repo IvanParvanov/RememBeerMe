@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RememBeer.Business</RootNamespace>
     <AssemblyName>RememBeer.Business</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -97,6 +98,9 @@
     <Compile Include="Account\Auth\AuthFactory.cs" />
     <Compile Include="Account\Auth\IAuthFactory.cs" />
     <Compile Include="Account\Auth\IIdentityFactory.cs" />
+    <Compile Include="Account\Common\AuthenticationPresenter.cs" />
+    <Compile Include="Account\Common\EventArcs\Contracts\IOwinContextEventArgs.cs" />
+    <Compile Include="Account\Common\EventArcs\OwinContextEventArgs.cs" />
     <Compile Include="Account\Confirm\ConfirmEventArgs.cs" />
     <Compile Include="Account\Confirm\ConfirmPresenter.cs" />
     <Compile Include="Account\Confirm\ConfirmViewModel.cs" />
@@ -109,6 +113,12 @@
     <Compile Include="Account\ForgotPassword\ForgotPasswordPresenter.cs" />
     <Compile Include="Account\ForgotPassword\ForgotPasswordViewModel.cs" />
     <Compile Include="Account\ForgotPassword\ForgottenPasswordEventArgs.cs" />
+    <Compile Include="Account\ICustomEventArgsFactory.cs" />
+    <Compile Include="Account\Login\Contracts\ILoginEventArgs.cs" />
+    <Compile Include="Account\Login\Contracts\ILoginView.cs" />
+    <Compile Include="Account\Login\LoginEventArgs.cs" />
+    <Compile Include="Account\Login\LoginPresenter.cs" />
+    <Compile Include="Account\Login\LoginViewModel.cs" />
     <Compile Include="MvpPresenterFactory\IMvpPresenterFactory.cs" />
     <Compile Include="MvpPresenterFactory\MvpPresenterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,7 +134,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Account\Common\" />
+    <Folder Include="Account\Login\LoginHandlers\Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

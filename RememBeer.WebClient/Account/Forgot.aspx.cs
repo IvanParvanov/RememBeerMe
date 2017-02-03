@@ -3,6 +3,7 @@ using System.Web;
 
 using RememBeer.Business.Account.ForgotPassword;
 using RememBeer.Business.Account.ForgotPassword.Contracts;
+using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;
 using WebFormsMvp.Web;
@@ -10,7 +11,7 @@ using WebFormsMvp.Web;
 namespace RememBeer.WebClient.Account
 {
     [PresenterBinding(typeof(ForgotPasswordPresenter))]
-    public partial class ForgotPassword : MvpPage<ForgotPasswordViewModel>, IForgotPasswordView
+    public partial class ForgotPassword : IdentityHelperPage<ForgotPasswordViewModel>, IForgotPasswordView
     {
         public event EventHandler<IForgottenPasswordEventArgs> OnForgot;
 
@@ -47,7 +48,8 @@ namespace RememBeer.WebClient.Account
             if (this.IsValid)
             {
                 var context = this.Context.GetOwinContext();
-                this.OnForgot?.Invoke(this, new ForgottenPasswordEventArgs(context, this.Email.Text));
+                var args = this.EventArgsFactory.CreateForgottenPasswordEventArgs(context, this.Email.Text);
+                this.OnForgot?.Invoke(this, args);
             }
         }
     }

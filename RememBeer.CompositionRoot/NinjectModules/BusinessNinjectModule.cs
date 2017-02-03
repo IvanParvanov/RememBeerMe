@@ -11,9 +11,13 @@ using Ninject.Extensions.Factory;
 using Ninject.Modules;
 using Ninject.Parameters;
 
+using RememBeer.Business.Account;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.MvpPresenter;
 using RememBeer.Data;
+using RememBeer.Data.Identity;
+using RememBeer.Data.Identity.Contracts;
+using RememBeer.Data.Identity.Models;
 
 using WebFormsMvp;
 using WebFormsMvp.Binder;
@@ -29,7 +33,7 @@ namespace RememBeer.CompositionRoot.NinjectModules
 
             this.Bind<IMvpPresenterFactory>().ToFactory().InSingletonScope();
 
-            //this.Bind<ICustomEventArgsFactory>().ToFactory().InSingletonScope();
+            this.Bind<ICustomEventArgsFactory>().ToFactory().InSingletonScope();
 
             this.Bind<IPresenter>()
                 .ToMethod(GetPresenter)
@@ -39,11 +43,11 @@ namespace RememBeer.CompositionRoot.NinjectModules
 
             this.Bind<IIdentityFactory>().ToFactory();
 
-            this.Rebind<ApplicationUserManager>()
+            this.Rebind<IApplicationUserManager>()
                 .ToMethod(ctx =>
                           {
                               var parameters = ctx.Parameters.ToList();
-                              var options = (IdentityFactoryOptions<ApplicationUserManager>)parameters[0]
+                              var options = (IdentityFactoryOptions<IApplicationUserManager>)parameters[0]
                                   .GetValue(ctx, null);
 
                               var owinContext = (IOwinContext)parameters[1].GetValue(ctx, null);
@@ -51,6 +55,19 @@ namespace RememBeer.CompositionRoot.NinjectModules
                               return ApplicationUserManager.Create(options, owinContext);
                           })
                 .NamedLikeFactoryMethod((IIdentityFactory f) => f.GetApplicationUserManager(null, null));
+
+            this.Rebind<IApplicationSignInManager>()
+                .ToMethod(ctx =>
+                {
+                    var parameters = ctx.Parameters.ToList();
+                    var options = (IdentityFactoryOptions<IApplicationSignInManager>)parameters[0]
+                        .GetValue(ctx, null);
+
+                    var owinContext = (IOwinContext)parameters[1].GetValue(ctx, null);
+
+                    return ApplicationSignInManager.Create(options, owinContext);
+                })
+                .NamedLikeFactoryMethod((IIdentityFactory f) => f.GetApplicationSignInManager(null, null));
 
             this.Rebind<IIdentityHelper>().To<IdentityHelper>().InSingletonScope();
         }
