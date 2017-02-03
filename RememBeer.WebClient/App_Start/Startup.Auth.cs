@@ -30,8 +30,8 @@ namespace RememBeer.WebClient
                                                                         .GetApplicationUserManager(a, b));
 
             app.CreatePerOwinContext<IApplicationSignInManager>((a, b) =>
-                                                                  kernel.Get<IIdentityFactory>()
-                                                                        .GetApplicationSignInManager(a, b));
+                                                                    kernel.Get<IIdentityFactory>()
+                                                                          .GetApplicationSignInManager(a, b));
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider

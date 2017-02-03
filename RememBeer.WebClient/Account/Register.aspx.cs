@@ -20,8 +20,8 @@ namespace RememBeer.WebClient.Account
 
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var signInManager = this.Context.GetOwinContext().Get<ApplicationSignInManager>();
+            var manager = this.Context.GetOwinContext().GetUserManager<IApplicationUserManager>();
+            var signInManager = this.Context.GetOwinContext().Get<IApplicationSignInManager>();
             var user = new ApplicationUser() { UserName = this.Email.Text, Email = this.Email.Text };
             IdentityResult result = manager.Create(user, this.Password.Text);
             if (result.Succeeded)

@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 using RememBeer.Data.Identity;
+using RememBeer.Data.Identity.Contracts;
 
 namespace RememBeer.WebClient.Account
 {
@@ -17,19 +18,14 @@ namespace RememBeer.WebClient.Account
             private set;
         }
 
-        private bool HasPassword(ApplicationUserManager manager)
-        {
-            return manager.HasPassword(this.User.Identity.GetUserId());
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var manager = this.Context.GetOwinContext().GetUserManager<IApplicationUserManager>();
 
             if (!this.IsPostBack)
             {
                 // Determine the sections to render
-                if (this.HasPassword(manager))
+                if ( manager.HasPassword(this.User.Identity.GetUserId()) )
                 {
                     this.changePasswordHolder.Visible = true;
                 }
@@ -53,8 +49,8 @@ namespace RememBeer.WebClient.Account
         {
             if (this.IsValid)
             {
-                var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var signInManager = this.Context.GetOwinContext().Get<ApplicationSignInManager>();
+                var manager = this.Context.GetOwinContext().GetUserManager<IApplicationUserManager>();
+                var signInManager = this.Context.GetOwinContext().Get<IApplicationSignInManager>();
                 IdentityResult result = manager.ChangePassword(this.User.Identity.GetUserId(), this.CurrentPassword.Text, this.NewPassword.Text);
                 if (result.Succeeded)
                 {
@@ -74,7 +70,7 @@ namespace RememBeer.WebClient.Account
             if (this.IsValid)
             {
                 // Create the local login info and link the local account to the user
-                var manager = this.Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var manager = this.Context.GetOwinContext().GetUserManager<IApplicationUserManager>();
                 IdentityResult result = manager.AddPassword(this.User.Identity.GetUserId(), this.password.Text);
                 if (result.Succeeded)
                 {

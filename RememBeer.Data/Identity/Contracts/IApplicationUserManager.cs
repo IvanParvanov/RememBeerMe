@@ -16,11 +16,15 @@ namespace RememBeer.Data.Identity.Contracts
 
         Task<IdentityResult> CreateAsync(ApplicationUser user);
 
+        IdentityResult Create(ApplicationUser user, string password);
+
         Task<IdentityResult> UpdateAsync(ApplicationUser user);
 
         Task<IdentityResult> DeleteAsync(ApplicationUser user);
 
         Task<ApplicationUser> FindByIdAsync(string userId);
+
+        ApplicationUser FindById(string userId);
 
         Task<ApplicationUser> FindByNameAsync(string userName);
 
@@ -34,9 +38,15 @@ namespace RememBeer.Data.Identity.Contracts
 
         Task<bool> HasPasswordAsync(string userId);
 
+        bool HasPassword(string userId);
+
         Task<IdentityResult> AddPasswordAsync(string userId, string password);
 
+        IdentityResult AddPassword(string userId, string password);
+
         Task<IdentityResult> ChangePasswordAsync(string userId, string currentPassword, string newPassword);
+
+        IdentityResult ChangePassword(string userId, string currentPassword, string newPassword);
 
         Task<IdentityResult> RemovePasswordAsync(string userId);
 

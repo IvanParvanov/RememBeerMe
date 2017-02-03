@@ -12,7 +12,7 @@ namespace RememBeer.Business.Account.Confirm
             this.View.OnSubmit += this.OnSubmit;
         }
 
-        private async void OnSubmit(object sender, IConfirmEventArgs args)
+        private void OnSubmit(object sender, IConfirmEventArgs args)
         {
             var code = args.Code;
             var userId = args.UserId;

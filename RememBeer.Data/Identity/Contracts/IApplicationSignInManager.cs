@@ -20,6 +20,8 @@ namespace RememBeer.Data.Identity.Contracts
 
         Task SignInAsync(ApplicationUser user, bool isPersistent, bool rememberBrowser);
 
+        void SignIn(ApplicationUser user, bool isPersistent, bool rememberBrowser);
+
         Task<bool> SendTwoFactorCodeAsync(string provider);
 
         Task<string> GetVerifiedUserIdAsync();

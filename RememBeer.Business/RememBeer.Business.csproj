@@ -116,6 +116,10 @@
     <Compile Include="Account\Login\Contracts\ILoginView.cs" />
     <Compile Include="Account\Login\LoginEventArgs.cs" />
     <Compile Include="Account\Login\LoginPresenter.cs" />
+    <Compile Include="Account\Manage\Contracts\IManageEventArgs.cs" />
+    <Compile Include="Account\Manage\Contracts\IManageView.cs" />
+    <Compile Include="Account\Manage\ManageInitializedEventArgs.cs" />
+    <Compile Include="Account\Manage\ManagePresenter.cs" />
     <Compile Include="MvpPresenterFactory\IMvpPresenterFactory.cs" />
     <Compile Include="MvpPresenterFactory\MvpPresenterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,9 +134,7 @@
       <Name>RememBeer.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Account\Login\LoginHandlers\Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

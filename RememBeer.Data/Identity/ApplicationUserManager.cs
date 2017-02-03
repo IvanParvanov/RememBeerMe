@@ -78,5 +78,31 @@ namespace RememBeer.Data.Identity
         {
             return UserManagerExtensions.FindByName(this, email);
         }
+
+        public virtual bool HasPassword(string userId)
+        {
+            return UserManagerExtensions.HasPassword(this, userId);
+        }
+
+        public virtual IdentityResult Create(ApplicationUser user, string password)
+        {
+            return UserManagerExtensions.Create(this, user, password);
+        }
+
+        public virtual ApplicationUser FindById(string userId)
+        {
+            return UserManagerExtensions.FindById(this, userId);
+
+        }
+
+        public virtual IdentityResult AddPassword(string userId, string password)
+        {
+            return UserManagerExtensions.AddPassword(this, userId, password);
+        }
+
+        public virtual IdentityResult ChangePassword(string userId, string currentPassword, string newPassword)
+        {
+            return UserManagerExtensions.ChangePassword(this, userId, currentPassword, newPassword);
+        }
     }
 }
