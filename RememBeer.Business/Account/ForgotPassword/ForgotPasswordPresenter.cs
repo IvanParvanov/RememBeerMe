@@ -7,17 +7,17 @@ namespace RememBeer.Business.Account.ForgotPassword
 {
     public class ForgotPasswordPresenter : AuthenticationPresenter<IForgotPasswordView>
     {
-        public ForgotPasswordPresenter(IAuthFactory authFactory, IForgotPasswordView view)
-            : base(authFactory, view)
+        public ForgotPasswordPresenter(IAuthProvider authProvider, IForgotPasswordView view)
+            : base(authProvider, view)
         {
             this.View.OnForgot += this.OnForgot;
         }
 
         private void OnForgot(object sender, IForgotPasswordEventArgs args)
         {
-            var owinContext = this.AuthFactory.CreateOwinContext(this.HttpContext);
+            var owinContext = this.AuthProvider.CreateOwinContext(this.HttpContext);
 
-            var manager = this.AuthFactory.CreateApplicationUserManager(owinContext);
+            var manager = this.AuthProvider.CreateApplicationUserManager(owinContext);
             var user = manager.FindByName(args.Email);
             if (user == null || !manager.IsEmailConfirmed(user.Id))
             {

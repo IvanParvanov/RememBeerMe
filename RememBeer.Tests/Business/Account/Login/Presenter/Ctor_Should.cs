@@ -17,7 +17,7 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
         public void ThrowArgumentNullException_WhenHelperIsNull()
         {
             var mockedView = new Mock<ILoginView>();
-            var mockedAuthFactory = new Mock<IAuthFactory>();
+            var mockedAuthFactory = new Mock<IAuthProvider>();
 
             Assert.Throws<ArgumentNullException>(() => new LoginPresenter(mockedAuthFactory.Object, null, mockedView.Object));
         }

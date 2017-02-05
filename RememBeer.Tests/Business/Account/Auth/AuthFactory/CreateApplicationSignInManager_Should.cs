@@ -16,7 +16,7 @@ namespace RememBeer.Tests.Business.Account.Auth.AuthFactory
         [Test]
         public void ThrowIfArgumentIsNull()
         {
-            var authFactory = new RememBeer.Business.Account.Auth.AuthFactory();
+            var authFactory = new RememBeer.Business.Account.Auth.AuthProvider();
 
             Assert.Throws<ArgumentNullException>(() => authFactory.CreateApplicationUserManager(null));
         }
@@ -29,7 +29,7 @@ namespace RememBeer.Tests.Business.Account.Auth.AuthFactory
             mockedCtx.Setup(c => c.Get<IApplicationSignInManager>(It.IsAny<string>()))
                      .Returns(mockedManager.Object);
 
-            var authFactory = new RememBeer.Business.Account.Auth.AuthFactory();
+            var authFactory = new RememBeer.Business.Account.Auth.AuthProvider();
             var result = authFactory.CreateApplicationSignInManager(mockedCtx.Object);
 
             Assert.AreSame(mockedManager.Object, result);

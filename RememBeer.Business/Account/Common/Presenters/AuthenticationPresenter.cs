@@ -8,17 +8,17 @@ namespace RememBeer.Business.Account.Common.Presenters
 {
     public class AuthenticationPresenter<TView> : Presenter<TView> where TView : class, IView
     {
-        public AuthenticationPresenter(IAuthFactory authFactory, TView view) 
+        public AuthenticationPresenter(IAuthProvider authProvider, TView view) 
             : base(view)
         {
-            if (authFactory == null)
+            if (authProvider == null)
             {
-                throw new ArgumentNullException(nameof(authFactory));
+                throw new ArgumentNullException(nameof(authProvider));
             }
 
-            this.AuthFactory = authFactory;
+            this.AuthProvider = authProvider;
         }
 
-        protected IAuthFactory AuthFactory { get; }
+        protected IAuthProvider AuthProvider { get; }
     }
 }

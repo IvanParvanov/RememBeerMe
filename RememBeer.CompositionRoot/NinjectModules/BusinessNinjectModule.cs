@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
@@ -13,6 +16,7 @@ using Ninject.Parameters;
 using RememBeer.Business.Account;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.MvpPresenterFactory;
+using RememBeer.Data.DbContexts.Contracts;
 using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Contracts;
 using RememBeer.Data.Identity.Models;
@@ -50,21 +54,21 @@ namespace RememBeer.CompositionRoot.NinjectModules
 
                               var owinContext = (IOwinContext)parameters[1].GetValue(ctx, null);
 
-                              return ApplicationUserManager.Create(options, owinContext);
+                              return GetUserManager(options, owinContext);
                           })
                 .NamedLikeFactoryMethod((IIdentityFactory f) => f.GetApplicationUserManager(null, null));
 
             this.Rebind<IApplicationSignInManager>()
                 .ToMethod(ctx =>
-                {
-                    var parameters = ctx.Parameters.ToList();
-                    var options = (IdentityFactoryOptions<IApplicationSignInManager>)parameters[0]
-                        .GetValue(ctx, null);
+                          {
+                              var parameters = ctx.Parameters.ToList();
+                              var options = (IdentityFactoryOptions<IApplicationSignInManager>)parameters[0]
+                                  .GetValue(ctx, null);
 
-                    var owinContext = (IOwinContext)parameters[1].GetValue(ctx, null);
+                              var owinContext = (IOwinContext)parameters[1].GetValue(ctx, null);
 
-                    return ApplicationSignInManager.Create(options, owinContext);
-                })
+                              return GetSignInManager(options, owinContext);
+                          })
                 .NamedLikeFactoryMethod((IIdentityFactory f) => f.GetApplicationSignInManager(null, null));
 
             this.Rebind<IIdentityHelper>().To<IdentityHelper>().InSingletonScope();
@@ -80,6 +84,57 @@ namespace RememBeer.CompositionRoot.NinjectModules
             var ctorParamter = new ConstructorArgument("view", viewInstance);
 
             return (IPresenter)context.Kernel.Get(presenterType, ctorParamter);
+        }
+
+        private static IApplicationUserManager GetUserManager(IdentityFactoryOptions<IApplicationUserManager> options,
+                                                              IOwinContext context)
+        {
+            var manager =
+                new ApplicationUserManager(
+                    new UserStore<ApplicationUser>((DbContext)context.Get<IRememBeerMeDbContext>()));
+            // Configure validation logic for usernames
+            manager.UserValidator = new UserValidator<ApplicationUser>(manager)
+                                    {
+                                        AllowOnlyAlphanumericUserNames = false,
+                                        RequireUniqueEmail = true
+                                    };
+
+            // Configure validation logic for passwords
+            manager.PasswordValidator = new PasswordValidator
+                                        {
+                                            RequiredLength = 6,
+                                            RequireNonLetterOrDigit = false,
+                                            RequireDigit = false,
+                                            RequireLowercase = false,
+                                            RequireUppercase = false,
+                                        };
+
+            // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
+            // You can write your own provider and plug it in here.
+            //manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<ApplicationUser>
+            //                                                {
+            //                                                    Subject = "Security Code",
+            //                                                    BodyFormat = "Your security code is {0}"
+            //                                                });
+
+            // Configure user lockout defaults
+            manager.UserLockoutEnabledByDefault = true;
+            manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            manager.MaxFailedAccessAttemptsBeforeLockout = 5;
+
+            manager.EmailService = new EmailService();
+            var dataProtectionProvider = options.DataProtectionProvider;
+            if (dataProtectionProvider != null)
+            {
+                manager.UserTokenProvider =
+                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+            }
+            return manager;
+        }
+
+        public static IApplicationSignInManager GetSignInManager(IdentityFactoryOptions<IApplicationSignInManager> options, IOwinContext context)
+        {
+            return new ApplicationSignInManager((ApplicationUserManager)context.GetUserManager<IApplicationUserManager>(), context.Authentication);
         }
     }
 }

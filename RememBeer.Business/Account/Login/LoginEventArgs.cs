@@ -1,7 +1,4 @@
-﻿using Microsoft.Owin;
-
-using RememBeer.Business.Account.Common.EventArcs;
-using RememBeer.Business.Account.Login.Contracts;
+﻿using RememBeer.Business.Account.Login.Contracts;
 
 namespace RememBeer.Business.Account.Login
 {

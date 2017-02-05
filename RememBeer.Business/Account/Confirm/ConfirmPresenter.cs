@@ -6,8 +6,8 @@ namespace RememBeer.Business.Account.Confirm
 {
     public class ConfirmPresenter : AuthenticationPresenter<IConfirmView>
     {
-        public ConfirmPresenter(IAuthFactory authFactory, IConfirmView view)
-            : base(authFactory, view)
+        public ConfirmPresenter(IAuthProvider authProvider, IConfirmView view)
+            : base(authProvider, view)
         {
             this.View.OnSubmit += this.OnSubmit;
         }
@@ -16,11 +16,11 @@ namespace RememBeer.Business.Account.Confirm
         {
             var code = args.Code;
             var userId = args.UserId;
-            var ctx = this.AuthFactory.CreateOwinContext(this.HttpContext);
+            var ctx = this.AuthProvider.CreateOwinContext(this.HttpContext);
 
             if (code != null && userId != null)
             {
-                var manager = this.AuthFactory.CreateApplicationUserManager(ctx);
+                var manager = this.AuthProvider.CreateApplicationUserManager(ctx);
                 var result = manager.ConfirmEmail(userId, code);
                 if (result.Succeeded)
                 {

@@ -34,7 +34,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword.Presenter
 
             mockedArgs.Setup(a => a.Email).Returns(Email);
 
-            var mockedAuthFactory = new Mock<IAuthFactory>();
+            var mockedAuthFactory = new Mock<IAuthProvider>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
             mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
@@ -61,7 +61,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword.Presenter
 
             mockedArgs.Setup(a => a.Email).Returns(Email);
 
-            var mockedAuthFactory = new Mock<IAuthFactory>();
+            var mockedAuthFactory = new Mock<IAuthProvider>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
             mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
@@ -89,7 +89,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword.Presenter
 
             mockedArgs.Setup(a => a.Email).Returns(Email);
 
-            var mockedAuthFactory = new Mock<IAuthFactory>();
+            var mockedAuthFactory = new Mock<IAuthProvider>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
             mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
@@ -122,7 +122,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword.Presenter
 
             mockedArgs.Setup(a => a.Email).Returns(Email);
 
-            var mockedAuthFactory = new Mock<IAuthFactory>();
+            var mockedAuthFactory = new Mock<IAuthProvider>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
             mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))

@@ -96,11 +96,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\Auth\AuthFactory.cs" />
-    <Compile Include="Account\Auth\IAuthFactory.cs" />
+    <Compile Include="Account\Auth\AuthProvider.cs" />
+    <Compile Include="Account\Auth\IAuthProvider.cs" />
     <Compile Include="Account\Auth\IIdentityFactory.cs" />
-    <Compile Include="Account\Common\EventArcs\Contracts\IOwinContextEventArgs.cs" />
-    <Compile Include="Account\Common\EventArcs\OwinContextEventArgs.cs" />
     <Compile Include="Account\Common\Presenters\AuthenticationPresenter.cs" />
     <Compile Include="Account\Common\ViewModels\StatelessViewModel.cs" />
     <Compile Include="Account\Confirm\ConfirmEventArgs.cs" />

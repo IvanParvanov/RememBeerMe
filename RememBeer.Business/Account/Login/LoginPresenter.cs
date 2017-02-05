@@ -13,8 +13,8 @@ namespace RememBeer.Business.Account.Login
     {
         private readonly IIdentityHelper identityHelper;
 
-        public LoginPresenter(IAuthFactory factory, IIdentityHelper identityHelper, ILoginView view)
-            : base(factory, view)
+        public LoginPresenter(IAuthProvider provider, IIdentityHelper identityHelper, ILoginView view)
+            : base(provider, view)
         {
             if (identityHelper == null)
             {
@@ -27,12 +27,12 @@ namespace RememBeer.Business.Account.Login
 
         private void OnLogin(object sender, ILoginEventArgs args)
         {
-            var ctx = this.AuthFactory.CreateOwinContext(this.HttpContext);
+            var ctx = this.AuthProvider.CreateOwinContext(this.HttpContext);
             var pass = args.Password;
             var email = args.Email;
             var isPersistentLogin = args.RememberMe;
 
-            var signinManager = this.AuthFactory.CreateApplicationSignInManager(ctx);
+            var signinManager = this.AuthProvider.CreateApplicationSignInManager(ctx);
 
             var result = signinManager.PasswordSignIn(email, pass, isPersistentLogin);
             switch (result)

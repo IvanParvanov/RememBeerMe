@@ -6,7 +6,7 @@ using RememBeer.Data.Identity.Contracts;
 
 namespace RememBeer.Business.Account.Auth
 {
-    public interface IAuthFactory
+    public interface IAuthProvider
     {
         IApplicationUserManager CreateApplicationUserManager(IOwinContext context);
 

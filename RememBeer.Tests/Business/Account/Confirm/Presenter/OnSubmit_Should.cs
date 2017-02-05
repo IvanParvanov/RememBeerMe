@@ -37,7 +37,7 @@ namespace RememBeer.Tests.Business.Account.Confirm.Presenter
             var mockedUserManager = new Mock<IApplicationUserManager>();
             mockedUserManager.Setup(m => m.FindByName(Email)).Returns((ApplicationUser)null);
             mockedUserManager.Setup(m => m.IsEmailConfirmed("id")).Returns(false);
-            var mockedAuthFactory = new Mock<IAuthFactory>();
+            var mockedAuthFactory = new Mock<IAuthProvider>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
             mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
@@ -71,7 +71,7 @@ namespace RememBeer.Tests.Business.Account.Confirm.Presenter
             mockedUserManager.Setup(m => m.FindByName(Email)).Returns(mockedUser);
             mockedUserManager.Setup(m => m.ConfirmEmail(Id, Code)).Returns(new IdentityResult(new List<string>()));
 
-            var mockedAuthFactory = new Mock<IAuthFactory>();
+            var mockedAuthFactory = new Mock<IAuthProvider>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
             mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
@@ -106,7 +106,7 @@ namespace RememBeer.Tests.Business.Account.Confirm.Presenter
             mockedUserManager.Setup(m => m.FindByName(Email)).Returns(mockedUser);
             mockedUserManager.Setup(m => m.ConfirmEmail(Id, Code)).Returns(IdentityResult.Success);
 
-            var mockedAuthFactory = new Mock<IAuthFactory>();
+            var mockedAuthFactory = new Mock<IAuthProvider>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
             mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))

@@ -23,10 +23,10 @@ namespace RememBeer.Data.Identity
             return user.GenerateUserIdentityAsync((ApplicationUserManager)this.UserManager);
         }
 
-        public static IApplicationSignInManager Create(IdentityFactoryOptions<IApplicationSignInManager> options, IOwinContext context)
-        {
-            return new ApplicationSignInManager((ApplicationUserManager)context.GetUserManager<IApplicationUserManager>(), context.Authentication);
-        }
+        //public static IApplicationSignInManager Create(IdentityFactoryOptions<IApplicationSignInManager> options, IOwinContext context)
+        //{
+        //    return new ApplicationSignInManager((ApplicationUserManager)context.GetUserManager<IApplicationUserManager>(), context.Authentication);
+        //}
 
         public virtual SignInStatus PasswordSignIn(string email, string password, bool isPersistent)
         {
