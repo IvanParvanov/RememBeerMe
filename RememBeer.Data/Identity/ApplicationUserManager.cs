@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity;
+using System.Security.Claims;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -6,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
 using RememBeer.Data.DbContexts;
+using RememBeer.Data.DbContexts.Contracts;
 using RememBeer.Data.Identity.Contracts;
 using RememBeer.Data.Identity.Models;
 
@@ -20,7 +23,7 @@ namespace RememBeer.Data.Identity
 
         public static IApplicationUserManager Create(IdentityFactoryOptions<IApplicationUserManager> options, IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<RememBeerMeDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>((DbContext)context.Get<IRememBeerMeDbContext>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
                                     {
@@ -92,7 +95,6 @@ namespace RememBeer.Data.Identity
         public virtual ApplicationUser FindById(string userId)
         {
             return UserManagerExtensions.FindById(this, userId);
-
         }
 
         public virtual IdentityResult AddPassword(string userId, string password)
@@ -103,6 +105,11 @@ namespace RememBeer.Data.Identity
         public virtual IdentityResult ChangePassword(string userId, string currentPassword, string newPassword)
         {
             return UserManagerExtensions.ChangePassword(this, userId, currentPassword, newPassword);
+        }
+
+        public virtual ClaimsIdentity CreateIdentity(ApplicationUser user, string authenticationType)
+        {
+            return UserManagerExtensions.CreateIdentity(this, user, authenticationType);
         }
     }
 }

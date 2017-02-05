@@ -11,6 +11,7 @@ using Owin;
 
 using RememBeer.Business.Account.Auth;
 using RememBeer.Data.DbContexts;
+using RememBeer.Data.DbContexts.Contracts;
 using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Contracts;
 using RememBeer.Data.Identity.Models;
@@ -23,7 +24,7 @@ namespace RememBeer.WebClient
         public void ConfigureAuth(IAppBuilder app, IKernel kernel)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(() => kernel.Get<RememBeerMeDbContext>());
+            app.CreatePerOwinContext(() => kernel.Get<IRememBeerMeDbContext>());
             app.CreatePerOwinContext<IApplicationUserManager>(
                                                               (a, b) =>
                                                                   kernel.Get<IIdentityFactory>()

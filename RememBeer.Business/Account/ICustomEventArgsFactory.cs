@@ -3,6 +3,7 @@
 using RememBeer.Business.Account.Confirm.Contracts;
 using RememBeer.Business.Account.ForgotPassword.Contracts;
 using RememBeer.Business.Account.Login.Contracts;
+using RememBeer.Business.Account.ManagePassword.Contracts;
 
 namespace RememBeer.Business.Account
 {
@@ -13,5 +14,10 @@ namespace RememBeer.Business.Account
         IForgotPasswordEventArgs CreateForgottenPasswordEventArgs(IOwinContext context, string email);
 
         ILoginEventArgs CreateLoginEventArgs(IOwinContext context, string email, string password, bool rememberMe);
+
+        IChangePasswordEventArgs CreateChangePasswordEventArgs(IOwinContext context,
+                                                               string currentPassword,
+                                                               string newPassword,
+                                                               string userId);
     }
 }

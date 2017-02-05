@@ -116,10 +116,10 @@
     <Compile Include="Account\Login\Contracts\ILoginView.cs" />
     <Compile Include="Account\Login\LoginEventArgs.cs" />
     <Compile Include="Account\Login\LoginPresenter.cs" />
-    <Compile Include="Account\Manage\Contracts\IManageEventArgs.cs" />
-    <Compile Include="Account\Manage\Contracts\IManageView.cs" />
-    <Compile Include="Account\Manage\ManageInitializedEventArgs.cs" />
-    <Compile Include="Account\Manage\ManagePresenter.cs" />
+    <Compile Include="Account\ManagePassword\ChangePasswordEventArgs.cs" />
+    <Compile Include="Account\ManagePassword\Contracts\IChangePasswordEventArgs.cs" />
+    <Compile Include="Account\ManagePassword\Contracts\IManagePasswordView.cs" />
+    <Compile Include="Account\ManagePassword\ManagePasswordPresenter.cs" />
     <Compile Include="MvpPresenterFactory\IMvpPresenterFactory.cs" />
     <Compile Include="MvpPresenterFactory\MvpPresenterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

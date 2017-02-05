@@ -12,6 +12,8 @@ namespace RememBeer.Data.Identity.Contracts
 {
     public interface IApplicationUserManager : IDisposable
     {
+        ClaimsIdentity CreateIdentity(ApplicationUser user, string authenticationType);
+
         Task<ClaimsIdentity> CreateIdentityAsync(ApplicationUser user, string authenticationType);
 
         Task<IdentityResult> CreateAsync(ApplicationUser user);
