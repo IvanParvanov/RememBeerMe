@@ -2,7 +2,7 @@
 
 using Microsoft.AspNet.Identity;
 
-namespace RememBeer.Business.Services
+namespace RememBeer.Common.Services
 {
     public class EmailService : IIdentityMessageService
     {

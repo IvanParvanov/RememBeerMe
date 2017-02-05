@@ -98,7 +98,6 @@
   <ItemGroup>
     <Compile Include="Account\Auth\AuthProvider.cs" />
     <Compile Include="Account\Auth\IAuthProvider.cs" />
-    <Compile Include="Account\Auth\IIdentityFactory.cs" />
     <Compile Include="Account\Common\Presenters\AuthenticationPresenter.cs" />
     <Compile Include="Account\Common\ViewModels\StatelessViewModel.cs" />
     <Compile Include="Account\Confirm\ConfirmEventArgs.cs" />
@@ -121,7 +120,6 @@
     <Compile Include="MvpPresenterFactory\IMvpPresenterFactory.cs" />
     <Compile Include="MvpPresenterFactory\MvpPresenterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\EmailService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -9,7 +10,6 @@ using Ninject;
 
 using Owin;
 
-using RememBeer.Business.Account.Auth;
 using RememBeer.Common.Identity;
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
@@ -26,8 +26,12 @@ namespace RememBeer.WebClient
             app.CreatePerOwinContext(() => kernel.Get<IRememBeerMeDbContext>());
             app.CreatePerOwinContext<IApplicationUserManager>(
                                                               (a, b) =>
-                                                                  kernel.Get<IIdentityFactory>()
-                                                                        .GetApplicationUserManager(a, b));
+                                                              {
+                                                                  var dbContext = kernel.Get<IRememBeerMeDbContext>();
+                                                                  return kernel.Get<IIdentityFactory>()
+                                                                        .GetApplicationUserManager(a, b, (DbContext)dbContext);
+
+                                                              });
 
             app.CreatePerOwinContext<IApplicationSignInManager>((a, b) =>
                                                                     kernel.Get<IIdentityFactory>()

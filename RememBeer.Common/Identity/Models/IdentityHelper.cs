@@ -11,18 +11,21 @@ namespace RememBeer.Common.Identity.Models
         public string XsrfKey => "XsrfId";
 
         public string ProviderNameKey => "providerName";
+
         public string GetProviderNameFromRequest(HttpRequest request)
         {
             return request.QueryString[this.ProviderNameKey];
         }
 
         public const string CodeKey = "code";
+
         public string GetCodeFromRequest(HttpRequest request)
         {
             return request.QueryString[CodeKey];
         }
 
         public const string UserIdKey = "userId";
+
         public string GetUserIdFromRequest(HttpRequest request)
         {
             return HttpUtility.UrlDecode(request.QueryString[UserIdKey]);
@@ -36,13 +39,16 @@ namespace RememBeer.Common.Identity.Models
 
         public string GetUserConfirmationRedirectUrl(string code, string userId, HttpRequest request)
         {
-            var absoluteUri = "/Account/Confirm?" + CodeKey + "=" + HttpUtility.UrlEncode(code) + "&" + UserIdKey + "=" + HttpUtility.UrlEncode(userId);
+            var absoluteUri = "/Account/Confirm?" + CodeKey + "=" + HttpUtility.UrlEncode(code) + "&" + UserIdKey + "=" +
+                              HttpUtility.UrlEncode(userId);
             return new Uri(request.Url, absoluteUri).AbsoluteUri.ToString();
         }
 
         private bool IsLocalUrl(string url)
         {
-            return !string.IsNullOrEmpty(url) && ((url[0] == '/' && (url.Length == 1 || (url[1] != '/' && url[1] != '\\'))) || (url.Length > 1 && url[0] == '~' && url[1] == '/'));
+            return !string.IsNullOrEmpty(url) &&
+                   ((url[0] == '/' && (url.Length == 1 || (url[1] != '/' && url[1] != '\\'))) ||
+                    (url.Length > 1 && url[0] == '~' && url[1] == '/'));
         }
 
         public void RedirectToReturnUrl(string returnUrl, HttpResponseBase response)
@@ -59,7 +65,7 @@ namespace RememBeer.Common.Identity.Models
 
         public void RedirectToReturnUrl(string returnUrl, HttpResponse response)
         {
-            if ( !string.IsNullOrEmpty(returnUrl) && this.IsLocalUrl(returnUrl) )
+            if (!string.IsNullOrEmpty(returnUrl) && this.IsLocalUrl(returnUrl))
             {
                 response.Redirect(returnUrl);
             }
