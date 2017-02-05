@@ -12,6 +12,6 @@ namespace RememBeer.Business.Account.Auth
 
         IApplicationSignInManager CreateApplicationSignInManager(IOwinContext context);
 
-        IOwinContext GetOwinContext(HttpContextBase context);
+        IOwinContext CreateOwinContext(HttpContextBase context);
     }
 }

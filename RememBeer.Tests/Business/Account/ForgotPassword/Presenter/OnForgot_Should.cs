@@ -37,7 +37,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             new ForgotPasswordPresenter(mockedAuthFactory.Object, mockedView.Object);
@@ -64,7 +64,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             new ForgotPasswordPresenter(mockedAuthFactory.Object, mockedView.Object);
@@ -92,7 +92,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             new ForgotPasswordPresenter(mockedAuthFactory.Object, mockedView.Object);
@@ -125,7 +125,7 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             new ForgotPasswordPresenter(mockedAuthFactory.Object, mockedView.Object);

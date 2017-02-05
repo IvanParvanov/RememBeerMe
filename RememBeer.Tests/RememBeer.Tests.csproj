@@ -116,6 +116,7 @@
   <ItemGroup>
     <Compile Include="Business\Account\Auth\AuthFactory\CreateApplicationSignInManager_Should.cs" />
     <Compile Include="Business\Account\Auth\AuthFactory\CreateApplicationUserManager_Should.cs" />
+    <Compile Include="Business\Account\Auth\AuthFactory\CreateOwinContext_Should.cs" />
     <Compile Include="Business\Account\Common\AuthenticationPresenterTests.cs" />
     <Compile Include="Business\Account\Confirm\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Account\Confirm\Presenter\OnSubmit_Should.cs" />

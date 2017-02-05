@@ -44,7 +44,7 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(mockedContext.Object))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
@@ -73,7 +73,7 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
@@ -102,7 +102,7 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
@@ -137,7 +137,7 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
@@ -173,7 +173,7 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
@@ -209,7 +209,7 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();

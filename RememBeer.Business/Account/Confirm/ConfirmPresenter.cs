@@ -16,7 +16,7 @@ namespace RememBeer.Business.Account.Confirm
         {
             var code = args.Code;
             var userId = args.UserId;
-            var ctx = this.AuthFactory.GetOwinContext(this.HttpContext);
+            var ctx = this.AuthFactory.CreateOwinContext(this.HttpContext);
 
             if (code != null && userId != null)
             {

@@ -24,8 +24,10 @@ namespace RememBeer.Business.Account.Auth
             return OwinContextExtensions.Get<IApplicationSignInManager>(context);
         }
 
-        public IOwinContext GetOwinContext(HttpContextBase context)
+        public IOwinContext CreateOwinContext(HttpContextBase context)
         {
+            ThrowIfNull(context);
+
             return context.GetOwinContext();
         }
         

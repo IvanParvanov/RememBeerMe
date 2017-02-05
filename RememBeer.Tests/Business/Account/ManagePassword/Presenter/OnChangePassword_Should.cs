@@ -30,7 +30,7 @@ namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter
 
             var authFactory = new Mock<IAuthFactory>();
             authFactory.Setup(f => f.CreateApplicationUserManager(ctx.Object)).Returns(manager.Object);
-            authFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
+            authFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
             var args = new Mock<IChangePasswordEventArgs>();
 
             var presenter = new ManagePasswordPresenter(authFactory.Object, view.Object);
@@ -50,7 +50,7 @@ namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter
 
             var authFactory = new Mock<IAuthFactory>();
             authFactory.Setup(f => f.CreateApplicationUserManager(ctx.Object)).Returns(manager.Object);
-            authFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
+            authFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
             var args = new Mock<IChangePasswordEventArgs>();
 
             var presenter = new ManagePasswordPresenter(authFactory.Object, view.Object);
@@ -72,7 +72,7 @@ namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter
             var authFactory = new Mock<IAuthFactory>();
             authFactory.Setup(f => f.CreateApplicationUserManager(ctx.Object)).Returns(manager.Object);
             authFactory.Setup(f => f.CreateApplicationSignInManager(ctx.Object)).Returns(signInManager.Object);
-            authFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
+            authFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
 
             var args = new Mock<IChangePasswordEventArgs>();
             var httpResponse = new MockedHttpResponse();
@@ -99,7 +99,7 @@ namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter
             var authFactory = new Mock<IAuthFactory>();
             authFactory.Setup(f => f.CreateApplicationUserManager(ctx.Object)).Returns(manager.Object);
             authFactory.Setup(f => f.CreateApplicationSignInManager(ctx.Object)).Returns(signInManager.Object);
-            authFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
+            authFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
             var args = new Mock<IChangePasswordEventArgs>();
             var httpResponse = new MockedHttpResponse();
 
@@ -126,7 +126,7 @@ namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter
             var authFactory = new Mock<IAuthFactory>();
             authFactory.Setup(f => f.CreateApplicationUserManager(ctx.Object)).Returns(manager.Object);
             authFactory.Setup(f => f.CreateApplicationSignInManager(ctx.Object)).Returns(signInManager.Object);
-            authFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
+            authFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
 
             var args = new Mock<IChangePasswordEventArgs>();
             var httpResponse = new MockedHttpResponse();

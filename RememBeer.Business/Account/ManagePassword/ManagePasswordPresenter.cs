@@ -15,7 +15,7 @@ namespace RememBeer.Business.Account.ManagePassword
         private void OnChangePassword(object sender, IChangePasswordEventArgs args)
         {
             var userId = args.UserId;
-            var ctx = this.AuthFactory.GetOwinContext(this.HttpContext);
+            var ctx = this.AuthFactory.CreateOwinContext(this.HttpContext);
             var manager = this.AuthFactory.CreateApplicationUserManager(ctx);
 
             var result = manager.ChangePassword(userId, args.CurrentPassword, args.NewPassword);

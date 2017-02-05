@@ -40,7 +40,7 @@ namespace RememBeer.Tests.Business.Account.Confirm.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             var presnter = new ConfirmPresenter(mockedAuthFactory.Object, mockedView.Object);
@@ -74,7 +74,7 @@ namespace RememBeer.Tests.Business.Account.Confirm.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             var presnter = new ConfirmPresenter(mockedAuthFactory.Object, mockedView.Object);
@@ -109,7 +109,7 @@ namespace RememBeer.Tests.Business.Account.Confirm.Presenter
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationUserManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
                              .Returns(mockedContext.Object);
 
             var presnter = new ConfirmPresenter(mockedAuthFactory.Object, mockedView.Object);
