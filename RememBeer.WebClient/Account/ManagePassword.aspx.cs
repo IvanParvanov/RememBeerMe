@@ -39,9 +39,8 @@ namespace RememBeer.WebClient.Account
         {
             if (this.IsValid)
             {
-                var ctx = this.Context.GetOwinContext();
                 var userId = this.User.Identity.GetUserId();
-                var args = this.EventArgsFactory.CreateChangePasswordEventArgs(ctx, this.CurrentPassword.Text, this.NewPassword.Text, userId);
+                var args = this.EventArgsFactory.CreateChangePasswordEventArgs(this.CurrentPassword.Text, this.NewPassword.Text, userId);
                 this.ChangePassword?.Invoke(this, args);
             }
         }

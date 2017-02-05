@@ -25,8 +25,7 @@ namespace RememBeer.WebClient.Account
         {
             var code = this.IdentityHelper.GetCodeFromRequest(this.Request);
             var userId = this.IdentityHelper.GetUserIdFromRequest(this.Request);
-            var ctx = this.Context.GetOwinContext();
-            var args = this.EventArgsFactory.CreateConfirmEventArgs(ctx, userId, code);
+            var args = this.EventArgsFactory.CreateConfirmEventArgs(userId, code);
 
             this.OnSubmit?.Invoke(this, args);
         }

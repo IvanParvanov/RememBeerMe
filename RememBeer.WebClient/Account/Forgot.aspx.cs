@@ -47,8 +47,7 @@ namespace RememBeer.WebClient.Account
         {
             if (this.IsValid)
             {
-                var context = this.Context.GetOwinContext();
-                var args = this.EventArgsFactory.CreateForgottenPasswordEventArgs(context, this.Email.Text);
+                var args = this.EventArgsFactory.CreateForgottenPasswordEventArgs(this.Email.Text);
                 this.OnForgot?.Invoke(this, args);
             }
         }

@@ -2,7 +2,7 @@
 
 using NUnit.Framework;
 
-using RememBeer.Business.MvpPresenter;
+using RememBeer.Business.MvpPresenterFactory;
 
 using WebFormsMvp;
 
@@ -17,7 +17,7 @@ namespace RememBeer.Tests.Business.MvpPresenterFactory
             var mockedFactory = new Mock<IMvpPresenterFactory>();
             var mockedView = new Mock<IView>();
             var expectedPresenterType = typeof(IPresenter);
-            var sut = new RememBeer.Business.MvpPresenter.MvpPresenterFactory(mockedFactory.Object);
+            var sut = new RememBeer.Business.MvpPresenterFactory.MvpPresenterFactory(mockedFactory.Object);
 
             sut.Create(expectedPresenterType, expectedPresenterType, mockedView.Object);
 
@@ -35,7 +35,7 @@ namespace RememBeer.Tests.Business.MvpPresenterFactory
             mockedFactory.Setup(f => f.GetPresenter(expectedPresenterType, mockedView.Object))
                 .Returns(mockedPresenter.Object);
 
-            var sut = new RememBeer.Business.MvpPresenter.MvpPresenterFactory(mockedFactory.Object);
+            var sut = new RememBeer.Business.MvpPresenterFactory.MvpPresenterFactory(mockedFactory.Object);
 
             var result = sut.Create(expectedPresenterType, expectedPresenterType, mockedView.Object);
 

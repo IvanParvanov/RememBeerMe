@@ -1,8 +1,6 @@
-﻿using RememBeer.Business.Account.Common.EventArcs.Contracts;
-
-namespace RememBeer.Business.Account.ManagePassword.Contracts
+﻿namespace RememBeer.Business.Account.ManagePassword.Contracts
 {
-    public interface IChangePasswordEventArgs : IOwinContextEventArgs
+    public interface IChangePasswordEventArgs
     {
         string CurrentPassword { get; set; }
 

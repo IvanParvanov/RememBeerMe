@@ -1,8 +1,6 @@
-﻿using RememBeer.Business.Account.Common.EventArcs.Contracts;
-
-namespace RememBeer.Business.Account.Login.Contracts
+﻿namespace RememBeer.Business.Account.Login.Contracts
 {
-    public interface ILoginEventArgs : IOwinContextEventArgs
+    public interface ILoginEventArgs
     {
         string Email { get; }
         string Password { get; }

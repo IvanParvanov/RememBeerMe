@@ -2,7 +2,7 @@
 
 namespace RememBeer.Business.Account.Confirm.Contracts
 {
-    public interface IConfirmEventArgs : IOwinContextEventArgs
+    public interface IConfirmEventArgs
     {
         string UserId { get; set; }
 

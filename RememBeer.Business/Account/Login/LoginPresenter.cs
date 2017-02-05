@@ -27,7 +27,7 @@ namespace RememBeer.Business.Account.Login
 
         private void OnLogin(object sender, ILoginEventArgs args)
         {
-            var ctx = args.Context;
+            var ctx = this.AuthFactory.GetOwinContext(this.HttpContext);
             var pass = args.Password;
             var email = args.Email;
             var isPersistentLogin = args.RememberMe;

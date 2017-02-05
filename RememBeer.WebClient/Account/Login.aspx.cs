@@ -43,9 +43,7 @@ namespace RememBeer.WebClient.Account
         {
             if (this.IsValid)
             {
-                var ctx = this.Context.GetOwinContext();
-                var args = this.EventArgsFactory.CreateLoginEventArgs(ctx,
-                                                                      this.Email.Text,
+                var args = this.EventArgsFactory.CreateLoginEventArgs(this.Email.Text,
                                                                       this.Password.Text,
                                                                       this.RememberMe.Checked);
                 this.OnLogin?.Invoke(this, args);

@@ -2,7 +2,7 @@
 
 using WebFormsMvp;
 
-namespace RememBeer.Business.MvpPresenter
+namespace RememBeer.Business.MvpPresenterFactory
 {
     public interface IMvpPresenterFactory
     {

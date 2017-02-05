@@ -1,8 +1,4 @@
-﻿using Microsoft.Owin;
-
-using Moq;
-
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 using RememBeer.Business.Account.ForgotPassword;
 
@@ -14,12 +10,10 @@ namespace RememBeer.Tests.Business.Account.ForgotPassword.EventArgs
         [Test]
         public void SetUpPropertiesCorrectly()
         {
-            var mockedCtx = new Mock<IOwinContext>();
             var email = "asd@abv.bg";
 
-            var args = new ForgotPasswordEventArgs(mockedCtx.Object, email);
+            var args = new ForgotPasswordEventArgs(email);
 
-            Assert.AreSame(mockedCtx.Object, args.Context);
             Assert.AreSame(email, args.Email);
 
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Web;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
@@ -29,12 +30,10 @@ namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter
 
             var authFactory = new Mock<IAuthFactory>();
             authFactory.Setup(f => f.CreateApplicationUserManager(ctx.Object)).Returns(manager.Object);
+            authFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
+            var args = new Mock<IChangePasswordEventArgs>();
 
             var presenter = new ManagePasswordPresenter(authFactory.Object, view.Object);
-
-            var args = new Mock<IChangePasswordEventArgs>();
-            args.Setup(a => a.Context).Returns(ctx.Object);
-
             view.Raise(v => v.ChangePassword += null, view.Object, args.Object);
 
             authFactory.Verify(f => f.CreateApplicationUserManager(ctx.Object), Times.Once());
@@ -51,12 +50,10 @@ namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter
 
             var authFactory = new Mock<IAuthFactory>();
             authFactory.Setup(f => f.CreateApplicationUserManager(ctx.Object)).Returns(manager.Object);
+            authFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
+            var args = new Mock<IChangePasswordEventArgs>();
 
             var presenter = new ManagePasswordPresenter(authFactory.Object, view.Object);
-
-            var args = new Mock<IChangePasswordEventArgs>();
-            args.Setup(a => a.Context).Returns(ctx.Object);
-
             view.Raise(v => v.ChangePassword += null, view.Object, args.Object);
 
             view.Verify(v => v.AddErrors(It.IsAny<IList<string>>()));
@@ -75,17 +72,15 @@ namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter
             var authFactory = new Mock<IAuthFactory>();
             authFactory.Setup(f => f.CreateApplicationUserManager(ctx.Object)).Returns(manager.Object);
             authFactory.Setup(f => f.CreateApplicationSignInManager(ctx.Object)).Returns(signInManager.Object);
+            authFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
 
+            var args = new Mock<IChangePasswordEventArgs>();
             var httpResponse = new MockedHttpResponse();
 
             var presenter = new ManagePasswordPresenter(authFactory.Object, view.Object)
                             {
                                 HttpContext = new MockedHttpContextBase(httpResponse)
                             };
-
-            var args = new Mock<IChangePasswordEventArgs>();
-            args.Setup(a => a.Context).Returns(ctx.Object);
-
             view.Raise(v => v.ChangePassword += null, view.Object, args.Object);
 
             Assert.AreEqual("~/Account/Manage?m=ChangePwdSuccess", httpResponse.RedirectUrl);
@@ -104,16 +99,14 @@ namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter
             var authFactory = new Mock<IAuthFactory>();
             authFactory.Setup(f => f.CreateApplicationUserManager(ctx.Object)).Returns(manager.Object);
             authFactory.Setup(f => f.CreateApplicationSignInManager(ctx.Object)).Returns(signInManager.Object);
-
+            authFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
+            var args = new Mock<IChangePasswordEventArgs>();
             var httpResponse = new MockedHttpResponse();
 
             var presenter = new ManagePasswordPresenter(authFactory.Object, view.Object)
             {
                 HttpContext = new MockedHttpContextBase(httpResponse)
             };
-
-            var args = new Mock<IChangePasswordEventArgs>();
-            args.Setup(a => a.Context).Returns(ctx.Object);
 
             view.Raise(v => v.ChangePassword += null, view.Object, args.Object);
 
@@ -133,17 +126,15 @@ namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter
             var authFactory = new Mock<IAuthFactory>();
             authFactory.Setup(f => f.CreateApplicationUserManager(ctx.Object)).Returns(manager.Object);
             authFactory.Setup(f => f.CreateApplicationSignInManager(ctx.Object)).Returns(signInManager.Object);
+            authFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>())).Returns(ctx.Object);
 
+            var args = new Mock<IChangePasswordEventArgs>();
             var httpResponse = new MockedHttpResponse();
 
             var presenter = new ManagePasswordPresenter(authFactory.Object, view.Object)
                             {
                                 HttpContext = new MockedHttpContextBase(httpResponse)
                             };
-
-            var args = new Mock<IChangePasswordEventArgs>();
-            args.Setup(a => a.Context).Returns(ctx.Object);
-
             view.Raise(v => v.ChangePassword += null, view.Object, args.Object);
 
             signInManager.Verify(s => s.SignIn(null, false, false), Times.Once());

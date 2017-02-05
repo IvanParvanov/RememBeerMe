@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity.Owin;
+﻿using System.Web;
+
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
 using Moq;
@@ -37,11 +39,13 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-            mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);
+           
 
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(mockedContext.Object))
                              .Returns(mockedUserManager.Object);
+            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+                             .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
 
@@ -65,11 +69,12 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-            mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);
 
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
+            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+                             .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
 
@@ -93,11 +98,12 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-            mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);
 
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
+            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+                             .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
             var presenter = new LoginPresenter(mockedAuthFactory.Object, mockedIdentityHelper.Object, mockedView.Object)
@@ -127,11 +133,12 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-            mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);
 
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
+            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+                             .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
             var presenter = new LoginPresenter(mockedAuthFactory.Object, mockedIdentityHelper.Object, mockedView.Object)
@@ -162,11 +169,12 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-            mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);
 
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
+            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+                             .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
             var mockedResponse = new MockedHttpResponse();
@@ -197,11 +205,12 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-            mockedArgs.Setup(a => a.Context).Returns(mockedContext.Object);
 
             var mockedAuthFactory = new Mock<IAuthFactory>();
             mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
                              .Returns(mockedUserManager.Object);
+            mockedAuthFactory.Setup(f => f.GetOwinContext(It.IsAny<HttpContextBase>()))
+                             .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
             var mockedResponse = new MockedHttpResponse();

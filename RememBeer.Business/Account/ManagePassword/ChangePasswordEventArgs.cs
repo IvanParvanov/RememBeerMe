@@ -1,14 +1,10 @@
-﻿using Microsoft.Owin;
-
-using RememBeer.Business.Account.Common.EventArcs;
-using RememBeer.Business.Account.ManagePassword.Contracts;
+﻿using RememBeer.Business.Account.ManagePassword.Contracts;
 
 namespace RememBeer.Business.Account.ManagePassword
 {
-    public class ChangePasswordEventArgs : OwinContextEventArgs, IChangePasswordEventArgs
+    public class ChangePasswordEventArgs : IChangePasswordEventArgs
     {
-        public ChangePasswordEventArgs(IOwinContext context, string currentPassword, string newPassword, string userId)
-            : base(context)
+        public ChangePasswordEventArgs(string currentPassword, string newPassword, string userId)
         {
             this.CurrentPassword = currentPassword;
             this.NewPassword = newPassword;

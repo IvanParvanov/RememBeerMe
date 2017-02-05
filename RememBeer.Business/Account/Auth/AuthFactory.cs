@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -23,9 +24,14 @@ namespace RememBeer.Business.Account.Auth
             return OwinContextExtensions.Get<IApplicationSignInManager>(context);
         }
 
+        public IOwinContext GetOwinContext(HttpContextBase context)
+        {
+            return context.GetOwinContext();
+        }
+        
         private static void ThrowIfNull(object obj)
         {
-            if ( obj == null )
+            if (obj == null)
             {
                 throw new ArgumentNullException(nameof(obj));
             }

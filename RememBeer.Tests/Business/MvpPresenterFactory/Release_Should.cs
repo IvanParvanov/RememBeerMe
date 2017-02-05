@@ -8,7 +8,7 @@ using Moq;
 
 using NUnit.Framework;
 
-using RememBeer.Business.MvpPresenter;
+using RememBeer.Business.MvpPresenterFactory;
 using RememBeer.Tests.Business.Mocks;
 
 using WebFormsMvp;
@@ -24,7 +24,7 @@ namespace RememBeer.Tests.Business.MvpPresenterFactory
             var mockedPresenter = new Mock<IDisposablePresenter>();
             var mockedFactory = new Mock<IMvpPresenterFactory>();
 
-            var sut = new RememBeer.Business.MvpPresenter.MvpPresenterFactory(mockedFactory.Object);
+            var sut = new RememBeer.Business.MvpPresenterFactory.MvpPresenterFactory(mockedFactory.Object);
 
             sut.Release(mockedPresenter.Object);
 

@@ -15,12 +15,13 @@ namespace RememBeer.Business.Account.ManagePassword
         private void OnChangePassword(object sender, IChangePasswordEventArgs args)
         {
             var userId = args.UserId;
-            var manager = this.AuthFactory.CreateApplicationUserManager(args.Context);
+            var ctx = this.AuthFactory.GetOwinContext(this.HttpContext);
+            var manager = this.AuthFactory.CreateApplicationUserManager(ctx);
 
             var result = manager.ChangePassword(userId, args.CurrentPassword, args.NewPassword);
             if (result.Succeeded)
             {
-                var signInManager = this.AuthFactory.CreateApplicationSignInManager(args.Context);
+                var signInManager = this.AuthFactory.CreateApplicationSignInManager(ctx);
                 var user = manager.FindById(userId);
                 signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
                 this.Response.Redirect("~/Account/Manage?m=ChangePwdSuccess");

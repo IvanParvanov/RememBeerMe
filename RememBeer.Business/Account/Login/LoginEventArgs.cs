@@ -5,10 +5,9 @@ using RememBeer.Business.Account.Login.Contracts;
 
 namespace RememBeer.Business.Account.Login
 {
-    public class LoginEventArgs : OwinContextEventArgs, ILoginEventArgs
+    public class LoginEventArgs:  ILoginEventArgs
     {
-        public LoginEventArgs(IOwinContext context, string email, string password, bool rememberMe)
-            : base(context)
+        public LoginEventArgs(string email, string password, bool rememberMe)
         {
             this.Email = email;
             this.Password = password;

@@ -12,7 +12,7 @@ using Ninject.Parameters;
 
 using RememBeer.Business.Account;
 using RememBeer.Business.Account.Auth;
-using RememBeer.Business.MvpPresenter;
+using RememBeer.Business.MvpPresenterFactory;
 using RememBeer.Data.Identity;
 using RememBeer.Data.Identity.Contracts;
 using RememBeer.Data.Identity.Models;

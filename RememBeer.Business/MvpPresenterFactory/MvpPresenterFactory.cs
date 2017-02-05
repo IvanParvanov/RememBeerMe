@@ -3,7 +3,7 @@
 using WebFormsMvp;
 using WebFormsMvp.Binder;
 
-namespace RememBeer.Business.MvpPresenter
+namespace RememBeer.Business.MvpPresenterFactory
 {
     public class MvpPresenterFactory : IPresenterFactory
     {

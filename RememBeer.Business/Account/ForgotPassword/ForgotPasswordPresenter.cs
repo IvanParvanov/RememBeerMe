@@ -15,7 +15,9 @@ namespace RememBeer.Business.Account.ForgotPassword
 
         private void OnForgot(object sender, IForgotPasswordEventArgs args)
         {
-            var manager = this.AuthFactory.CreateApplicationUserManager(args.Context);
+            var owinContext = this.AuthFactory.GetOwinContext(this.HttpContext);
+
+            var manager = this.AuthFactory.CreateApplicationUserManager(owinContext);
             var user = manager.FindByName(args.Email);
             if (user == null || !manager.IsEmailConfirmed(user.Id))
             {
