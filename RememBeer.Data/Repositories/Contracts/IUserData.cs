@@ -1,6 +1,6 @@
 using System.Linq;
 
-using RememBeer.Data.Identity.Models;
+using RememBeer.Common.Identity.Models;
 
 namespace RememBeer.Data.Repositories.Contracts
 {

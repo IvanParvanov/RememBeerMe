@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Moq;
+﻿using Moq;
 
 using NUnit.Framework;
 
 using RememBeer.Business.MvpPresenterFactory;
 using RememBeer.Tests.Business.Mocks;
-
-using WebFormsMvp;
 
 namespace RememBeer.Tests.Business.MvpPresenterFactory
 {

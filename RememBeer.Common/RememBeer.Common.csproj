@@ -87,6 +87,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Identity\ApplicationSignInManager.cs" />
+    <Compile Include="Identity\ApplicationUserManager.cs" />
+    <Compile Include="Identity\Contracts\IApplicationSignInManager.cs" />
+    <Compile Include="Identity\Contracts\IApplicationUserManager.cs" />
+    <Compile Include="Identity\Contracts\IIdentityHelper.cs" />
+    <Compile Include="Identity\Models\ApplicationUser.cs" />
+    <Compile Include="Identity\Models\IdentityHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

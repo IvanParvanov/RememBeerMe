@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-using RememBeer.Data.Identity.Contracts;
+using RememBeer.Common.Identity.Contracts;
 
-namespace RememBeer.Data.Identity.Models
+namespace RememBeer.Common.Identity.Models
 {
     public interface IApplicationUser : IUser<string>
     {

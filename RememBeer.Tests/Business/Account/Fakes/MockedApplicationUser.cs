@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Microsoft.AspNet.Identity.EntityFramework;
-
-using RememBeer.Data.Identity.Models;
+﻿using RememBeer.Common.Identity.Models;
 
 namespace RememBeer.Tests.Business.Account.Fakes
 {

@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.Owin;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.Common.Presenters;
 using RememBeer.Business.Account.Login.Contracts;
-using RememBeer.Data.Identity.Contracts;
+using RememBeer.Common.Identity.Contracts;
 
 namespace RememBeer.Business.Account.Login
 {

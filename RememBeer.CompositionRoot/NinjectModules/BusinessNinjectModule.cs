@@ -16,10 +16,11 @@ using Ninject.Parameters;
 using RememBeer.Business.Account;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.MvpPresenterFactory;
+using RememBeer.Business.Services;
+using RememBeer.Common.Identity;
+using RememBeer.Common.Identity.Contracts;
+using RememBeer.Common.Identity.Models;
 using RememBeer.Data.DbContexts.Contracts;
-using RememBeer.Data.Identity;
-using RememBeer.Data.Identity.Contracts;
-using RememBeer.Data.Identity.Models;
 
 using WebFormsMvp;
 using WebFormsMvp.Binder;

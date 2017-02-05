@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Microsoft.Owin;
 
@@ -10,7 +6,7 @@ using Moq;
 
 using NUnit.Framework;
 
-using RememBeer.Data.Identity.Contracts;
+using RememBeer.Common.Identity.Contracts;
 
 namespace RememBeer.Tests.Business.Account.Auth.AuthFactory
 {

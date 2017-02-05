@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>sadasda</h2>
-    <asp:Repeater ID="UserRepeater" runat="server" DataSourceID="UserDataSource" ItemType="RememBeer.Data.Identity.Models.ApplicationUser">
+    <asp:Repeater ID="UserRepeater" runat="server" DataSourceID="UserDataSource" ItemType="RememBeer.Common.Identity.Models.ApplicationUser">
         <ItemTemplate>
             <ul>
                 <li><%#:Item.Email %></li>

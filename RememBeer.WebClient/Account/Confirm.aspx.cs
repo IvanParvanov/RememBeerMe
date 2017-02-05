@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web;
 
 using RememBeer.Business.Account.Common.ViewModels;
 using RememBeer.Business.Account.Confirm;

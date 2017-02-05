@@ -2,7 +2,7 @@
 
 using Microsoft.AspNet.Identity.EntityFramework;
 
-using RememBeer.Data.Identity.Models;
+using RememBeer.Common.Identity.Models;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Data.Repositories.Contracts;
 using RememBeer.Models;

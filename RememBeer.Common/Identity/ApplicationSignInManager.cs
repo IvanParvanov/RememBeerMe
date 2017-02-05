@@ -1,15 +1,13 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
 using Microsoft.Owin.Security;
 
-using RememBeer.Data.Identity.Contracts;
-using RememBeer.Data.Identity.Models;
+using RememBeer.Common.Identity.Contracts;
+using RememBeer.Common.Identity.Models;
 
-namespace RememBeer.Data.Identity
+namespace RememBeer.Common.Identity
 {
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>, IApplicationSignInManager
     {
@@ -22,11 +20,6 @@ namespace RememBeer.Data.Identity
         {
             return user.GenerateUserIdentityAsync((ApplicationUserManager)this.UserManager);
         }
-
-        //public static IApplicationSignInManager Create(IdentityFactoryOptions<IApplicationSignInManager> options, IOwinContext context)
-        //{
-        //    return new ApplicationSignInManager((ApplicationUserManager)context.GetUserManager<IApplicationUserManager>(), context.Authentication);
-        //}
 
         public virtual SignInStatus PasswordSignIn(string email, string password, bool isPersistent)
         {

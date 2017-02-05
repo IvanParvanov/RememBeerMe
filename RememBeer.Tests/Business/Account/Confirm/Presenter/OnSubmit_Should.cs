@@ -11,8 +11,8 @@ using NUnit.Framework;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.Confirm;
 using RememBeer.Business.Account.Confirm.Contracts;
-using RememBeer.Data.Identity.Contracts;
-using RememBeer.Data.Identity.Models;
+using RememBeer.Common.Identity.Contracts;
+using RememBeer.Common.Identity.Models;
 using RememBeer.Tests.Business.Account.Fakes;
 
 namespace RememBeer.Tests.Business.Account.Confirm.Presenter

@@ -10,11 +10,10 @@ using Ninject;
 using Owin;
 
 using RememBeer.Business.Account.Auth;
-using RememBeer.Data.DbContexts;
+using RememBeer.Common.Identity;
+using RememBeer.Common.Identity.Contracts;
+using RememBeer.Common.Identity.Models;
 using RememBeer.Data.DbContexts.Contracts;
-using RememBeer.Data.Identity;
-using RememBeer.Data.Identity.Contracts;
-using RememBeer.Data.Identity.Models;
 
 namespace RememBeer.WebClient
 {

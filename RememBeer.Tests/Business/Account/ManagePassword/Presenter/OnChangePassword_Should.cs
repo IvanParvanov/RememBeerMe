@@ -11,7 +11,7 @@ using NUnit.Framework;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.ManagePassword;
 using RememBeer.Business.Account.ManagePassword.Contracts;
-using RememBeer.Data.Identity.Contracts;
+using RememBeer.Common.Identity.Contracts;
 using RememBeer.Tests.Common.MockedClasses;
 
 namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter

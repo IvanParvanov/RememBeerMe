@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNet.Identity;
 
-using RememBeer.Data.Identity.Models;
+using RememBeer.Common.Identity.Models;
 
-namespace RememBeer.Data.Identity.Contracts
+namespace RememBeer.Common.Identity.Contracts
 {
     public interface IApplicationUserManager : IDisposable
     {

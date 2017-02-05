@@ -121,12 +121,17 @@
     <Compile Include="MvpPresenterFactory\IMvpPresenterFactory.cs" />
     <Compile Include="MvpPresenterFactory\MvpPresenterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmailService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RememBeer.Common\RememBeer.Common.csproj">
+      <Project>{F3D7079C-15D3-42A6-8359-6F0FEE921E83}</Project>
+      <Name>RememBeer.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RememBeer.Data\RememBeer.Data.csproj">
       <Project>{905184B3-89C7-4140-9528-E92D5F70EC0D}</Project>
       <Name>RememBeer.Data</Name>

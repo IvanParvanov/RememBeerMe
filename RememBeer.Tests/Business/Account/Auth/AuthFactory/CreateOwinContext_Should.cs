@@ -2,8 +2,6 @@
 
 using Microsoft.Owin;
 
-using Moq;
-
 using NUnit.Framework;
 
 using RememBeer.Tests.Common.MockedClasses;
@@ -15,7 +13,7 @@ namespace RememBeer.Tests.Business.Account.Auth.AuthFactory
         [Test]
         public void ThrowIfArgumentIsNull()
         {
-            var authFactory = new RememBeer.Business.Account.Auth.AuthFactory();
+            var authFactory = new RememBeer.Business.Account.Auth.AuthProvider();
 
             Assert.Throws<ArgumentNullException>(() => authFactory.CreateOwinContext(null));
         }
@@ -25,7 +23,7 @@ namespace RememBeer.Tests.Business.Account.Auth.AuthFactory
         {
             var mockedHttpContextBase = new MockedHttpContextBase();
 
-            var authFactory = new RememBeer.Business.Account.Auth.AuthFactory();
+            var authFactory = new RememBeer.Business.Account.Auth.AuthProvider();
             var result = authFactory.CreateOwinContext(mockedHttpContextBase);
 
             Assert.IsNotNull(result);

@@ -6,7 +6,7 @@ using Moq;
 
 using NUnit.Framework;
 
-using RememBeer.Data.Identity.Contracts;
+using RememBeer.Common.Identity.Contracts;
 
 namespace RememBeer.Tests.Business.Account.Auth.AuthFactory
 {

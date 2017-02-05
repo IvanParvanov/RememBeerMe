@@ -10,8 +10,8 @@ using NUnit.Framework;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.ForgotPassword;
 using RememBeer.Business.Account.ForgotPassword.Contracts;
-using RememBeer.Data.Identity.Contracts;
-using RememBeer.Data.Identity.Models;
+using RememBeer.Common.Identity.Contracts;
+using RememBeer.Common.Identity.Models;
 using RememBeer.Tests.Business.Account.Fakes;
 
 namespace RememBeer.Tests.Business.Account.ForgotPassword.Presenter
