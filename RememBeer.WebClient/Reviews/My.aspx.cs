@@ -19,8 +19,8 @@ namespace RememBeer.WebClient.Reviews
             if (!this.IsPostBack)
             {
                 this.OnInitialise?.Invoke(this, EventArgs.Empty);
-                //this.ReviewsListView.DataSource = this.Model.Reviews;
-                //this.ReviewsListView.DataBind();
+                this.ReviewsListView.DataSource = this.Model.Reviews;
+                this.ReviewsListView.DataBind();
             }
         }
 
