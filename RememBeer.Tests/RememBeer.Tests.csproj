@@ -116,7 +116,7 @@
     <Compile Include="Business\Account\Auth\AuthProvider\CreateApplicationSignInManager_Should.cs" />
     <Compile Include="Business\Account\Auth\AuthProvider\CreateApplicationUserManager_Should.cs" />
     <Compile Include="Business\Account\Auth\AuthProvider\CreateOwinContext_Should.cs" />
-    <Compile Include="Business\Account\Common\AuthenticationPresenterTests.cs" />
+    <Compile Include="Business\Account\Common\UserServicePresenterTests.cs" />
     <Compile Include="Business\Account\Confirm\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Account\Confirm\Presenter\OnSubmit_Should.cs" />
     <Compile Include="Business\Account\Fakes\MockedApplicationUser.cs" />

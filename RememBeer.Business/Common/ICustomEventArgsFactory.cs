@@ -3,8 +3,10 @@ using RememBeer.Business.Account.ForgotPassword.Contracts;
 using RememBeer.Business.Account.Login.Contracts;
 using RememBeer.Business.Account.ManagePassword.Contracts;
 using RememBeer.Business.Account.Register.Contracts;
+using RememBeer.Business.Reviews.My.Contracts;
+using RememBeer.Models.Contracts;
 
-namespace RememBeer.Business.Account
+namespace RememBeer.Business.Common
 {
     public interface ICustomEventArgsFactory
     {
@@ -19,5 +21,7 @@ namespace RememBeer.Business.Account
                                                                string userId);
 
         IRegisterEventArgs CreateRegisterEventArg(string userName, string email, string password);
+
+        IBeerReviewInfoEventArgs CreateBeerReviewInfoEventArgs(IBeerReview beerReview);
     }
 }

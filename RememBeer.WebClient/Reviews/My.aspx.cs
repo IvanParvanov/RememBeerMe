@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Web.UI.WebControls;
+using System.Collections.Generic;
 
 using RememBeer.Business.Reviews.My;
 using RememBeer.Business.Reviews.My.Contracts;
+using RememBeer.Models;
 using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;
@@ -13,22 +14,23 @@ namespace RememBeer.WebClient.Reviews
     public partial class My : BaseMvpPage<ReviewsViewModel>, IMyReviewsView
     {
         public event EventHandler<EventArgs> OnInitialise;
-         
+
+        public event EventHandler<IBeerReviewInfoEventArgs> ReviewUpdate;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
-                this.OnInitialise?.Invoke(this, EventArgs.Empty);
-                this.ReviewsListView.DataSource = this.Model.Reviews;
-                this.ReviewsListView.DataBind();
-            }
+            this.OnInitialise?.Invoke(this, EventArgs.Empty);
         }
 
-        protected void ReviewsListView_OnItemEditing(object sender, ListViewEditEventArgs e)
+        public IEnumerable<BeerReview> Select()
         {
-            this.ReviewsListView.EditIndex = e.NewEditIndex;
-            //ReviewsListView.DataSource = this.Model.Reviews;
-            //ReviewsListView.DataBind();
+            return this.Model.Reviews;
+        }
+
+        public void UpdateReview(BeerReview newReview)
+        {
+            var args = this.EventArgsFactory.CreateBeerReviewInfoEventArgs(newReview);
+            this.ReviewUpdate?.Invoke(this, args);
         }
     }
 }

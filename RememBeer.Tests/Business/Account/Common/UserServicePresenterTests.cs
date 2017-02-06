@@ -10,7 +10,7 @@ using RememBeer.Business.Account.Confirm.Contracts;
 namespace RememBeer.Tests.Business.Account.Common
 {
     [TestFixture]
-    public class AuthenticationPresenterTests
+    public class UserServicePresenterTests
     {
         [Test]
         public void Ctor_ShouldThrowArgumentNullException_WhenArgumentsAreNull()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+using RememBeer.Common.Identity.Models;
 using RememBeer.Models.Contracts;
 
 namespace RememBeer.Models
@@ -13,7 +14,7 @@ namespace RememBeer.Models
 
         public string UserId { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public int Overall { get; set; }
 

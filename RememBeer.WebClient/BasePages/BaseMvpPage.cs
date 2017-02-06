@@ -1,6 +1,7 @@
 ﻿using Ninject;
 
 using RememBeer.Business.Account;
+using RememBeer.Business.Common;
 using RememBeer.Common.Identity.Contracts;
 
 using WebFormsMvp.Web;

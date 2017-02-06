@@ -1,5 +1,7 @@
 ﻿using System;
 
+using RememBeer.Common.Identity.Models;
+
 namespace RememBeer.Models.Contracts
 {
     public interface IBeerReview
@@ -10,7 +12,7 @@ namespace RememBeer.Models.Contracts
 
         string UserId { get; set; }
 
-        User User { get; set; }
+        ApplicationUser User { get; set; }
 
         int Overall { get; set; }
 

@@ -5,6 +5,8 @@ using NUnit.Framework;
 using RememBeer.Business.MvpPresenterFactory;
 using RememBeer.Tests.Business.Mocks;
 
+using WebFormsMvp;
+
 namespace RememBeer.Tests.Business.MvpPresenterFactory
 {
     [TestFixture]
@@ -21,6 +23,17 @@ namespace RememBeer.Tests.Business.MvpPresenterFactory
             sut.Release(mockedPresenter.Object);
 
             mockedPresenter.Verify(p => p.Dispose(), Times.Once());
+        }
+
+        [Test]
+        public void NotThrow_WhenPresenterIsNotIDisposable()
+        {
+            var mockedPresenter = new Mock<IPresenter>();
+            var mockedFactory = new Mock<IMvpPresenterFactory>();
+
+            var sut = new RememBeer.Business.MvpPresenterFactory.MvpPresenterFactory(mockedFactory.Object);
+
+            Assert.DoesNotThrow(() => sut.Release(mockedPresenter.Object));
         }
     }
 }
