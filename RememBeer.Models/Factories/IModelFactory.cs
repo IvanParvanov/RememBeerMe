@@ -1,9 +1,9 @@
-﻿using RememBeer.Common.Identity.Models;
+﻿using RememBeer.Common.Identity.Contracts;
 
 namespace RememBeer.Models.Factories
 {
     public interface IModelFactory
     {
-        ApplicationUser CreateApplicationUser(string username, string email);
+       IApplicationUser CreateApplicationUser(string username, string email);
     }
 }

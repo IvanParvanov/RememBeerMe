@@ -4,11 +4,12 @@
     <h2>sadasda</h2>
     <asp:Repeater ID="UserRepeater" runat="server" DataSourceID="UserDataSource" ItemType="RememBeer.Common.Identity.Models.ApplicationUser">
         <ItemTemplate>
-            <ul>
-                <li><%#:Item.Email %></li>
-                <li><%#:Item.Id %></li>
-                <li><%#:Item.UserName %></li>
+            <ul class="list-group">
+                <li class="list-group-item"><%#:Item.Id %></li>
+                <li class="list-group-item"><%#:Item.Email %></li>
+                <li class="list-group-item"><%#:Item.UserName %></li>
             </ul>
+            <hr/>
         </ItemTemplate>
     </asp:Repeater>
     <asp:LinqDataSource OnContextCreating="UserDataSource_OnContextCreating"

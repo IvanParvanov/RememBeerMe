@@ -97,7 +97,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="WebFormsMvp, Version=1.4.5.0, Culture=neutral, PublicKeyToken=537f18701145dff0, processorArchitecture=MSIL">
@@ -111,16 +110,12 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
-      </ItemGroup>
-    </Otherwise>
+    <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Business\Account\Auth\AuthFactory\CreateApplicationSignInManager_Should.cs" />
-    <Compile Include="Business\Account\Auth\AuthFactory\CreateApplicationUserManager_Should.cs" />
-    <Compile Include="Business\Account\Auth\AuthFactory\CreateOwinContext_Should.cs" />
+    <Compile Include="Business\Account\Auth\AuthProvider\CreateApplicationSignInManager_Should.cs" />
+    <Compile Include="Business\Account\Auth\AuthProvider\CreateApplicationUserManager_Should.cs" />
+    <Compile Include="Business\Account\Auth\AuthProvider\CreateOwinContext_Should.cs" />
     <Compile Include="Business\Account\Common\AuthenticationPresenterTests.cs" />
     <Compile Include="Business\Account\Confirm\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Account\Confirm\Presenter\OnSubmit_Should.cs" />

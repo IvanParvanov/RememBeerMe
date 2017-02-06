@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 using RememBeer.Common.Identity.Contracts;
 
-namespace RememBeer.Tests.Business.Account.Auth.AuthFactory
+namespace RememBeer.Tests.Business.Account.Auth.AuthProvider
 {
     [TestFixture]
     public class CreateApplicationUserManager_Should

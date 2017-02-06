@@ -1,6 +1,4 @@
 ﻿using RememBeer.Business.Account.ForgotPassword.Contracts;
-
-using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.Common.Presenters;
 using RememBeer.Data.Services;
 

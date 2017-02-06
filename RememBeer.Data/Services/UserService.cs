@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 using RememBeer.Common.Identity.Contracts;
+using RememBeer.Common.Identity.Models;
 using RememBeer.Models.Factories;
 
 namespace RememBeer.Data.Services
@@ -56,8 +57,13 @@ namespace RememBeer.Data.Services
         public IdentityResult RegisterUser(string username, string email, string password)
         {
             var user = this.factory.CreateApplicationUser(username, email);
+            var result = this.userManager.Create((ApplicationUser)user, password);
 
-            return this.userManager.Create(user, password);
+            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+            //string code = manager.GenerateEmailConfirmationToken(user.Id);
+            //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
+            //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
+            return result;
         }
 
         public IdentityResult ChangePassword(string userId, string currentPassword, string newPassword)

@@ -6,9 +6,9 @@ using NUnit.Framework;
 
 using RememBeer.Tests.Common.MockedClasses;
 
-namespace RememBeer.Tests.Business.Account.Auth.AuthFactory
+namespace RememBeer.Tests.Business.Account.Auth.AuthProvider
 {
-    public class CreateOwinContext_Should
+    public class CreateOwinContext_ShouldS
     {
         [Test]
         public void ThrowIfArgumentIsNull()

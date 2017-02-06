@@ -13,6 +13,9 @@ namespace RememBeer.WebClient
         [Inject]
         public IUserData UserRepo { private get; set; }
 
+        [Inject]
+        public IBreweriesData BrewRepo { private get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }

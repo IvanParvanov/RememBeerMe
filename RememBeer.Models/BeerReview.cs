@@ -9,12 +9,10 @@ namespace RememBeer.Models
     {
         public int BeerId { get; set; }
 
-        [Required]
         public virtual Beer Beer { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
-        [Required]
         public virtual User User { get; set; }
 
         public int Overall { get; set; }

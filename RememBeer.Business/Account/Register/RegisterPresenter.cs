@@ -1,40 +1,39 @@
-﻿using RememBeer.Business.Account.Common.Presenters;
+﻿using System.Linq;
+
+using RememBeer.Business.Account.Common.Presenters;
 using RememBeer.Business.Account.Register.Contracts;
+using RememBeer.Common.Identity.Contracts;
 using RememBeer.Data.Services;
 
 namespace RememBeer.Business.Account.Register
 {
     public class RegisterPresenter : UserServicePresenter<IRegisterView>
     {
-        public RegisterPresenter(IUserService userService, IRegisterView view) 
+        private readonly IIdentityHelper identityHelper;
+
+        public RegisterPresenter(IUserService userService, IIdentityHelper identityHelper, IRegisterView view)
             : base(userService, view)
         {
             this.View.OnRegister += this.OnRegister;
+            this.identityHelper = identityHelper;
         }
 
         private void OnRegister(object sender, IRegisterEventArgs args)
         {
-            //var ctx = this.AuthProvider.CreateOwinContext(this.HttpContext);
+            var result = this.UserService.RegisterUser(args.UserName, args.Email, args.Password);
+            if (result.Succeeded)
+            {
+                //string code = manager.GenerateEmailConfirmationToken(user.Id);
+                //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
+                //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
 
-            //var manager = this.AuthProvider.CreateApplicationUserManager(ctx);
-            //var signInManager = this.AuthProvider.CreateApplicationSignInManager(ctx);
-
-            ////var user = new ApplicationUser() { UserName = this.Email.Text, Email = this.Email.Text };
-            //var result = manager.Create(user, args.Password);
-            //if (result.Succeeded)
-            //{
-            //    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-            //    //string code = manager.GenerateEmailConfirmationToken(user.Id);
-            //    //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
-            //    //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
-
-            //    signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
-            //    this.IdentityHelper.RedirectToReturnUrl(this.Request.QueryString["ReturnUrl"], this.Response);
-            //}
-            //else
-            //{
-            //    this.View.ErrorMessageText = result.Errors.FirstOrDefault();
-            //}
+                var returnUrl = this.identityHelper.GetReturnUrl(this.Request.QueryString["ReturnUrl"]);
+                this.Response.Redirect(returnUrl);
+            }
+            else
+            {
+                this.View.ErrorMessageText = result.Errors.FirstOrDefault();
+            }
         }
     }
 }

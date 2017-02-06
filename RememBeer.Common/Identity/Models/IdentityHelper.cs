@@ -74,5 +74,15 @@ namespace RememBeer.Common.Identity.Models
                 response.Redirect("~/");
             }
         }
+
+        public string GetReturnUrl(string returnUrl)
+        {
+            if (!string.IsNullOrEmpty(returnUrl) && this.IsLocalUrl(returnUrl))
+            {
+                return returnUrl;
+            }
+
+            return "~/";
+        }
     }
 }
