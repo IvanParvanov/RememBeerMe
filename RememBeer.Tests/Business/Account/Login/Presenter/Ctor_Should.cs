@@ -4,9 +4,9 @@ using Moq;
 
 using NUnit.Framework;
 
-using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.Login;
 using RememBeer.Business.Account.Login.Contracts;
+using RememBeer.Data.Services;
 
 namespace RememBeer.Tests.Business.Account.Login.Presenter
 {
@@ -17,9 +17,9 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
         public void ThrowArgumentNullException_WhenHelperIsNull()
         {
             var mockedView = new Mock<ILoginView>();
-            var mockedAuthFactory = new Mock<IAuthProvider>();
+            var userService = new Mock<IUserService>();
 
-            Assert.Throws<ArgumentNullException>(() => new LoginPresenter(mockedAuthFactory.Object, null, mockedView.Object));
+            Assert.Throws<ArgumentNullException>(() => new LoginPresenter(userService.Object, null, mockedView.Object));
         }
     }
 }

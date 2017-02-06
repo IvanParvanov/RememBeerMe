@@ -1,17 +1,27 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+using RememBeer.Models.Contracts;
 
 namespace RememBeer.Models
 {
-    public class Beer : Identifiable
+    public class Beer : Identifiable, IBeer
     {
         public Beer()
         {
             this.Reviews = new HashSet<BeerReview>();
         }
 
-        public BeerType Type { get; set; }
+        public virtual BeerType BeerType { get; set; }
+
+        public int BeerTypeId { get; set; }
+
+        [Required]
+        public string Name { get; set; }
 
         public virtual Brewery Brewery { get; set; }
+
+        public int BreweryId { get; set; }
 
         public virtual ICollection<BeerReview> Reviews { get; set; }
     }

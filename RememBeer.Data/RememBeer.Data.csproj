@@ -92,8 +92,8 @@
     <Compile Include="DbContexts\Contracts\IRememBeerMeDbContext.cs" />
     <Compile Include="DbContexts\RememBeerMeDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Base\GenericRepository.cs" />
-    <Compile Include="Repositories\Base\IGenericRepository.cs" />
+    <Compile Include="Repositories\Base\Repository.cs" />
+    <Compile Include="Repositories\Base\IRepository.cs" />
     <Compile Include="Repositories\Contracts\IBeersData.cs" />
     <Compile Include="Repositories\Contracts\IBeerReviewsData.cs" />
     <Compile Include="Repositories\Contracts\IBeerTypesData.cs" />
@@ -103,6 +103,7 @@
     <Compile Include="Repositories\Contracts\IUserData.cs" />
     <Compile Include="Repositories\Factories\IRepositoryFactory.cs" />
     <Compile Include="Repositories\RememBeerMeData.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

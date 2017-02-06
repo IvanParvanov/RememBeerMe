@@ -11,20 +11,20 @@ namespace RememBeer.Data.Repositories
 {
     public class RememBeerMeData : IRememBeerMeData
     {
-        private readonly IGenericRepository<ApplicationUser> users;
-        private readonly IGenericRepository<IdentityRole> roles;
-        private readonly IGenericRepository<Beer> beers;
-        private readonly IGenericRepository<BeerReview> beerReviews;
-        private readonly IGenericRepository<BeerType> beerTypes;
-        private readonly IGenericRepository<Brewery> breweries;
+        private readonly IRepository<ApplicationUser> users;
+        private readonly IRepository<IdentityRole> roles;
+        private readonly IRepository<Beer> beers;
+        private readonly IRepository<BeerReview> beerReviews;
+        private readonly IRepository<BeerType> beerTypes;
+        private readonly IRepository<Brewery> breweries;
 
         public RememBeerMeData(
-            IGenericRepository<ApplicationUser> users,
-            IGenericRepository<IdentityRole> roles,
-            IGenericRepository<Beer> beers,
-            IGenericRepository<BeerReview> beerReviews,
-            IGenericRepository<BeerType> beerTypes,
-            IGenericRepository<Brewery> breweries)
+            IRepository<ApplicationUser> users,
+            IRepository<IdentityRole> roles,
+            IRepository<Beer> beers,
+            IRepository<BeerReview> beerReviews,
+            IRepository<BeerType> beerTypes,
+            IRepository<Brewery> breweries)
         {
             this.users = users;
             this.roles = roles;

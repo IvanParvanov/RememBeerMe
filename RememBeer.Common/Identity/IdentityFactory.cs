@@ -59,7 +59,6 @@ namespace RememBeer.Common.Identity
             //                                                    Subject = "Security Code",
             //                                                    BodyFormat = "Your security code is {0}"
             //                                                });
-
             // Configure user lockout defaults
             manager.UserLockoutEnabledByDefault = this.config.UserLockoutEnabledByDefault;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(this.config.DefaultAccountLockoutTimeSpan);

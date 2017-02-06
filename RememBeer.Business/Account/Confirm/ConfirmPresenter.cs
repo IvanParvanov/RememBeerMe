@@ -1,13 +1,13 @@
-﻿using RememBeer.Business.Account.Auth;
-using RememBeer.Business.Account.Common.Presenters;
+﻿using RememBeer.Business.Account.Common.Presenters;
 using RememBeer.Business.Account.Confirm.Contracts;
+using RememBeer.Data.Services;
 
 namespace RememBeer.Business.Account.Confirm
 {
-    public class ConfirmPresenter : AuthenticationPresenter<IConfirmView>
+    public class ConfirmPresenter : UserServicePresenter<IConfirmView>
     {
-        public ConfirmPresenter(IAuthProvider authProvider, IConfirmView view)
-            : base(authProvider, view)
+        public ConfirmPresenter(IUserService userService, IConfirmView view)
+            : base(userService, view)
         {
             this.View.OnSubmit += this.OnSubmit;
         }
@@ -16,12 +16,9 @@ namespace RememBeer.Business.Account.Confirm
         {
             var code = args.Code;
             var userId = args.UserId;
-            var ctx = this.AuthProvider.CreateOwinContext(this.HttpContext);
-
             if (code != null && userId != null)
             {
-                var manager = this.AuthProvider.CreateApplicationUserManager(ctx);
-                var result = manager.ConfirmEmail(userId, code);
+                var result = this.UserService.ConfirmEmail(userId, code);
                 if (result.Succeeded)
                 {
                     this.View.SuccessPanelVisible = true;

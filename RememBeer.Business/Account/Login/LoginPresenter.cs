@@ -2,19 +2,19 @@
 
 using Microsoft.AspNet.Identity.Owin;
 
-using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.Common.Presenters;
 using RememBeer.Business.Account.Login.Contracts;
 using RememBeer.Common.Identity.Contracts;
+using RememBeer.Data.Services;
 
 namespace RememBeer.Business.Account.Login
 {
-    public class LoginPresenter : AuthenticationPresenter<ILoginView>
+    public class LoginPresenter : UserServicePresenter<ILoginView>
     {
         private readonly IIdentityHelper identityHelper;
 
-        public LoginPresenter(IAuthProvider provider, IIdentityHelper identityHelper, ILoginView view)
-            : base(provider, view)
+        public LoginPresenter(IUserService userService, IIdentityHelper identityHelper, ILoginView view)
+            : base(userService, view)
         {
             if (identityHelper == null)
             {
@@ -27,14 +27,11 @@ namespace RememBeer.Business.Account.Login
 
         private void OnLogin(object sender, ILoginEventArgs args)
         {
-            var ctx = this.AuthProvider.CreateOwinContext(this.HttpContext);
             var pass = args.Password;
             var email = args.Email;
             var isPersistentLogin = args.RememberMe;
 
-            var signinManager = this.AuthProvider.CreateApplicationSignInManager(ctx);
-
-            var result = signinManager.PasswordSignIn(email, pass, isPersistentLogin);
+            var result = this.UserService.PasswordSignIn(email, pass, isPersistentLogin);
             switch (result)
             {
                 case SignInStatus.Success:

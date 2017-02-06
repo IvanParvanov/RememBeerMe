@@ -23,7 +23,6 @@ namespace RememBeer.Tests.Models
                              Look = expectedId,
                              Smell = expectedId,
                              Taste = expectedId,
-                             MouthFeel = expectedId,
                              Description = expectedText,
                              IsPublic = isPublic,
                              Place = expectedText,
@@ -37,7 +36,6 @@ namespace RememBeer.Tests.Models
             Assert.AreEqual(expectedId, review.Look);
             Assert.AreEqual(expectedId, review.Smell);
             Assert.AreEqual(expectedId, review.Taste);
-            Assert.AreEqual(expectedId, review.MouthFeel);
             Assert.AreEqual(isPublic, review.IsPublic);
 
             Assert.AreSame(expectedText, review.Description);

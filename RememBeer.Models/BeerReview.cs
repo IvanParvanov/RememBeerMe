@@ -1,12 +1,21 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+using RememBeer.Models.Contracts;
 
 namespace RememBeer.Models
 {
-    public class BeerReview : Identifiable
+    public class BeerReview : Identifiable, IBeerReview
     {
+        public int BeerId { get; set; }
+
+        [Required]
         public virtual Beer Beer { get; set; }
 
-        //public virtual ApplicationUser User { get; set; }
+        public int UserId { get; set; }
+
+        [Required]
+        public virtual User User { get; set; }
 
         public int Overall { get; set; }
 
@@ -16,8 +25,7 @@ namespace RememBeer.Models
 
         public int Taste { get; set; }
 
-        public int MouthFeel { get; set; }
-
+        [Required]
         public string Description { get; set; }
 
         public DateTime CreatedAt { get; set; }
@@ -25,6 +33,8 @@ namespace RememBeer.Models
         public DateTime ModifiedAt { get; set; }
 
         public bool IsPublic { get; set; }
+
+        public bool IsDeleted { get; set; }
 
         public string Place { get; set; }
     }

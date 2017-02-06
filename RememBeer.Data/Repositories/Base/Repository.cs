@@ -9,9 +9,9 @@ using RememBeer.Data.DbContexts.Contracts;
 
 namespace RememBeer.Data.Repositories.Base
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
-        public GenericRepository(IRememBeerMeDbContext context)
+        public Repository(IRememBeerMeDbContext context)
         {
             this.Context = context;
             this.DbSet = this.Context.Set<T>();

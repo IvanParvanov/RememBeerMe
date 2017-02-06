@@ -16,7 +16,7 @@ namespace RememBeer.Tests.Business.Account.Common
         public void Ctor_ShouldThrowArgumentNullException_WhenArgumentsAreNull()
         {
             var mockedView = new Mock<IConfirmView>();
-            Assert.Throws<ArgumentNullException>(() => new AuthenticationPresenter<IConfirmView>(null, mockedView.Object));
+            Assert.Throws<ArgumentNullException>(() => new UserServicePresenter<IConfirmView>(null, mockedView.Object));
         }
     }
 }

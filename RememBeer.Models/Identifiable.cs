@@ -1,6 +1,8 @@
-﻿namespace RememBeer.Models
+﻿using RememBeer.Models.Contracts;
+
+namespace RememBeer.Models
 {
-    public class Identifiable
+    public abstract class Identifiable : IIdentifiable
     {
         public int Id { get; set; }
     }

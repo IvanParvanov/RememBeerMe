@@ -98,7 +98,7 @@
   <ItemGroup>
     <Compile Include="Account\Auth\AuthProvider.cs" />
     <Compile Include="Account\Auth\IAuthProvider.cs" />
-    <Compile Include="Account\Common\Presenters\AuthenticationPresenter.cs" />
+    <Compile Include="Account\Common\Presenters\UserServicePresenter.cs" />
     <Compile Include="Account\Common\ViewModels\StatelessViewModel.cs" />
     <Compile Include="Account\Confirm\ConfirmEventArgs.cs" />
     <Compile Include="Account\Confirm\ConfirmPresenter.cs" />
@@ -117,6 +117,10 @@
     <Compile Include="Account\ManagePassword\Contracts\IChangePasswordEventArgs.cs" />
     <Compile Include="Account\ManagePassword\Contracts\IManagePasswordView.cs" />
     <Compile Include="Account\ManagePassword\ManagePasswordPresenter.cs" />
+    <Compile Include="Account\Register\Contracts\IRegisterEventArgs.cs" />
+    <Compile Include="Account\Register\Contracts\IRegisterView.cs" />
+    <Compile Include="Account\Register\RegisterEventArgs.cs" />
+    <Compile Include="Account\Register\RegisterPresenter.cs" />
     <Compile Include="MvpPresenterFactory\IMvpPresenterFactory.cs" />
     <Compile Include="MvpPresenterFactory\MvpPresenterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,8 +138,15 @@
       <Project>{905184B3-89C7-4140-9528-E92D5F70EC0D}</Project>
       <Name>RememBeer.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RememBeer.Models\RememBeer.Models.csproj">
+      <Project>{08B751C2-A59B-4C0D-A981-5E03F48E5722}</Project>
+      <Name>RememBeer.Models</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Admin\" />
+    <Folder Include="Reviews\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

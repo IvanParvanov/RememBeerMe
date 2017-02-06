@@ -10,21 +10,21 @@ using RememBeer.CompositionRoot.NinjectModules;
 
 namespace RememBeer.CompositionRoot
 {
-    public class DefaultComposition
+    public class DefaultComposition : IModuleComposition
     {
-        public void RegisterServices(IKernel kernel)
+        public virtual void RegisterServices(IKernel kernel)
         {
             BindDefaultInterfaces(kernel);
-            LoadModules(kernel);
+            this.LoadModules(kernel);
         }
 
-        private static void LoadModules(IKernel kernel)
+        protected virtual void LoadModules(IKernel kernel)
         {
             kernel.Load(new BusinessNinjectModule());
             kernel.Load(new DataNinjectModule());
         }
 
-        private static void BindDefaultInterfaces(IBindingRoot kernel)
+        protected static void BindDefaultInterfaces(IBindingRoot kernel)
         {
             kernel.Bind(x =>
                         {

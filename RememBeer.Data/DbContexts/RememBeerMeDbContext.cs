@@ -33,6 +33,8 @@ namespace RememBeer.Data.DbContexts
 
         public virtual IDbSet<Brewery> Breweries { get; set; }
 
+        public virtual IDbSet<User> NewUsers { get; set; }
+
         public new IDbSet<T> Set<T>() where T : class
         {
             return base.Set<T>();

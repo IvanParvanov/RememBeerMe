@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationProvider.cs" />
     <Compile Include="Configuration\IConfigurationProvider.cs" />
+    <Compile Include="Exceptions\InvalidConfigurationOptionException.cs" />
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Identity\Contracts\IApplicationSignInManager.cs" />

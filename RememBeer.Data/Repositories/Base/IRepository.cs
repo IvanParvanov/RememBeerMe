@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace RememBeer.Data.Repositories.Base
 {
-    public interface IGenericRepository<T> where T: class 
+    public interface IRepository<T> where T: class 
     {
         T GetById(object id);
 

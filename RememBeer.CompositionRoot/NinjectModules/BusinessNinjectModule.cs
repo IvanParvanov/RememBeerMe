@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web;
 
 using Ninject;
 using Ninject.Activation;
@@ -8,8 +9,10 @@ using Ninject.Modules;
 using Ninject.Parameters;
 
 using RememBeer.Business.Account;
+using RememBeer.Business.Account.Auth;
 using RememBeer.Business.MvpPresenterFactory;
 using RememBeer.Common.Configuration;
+using RememBeer.Common.Identity;
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
 
@@ -37,6 +40,24 @@ namespace RememBeer.CompositionRoot.NinjectModules
 
             this.Rebind<IIdentityHelper>().To<IdentityHelper>().InSingletonScope();
             this.Rebind<IConfigurationProvider>().To<ConfigurationProvider>().InSingletonScope();
+
+            this.Rebind<IApplicationSignInManager>().ToMethod((context) =>
+            {
+                var cbase = new HttpContextWrapper(HttpContext.Current);
+                var f = context.Kernel.Get<IAuthProvider>();
+                var owinCtx = f.CreateOwinContext(cbase);
+
+                return f.CreateApplicationSignInManager(owinCtx);
+            });
+
+            this.Rebind<IApplicationUserManager>().ToMethod((context) =>
+            {
+                var cbase = new HttpContextWrapper(HttpContext.Current);
+                var f = context.Kernel.Get<IAuthProvider>();
+                var owinCtx = f.CreateOwinContext(cbase);
+
+                return f.CreateApplicationUserManager(owinCtx);
+            });
         }
 
         private static IPresenter GetPresenter(IContext context)

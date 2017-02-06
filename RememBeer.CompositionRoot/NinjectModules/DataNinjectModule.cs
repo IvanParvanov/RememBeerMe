@@ -1,7 +1,9 @@
 ﻿using Ninject.Modules;
+using Ninject.Web.Common;
 
 using RememBeer.Data.Repositories;
 using RememBeer.Data.Repositories.Contracts;
+using RememBeer.Data.Services;
 
 namespace RememBeer.CompositionRoot.NinjectModules
 {
@@ -15,6 +17,8 @@ namespace RememBeer.CompositionRoot.NinjectModules
             this.Bind<IBeerTypesData>().To<RememBeerMeData>();
             this.Bind<IBreweriesData>().To<RememBeerMeData>();
             this.Bind<IUserData>().To<RememBeerMeData>();
+
+            this.Rebind<IUserService>().To<UserService>().InRequestScope();
         }
     }
 }

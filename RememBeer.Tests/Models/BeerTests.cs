@@ -17,13 +17,13 @@ namespace RememBeer.Tests.Models
                        {
                            Id = expectedId,
                            Brewery = null,
-                           Type = null
+                           BeerType = null
 
                        };
 
             Assert.AreEqual(expectedId, beer.Id);
             Assert.AreEqual(null, beer.Brewery);
-            Assert.AreEqual(null, beer.Type);
+            Assert.AreEqual(null, beer.BeerType);
             Assert.IsInstanceOf<HashSet<BeerReview>>(beer.Reviews);
         }
     }

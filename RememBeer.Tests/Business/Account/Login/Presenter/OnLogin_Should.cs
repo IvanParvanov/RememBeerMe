@@ -1,16 +1,13 @@
-﻿using System.Web;
-
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
+﻿using Microsoft.AspNet.Identity.Owin;
 
 using Moq;
 
 using NUnit.Framework;
 
-using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Account.Login;
 using RememBeer.Business.Account.Login.Contracts;
 using RememBeer.Common.Identity.Contracts;
+using RememBeer.Data.Services;
 using RememBeer.Tests.Common.MockedClasses;
 
 namespace RememBeer.Tests.Business.Account.Login.Presenter
@@ -31,25 +28,18 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             mockedView.SetupSet(v => v.FailureMessage = "");
             mockedView.SetupSet(v => v.ErrorMessageVisible = true);
 
-            var mockedContext = new Mock<IOwinContext>();
-            var mockedUserManager = new Mock<IApplicationSignInManager>();
-            mockedUserManager.Setup(m => m.PasswordSignIn(Email, Password, IsPersistent)).Returns(SignInStatus.Failure);
-
             var mockedArgs = new Mock<ILoginEventArgs>();
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-           
-
-            var mockedAuthFactory = new Mock<IAuthProvider>();
-            mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(mockedContext.Object))
-                             .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
-                             .Returns(mockedContext.Object);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
 
-            var presenter = new LoginPresenter(mockedAuthFactory.Object, mockedIdentityHelper.Object, mockedView.Object);
+            var userService = new Mock<IUserService>();
+            userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
+                       .Returns(SignInStatus.Failure);
+
+            var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object);
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
             mockedView.VerifySet(v => v.FailureMessage = It.IsAny<string>());
@@ -61,28 +51,21 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
         {
             var mockedView = new Mock<ILoginView>();
 
-            var mockedContext = new Mock<IOwinContext>();
-            var mockedUserManager = new Mock<IApplicationSignInManager>();
-            mockedUserManager.Setup(m => m.PasswordSignIn(Email, Password, IsPersistent)).Returns(SignInStatus.Failure);
-
             var mockedArgs = new Mock<ILoginEventArgs>();
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
 
-            var mockedAuthFactory = new Mock<IAuthProvider>();
-            mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
-                             .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
-                             .Returns(mockedContext.Object);
+            var userService = new Mock<IUserService>();
+            userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
+                       .Returns(SignInStatus.Failure);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
 
-            var presenter = new LoginPresenter(mockedAuthFactory.Object, mockedIdentityHelper.Object, mockedView.Object);
+            var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object);
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
-            mockedAuthFactory.Verify(f => f.CreateApplicationSignInManager(mockedContext.Object), Times.Once());
-            mockedUserManager.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
+            userService.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
         }
 
         [Test]
@@ -90,23 +73,17 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
         {
             var mockedView = new Mock<ILoginView>();
 
-            var mockedContext = new Mock<IOwinContext>();
-            var mockedUserManager = new Mock<IApplicationSignInManager>();
-            mockedUserManager.Setup(m => m.PasswordSignIn(Email, Password, IsPersistent)).Returns(SignInStatus.Success);
-
             var mockedArgs = new Mock<ILoginEventArgs>();
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
 
-            var mockedAuthFactory = new Mock<IAuthProvider>();
-            mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
-                             .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
-                             .Returns(mockedContext.Object);
+            var userService = new Mock<IUserService>();
+            userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
+                       .Returns(SignInStatus.Success);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
-            var presenter = new LoginPresenter(mockedAuthFactory.Object, mockedIdentityHelper.Object, mockedView.Object)
+            var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object)
                             {
                                 HttpContext = new MockedHttpContextBase()
                             };
@@ -115,8 +92,7 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
 
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
-            mockedAuthFactory.Verify(f => f.CreateApplicationSignInManager(mockedContext.Object), Times.Once());
-            mockedUserManager.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
+            userService.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
             mockedIdentityHelper.Verify(i => i.RedirectToReturnUrl(ReturnUrl, presenter.Response), Times.Once());
         }
 
@@ -125,23 +101,17 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
         {
             var mockedView = new Mock<ILoginView>();
 
-            var mockedContext = new Mock<IOwinContext>();
-            var mockedUserManager = new Mock<IApplicationSignInManager>();
-            mockedUserManager.Setup(m => m.PasswordSignIn(Email, Password, IsPersistent)).Returns(SignInStatus.Success);
-
             var mockedArgs = new Mock<ILoginEventArgs>();
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
 
-            var mockedAuthFactory = new Mock<IAuthProvider>();
-            mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
-                             .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
-                             .Returns(mockedContext.Object);
+            var userService = new Mock<IUserService>();
+            userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
+                       .Returns(SignInStatus.Success);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
-            var presenter = new LoginPresenter(mockedAuthFactory.Object, mockedIdentityHelper.Object, mockedView.Object)
+            var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object)
             {
                 HttpContext = new MockedHttpContextBase()
             };
@@ -149,72 +119,58 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             presenter.HttpContext.Request.QueryString.Add(ReturnUrlKey, ReturnUrl);
 
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
-            mockedAuthFactory.Verify(f => f.CreateApplicationSignInManager(mockedContext.Object), Times.Once());
-            mockedUserManager.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
+
+            userService.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
             mockedIdentityHelper.Verify(i => i.RedirectToReturnUrl(ReturnUrl, presenter.Response), Times.Once());
         }
 
         [Test]
         public void CallRedirectWithCorrectParams_WhenLockedOut()
         {
-            const string LockoutUrl = "/Account/Lockout";
+            const string LockoutUrl = "Lockout";
 
             var mockedView = new Mock<ILoginView>();
-
-            var mockedContext = new Mock<IOwinContext>();
-            var mockedUserManager = new Mock<IApplicationSignInManager>();
-            mockedUserManager.Setup(m => m.PasswordSignIn(Email, Password, IsPersistent)).Returns(SignInStatus.LockedOut);
 
             var mockedArgs = new Mock<ILoginEventArgs>();
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
 
-            var mockedAuthFactory = new Mock<IAuthProvider>();
-            mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
-                             .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
-                             .Returns(mockedContext.Object);
+            var userService = new Mock<IUserService>();
+            userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
+                       .Returns(SignInStatus.LockedOut);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
             var mockedResponse = new MockedHttpResponse();
-            var presenter = new LoginPresenter(mockedAuthFactory.Object, mockedIdentityHelper.Object, mockedView.Object)
+            var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object)
             {
                 HttpContext = new MockedHttpContextBase(mockedResponse)
             };
 
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
-            mockedAuthFactory.Verify(f => f.CreateApplicationSignInManager(mockedContext.Object), Times.Once());
-            mockedUserManager.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
-            Assert.AreEqual(LockoutUrl, mockedResponse.RedirectUrl);
+            StringAssert.Contains(LockoutUrl, mockedResponse.RedirectUrl);
         }
 
         [Test]
         public void CallRedirectWithCorrectParams_WhenRequiresVerification()
         {
-            var expectedUrl = $"/Account/TwoFactorAuthenticationSignIn?ReturnUrl={ReturnUrl}&RememberMe={IsPersistent}";
+            var expectedUrl = $"TwoFactorAuthenticationSignIn?ReturnUrl={ReturnUrl}&RememberMe={IsPersistent}";
 
             var mockedView = new Mock<ILoginView>();
-
-            var mockedContext = new Mock<IOwinContext>();
-            var mockedUserManager = new Mock<IApplicationSignInManager>();
-            mockedUserManager.Setup(m => m.PasswordSignIn(Email, Password, IsPersistent)).Returns(SignInStatus.RequiresVerification);
 
             var mockedArgs = new Mock<ILoginEventArgs>();
             mockedArgs.Setup(a => a.Email).Returns(Email);
             mockedArgs.Setup(a => a.Password).Returns(Password);
             mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
 
-            var mockedAuthFactory = new Mock<IAuthProvider>();
-            mockedAuthFactory.Setup(f => f.CreateApplicationSignInManager(It.IsAny<IOwinContext>()))
-                             .Returns(mockedUserManager.Object);
-            mockedAuthFactory.Setup(f => f.CreateOwinContext(It.IsAny<HttpContextBase>()))
-                             .Returns(mockedContext.Object);
+            var userService = new Mock<IUserService>();
+            userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
+                       .Returns(SignInStatus.RequiresVerification);
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
             var mockedResponse = new MockedHttpResponse();
-            var presenter = new LoginPresenter(mockedAuthFactory.Object, mockedIdentityHelper.Object, mockedView.Object)
+            var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object)
             {
                 HttpContext = new MockedHttpContextBase(mockedResponse)
             };
@@ -223,9 +179,9 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
 
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
-            mockedAuthFactory.Verify(f => f.CreateApplicationSignInManager(mockedContext.Object), Times.Once());
-            mockedUserManager.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
-            Assert.AreEqual(expectedUrl, mockedResponse.RedirectUrl);
+            userService.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
+
+            StringAssert.Contains(expectedUrl, mockedResponse.RedirectUrl);
         }
     }
 }
