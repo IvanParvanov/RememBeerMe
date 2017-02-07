@@ -1,8 +1,11 @@
+using System.Web.Http;
+
+using Ninject.WebApi.DependencyResolver;
+
 using RememBeer.CompositionRoot;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(RememBeer.WebClient.App_Start.NinjectWebCommon), "Start")]
-[assembly:
-    WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(RememBeer.WebClient.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(RememBeer.WebClient.App_Start.NinjectWebCommon), "Stop")]
 
 namespace RememBeer.WebClient.App_Start
 {
@@ -14,20 +17,20 @@ namespace RememBeer.WebClient.App_Start
     using Ninject;
     using Ninject.Web.Common;
 
-    public static class NinjectWebCommon
+    public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start()
+        public static void Start() 
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-
+        
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -35,7 +38,7 @@ namespace RememBeer.WebClient.App_Start
         {
             bootstrapper.ShutDown();
         }
-
+        
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -47,8 +50,9 @@ namespace RememBeer.WebClient.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
                 RegisterServices(kernel);
+
+                //GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch
@@ -66,6 +70,6 @@ namespace RememBeer.WebClient.App_Start
         {
             var composition = new DefaultComposition();
             composition.RegisterServices(kernel);
-        }
+        }        
     }
 }

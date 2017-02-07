@@ -42,8 +42,8 @@ namespace RememBeer.CompositionRoot
                             }
                         });
 
-            kernel.Bind<IKernel>()
-                  .ToMethod(ctx => ctx.Kernel);
+            //kernel.Bind<IKernel>()
+            //      .ToMethod(ctx => ctx.Kernel);
         }
     }
 }

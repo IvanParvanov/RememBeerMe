@@ -4,10 +4,6 @@ using System.Web.Routing;
 using Microsoft.Owin;
 
 using Ninject;
-using Ninject.Web;
-using Ninject.Web.WebApi;
-using Ninject.Web.Common.OwinHost;
-using Ninject.Web.WebApi.OwinHost;
 
 using Owin;
 
@@ -28,13 +24,12 @@ namespace RememBeer.WebClient
 
             this.ConfigureAuth(app, kernel);
 
-            //var webApiConfiguration = new HttpConfiguration();
-            //webApiConfiguration.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional, controller = "values" });
-
-            //app.UseNinjectWebApi(webApiConfiguration);
+            RouteTable.Routes.MapHttpRoute(
+                                           name: "DefaultApi",
+                                           routeTemplate: "api/{controller}/{id}",
+                                           defaults: new { id = System.Web.Http.RouteParameter.Optional }
+                );
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
         }
     }
 }
