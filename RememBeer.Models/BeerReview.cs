@@ -17,6 +17,7 @@ namespace RememBeer.Models
 
         public virtual Beer Beer { get; set; }
 
+        [Required]
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
@@ -32,9 +33,9 @@ namespace RememBeer.Models
         [Required]
         public string Description { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
-        public DateTime ModifiedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
 
         public bool IsPublic { get; set; }
 

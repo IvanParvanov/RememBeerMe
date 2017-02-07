@@ -5,6 +5,7 @@ using System.Web.Http;
 using RememBeer.Data.DbContexts;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Models;
+using RememBeer.WebClient.Api.Dtos;
 
 namespace RememBeer.WebClient.Api
 {
@@ -12,7 +13,7 @@ namespace RememBeer.WebClient.Api
     {
         private readonly IRepository<Beer> beers;
 
-        //TODO: DI!
+        //TODO: DI & use service
         public BeersController()
         {
             var db = new RememBeerMeDbContext();
@@ -24,7 +25,7 @@ namespace RememBeer.WebClient.Api
             this.beers = beers;
         }
 
-        // GET api/<controller>
+        // GET api/Beers
         public IEnumerable<BeerDto> Get()
         {
             return this.beers.GetAll()
@@ -37,10 +38,11 @@ namespace RememBeer.WebClient.Api
                                     });
         }
 
+        // GET api/Beers?name={name}
         public IEnumerable<BeerDto> Get(string name)
         {
             return this.beers
-                       .GetAll((beer) => beer.Name.StartsWith(name), beer => beer.Name)
+                       .GetAll((beer) => beer.Name.StartsWith(name) || beer.Brewery.Name.StartsWith(name), beer => beer.Name)
                        .Select(b => new BeerDto()
                                     {
                                         Id = b.Id,
@@ -50,21 +52,10 @@ namespace RememBeer.WebClient.Api
                                     });
         }
 
-        // GET api/<controller>/5
+        // GET api/Beers/5
         public Beer Get(int id)
         {
             return this.beers.GetById(id);
         }
-    }
-
-    public class BeerDto
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public int BreweryId { get; set; }
-
-        public string BreweryName { get; set; }
     }
 }

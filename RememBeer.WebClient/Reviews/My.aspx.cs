@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Microsoft.AspNet.Identity;
+
 using RememBeer.Business.Reviews.My;
 using RememBeer.Business.Reviews.My.Contracts;
 using RememBeer.Models;
@@ -17,6 +19,8 @@ namespace RememBeer.WebClient.Reviews
         public event EventHandler<EventArgs> OnInitialise;
 
         public event EventHandler<IBeerReviewInfoEventArgs> ReviewUpdate;
+
+        public event EventHandler<IBeerReviewInfoEventArgs> CreateReview;
 
         public string SuccessMessageText
         {
@@ -50,7 +54,10 @@ namespace RememBeer.WebClient.Reviews
 
         public void InsertReview(BeerReview newReview)
         {
+            var userId = this.User.Identity.GetUserId();
+            newReview.UserId = userId;
             var args = this.EventArgsFactory.CreateBeerReviewInfoEventArgs(newReview);
+            this.CreateReview?.Invoke(this, args);
         }
     }
 }

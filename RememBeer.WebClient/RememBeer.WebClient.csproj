@@ -249,8 +249,10 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Reviews\All.aspx" />
     <Content Include="Reviews\My.aspx" />
+    <Content Include="Scripts\autocomplete.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\devbridge-autocomplete.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -371,6 +373,7 @@
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Api\BeersController.cs" />
+    <Compile Include="Api\Dtos\BeerDto.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>

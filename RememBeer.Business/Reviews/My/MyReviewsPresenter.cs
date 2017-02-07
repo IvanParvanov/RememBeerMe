@@ -15,10 +15,26 @@ namespace RememBeer.Business.Reviews.My
             : base(reviewService, view)
         {
             this.View.OnInitialise += this.OnViewInitialise;
-            this.View.ReviewUpdate += this.OnReviewUpdate;
+            this.View.ReviewUpdate += this.OnUpdateReview;
+            this.View.CreateReview += this.OnCreateReview;
         }
 
-        private void OnReviewUpdate(object sender, IBeerReviewInfoEventArgs e)
+        private void OnCreateReview(object sender, IBeerReviewInfoEventArgs e)
+        {
+            try
+            {
+                this.ReviewService.CreateReview(e.BeerReview);
+                this.View.SuccessMessageText = "Review has been successfully created!";
+                this.View.SuccessMessageVisible = true;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+        private void OnUpdateReview(object sender, IBeerReviewInfoEventArgs e)
         {
             var review = (BeerReview)e.BeerReview;
             try

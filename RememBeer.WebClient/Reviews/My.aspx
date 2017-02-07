@@ -65,7 +65,7 @@
                     </asp:RequiredFieldValidator>
 
                     <h5 class="media-heading"><%#: Item.Beer.Brewery.Name %></h5>
-                    <h5 class="text-right"><%#: Item.CreatedAt.ToShortDateString() %></h5>
+                    <h5 class="text-right"><%#: Item.CreatedAt?.ToShortDateString() %></h5>
                     <h5 class="media-heading">Description: </h5>
                     <p>
                         <asp:TextBox runat="server"
@@ -108,7 +108,7 @@
                             </uc:BeerRatingSelect>
                         </li>
                     </ul>
-                    <asp:Button runat="server" ID="SaveButton"  ValidationGroup="Edit" CssClass="btn btn-success" CommandName="Update" Text="Save"/>
+                    <asp:Button runat="server" ID="SaveButton" ValidationGroup="Edit" CssClass="btn btn-success" CommandName="Update" Text="Save"/>
                     <asp:Button runat="server" ID="CancelButton" CssClass="btn btn-warning" CommandName="Cancel" Text="Cancel"/>
                 </div>
             </div>
@@ -127,6 +127,30 @@
                     <h4 class="modal-title">Create a new review</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="TextBox4" Text="Beer: "></asp:Label>
+                        <asp:TextBox runat="server"
+                                     ID="TextBox4"
+                                     ValidationGroup="Create"
+                                     Text=''
+                                     ClientIDMode="Predictable"
+                                     CssClass="form-control">
+                        </asp:TextBox>
+
+                        <asp:HiddenField runat="server"
+                                         ID="HiddenBeerId"
+                                         ClientIDMode="Predictable"
+                                         Value='<%#Bind("BeerId") %>'>
+                        </asp:HiddenField>
+                        <asp:RequiredFieldValidator runat="server"
+                                                    ControlToValidate="TextBox4"
+                                                    CssClass="text-danger"
+                                                    ValidationGroup="Create"
+                                                    ErrorMessage="Beer is required">
+                        </asp:RequiredFieldValidator>
+                    </div>
+                    <script src="/Scripts/devbridge-autocomplete.min.js"></script>
+                    <script src="/Scripts/autocomplete.js"></script>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="TextBox3" Text="Place: "></asp:Label>
                         <asp:TextBox runat="server"

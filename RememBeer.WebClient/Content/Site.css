@@ -5,7 +5,9 @@ body {
 }
 
 /* Wrapping element */
+
 /* Set some basic padding to keep content from hitting the edges */
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -15,24 +17,22 @@ body {
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
-.dl-horizontal dt {
-    white-space: normal;
-}
+
+.dl-horizontal dt { white-space: normal; }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="tel"],
-input[type="select"] {
-    max-width: 280px;
-}
+input[type="select"] { max-width: 280px; }
 
 /* Responsive: Portrait tablets and up */
+
 @media screen and (min-width: 768px) {
-    .jumbotron {
-        margin-top: 20px;
-    }
+    .jumbotron { margin-top: 20px; }
+
     .body-content {
         padding: 0;
         margin-top: 20px;
@@ -40,5 +40,36 @@ input[type="select"] {
 }
 
 .spaced {
-    margin: 5px;
+     margin: 5px;
+}
+
+.autocomplete-suggestions {
+    border: 1px solid #999;
+    background: #FFF;
+    overflow: auto;
+    border-radius: 2px 2px 5px 5px;
+}
+
+.autocomplete-suggestion {
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.autocomplete-selected {
+     background: #F0F0F0;
+}
+
+.autocomplete-suggestions strong {
+    font-weight: normal;
+    color: #3399FF;
+}
+
+.autocomplete-group {
+     padding: 2px 5px;
+}
+
+.autocomplete-group strong {
+    display: block;
+    border-bottom: 1px solid #000;
 }

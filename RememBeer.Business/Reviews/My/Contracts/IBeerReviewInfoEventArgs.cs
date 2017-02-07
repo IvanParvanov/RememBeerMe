@@ -1,9 +1,10 @@
-﻿using RememBeer.Models.Contracts;
+﻿using RememBeer.Models;
+using RememBeer.Models.Contracts;
 
 namespace RememBeer.Business.Reviews.My.Contracts
 {
     public interface IBeerReviewInfoEventArgs
     {
-        IBeerReview BeerReview { get; set; }
+        BeerReview BeerReview { get; set; }
     }
 }
