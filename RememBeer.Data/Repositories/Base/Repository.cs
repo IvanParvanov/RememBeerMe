@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -81,8 +82,9 @@ namespace RememBeer.Data.Repositories.Base
 
         public void Update(T entity)
         {
-            var entry = this.AttachIfDetached(entity);
-            entry.State = EntityState.Modified;
+            this.DbSet.AddOrUpdate(entity);
+            //var entry = this.AttachIfDetached(entity);
+            //entry.State = EntityState.Modified;
         }
 
         public void Delete(T entity)

@@ -2,40 +2,42 @@
 
 using Microsoft.AspNet.Identity;
 
+using RememBeer.Business.Reviews.Common.Presenters;
 using RememBeer.Business.Reviews.My.Contracts;
 using RememBeer.Data.Services;
-
-using WebFormsMvp;
+using RememBeer.Models;
 
 namespace RememBeer.Business.Reviews.My
 {
-    public class MyReviewsPresenter : Presenter<IMyReviewsView>
+    public class MyReviewsPresenter : BeerReviewPresenter<IMyReviewsView>
     {
-        private readonly IBeerReviewService reviewService;
-
         public MyReviewsPresenter(IBeerReviewService reviewService, IMyReviewsView view)
-            : base(view)
+            : base(reviewService, view)
         {
-            if (reviewService == null)
-            {
-                throw new ArgumentNullException(nameof(reviewService));
-            }
-
-            this.reviewService = reviewService;
             this.View.OnInitialise += this.OnViewInitialise;
             this.View.ReviewUpdate += this.OnReviewUpdate;
         }
 
         private void OnReviewUpdate(object sender, IBeerReviewInfoEventArgs e)
         {
-            var review = e.BeerReview;
-            this.reviewService.UpdateReview(review);
+            var review = (BeerReview)e.BeerReview;
+            try
+            {
+                this.ReviewService.UpdateReview(review);
+            }
+            catch (Exception ex)
+            {
+                this.View.SuccessMessageText = ex.Message;
+                this.View.SuccessMessageVisible = true;
+            }
         }
 
         private void OnViewInitialise(object sender, EventArgs e)
         {
+            this.View.SuccessMessageVisible = false;
+
             var userId = this.HttpContext?.User?.Identity.GetUserId();
-            var beerReviews = this.reviewService.GetReviewsForUser(userId);
+            var beerReviews = this.ReviewService.GetReviewsForUser(userId);
 
             this.View.Model.Reviews = beerReviews;
         }

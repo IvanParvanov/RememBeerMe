@@ -117,6 +117,7 @@
     <Compile Include="MvpPresenterFactory\IMvpPresenterFactory.cs" />
     <Compile Include="MvpPresenterFactory\MvpPresenterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reviews\Common\Presenters\BeerReviewPresenter.cs" />
     <Compile Include="Reviews\My\BeerReviewInfoEventArgs.cs" />
     <Compile Include="Reviews\My\Contracts\IBeerReviewInfoEventArgs.cs" />
     <Compile Include="Reviews\My\Contracts\IMyReviewsView.cs" />

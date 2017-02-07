@@ -9,5 +9,9 @@ namespace RememBeer.Business.Reviews.My.Contracts
         event EventHandler<EventArgs> OnInitialise;
 
         event EventHandler<IBeerReviewInfoEventArgs> ReviewUpdate;
+
+        string SuccessMessageText { get; set; }
+
+        bool SuccessMessageVisible { get; set; }
     }
 }

@@ -216,6 +216,7 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Admin\Web.config" />
+    <Content Include="Reviews\UserControls\BeerRatingSelect.ascx" />
     <Content Include="Reviews\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Reviews\All.aspx" />
@@ -253,6 +254,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="UserControls\UserNotifications.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -385,6 +387,13 @@
     <Compile Include="Reviews\My.aspx.designer.cs">
       <DependentUpon>My.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reviews\UserControls\BeerRatingSelect.ascx.cs">
+      <DependentUpon>BeerRatingSelect.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reviews\UserControls\BeerRatingSelect.ascx.designer.cs">
+      <DependentUpon>BeerRatingSelect.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -400,6 +409,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UserControls\UserNotifications.ascx.cs">
+      <DependentUpon>UserNotifications.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserNotifications.ascx.designer.cs">
+      <DependentUpon>UserNotifications.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

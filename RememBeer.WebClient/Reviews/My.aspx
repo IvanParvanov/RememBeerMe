@@ -1,18 +1,40 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="My.aspx.cs" Inherits="RememBeer.WebClient.Reviews.My" %>
+﻿<%@ Page Title="My Beers" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="My.aspx.cs" Inherits="RememBeer.WebClient.Reviews.My" %>
+
+<%@ Register TagPrefix="uc" TagName="BeerRatingSelect" Src="~/UserControls/BeerRatingSelect.ascx" %>
+<%@ Register TagPrefix="uc" TagName="Notifier" Src="~/UserControls/UserNotifications.ascx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:PlaceHolder runat="server" ID="SuccessMessagePlaceholder" Visible="false">
-        <div class="alert alert-dismissible alert-success">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <asp:Label ID="SuccessMessage" runat="server" Text="asdkoasasldjaskldshkljashdjkashdkjashdjkashdasjklhda"></asp:Label>
-        </div>
-    </asp:PlaceHolder>
+    <uc:Notifier runat="server" ID="Notifier"/>
     <div class="container">
         <h1>Your beers</h1>
         <asp:ListView ID="ReviewsListView" runat="server"
                       ItemType="RememBeer.Models.BeerReview"
                       SelectMethod="Select"
                       UpdateMethod="UpdateReview"
-            DataKeyNames="BeerId, CreatedAt, Id, IsDeleted, IsPublic, ModifiedAt, UserId">
+                      DataKeyNames="BeerId, CreatedAt, Id, IsDeleted, IsPublic, ModifiedAt, UserId">
+            <LayoutTemplate>
+                <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
+                <div class="text-center">
+                    <asp:DataPager runat="server" PagedControlID="ReviewsListView" PageSize="10">
+                        <Fields>
+                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-success btn-xs"
+                                                        ButtonType="Link"
+                                                        ShowFirstPageButton="false"
+                                                        ShowPreviousPageButton="true"
+                                                        ShowNextPageButton="false"/>
+
+                            <asp:NumericPagerField ButtonType="Link"
+                                                   CurrentPageLabelCssClass="btn btn-primary btn-xs"
+                                                   NumericButtonCssClass="btn btn-success btn-xs"/>
+                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-success btn-xs"
+                                                        ButtonType="Link"
+                                                        ShowNextPageButton="true"
+                                                        ShowLastPageButton="false"
+                                                        ShowPreviousPageButton="false"/>
+                        </Fields>
+                    </asp:DataPager>
+                </div>
+            </LayoutTemplate>
             <ItemTemplate>
                 <div class="container">
                     <div class="well">
@@ -65,6 +87,7 @@
                                      ID="TbDescription"
                                      CssClass="form-control"
                                      TextMode="MultiLine"
+                                     Rows="6"
                                      Text='<%#Bind("Description") %>'>
                         </asp:TextBox>
                     </div>
@@ -76,59 +99,28 @@
                                      CssClass="form-control">
                         </asp:TextBox>
                     </div>
-
                     <div class="form-group">
                         <label>Overall Score</label>
-                        <asp:DropDownList ID="OverallDropDown" CssClass="form-control" runat="server" SelectedValue='<%#Bind("Overall") %>'>
-                            <Items>
-                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                <asp:ListItem Text="4" Value="4"></asp:ListItem>
-                                <asp:ListItem Text="5" Value="5"></asp:ListItem>
-                            </Items>
-                        </asp:DropDownList>
+                        <uc:BeerRatingSelect ID="OverallSelect" runat="server" SelectedValue='<%#:Bind("Overall") %>'>
+                        </uc:BeerRatingSelect>
                     </div>
                     <div class="form-group">
                         <label>Looks</label>
-                        <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" SelectedValue='<%#Bind("Look") %>'>
-                            <Items>
-                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                <asp:ListItem Text="4" Value="4"></asp:ListItem>
-                                <asp:ListItem Text="5" Value="5"></asp:ListItem>
-                            </Items>
-                        </asp:DropDownList>
+                        <uc:BeerRatingSelect ID="LookSelect" runat="server" SelectedValue='<%#:Bind("Look") %>'>
+                        </uc:BeerRatingSelect>
                     </div>
                     <div class="form-group">
                         <label>Taste</label>
-                        <asp:DropDownList ID="DropDownList2" CssClass="form-control" runat="server" SelectedValue='<%#Bind("Taste") %>'>
-                            <Items>
-                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                <asp:ListItem Text="4" Value="4"></asp:ListItem>
-                                <asp:ListItem Text="5" Value="5"></asp:ListItem>
-                            </Items>
-                        </asp:DropDownList>
+                        <uc:BeerRatingSelect ID="TasteSelect" runat="server" SelectedValue='<%#:Bind("Taste") %>'>
+                        </uc:BeerRatingSelect>
                     </div>
                     <div class="form-group">
                         <label>Aroma</label>
-                        <asp:DropDownList ID="DropDownList3" CssClass="form-control" runat="server" SelectedValue='<%#Bind("Smell") %>'>
-                            <Items>
-                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="2" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="3" Value="3"></asp:ListItem>
-                                <asp:ListItem Text="4" Value="4"></asp:ListItem>
-                                <asp:ListItem Text="5" Value="5"></asp:ListItem>
-                            </Items>
-                        </asp:DropDownList>
+                        <uc:BeerRatingSelect ID="SmellSelect" runat="server" SelectedValue='<%#:Bind("Smell") %>'>
+                        </uc:BeerRatingSelect>
                     </div>
-
-
                     <div class="form-group">
-                        <asp:Button runat="server" CssClass="form-control" CommandName="Update"/>
+                        <asp:Button runat="server" CssClass="btn btn-success" CommandName="Update" Text="Save"/>
                     </div>
                 </div>
             </EditItemTemplate>

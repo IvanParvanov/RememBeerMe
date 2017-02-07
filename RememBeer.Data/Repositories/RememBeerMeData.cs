@@ -40,7 +40,7 @@ namespace RememBeer.Data.Repositories
 
         public IQueryable<Beer> Beers => this.beers.All;
 
-        public IQueryable<BeerReview> BeerReviews => this.beerReviews.All;
+        public IRepository<BeerReview> BeerReviews => this.beerReviews;
 
         public IQueryable<BeerType> BeerTypes => this.beerTypes.All;
 

@@ -35,7 +35,7 @@ namespace RememBeer.Business.Account.Auth
         {
             if (obj == null)
             {
-                throw new ArgumentNullException(nameof(obj));
+                throw new ArgumentNullException("context");
             }
         }
     }

@@ -5,25 +5,11 @@ using Microsoft.AspNet.Identity.Owin;
 
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
+using RememBeer.Data.Services.Contracts;
 using RememBeer.Models.Factories;
 
 namespace RememBeer.Data.Services
 {
-    public interface IUserService
-    {
-        IdentityResult RegisterUser(string username, string email, string password);
-
-        IdentityResult ChangePassword(string userId, string currentPassword, string newPassword);
-
-        IdentityResult ConfirmEmail(string userId, string code);
-
-        IApplicationUser FindByName(string name);
-
-        bool IsEmailConfirmed(string userId);
-
-        SignInStatus PasswordSignIn(string email, string password, bool isPersistent);
-    }
-
     public class UserService : IUserService
     {
         private readonly IModelFactory factory;
@@ -56,8 +42,8 @@ namespace RememBeer.Data.Services
 
         public IdentityResult RegisterUser(string username, string email, string password)
         {
-            var user = this.factory.CreateApplicationUser(username, email);
-            var result = this.userManager.Create((ApplicationUser)user, password);
+            var user = (ApplicationUser)this.factory.CreateApplicationUser(username, email);
+            var result = this.userManager.Create(user, password);
 
             // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
             //string code = manager.GenerateEmailConfirmationToken(user.Id);

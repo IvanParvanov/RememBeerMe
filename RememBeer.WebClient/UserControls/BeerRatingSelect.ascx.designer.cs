@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RememBeer.WebClient.Reviews {
+namespace RememBeer.WebClient.UserControls {
     
     
-    public partial class My {
+    public partial class BeerRating {
         
         /// <summary>
-        /// Notifier control.
+        /// DropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RememBeer.WebClient.UserControls.UserNotifications Notifier;
-        
-        /// <summary>
-        /// ReviewsListView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ReviewsListView;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList;
     }
 }
