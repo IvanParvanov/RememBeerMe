@@ -20,14 +20,14 @@ namespace RememBeer.WebClient.Reviews
 
         public string SuccessMessageText
         {
-            get { return this.Notifier.SuccessMessageText; }
-            set { this.Notifier.SuccessMessageText = value; }
+            get { return this.Notifier.SuccessText; }
+            set { this.Notifier.SuccessText = value; }
         }
 
         public bool SuccessMessageVisible
         {
-            get { return this.Notifier.SuccessMessageVisible; }
-            set { this.Notifier.SuccessMessageVisible = value; }
+            get { return this.Notifier.SuccessVisible; }
+            set { this.Notifier.SuccessVisible = value; }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -46,6 +46,11 @@ namespace RememBeer.WebClient.Reviews
         {
             var args = this.EventArgsFactory.CreateBeerReviewInfoEventArgs(newReview);
             this.ReviewUpdate?.Invoke(this, args);
+        }
+
+        public void InsertReview(BeerReview newReview)
+        {
+            var args = this.EventArgsFactory.CreateBeerReviewInfoEventArgs(newReview);
         }
     }
 }

@@ -84,7 +84,7 @@ namespace RememBeer.Tests.Business.Account.Confirm.Presenter
         }
 
         [Test]
-        public void CallConfirmEmailAndChangeSuccessVisibility_WhenConfirmationSucceeded()
+        public void ChangeSuccessVisibility_WhenConfirmationSucceeded()
         {
             const string Id = "id";
             const string Code = "code";
@@ -103,7 +103,6 @@ namespace RememBeer.Tests.Business.Account.Confirm.Presenter
             var presnter = new ConfirmPresenter(userService.Object, mockedView.Object);
             mockedView.Raise(x => x.OnSubmit += null, mockedView.Object, mockedArgs.Object);
 
-            userService.Verify(f => f.ConfirmEmail(Id, Code), Times.Once());
             mockedView.VerifySet(v => v.SuccessPanelVisible = true);
         }
     }

@@ -24,6 +24,8 @@ namespace RememBeer.Business.Reviews.My
             try
             {
                 this.ReviewService.UpdateReview(review);
+                this.View.SuccessMessageText = "Review successfully updated!";
+                this.View.SuccessMessageVisible = true;
             }
             catch (Exception ex)
             {

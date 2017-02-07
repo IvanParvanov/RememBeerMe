@@ -18,12 +18,12 @@ namespace RememBeer.Data.Migrations
                         Look = c.Int(nullable: false),
                         Smell = c.Int(nullable: false),
                         Taste = c.Int(nullable: false),
-                        Description = c.String(nullable: false),
-                        CreatedAt = c.DateTime(nullable: false),
-                        ModifiedAt = c.DateTime(nullable: false),
-                        IsPublic = c.Boolean(nullable: false),
-                        IsDeleted = c.Boolean(nullable: false),
-                        Place = c.String(),
+                        Description = c.String(nullable: false, maxLength: 2048),
+                        CreatedAt = c.DateTime(nullable: false, defaultValue: DateTime.Now),
+                        ModifiedAt = c.DateTime(nullable: false, defaultValue: DateTime.Now),
+                        IsPublic = c.Boolean(nullable: false, defaultValue: true),
+                        IsDeleted = c.Boolean(nullable: false, defaultValue: false),
+                        Place = c.String(nullable: false, maxLength: 512),
                         User_Id = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
@@ -38,7 +38,7 @@ namespace RememBeer.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         BeerTypeId = c.Int(nullable: false),
-                        Name = c.String(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 512),
                         BreweryId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

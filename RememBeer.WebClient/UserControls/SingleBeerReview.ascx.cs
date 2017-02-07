@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 using RememBeer.Models.Contracts;
 
@@ -16,7 +11,11 @@ namespace RememBeer.WebClient.UserControls
         public bool IsEdit
         {
             get { return this.EditButton.Visible; }
-            set { this.EditButton.Visible = value; }
+            set
+            {
+                this.DeletePlaceholder.Visible = value;
+                this.EditButton.Visible = value;
+            }
         }
 
         public IBeerReview Review

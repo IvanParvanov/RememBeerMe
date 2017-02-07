@@ -66,7 +66,7 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object);
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
-            userService.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
+            userService.Verify(s => s.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
         }
 
         [Test]
@@ -94,7 +94,6 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
             userService.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
-            mockedIdentityHelper.Verify(i => i.RedirectToReturnUrl(ReturnUrl, presenter.Response), Times.Once());
         }
 
         [Test]
@@ -121,7 +120,6 @@ namespace RememBeer.Tests.Business.Account.Login.Presenter
 
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
-            userService.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
             mockedIdentityHelper.Verify(i => i.RedirectToReturnUrl(ReturnUrl, presenter.Response), Times.Once());
         }
 

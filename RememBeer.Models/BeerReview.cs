@@ -8,6 +8,11 @@ namespace RememBeer.Models
 {
     public class BeerReview : Identifiable, IBeerReview
     {
+        public BeerReview()
+        {
+            this.IsPublic = true;
+        }
+
         public int BeerId { get; set; }
 
         public virtual Beer Beer { get; set; }

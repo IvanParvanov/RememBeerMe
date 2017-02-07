@@ -25,12 +25,7 @@ namespace RememBeer.WebClient.App_Start
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(() =>
-                                    {
-                                        var kernel = CreateKernel();
-
-                                        return kernel;
-                                    });
+            bootstrapper.Initialize(CreateKernel);
         }
 
         /// <summary>

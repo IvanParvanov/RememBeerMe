@@ -38,3 +38,7 @@ input[type="select"] {
         margin-top: 20px;
     }
 }
+
+.spaced {
+    margin: 5px;
+}
