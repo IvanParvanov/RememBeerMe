@@ -65,7 +65,7 @@
                     </asp:RequiredFieldValidator>
 
                     <h5 class="media-heading"><%#: Item.Beer.Brewery.Name %></h5>
-                    <h5 class="text-right"><%#: Item.CreatedAt?.ToShortDateString() %></h5>
+                    <h5 class="text-right"><%#: Item.CreatedAt.ToShortDateString() %></h5>
                     <h5 class="media-heading">Description: </h5>
                     <p>
                         <asp:TextBox runat="server"

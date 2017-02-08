@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 using RememBeer.Common.Identity.Models;
 using RememBeer.Models.Contracts;
@@ -31,16 +33,21 @@ namespace RememBeer.Models
         public int Taste { get; set; }
 
         [Required]
+        [MaxLength(2048)]
         public string Description { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime CreatedAt { get; set; }
 
-        public DateTime? ModifiedAt { get; set; }
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime ModifiedAt { get; set; }
 
         public bool IsPublic { get; set; }
 
         public bool IsDeleted { get; set; }
 
+        [MaxLength(512)]
+        [Required]
         public string Place { get; set; }
     }
 }

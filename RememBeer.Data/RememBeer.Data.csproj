@@ -81,6 +81,18 @@
   <ItemGroup>
     <Compile Include="DbContexts\Contracts\IRememBeerMeDbContext.cs" />
     <Compile Include="DbContexts\RememBeerMeDbContext.cs" />
+    <Compile Include="Migrations\201702081137574_Initial.cs" />
+    <Compile Include="Migrations\201702081137574_Initial.Designer.cs">
+      <DependentUpon>201702081137574_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702081154127_DateTimeFixes.cs" />
+    <Compile Include="Migrations\201702081154127_DateTimeFixes.Designer.cs">
+      <DependentUpon>201702081154127_DateTimeFixes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702081159547_DateTimeFixes1.cs" />
+    <Compile Include="Migrations\201702081159547_DateTimeFixes1.Designer.cs">
+      <DependentUpon>201702081159547_DateTimeFixes1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Base\Repository.cs" />
@@ -111,6 +123,17 @@
       <Project>{08b751c2-a59b-4c0d-a981-5e03f48e5722}</Project>
       <Name>RememBeer.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702081137574_Initial.resx">
+      <DependentUpon>201702081137574_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702081154127_DateTimeFixes.resx">
+      <DependentUpon>201702081154127_DateTimeFixes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702081159547_DateTimeFixes1.resx">
+      <DependentUpon>201702081159547_DateTimeFixes1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

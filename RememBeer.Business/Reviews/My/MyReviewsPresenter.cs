@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Validation;
 
 using Microsoft.AspNet.Identity;
 
@@ -27,9 +28,23 @@ namespace RememBeer.Business.Reviews.My
                 this.View.SuccessMessageText = "Review has been successfully created!";
                 this.View.SuccessMessageVisible = true;
             }
-            catch (Exception)
+            catch ( DbEntityValidationException ex )
             {
-                
+                foreach ( var eve in ex.EntityValidationErrors )
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach ( var ve in eve.ValidationErrors )
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+            catch (Exception ex)
+            {
+                //TODO: Error handling
                 throw;
             }
         }

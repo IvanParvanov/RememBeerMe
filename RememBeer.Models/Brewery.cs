@@ -15,12 +15,15 @@ namespace RememBeer.Models
         }
 
         [Required]
+        [MaxLength(512)]
         public string Name { get; set; }
 
         [Required]
+        [MaxLength(2048)]
         public string Description { get; set; }
 
         [Required]
+        [MaxLength(128)]
         public string Country { get; set; }
 
         public virtual ICollection<Beer> Beers

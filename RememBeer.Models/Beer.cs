@@ -17,6 +17,7 @@ namespace RememBeer.Models
         public int BeerTypeId { get; set; }
 
         [Required]
+        [MaxLength(512)]
         public string Name { get; set; }
 
         public virtual Brewery Brewery { get; set; }

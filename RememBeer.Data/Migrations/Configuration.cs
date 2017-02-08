@@ -8,17 +8,18 @@ namespace RememBeer.Data.Migrations
     {
         public Configuration()
         {
-            this.AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationsEnabled = true;
             this.ContextKey = "RememBeer.Data.DbContexts.RememBeerMeDbContext";
         }
 
         protected override void Seed(RememBeer.Data.DbContexts.RememBeerMeDbContext context)
         {
-            if (context.Beers.Count() < 100)
-            {
-                var seedQuery = File.ReadAllText("D:\\RememBeerDbSeed.sql");
-                context.Database.ExecuteSqlCommand(seedQuery);
-            }
+            //if ( !context.Beers.Any() )
+            //{
+            //    var seedQuery = File.ReadAllText("D:\\RememBeerDbSeed.sql");
+            //    context.Database.ExecuteSqlCommand(seedQuery);
+            //}
         }
     }
 }

@@ -24,9 +24,9 @@ namespace RememBeer.Models.Contracts
 
         string Description { get; set; }
 
-        DateTime? CreatedAt { get; set; }
+        DateTime CreatedAt { get; set; }
 
-        DateTime? ModifiedAt { get; set; }
+        DateTime ModifiedAt { get; set; }
 
         bool IsPublic { get; set; }
 

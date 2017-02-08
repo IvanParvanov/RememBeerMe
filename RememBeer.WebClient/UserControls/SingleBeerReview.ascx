@@ -10,7 +10,7 @@
                 <h3 class="media-heading">
                     <%#: Review.Beer.Name %> <span><em>@<%#:Review.Place %></em></span></h3>
                 <h5 class="media-heading"><%#: Review.Beer.Brewery.Name %></h5>
-                <h5 class="text-right"><%#: Review.CreatedAt?.ToShortDateString() %></h5>
+                <h5 class="text-right"><%#: Review.CreatedAt.ToShortDateString() %></h5>
                 <p><%#: Review.Description %></p>
                 <h6>
                     <em>Bottom line:</em>

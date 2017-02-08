@@ -19,7 +19,7 @@ namespace RememBeer.Data.DbContexts
         public RememBeerMeDbContext()
             : base("name=RememBeerMeDbContext")
         {
-            this.Database.CreateIfNotExists();
+            //this.Database.CreateIfNotExists();
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
