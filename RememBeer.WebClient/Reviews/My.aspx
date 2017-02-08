@@ -3,10 +3,12 @@
 <%@ Register TagPrefix="uc" TagName="BeerRatingSelect" Src="~/UserControls/BeerRatingSelect.ascx" %>
 <%@ Register TagPrefix="uc" TagName="Notifier" Src="~/UserControls/UserNotifications.ascx" %>
 <%@ Register TagPrefix="uc" TagName="BeerReview" Src="~/UserControls/SingleBeerReview.ascx" %>
+<%@ Register TagPrefix="uc" Namespace="RememBeer.WebClient.UserControls" Assembly="RememBeer.WebClient" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <uc:Notifier runat="server" ID="Notifier"/>
 <div class="container">
+
 <asp:ListView ID="ReviewsListView" runat="server"
               InsertItemPosition="FirstItem"
               ItemType="RememBeer.Models.BeerReview"
@@ -15,9 +17,11 @@
               InsertMethod="InsertReview"
               DataKeyNames="BeerId, CreatedAt, Id, IsDeleted, IsPublic, ModifiedAt, UserId">
 <LayoutTemplate>
+    <%--    <asp:UpdatePanel runat="server" ID="UpdatePanel">
+        <ContentTemplate>--%>
     <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
     <div class="text-center">
-        <asp:DataPager runat="server" PagedControlID="ReviewsListView" PageSize="10">
+        <asp:DataPager runat="server" PagedControlID="ReviewsListView" PageSize="1">
             <Fields>
                 <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-xs"
                                             ButtonType="Link"
@@ -35,6 +39,8 @@
             </Fields>
         </asp:DataPager>
     </div>
+    <%--        </ContentTemplate>
+    </asp:UpdatePanel>--%>
 </LayoutTemplate>
 <ItemTemplate>
     <uc:BeerReview runat="server" IsEdit="True" Review="<%# Item %>"/>
@@ -117,9 +123,9 @@
 </EditItemTemplate>
 <InsertItemTemplate>
     <div class="text-center spaced">
-        <a type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#asdadasdasdas">Create new</a>
+        <a type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#createNew">Create new</a>
     </div>
-    <div id="asdadasdasdas" class="modal fade" role="dialog">
+    <div id="createNew" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -136,18 +142,19 @@
                                      ClientIDMode="Predictable"
                                      CssClass="form-control">
                         </asp:TextBox>
-
-                        <asp:HiddenField runat="server"
-                                         ID="HiddenBeerId"
-                                         ClientIDMode="Predictable"
-                                         Value='<%#Bind("BeerId") %>'>
-                        </asp:HiddenField>
-                        <asp:RequiredFieldValidator runat="server"
-                                                    ControlToValidate="TextBox4"
+                        <uc:ValidatedHiddenField
+                            runat="server"
+                            ID="HiddenBeerId"
+                            ClientIDMode="Predictable"
+                            Value='<%#Bind("BeerId") %>'>
+                        </uc:ValidatedHiddenField>
+                         <asp:RequiredFieldValidator runat="server"
+                                                    ControlToValidate="HiddenBeerId"
                                                     CssClass="text-danger"
                                                     ValidationGroup="Create"
-                                                    ErrorMessage="Beer is required">
+                                                    ErrorMessage="Please select a beer from the dropdown">
                         </asp:RequiredFieldValidator>
+
                     </div>
                     <script src="/Scripts/devbridge-autocomplete.min.js"></script>
                     <script src="/Scripts/autocomplete.js"></script>
@@ -245,5 +252,6 @@
     </div>
 </InsertItemTemplate>
 </asp:ListView>
+
 </div>
 </asp:Content>

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using RememBeer.Data.Repositories.Base;
 using RememBeer.Data.Repositories.Contracts;
 using RememBeer.Models;
 using RememBeer.Models.Contracts;
@@ -11,9 +12,9 @@ namespace RememBeer.Data.Services
     public class BeerReviewService : IBeerReviewService
     {
         private readonly IModelFactory factory;
-        private readonly IBeerReviewsData data;
+        private readonly IRepository<BeerReview> data;
 
-        public BeerReviewService(IBeerReviewsData data, IModelFactory factory)
+        public BeerReviewService(IRepository<BeerReview> data, IModelFactory factory)
         {
             this.data = data;
             this.factory = factory;
@@ -21,19 +22,19 @@ namespace RememBeer.Data.Services
 
         public ICollection<BeerReview> GetReviewsForUser(string user)
         {
-            return this.data.BeerReviews.GetAll(x => x.UserId == user, x => x.CreatedAt).ToList();
+            return this.data.GetAll(x => x.UserId == user, x => x.CreatedAt).ToList();
         }
 
         public void UpdateReview(BeerReview review)
         {
-            this.data.BeerReviews.Update(review);
-            this.data.BeerReviews.SaveChanges();
+            this.data.Update(review);
+            this.data.SaveChanges();
         }
 
         public void CreateReview(BeerReview review)
         {
-            this.data.BeerReviews.Add(review);
-            this.data.BeerReviews.SaveChanges();
+            this.data.Add(review);
+            this.data.SaveChanges();
         }
     }
 

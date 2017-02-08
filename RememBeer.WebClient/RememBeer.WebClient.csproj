@@ -457,6 +457,7 @@
     <Compile Include="UserControls\UserNotifications.ascx.designer.cs">
       <DependentUpon>UserNotifications.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ValidatedHiddenField.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
