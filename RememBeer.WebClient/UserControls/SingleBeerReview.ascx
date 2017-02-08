@@ -8,14 +8,14 @@
                 <br/>
             </div>
             <div class="col-lg-9">
-                <h3 class="media-heading">
-                    <%#: Review.Beer.Name %> <span><em>@<%#:Review.Place %></em></span></h3>
-                <h5 class="media-heading"><%#: Review.Beer.Brewery.Name %></h5>
-                <h5 class="text-right"><%#: Review.CreatedAt.ToShortDateString() %></h5>
+                <h4 class="media-heading">
+                    <%#: Review.Beer.Name %> <span><em>@<%#:Review.Place %></em></span></h4>
+                <h6 class="media-heading"><%#: Review.Beer.Brewery.Name %></h6>
+                <p><small class="text-right"><%#: Review.CreatedAt.ToShortDateString() %></small></p>
                 <p><%#: Review.Description %></p>
-                <h6>
-                    <em>Bottom line:</em>
-                </h6>
+                <p>
+                    <small><em>Bottom line:</em></small>
+                </p>
                 <ul class="list-inline">
                     <li>
                         Overall:

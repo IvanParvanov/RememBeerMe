@@ -55,7 +55,7 @@ namespace RememBeer.WebClient.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox RememberMe;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox RememberMe;
         
         /// <summary>
         /// RegisterHyperLink control.

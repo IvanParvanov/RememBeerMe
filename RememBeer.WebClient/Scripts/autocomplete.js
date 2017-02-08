@@ -3,10 +3,12 @@
         .autocomplete({
             serviceUrl: "/api/Beers",
             paramName: "name",
+            dataType: "json",
+            showNoSuggestionNotice: true,
             transformResult: function(response) {
                 return {
                     suggestions: $.map(
-                        JSON.parse(response),
+                       response,
                         function(dataItem) {
                             return {
                                 value: dataItem.Name + ", " + dataItem.BreweryName,

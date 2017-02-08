@@ -48,7 +48,6 @@
     </asp:UpdatePanel>
 </LayoutTemplate>
 <ItemTemplate>
-
     <uc:BeerReview runat="server" IsEdit="True" Review="<%# Item %>"/>
 </ItemTemplate>
 <EditItemTemplate>
@@ -72,6 +71,7 @@
                     <asp:RequiredFieldValidator runat="server"
                                                 ControlToValidate="TextBox1"
                                                 CssClass="text-danger"
+                                                Display="Dynamic"
                                                 ValidationGroup="Edit"
                                                 ErrorMessage="Place is required">
                     </asp:RequiredFieldValidator>
@@ -91,6 +91,8 @@
                         <asp:RequiredFieldValidator runat="server"
                                                     ControlToValidate="TextBox2"
                                                     CssClass="text-danger"
+                                                Display="Dynamic"
+
                                                     ValidationGroup="Edit"
                                                     ErrorMessage="Place is required">
                         </asp:RequiredFieldValidator>
@@ -157,6 +159,8 @@
                         <asp:RequiredFieldValidator runat="server"
                                                     ControlToValidate="HiddenBeerId"
                                                     CssClass="text-danger"
+                                                Display="Dynamic"
+
                                                     ValidationGroup="Create"
                                                     ErrorMessage="Please select a beer from the dropdown">
                         </asp:RequiredFieldValidator>
@@ -174,6 +178,8 @@
                         <asp:RequiredFieldValidator runat="server"
                                                     ControlToValidate="TextBox3"
                                                     CssClass="text-danger"
+                                                Display="Dynamic"
+
                                                     ValidationGroup="Create"
                                                     ErrorMessage="Place is required">
                         </asp:RequiredFieldValidator>
@@ -191,6 +197,8 @@
                         <asp:RequiredFieldValidator runat="server"
                                                     ValidationGroup="Create"
                                                     ControlToValidate="TextBox2"
+                                                Display="Dynamic"
+
                                                     CssClass="text-danger"
                                                     ErrorMessage="Description is required">
                         </asp:RequiredFieldValidator>
