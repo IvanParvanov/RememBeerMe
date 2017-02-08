@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SingleBeerReview.ascx.cs" Inherits="RememBeer.WebClient.UserControls.SingleBeerReview" %>
+<%@ Register TagPrefix="uc" Namespace="RememBeer.WebClient.UserControls" Assembly="RememBeer.WebClient" %>
 <div class="container">
     <div class="well">
         <div class="media">
@@ -37,9 +38,10 @@
                     </li>
                 </ul>
                 <asp:Button runat="server" CssClass="btn btn-warning" ID="EditButton" CommandName="Edit" Text="Edit" Visible="False"/>
+
                 <asp:PlaceHolder runat="server" ID="DeletePlaceholder" Visible="False">
-                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm">Delete</a>
-                    <div id="confirm" class="modal fade" role="dialog">
+                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target='<%# "#review" + Review.Id %>'>Delete</a>
+                    <div id='<%# "review" + Review.Id %>' class="modal fade" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">

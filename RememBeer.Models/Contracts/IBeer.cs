@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace RememBeer.Models.Contracts
 {
-    public interface IBeer
+    public interface IBeer : IIdentifiable
     {
         BeerType BeerType { get; set; }
 

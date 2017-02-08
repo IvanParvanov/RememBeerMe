@@ -12,6 +12,8 @@ namespace RememBeer.Business.Reviews.My.Contracts
 
         event EventHandler<IBeerReviewInfoEventArgs> CreateReview;
 
+        event EventHandler<IBeerReviewInfoEventArgs> ReviewDelete;
+
         string SuccessMessageText { get; set; }
 
         bool SuccessMessageVisible { get; set; }

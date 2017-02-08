@@ -1,6 +1,6 @@
 namespace RememBeer.Models.Contracts
 {
-    public interface IBeerType
+    public interface IBeerType : IIdentifiable
     {
         string Type { get; set; }
     }

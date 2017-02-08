@@ -4,7 +4,7 @@ using RememBeer.Common.Identity.Models;
 
 namespace RememBeer.Models.Contracts
 {
-    public interface IBeerReview
+    public interface IBeerReview : IIdentifiable
     {
         int BeerId { get; set; }
 

@@ -6,7 +6,11 @@
 <%@ Register TagPrefix="uc" Namespace="RememBeer.WebClient.UserControls" Assembly="RememBeer.WebClient" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<uc:Notifier runat="server" ID="Notifier"/>
+<asp:UpdatePanel runat="server" ID="UpdatePanel1">
+    <ContentTemplate>
+        <uc:Notifier runat="server" ID="Notifier"/>
+    </ContentTemplate>
+</asp:UpdatePanel>
 <div class="container">
 
 <asp:ListView ID="ReviewsListView" runat="server"
@@ -15,34 +19,36 @@
               SelectMethod="Select"
               UpdateMethod="UpdateReview"
               InsertMethod="InsertReview"
+              DeleteMethod="DeleteReview"
               DataKeyNames="BeerId, CreatedAt, Id, IsDeleted, IsPublic, ModifiedAt, UserId">
 <LayoutTemplate>
-    <%--    <asp:UpdatePanel runat="server" ID="UpdatePanel">
-        <ContentTemplate>--%>
-    <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
-    <div class="text-center">
-        <asp:DataPager runat="server" PagedControlID="ReviewsListView" PageSize="1">
-            <Fields>
-                <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-xs"
-                                            ButtonType="Link"
-                                            ShowFirstPageButton="false"
-                                            ShowPreviousPageButton="true"
-                                            ShowNextPageButton="false"/>
-                <asp:NumericPagerField ButtonType="Link"
-                                       CurrentPageLabelCssClass="btn btn-default btn-xs"
-                                       NumericButtonCssClass="btn btn-primary btn-xs"/>
-                <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-xs"
-                                            ButtonType="Link"
-                                            ShowNextPageButton="true"
-                                            ShowLastPageButton="false"
-                                            ShowPreviousPageButton="false"/>
-            </Fields>
-        </asp:DataPager>
-    </div>
-    <%--        </ContentTemplate>
-    </asp:UpdatePanel>--%>
+    <asp:UpdatePanel runat="server" ID="UpdatePanel">
+        <ContentTemplate>
+            <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
+            <div class="text-center">
+                <asp:DataPager runat="server" PagedControlID="ReviewsListView" PageSize="10">
+                    <Fields>
+                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-xs"
+                                                    ButtonType="Link"
+                                                    ShowFirstPageButton="false"
+                                                    ShowPreviousPageButton="true"
+                                                    ShowNextPageButton="false"/>
+                        <asp:NumericPagerField ButtonType="Link"
+                                               CurrentPageLabelCssClass="btn btn-default btn-xs"
+                                               NumericButtonCssClass="btn btn-primary btn-xs"/>
+                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-xs"
+                                                    ButtonType="Link"
+                                                    ShowNextPageButton="true"
+                                                    ShowLastPageButton="false"
+                                                    ShowPreviousPageButton="false"/>
+                    </Fields>
+                </asp:DataPager>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </LayoutTemplate>
 <ItemTemplate>
+
     <uc:BeerReview runat="server" IsEdit="True" Review="<%# Item %>"/>
 </ItemTemplate>
 <EditItemTemplate>
@@ -148,13 +154,12 @@
                             ClientIDMode="Predictable"
                             Value='<%#Bind("BeerId") %>'>
                         </uc:ValidatedHiddenField>
-                         <asp:RequiredFieldValidator runat="server"
+                        <asp:RequiredFieldValidator runat="server"
                                                     ControlToValidate="HiddenBeerId"
                                                     CssClass="text-danger"
                                                     ValidationGroup="Create"
                                                     ErrorMessage="Please select a beer from the dropdown">
                         </asp:RequiredFieldValidator>
-
                     </div>
                     <script src="/Scripts/devbridge-autocomplete.min.js"></script>
                     <script src="/Scripts/autocomplete.js"></script>

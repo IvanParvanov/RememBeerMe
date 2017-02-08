@@ -1,6 +1,4 @@
-﻿// MainContent_ReviewsListView_HiddenBeerId
-// MainContent_ReviewsListView_TextBox4
-(function() {
+﻿function pageLoad(sender, args) {
     $("#MainContent_ReviewsListView_TextBox4")
         .autocomplete({
             serviceUrl: "/api/Beers",
@@ -17,8 +15,12 @@
                         })
                 };
             },
-            onSelect: function (suggestion) {
+            onSelect: function(suggestion) {
                 $("#MainContent_ReviewsListView_HiddenBeerId").val(suggestion.data);
             }
         });
-})();
+
+    $('#createNew').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+}

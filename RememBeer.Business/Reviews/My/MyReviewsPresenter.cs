@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity.Validation;
+using System.Linq;
 
 using Microsoft.AspNet.Identity;
 
@@ -18,6 +19,17 @@ namespace RememBeer.Business.Reviews.My
             this.View.OnInitialise += this.OnViewInitialise;
             this.View.ReviewUpdate += this.OnUpdateReview;
             this.View.CreateReview += this.OnCreateReview;
+            this.View.ReviewDelete += this.OnDeleteReview;
+        }
+
+        private void OnDeleteReview(object sender, IBeerReviewInfoEventArgs e)
+        {
+            var id = e.BeerReview.Id;
+            this.ReviewService.DeleteReview(id);
+            this.View.Model.Reviews = this.View.Model.Reviews.Where(r => !r.IsDeleted).ToList();
+
+            this.View.SuccessMessageText = "Review deleted!";
+            this.View.SuccessMessageVisible = true;
         }
 
         private void OnCreateReview(object sender, IBeerReviewInfoEventArgs e)
@@ -27,6 +39,7 @@ namespace RememBeer.Business.Reviews.My
                 this.ReviewService.CreateReview(e.BeerReview);
                 this.View.SuccessMessageText = "Review has been successfully created!";
                 this.View.SuccessMessageVisible = true;
+                this.OnViewInitialise(this, EventArgs.Empty);
             }
             catch ( DbEntityValidationException ex )
             {
