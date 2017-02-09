@@ -1,10 +1,12 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 
 using RememBeer.Data.DbContexts.Contracts;
 
@@ -76,7 +78,8 @@ namespace RememBeer.Data.Repositories.Base
 
         public void Add(T entity)
         {
-            var entry = this.AttachIfDetached(entity);
+            var dbEntity = this.CopyPropertiesFrom(entity);
+            var entry = this.AttachIfDetached(dbEntity);
             entry.State = EntityState.Added;
         }
 
@@ -107,6 +110,50 @@ namespace RememBeer.Data.Repositories.Base
             }
 
             return entry;
+        }
+
+        private T CopyPropertiesFrom(T entity)
+        {
+            var dbEntity = this.DbSet.Create();
+            var type = typeof(T);
+            var properties = type.GetProperties();
+
+            foreach (var srcProp in  properties)
+            {
+                if (!srcProp.CanRead)
+                {
+                    continue;
+                }
+
+                var targetProperty = type.GetProperty(srcProp.Name);
+                if (targetProperty == null)
+                {
+                    continue;
+                }
+
+                if (!targetProperty.CanWrite)
+                {
+                    continue;
+                }
+                if (targetProperty.GetSetMethod(true) != null && targetProperty.GetSetMethod(true).IsPrivate)
+                {
+                    continue;
+                }
+
+                if ((targetProperty.GetSetMethod().Attributes & MethodAttributes.Static) != 0)
+                {
+                    continue;
+                }
+
+                if (!targetProperty.PropertyType.IsAssignableFrom(srcProp.PropertyType))
+                {
+                    continue;
+                }
+
+                targetProperty.SetValue(dbEntity, srcProp.GetValue(entity, null), null);
+            }
+
+            return dbEntity;
         }
     }
 }
