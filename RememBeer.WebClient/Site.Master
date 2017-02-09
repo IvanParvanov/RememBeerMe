@@ -34,9 +34,10 @@
             <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js"/>
             <asp:ScriptReference Name="WebFormsBundle"/>
             <%--Site Scripts--%>
+            <asp:ScriptReference Path="~/Scripts/flat-ui.min.js"/>
+            <asp:ScriptReference Path="~/Scripts/Main.js"/>
         </Scripts>
     </asp:ScriptManager>
-    <script src="/Scripts/flat-ui.min.js"></script>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -92,7 +93,7 @@
                     <LoggedInTemplate>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: this.Context.User.Identity.GetUserName() %> !</a>
+                                <a runat="server" href="~/Account/Manage" title="Manage your account">Profile</a>
                             </li>
                             <li>
                                 <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"/>

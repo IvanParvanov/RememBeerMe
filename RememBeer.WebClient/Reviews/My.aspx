@@ -28,15 +28,15 @@
             <div class="text-center">
                 <asp:DataPager runat="server" PagedControlID="ReviewsListView" PageSize="10">
                     <Fields>
-                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-xs"
+                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-inverse btn-xs"
                                                     ButtonType="Link"
                                                     ShowFirstPageButton="false"
                                                     ShowPreviousPageButton="true"
                                                     ShowNextPageButton="false"/>
                         <asp:NumericPagerField ButtonType="Link"
-                                               CurrentPageLabelCssClass="btn btn-default btn-xs"
-                                               NumericButtonCssClass="btn btn-primary btn-xs"/>
-                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-xs"
+                                               CurrentPageLabelCssClass="btn btn-primary btn-xs"
+                                               NumericButtonCssClass="btn btn-inverse btn-xs"/>
+                        <asp:NextPreviousPagerField ButtonCssClass="btn btn-inverse btn-xs"
                                                     ButtonType="Link"
                                                     ShowNextPageButton="true"
                                                     ShowLastPageButton="false"
@@ -131,7 +131,7 @@
 </EditItemTemplate>
 <InsertItemTemplate>
     <div class="text-center spaced">
-        <a type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#createNew">Create new</a>
+        <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createNew">Create new</a>
     </div>
     <div id="createNew" class="modal fade" role="dialog">
         <div class="modal-dialog">
