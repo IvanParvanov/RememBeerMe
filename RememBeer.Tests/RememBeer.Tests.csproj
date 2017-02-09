@@ -128,19 +128,26 @@
     <Compile Include="Business\Account\Login\Presenter\OnLogin_Should.cs" />
     <Compile Include="Business\Account\ManagePassword\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Account\ManagePassword\Presenter\OnChangePassword_Should.cs" />
+    <Compile Include="Business\Account\Register\EventArgs\Ctor_Should.cs" />
+    <Compile Include="Business\Account\Register\Presenter\OnRegister_Should.cs" />
     <Compile Include="Business\Mocks\IDisposablePresenter.cs" />
     <Compile Include="Business\MvpPresenterFactory\Create_Should.cs" />
     <Compile Include="Business\MvpPresenterFactory\Release_Should.cs" />
+    <Compile Include="Business\Reviews\Common\Presenters\BeerReviewPresenterTests.cs" />
+    <Compile Include="Business\Reviews\My\Presenter\OnInitialise_Should.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpContextBase.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpRequest.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpResponse.cs" />
+    <Compile Include="Common\TestClassBase.cs" />
     <Compile Include="Models\BeerReviewTests.cs" />
     <Compile Include="Models\BeerTests.cs" />
     <Compile Include="Models\BeerTypeTests.cs" />
     <Compile Include="Models\BreweryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Business\Services\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -165,10 +172,6 @@
     <ProjectReference Include="..\RememBeer.Models\RememBeer.Models.csproj">
       <Project>{08b751c2-a59b-4c0d-a981-5e03f48e5722}</Project>
       <Name>RememBeer.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RememBeer.WebClient\RememBeer.WebClient.csproj">
-      <Project>{11b0a8b1-cfae-40d9-adb0-83327d640497}</Project>
-      <Name>RememBeer.WebClient</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

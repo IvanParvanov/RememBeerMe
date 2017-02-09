@@ -3,12 +3,12 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
+using RememBeer.Business.Services.Contracts;
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
-using RememBeer.Data.Services.Contracts;
 using RememBeer.Models.Factories;
 
-namespace RememBeer.Data.Services
+namespace RememBeer.Business.Services
 {
     public class UserService : IUserService
     {

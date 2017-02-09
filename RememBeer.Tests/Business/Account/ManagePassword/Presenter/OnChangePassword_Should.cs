@@ -10,7 +10,7 @@ using Ploeh.AutoFixture;
 
 using RememBeer.Business.Account.ManagePassword;
 using RememBeer.Business.Account.ManagePassword.Contracts;
-using RememBeer.Data.Services.Contracts;
+using RememBeer.Business.Services.Contracts;
 using RememBeer.Tests.Common.MockedClasses;
 
 namespace RememBeer.Tests.Business.Account.ManagePassword.Presenter

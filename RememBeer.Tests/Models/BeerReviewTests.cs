@@ -2,23 +2,29 @@
 
 using NUnit.Framework;
 
+using Ploeh.AutoFixture;
+
 using RememBeer.Models;
+using RememBeer.Tests.Common;
 
 namespace RememBeer.Tests.Models
 {
     [TestFixture]
-    public class BeerReviewTests
+    public class BeerReviewTests : TestClassBase
     {
         [Test]
         public void Setters_ShouldSetUpPropertiesCorrectly()
         {
-            var expectedId = 100;
-            var expectedText = "kasdjkasdljkasdljasd";
+            var expectedId = this.Fixture.Create<int>();
+            var expectedText = this.Fixture.Create<string>();
             var isPublic = true;
             var expectedDate = DateTime.Now;
             var review = new BeerReview()
                          {
                              Id = expectedId,
+                             BeerId = expectedId,
+                             UserId = expectedText,
+                             IsDeleted = isPublic,
                              Overall = expectedId,
                              Look = expectedId,
                              Smell = expectedId,
@@ -28,22 +34,26 @@ namespace RememBeer.Tests.Models
                              Place = expectedText,
                              Beer = null,
                              CreatedAt = expectedDate,
-                             ModifiedAt = expectedDate
+                             ModifiedAt = expectedDate,
+                             User = null
                          };
 
             Assert.AreEqual(expectedId, review.Id);
             Assert.AreEqual(expectedId, review.Overall);
             Assert.AreEqual(expectedId, review.Look);
+            Assert.AreEqual(expectedId, review.BeerId);
             Assert.AreEqual(expectedId, review.Smell);
             Assert.AreEqual(expectedId, review.Taste);
             Assert.AreEqual(isPublic, review.IsPublic);
+            Assert.AreEqual(isPublic, review.IsDeleted);
 
+            Assert.AreEqual(expectedText, review.UserId);
             Assert.AreSame(expectedText, review.Description);
             Assert.AreSame(expectedText, review.Place);
             Assert.AreSame(null, review.Beer);
+            Assert.AreSame(null, review.User);
             Assert.AreEqual(expectedDate, review.CreatedAt);
             Assert.AreEqual(expectedDate, review.ModifiedAt);
-
         }
     }
 }

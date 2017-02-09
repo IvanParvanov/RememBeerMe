@@ -6,8 +6,7 @@ using NUnit.Framework;
 
 using RememBeer.Business.Account.Confirm;
 using RememBeer.Business.Account.Confirm.Contracts;
-using RememBeer.Data.Services;
-using RememBeer.Data.Services.Contracts;
+using RememBeer.Business.Services.Contracts;
 
 namespace RememBeer.Tests.Business.Account.Confirm.Presenter
 {

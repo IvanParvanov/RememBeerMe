@@ -124,6 +124,9 @@
     <Compile Include="Reviews\My\Contracts\IMyReviewsView.cs" />
     <Compile Include="Reviews\My\MyReviewsPresenter.cs" />
     <Compile Include="Reviews\My\ReviewsViewModel.cs" />
+    <Compile Include="Services\BeerReviewService.cs" />
+    <Compile Include="Services\Contracts\IUserService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

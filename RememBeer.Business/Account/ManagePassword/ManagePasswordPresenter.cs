@@ -1,7 +1,6 @@
 ﻿using RememBeer.Business.Account.Common.Presenters;
 using RememBeer.Business.Account.ManagePassword.Contracts;
-using RememBeer.Data.Services;
-using RememBeer.Data.Services.Contracts;
+using RememBeer.Business.Services.Contracts;
 
 namespace RememBeer.Business.Account.ManagePassword
 {

@@ -2,9 +2,8 @@
 
 using RememBeer.Business.Account.Common.Presenters;
 using RememBeer.Business.Account.Register.Contracts;
+using RememBeer.Business.Services.Contracts;
 using RememBeer.Common.Identity.Contracts;
-using RememBeer.Data.Services;
-using RememBeer.Data.Services.Contracts;
 
 namespace RememBeer.Business.Account.Register
 {
@@ -27,8 +26,8 @@ namespace RememBeer.Business.Account.Register
                 //string code = manager.GenerateEmailConfirmationToken(user.Id);
                 //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
                 //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
-
-                var returnUrl = this.identityHelper.GetReturnUrl(this.Request.QueryString["ReturnUrl"]);
+                var query = this.Request.QueryString["ReturnUrl"];
+                var returnUrl = this.identityHelper.GetReturnUrl(query);
                 this.Response.Redirect(returnUrl);
             }
             else

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Principal;
 using System.Web;
 
 namespace RememBeer.Tests.Common.MockedClasses
@@ -46,5 +47,7 @@ namespace RememBeer.Tests.Common.MockedClasses
         public override HttpRequestBase Request => this.request;
 
         public override IDictionary Items { get; }
+
+        public override IPrincipal User { get; set; }
     }
 }

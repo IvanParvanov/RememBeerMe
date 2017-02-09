@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 using RememBeer.Common.Identity.Contracts;
 
-namespace RememBeer.Data.Services.Contracts
+namespace RememBeer.Business.Services.Contracts
 {
     public interface IUserService
     {

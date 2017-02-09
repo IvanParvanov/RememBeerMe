@@ -78,14 +78,14 @@
                                                 CssClass="text-danger"
                                                 Display="Dynamic"
                                                 ValidationGroup="Edit"
-                                                ErrorMessage="Place is required">
+                                                ErrorMessage="Location is required">
                     </asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator runat="server"
                                                     ValidationExpression="^[\s\S]{1,128}$"
                                                     ControlToValidate="PlaceTextBox"
                                                     CssClass="text-danger"
                                                     ValidationGroup="Edit"
-                                                    ErrorMessage="Place must be between 1 and 128 characters long">
+                                                    ErrorMessage="Location must be between 1 and 128 characters long">
                     </asp:RegularExpressionValidator>
                     <p>
                     <asp:TextBox runat="server"
@@ -145,8 +145,6 @@
             </div>
         </div>
     </div>
-
-
 </EditItemTemplate>
 <InsertItemTemplate>
     <div class="text-center spaced">
@@ -207,7 +205,7 @@
                                                         ControlToValidate="TbPlace"
                                                         CssClass="text-danger"
                                                         ValidationGroup="Create"
-                                                        ErrorMessage="Place must be between 1 and 128 characters long">
+                                                        ErrorMessage="Location must be between 1 and 128 characters long">
                         </asp:RegularExpressionValidator>
                     </div>
                     <div class="form-group">
