@@ -226,7 +226,6 @@
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Admin\Admin.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bk\bootstrap.css" />
     <Content Include="Content\bk\bootstrap.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -471,13 +470,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BasePages\BaseMvpPage.cs">
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

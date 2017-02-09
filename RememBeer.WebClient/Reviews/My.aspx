@@ -221,7 +221,7 @@
                                      Text='<%#Bind("Description") %>'>
                         </asp:TextBox>
                         <asp:RequiredFieldValidator runat="server"
-                                                    ControlToValidate="TbPlace"
+                                                    ControlToValidate="TbDescription"
                                                     CssClass="text-danger"
                                                     Display="Dynamic"
                                                     ValidationGroup="Create"
