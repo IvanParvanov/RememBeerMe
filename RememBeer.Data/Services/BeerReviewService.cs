@@ -5,7 +5,7 @@ using RememBeer.Data.Repositories.Base;
 using RememBeer.Models;
 using RememBeer.Models.Factories;
 
-namespace RememBeer.Business.Services
+namespace RememBeer.Data.Services
 {
     public class BeerReviewService : IBeerReviewService
     {

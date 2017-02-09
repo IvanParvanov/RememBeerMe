@@ -15,8 +15,8 @@ using Ploeh.AutoFixture;
 using RememBeer.Business.Account.ManagePassword.Contracts;
 using RememBeer.Business.Account.Register;
 using RememBeer.Business.Account.Register.Contracts;
-using RememBeer.Business.Services.Contracts;
 using RememBeer.Common.Identity.Contracts;
+using RememBeer.Data.Services.Contracts;
 using RememBeer.Tests.Common;
 using RememBeer.Tests.Common.MockedClasses;
 

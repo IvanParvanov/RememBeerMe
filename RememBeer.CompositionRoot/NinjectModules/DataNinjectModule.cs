@@ -1,10 +1,10 @@
 ﻿using Ninject.Modules;
 using Ninject.Web.Common;
 
-using RememBeer.Business.Services;
-using RememBeer.Business.Services.Contracts;
 using RememBeer.Data.Repositories;
 using RememBeer.Data.Repositories.Contracts;
+using RememBeer.Data.Services;
+using RememBeer.Data.Services.Contracts;
 
 namespace RememBeer.CompositionRoot.NinjectModules
 {

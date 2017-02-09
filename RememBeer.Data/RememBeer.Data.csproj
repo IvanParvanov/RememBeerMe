@@ -110,6 +110,9 @@
     <Compile Include="Repositories\Contracts\IUserData.cs" />
     <Compile Include="Repositories\Factories\IRepositoryFactory.cs" />
     <Compile Include="Repositories\RememBeerMeData.cs" />
+    <Compile Include="Services\BeerReviewService.cs" />
+    <Compile Include="Services\Contracts\IUserService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

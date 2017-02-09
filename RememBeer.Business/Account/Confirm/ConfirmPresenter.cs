@@ -1,6 +1,6 @@
 ﻿using RememBeer.Business.Account.Common.Presenters;
 using RememBeer.Business.Account.Confirm.Contracts;
-using RememBeer.Business.Services.Contracts;
+using RememBeer.Data.Services.Contracts;
 
 namespace RememBeer.Business.Account.Confirm
 {
