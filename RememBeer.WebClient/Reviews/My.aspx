@@ -52,82 +52,101 @@
 </ItemTemplate>
 <EditItemTemplate>
     <div class="container">
-        <div class="well">
-            <div class="media">
-                <div class="col-lg-3 pull-left">
-                    <img class="pull-left media-object" src="http://lorempixel.com/200/200/">
-                    <br/>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <%#: Item.Beer.Brewery.Name %>
+                <small class="pull-right"><%#: Item.CreatedAt.ToShortDateString() %></small>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-3">
+                    <img class="img-responsive" src="http://lorempixel.com/200/200/">
                 </div>
-                <div class="col-lg-9">
-                    <h3 class="media-heading">
-                        <%#: Item.Beer.Name %> @
-                    </h3>
-                    <asp:TextBox runat="server"
-                                 ID="TextBox1"
+                <div class="col-md-9 text-left">
+                    <h6 class="media-heading">
+                        <%#: Item.Beer.Name %>
+                        <span>
+                        @<asp:TextBox runat="server"
+                                 ID="PlaceTextBox"
                                  ValidationGroup="Edit"
                                  Text='<%#Bind("Place") %>'
                                  CssClass="form-control">
-                    </asp:TextBox>
+                        </asp:TextBox>
+                    </span>
+                    </h6>
                     <asp:RequiredFieldValidator runat="server"
-                                                ControlToValidate="TextBox1"
+                                                ControlToValidate="PlaceTextBox"
                                                 CssClass="text-danger"
                                                 Display="Dynamic"
                                                 ValidationGroup="Edit"
                                                 ErrorMessage="Place is required">
                     </asp:RequiredFieldValidator>
-
-                    <h5 class="media-heading"><%#: Item.Beer.Brewery.Name %></h5>
-                    <h5 class="text-right"><%#: Item.CreatedAt.ToShortDateString() %></h5>
-                    <h5 class="media-heading">Description: </h5>
-                    <p>
-                        <asp:TextBox runat="server"
-                                     ID="TextBox2"
-                                     CssClass="form-control"
-                                     TextMode="MultiLine"
-                                     ValidationGroup="Edit"
-                                     Rows="6"
-                                     Text='<%#Bind("Description") %>'>
-                        </asp:TextBox>
-                        <asp:RequiredFieldValidator runat="server"
-                                                    ControlToValidate="TextBox2"
+                    <asp:RegularExpressionValidator runat="server"
+                                                    ValidationExpression="^[\s\S]{1,128}$"
+                                                    ControlToValidate="PlaceTextBox"
                                                     CssClass="text-danger"
-                                                Display="Dynamic"
-
                                                     ValidationGroup="Edit"
-                                                    ErrorMessage="Place is required">
-                        </asp:RequiredFieldValidator>
+                                                    ErrorMessage="Place must be between 1 and 128 characters long">
+                    </asp:RegularExpressionValidator>
+                    <p>
+                    <asp:TextBox runat="server"
+                                 ID="DescriptionTextBox"
+                                 CssClass="form-control"
+                                 TextMode="MultiLine"
+                                 ValidationGroup="Edit"
+                                 Rows="6"
+                                 Text='<%#Bind("Description") %>'>
+                    </asp:TextBox>
+                    <asp:RequiredFieldValidator runat="server"
+                                                ControlToValidate="DescriptionTextBox"
+                                                CssClass="text-danger"
+                                                Display="Dynamic"
+                                                ValidationGroup="Edit"
+                                                ErrorMessage="Description is required">
+                    </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator runat="server"
+                                                    ValidationExpression="^[\s\S]{10,1000}$"
+                                                    ControlToValidate="DescriptionTextBox"
+                                                    CssClass="text-danger"
+                                                    ValidationGroup="Edit"
+                                                    ErrorMessage="Description must be between 10 and 1000 characters long">
+                    </asp:RegularExpressionValidator>
+                    <p>
+                        <small>
+                            <em>Bottom line:</em>
+                        </small>
                     </p>
-                    <h6>
-                        <em>Bottom line:</em>
-                    </h6>
                     <ul class="list-inline">
                         <li>
                             Overall:
-                            <uc:BeerRatingSelect ID="BeerRatingSelect1" runat="server" SelectedValue='<%#:Bind("Overall") %>'>
+                            <uc:BeerRatingSelect ID="BeerRatingSelect9" runat="server" SelectedValue='<%#:Bind("Overall") %>'>
                             </uc:BeerRatingSelect>
                         </li>
                         <li>
                             Taste:
-                            <uc:BeerRatingSelect ID="BeerRatingSelect3" runat="server" SelectedValue='<%#:Bind("Taste") %>'>
+                            <uc:BeerRatingSelect ID="BeerRatingSelect10" runat="server" SelectedValue='<%#:Bind("Taste") %>'>
                             </uc:BeerRatingSelect>
                         </li>
                         <li>
                             Look:
-                            <uc:BeerRatingSelect ID="BeerRatingSelect2" runat="server" SelectedValue='<%#:Bind("Look") %>'>
+                            <uc:BeerRatingSelect ID="BeerRatingSelect11" runat="server" SelectedValue='<%#:Bind("Look") %>'>
                             </uc:BeerRatingSelect>
                         </li>
                         <li>
                             Aroma:
-                            <uc:BeerRatingSelect ID="BeerRatingSelect4" runat="server" SelectedValue='<%#:Bind("Smell") %>'>
+                            <uc:BeerRatingSelect ID="BeerRatingSelect12" runat="server" SelectedValue='<%#:Bind("Smell") %>'>
                             </uc:BeerRatingSelect>
                         </li>
                     </ul>
-                    <asp:Button runat="server" ID="SaveButton" ValidationGroup="Edit" CssClass="btn btn-success" CommandName="Update" Text="Save"/>
-                    <asp:Button runat="server" ID="CancelButton" CssClass="btn btn-warning" CommandName="Cancel" Text="Cancel"/>
                 </div>
+            </div>
+            <div class="panel-footer">
+                <asp:Button runat="server" ID="Button1" ValidationGroup="Edit" CssClass="btn btn-success" CommandName="Update" Text="Save"/>
+                <asp:Button runat="server" ID="Button2" CssClass="btn btn-warning" CommandName="Cancel" Text="Cancel"/>
             </div>
         </div>
     </div>
+
+
 </EditItemTemplate>
 <InsertItemTemplate>
     <div class="text-center spaced">
@@ -159,8 +178,7 @@
                         <asp:RequiredFieldValidator runat="server"
                                                     ControlToValidate="HiddenBeerId"
                                                     CssClass="text-danger"
-                                                Display="Dynamic"
-
+                                                    Display="Dynamic"
                                                     ValidationGroup="Create"
                                                     ErrorMessage="Please select a beer from the dropdown">
                         </asp:RequiredFieldValidator>
@@ -168,26 +186,34 @@
                     <script src="/Scripts/devbridge-autocomplete.min.js"></script>
                     <script src="/Scripts/autocomplete.js"></script>
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="TextBox3" Text="Place: "></asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="TbPlace" Text="Place: "></asp:Label>
                         <asp:TextBox runat="server"
-                                     ID="TextBox3"
+                                     ID="TbPlace"
+                                     MaxLength="128"
                                      ValidationGroup="Create"
                                      Text='<%#Bind("Place") %>'
                                      CssClass="form-control">
                         </asp:TextBox>
                         <asp:RequiredFieldValidator runat="server"
-                                                    ControlToValidate="TextBox3"
+                                                    ControlToValidate="TbPlace"
                                                     CssClass="text-danger"
-                                                Display="Dynamic"
-
+                                                    Display="Dynamic"
                                                     ValidationGroup="Create"
-                                                    ErrorMessage="Place is required">
+                                                    ErrorMessage="Location is required">
                         </asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator runat="server"
+                                                        Display="Dynamic"
+                                                        ValidationExpression="^[\s\S]{1,128}$"
+                                                        ControlToValidate="TbPlace"
+                                                        CssClass="text-danger"
+                                                        ValidationGroup="Create"
+                                                        ErrorMessage="Place must be between 1 and 128 characters long">
+                        </asp:RegularExpressionValidator>
                     </div>
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="TextBox2" Text="Description: "></asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="TbDescription" Text="Description: "></asp:Label>
                         <asp:TextBox runat="server"
-                                     ID="TextBox2"
+                                     ID="TbDescription"
                                      CssClass="form-control"
                                      ValidationGroup="Create"
                                      TextMode="MultiLine"
@@ -195,13 +221,20 @@
                                      Text='<%#Bind("Description") %>'>
                         </asp:TextBox>
                         <asp:RequiredFieldValidator runat="server"
-                                                    ValidationGroup="Create"
-                                                    ControlToValidate="TextBox2"
-                                                Display="Dynamic"
-
+                                                    ControlToValidate="TbPlace"
                                                     CssClass="text-danger"
+                                                    Display="Dynamic"
+                                                    ValidationGroup="Create"
                                                     ErrorMessage="Description is required">
                         </asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator runat="server"
+                                                        Display="Dynamic"
+                                                        ValidationExpression="^[\s\S]{10,1000}$"
+                                                        ControlToValidate="TbDescription"
+                                                        CssClass="text-danger"
+                                                        ValidationGroup="Create"
+                                                        ErrorMessage="Description must be between 10 and 1000 characters long">
+                        </asp:RegularExpressionValidator>
                     </div>
                     <ul class="list-inline">
                         <li>

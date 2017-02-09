@@ -47,10 +47,10 @@
                 </ul>
             </div>
         </div>
-        <div class="panel-footer">
-            <asp:Button runat="server" CssClass="btn btn-warning" ID="EditButton" CommandName="Edit" Text="Edit" Visible="False"/>
+        <asp:PlaceHolder runat="server" ID="DeletePlaceholder" Visible="False">
+            <div class="panel-footer">
+                <asp:Button runat="server" CssClass="btn btn-warning" ID="EditButton" CommandName="Edit" Text="Edit" Visible="False"/>
 
-            <asp:PlaceHolder runat="server" ID="DeletePlaceholder" Visible="False">
                 <a type="button" class="btn btn-danger" data-toggle="modal" data-target='<%# "#review" + Review.Id %>'>Delete</a>
                 <div id='<%# "review" + Review.Id %>' class="modal fade" role="dialog">
                     <div class="modal-dialog">
@@ -70,7 +70,7 @@
 
                     </div>
                 </div>
-            </asp:PlaceHolder>
-        </div>
+            </div>
+        </asp:PlaceHolder>
     </div>
 </div>

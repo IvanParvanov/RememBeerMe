@@ -46,7 +46,7 @@ namespace RememBeer.Models
 
         public bool IsDeleted { get; set; }
 
-        [MaxLength(512)]
+        [MaxLength(128)]
         [Required]
         public string Place { get; set; }
     }

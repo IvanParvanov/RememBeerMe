@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201702081159547_DateTimeFixes1.Designer.cs">
       <DependentUpon>201702081159547_DateTimeFixes1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702091259186_ReviewModelChanges.cs" />
+    <Compile Include="Migrations\201702091259186_ReviewModelChanges.Designer.cs">
+      <DependentUpon>201702091259186_ReviewModelChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Base\Repository.cs" />
@@ -133,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702081159547_DateTimeFixes1.resx">
       <DependentUpon>201702081159547_DateTimeFixes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702091259186_ReviewModelChanges.resx">
+      <DependentUpon>201702091259186_ReviewModelChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

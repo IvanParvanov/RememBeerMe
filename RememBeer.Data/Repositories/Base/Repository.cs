@@ -78,7 +78,7 @@ namespace RememBeer.Data.Repositories.Base
 
         public void Add(T entity)
         {
-            var dbEntity = this.CopyPropertiesFrom(entity);
+            var dbEntity = this.CopyStateFrom(entity);
             var entry = this.AttachIfDetached(dbEntity);
             entry.State = EntityState.Added;
         }
@@ -112,7 +112,7 @@ namespace RememBeer.Data.Repositories.Base
             return entry;
         }
 
-        private T CopyPropertiesFrom(T entity)
+        private T CopyStateFrom(T entity)
         {
             var dbEntity = this.DbSet.Create();
             var type = typeof(T);
