@@ -10,24 +10,24 @@
 namespace RememBeer.WebClient.Reviews {
     
     
-    public partial class All {
+    public partial class Default {
         
         /// <summary>
-        /// BeerReviewRepeater control.
+        /// NotFound control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater BeerReviewRepeater;
+        protected global::System.Web.UI.WebControls.PlaceHolder NotFound;
         
         /// <summary>
-        /// ObjectDataSource1 control.
+        /// ReviewPlaceholder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        protected global::System.Web.UI.WebControls.PlaceHolder ReviewPlaceholder;
     }
 }

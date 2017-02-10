@@ -3,6 +3,7 @@ using System.Linq;
 
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Models;
+using RememBeer.Models.Contracts;
 using RememBeer.Models.Factories;
 
 namespace RememBeer.Data.Services
@@ -20,7 +21,7 @@ namespace RememBeer.Data.Services
 
         public ICollection<BeerReview> GetReviewsForUser(string user)
         {
-            return this.data.GetAll(x => x.UserId == user && x.IsDeleted == false, x => x.CreatedAt).ToList();
+            return this.data.GetAll(x => x.IsDeleted == false && x.UserId == user, x => x.CreatedAt).ToList();
         }
 
         public void UpdateReview(BeerReview review)
@@ -41,6 +42,12 @@ namespace RememBeer.Data.Services
             review.IsDeleted = true;
             this.data.SaveChanges();
         }
+
+        public IBeerReview GetById(object id)
+        {
+            return this.data.GetById(id);
+        }
+         
     }
 
     public interface IBeerReviewService
@@ -52,5 +59,7 @@ namespace RememBeer.Data.Services
         void CreateReview(BeerReview review);
 
         void DeleteReview(object id);
+
+        IBeerReview GetById(object id);
     }
 }

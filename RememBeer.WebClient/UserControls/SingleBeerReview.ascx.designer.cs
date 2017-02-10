@@ -13,13 +13,13 @@ namespace RememBeer.WebClient.UserControls {
     public partial class SingleBeerReview {
         
         /// <summary>
-        /// DeletePlaceholder control.
+        /// EditPlaceholder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder DeletePlaceholder;
+        protected global::System.Web.UI.WebControls.PlaceHolder EditPlaceholder;
         
         /// <summary>
         /// EditButton control.

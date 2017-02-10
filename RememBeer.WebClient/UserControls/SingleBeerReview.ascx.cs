@@ -13,8 +13,7 @@ namespace RememBeer.WebClient.UserControls
             get { return this.EditButton.Visible; }
             set
             {
-                this.DeletePlaceholder.Visible = value;
-                this.EditButton.Visible = value;
+                this.EditPlaceholder.Visible = value;
             }
         }
 
@@ -23,10 +22,7 @@ namespace RememBeer.WebClient.UserControls
             get { return this.beerReview; }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(this.beerReview));
-                }
+
 
                 this.beerReview = value;
             }

@@ -284,6 +284,7 @@
     <Content Include="Content\flat-ui\js\vendor\video-js.swf" />
     <Content Include="Content\flat-ui\js\vendor\video.js" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\default-beer.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -297,6 +298,8 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Admin\Web.config" />
+    <Content Include="Reviews\Create.aspx" />
+    <Content Include="Reviews\Default.aspx" />
     <Content Include="Reviews\Web.config" />
     <Content Include="Content\flat-ui\css\flat-ui.css.map" />
     <Content Include="Content\flat-ui\css\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -327,7 +330,6 @@
     <Content Include="Content\flat-ui\fonts\lato\lato-regular.woff" />
     <Content Include="Content\flat-ui\js\vendor\jquery.min.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Reviews\All.aspx" />
     <Content Include="Reviews\My.aspx" />
     <Content Include="Scripts\autocomplete.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -366,6 +368,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Top\Beers.aspx" />
+    <Content Include="Top\Breweries.aspx" />
     <Content Include="UserControls\BeerRatingSelect.ascx" />
     <Content Include="UserControls\SingleBeerReview.ascx" />
     <Content Include="UserControls\UserNotifications.ascx" />
@@ -482,12 +486,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reviews\All.aspx.cs">
-      <DependentUpon>All.aspx</DependentUpon>
+    <Compile Include="Reviews\Create.aspx.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reviews\All.aspx.designer.cs">
-      <DependentUpon>All.aspx</DependentUpon>
+    <Compile Include="Reviews\Create.aspx.designer.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reviews\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reviews\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reviews\My.aspx.cs">
       <DependentUpon>My.aspx</DependentUpon>
@@ -511,6 +522,20 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Top\Beers.aspx.cs">
+      <DependentUpon>Beers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Top\Beers.aspx.designer.cs">
+      <DependentUpon>Beers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Top\Breweries.aspx.cs">
+      <DependentUpon>Breweries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Top\Breweries.aspx.designer.cs">
+      <DependentUpon>Breweries.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\BeerRatingSelect.ascx.cs">
       <DependentUpon>BeerRatingSelect.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

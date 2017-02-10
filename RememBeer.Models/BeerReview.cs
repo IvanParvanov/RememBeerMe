@@ -49,5 +49,8 @@ namespace RememBeer.Models
         [MaxLength(128)]
         [Required]
         public string Place { get; set; }
+
+        [DefaultValue("~/Content/Images/default-beer.png")]
+        public string ImgUrl { get; set; }
     }
 }

@@ -13,6 +13,7 @@ using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Common;
 using RememBeer.Business.MvpPresenterFactory;
 using RememBeer.Common.Configuration;
+using RememBeer.Common.Identity;
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
 

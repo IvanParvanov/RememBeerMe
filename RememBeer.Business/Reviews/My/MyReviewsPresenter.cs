@@ -64,7 +64,7 @@ namespace RememBeer.Business.Reviews.My
 
         private void OnUpdateReview(object sender, IBeerReviewInfoEventArgs e)
         {
-            var review = (BeerReview)e.BeerReview;
+            var review = e.BeerReview;
             try
             {
                 this.ReviewService.UpdateReview(review);

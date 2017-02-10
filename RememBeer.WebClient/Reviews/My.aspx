@@ -149,6 +149,7 @@
 <InsertItemTemplate>
     <div class="text-center spaced">
         <a type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createNew">Create new</a>
+        <a type="button" class="btn btn-primary btn-lg" href="/Reviews/Create">Create new1</a>
     </div>
     <div id="createNew" class="modal fade" role="dialog">
         <div class="modal-dialog">

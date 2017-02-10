@@ -49,20 +49,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a runat="server" href="~/Reviews/All" title="View other people's beers">Reviews</a>
-                    </li>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <LoggedInTemplate>
                             <li>
-                                <a runat="server" href="~/Reviews/My" title="View your beers">My Beers</a>
+                                <a runat="server" href="~/Reviews/My" title="View your beers"><i class="fa fa-heart" aria-hidden="true"></i> My Beers</a>
                             </li>
                         </LoggedInTemplate>
                         <RoleGroups>
                             <asp:RoleGroup Roles="Admin">
                                 <ContentTemplate>
                                     <li>
-                                        <a runat="server" href="~/Reviews/My" title="View your beers">My Beers</a>
+                                        <a runat="server" href="~/Reviews/My" title="View your beers"><i class="fa fa-heart" aria-hidden="true"></i> My Beers</a>
                                     </li>
                                     <li>
                                         <a runat="server" href="~/Admin">Admin</a>
@@ -71,25 +68,35 @@
                             </asp:RoleGroup>
                         </RoleGroups>
                     </asp:LoginView>
-                    <li>
-                        <a runat="server" href="~/About">About</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-trophy" aria-hidden="true"></i> Top <b class="caret"></b></a>
+                        <span class="dropdown-arrow"></span>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a runat="server" href="~/Top/Beers" title="View other people's beers"><i class="fa fa-beer"></i> Beers</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a runat="server" href="~/Top/Breweries" title="View other people's beers"><i class="fa fa-bitbucket" aria-hidden="true"></i> Breweries</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <asp:LoginView runat="server" ViewStateMode="Disabled">
                     <AnonymousTemplate>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a runat="server" href="~/Account/Register">Register</a>
+                                <a runat="server" href="~/Account/Register"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
                             </li>
                             <li>
-                                <a runat="server" href="~/Account/Login">Log in</a>
+                                <a runat="server" href="~/Account/Login"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
                             </li>
                         </ul>
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a runat="server" href="~/Account/Manage" title="Manage your account">Profile</a>
+                                <a runat="server" href="~/Account/Manage" title="Manage your account"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
                             </li>
                             <li>
                                 <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut"/>

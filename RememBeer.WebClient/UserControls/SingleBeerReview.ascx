@@ -3,8 +3,9 @@
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <%#: Review.Beer.Brewery.Name %>
-
+            <a class="text-primary" href='/Reviews/?id=<%#: Review.Id %>'>
+                <%#: Review.Beer.Brewery.Name %>
+            </a>
             <small class="pull-right"><%#: Review.CreatedAt.ToShortDateString() %></small>
         </div>
         <div class="panel-body">
@@ -47,9 +48,9 @@
                 </ul>
             </div>
         </div>
-        <asp:PlaceHolder runat="server" ID="DeletePlaceholder" Visible="False">
+        <asp:PlaceHolder runat="server" ID="EditPlaceholder" Visible="False">
             <div class="panel-footer">
-                <asp:Button runat="server" CssClass="btn btn-warning" ID="EditButton" CommandName="Edit" Text="Edit" Visible="False"/>
+                <asp:Button runat="server" CssClass="btn btn-warning" ID="EditButton" CommandName="Edit" Text="Edit" />
 
                 <a type="button" class="btn btn-danger" data-toggle="modal" data-target='<%# "#review" + Review.Id %>'>Delete</a>
                 <div id='<%# "review" + Review.Id %>' class="modal fade" role="dialog">

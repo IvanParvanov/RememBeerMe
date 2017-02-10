@@ -47,21 +47,12 @@ namespace RememBeer.WebClient
                                             Provider = new CookieAuthenticationProvider
                                                        {
                                                            OnValidateIdentity =
-                                                               SecurityStampValidator
-                                                               .OnValidateIdentity
-                                                               <ApplicationUserManager, ApplicationUser>(
-                                                                                                         validateInterval
-                                                                                                             :
-                                                                                                             TimeSpan
-                                                                                                             .FromMinutes
-                                                                                                             (30),
-                                                                                                         regenerateIdentity
-                                                                                                             :
-                                                                                                             (manager,
-                                                                                                              user) =>
-                                                                                                             user
-                                                                                                             .GenerateUserIdentityAsync
-                                                                                                             (manager))
+                                                               SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
+                                                                                                         validateInterval:
+                                                                                                             TimeSpan.FromMinutes(30),
+                                                                                                         regenerateIdentity:
+                                                                                                         (manager,user) =>
+                                                                                                             user.GenerateUserIdentityAsync(manager))
                                                        }
                                         });
             // Use a cookie to temporarily store information about a user logging in with a third party login provider

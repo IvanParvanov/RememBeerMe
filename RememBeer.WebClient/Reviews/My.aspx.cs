@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI.WebControls;
 
 using Microsoft.AspNet.Identity;
 
@@ -26,14 +27,26 @@ namespace RememBeer.WebClient.Reviews
 
         public string SuccessMessageText
         {
-            get { return this.Notifier.SuccessText; }
-            set { this.Notifier.SuccessText = value; }
+            get
+            {
+                return this.Notifier.SuccessText;
+            }
+            set
+            {
+                this.Notifier.SuccessText = value;
+            }
         }
 
         public bool SuccessMessageVisible
         {
-            get { return this.Notifier.SuccessVisible; }
-            set { this.Notifier.SuccessVisible = value; }
+            get
+            {
+                return this.Notifier.SuccessVisible;
+            }
+            set
+            {
+                this.Notifier.SuccessVisible = value;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -56,10 +69,16 @@ namespace RememBeer.WebClient.Reviews
 
         public void InsertReview(BeerReview newReview)
         {
+            var uploadControl = this.ReviewsListView.InsertItem.FindControl("ImageUpload") as FileUpload;
+            if (uploadControl.HasFile)
+            {
+                var a = uploadControl;
+            }
+
             var userId = this.User.Identity.GetUserId();
             newReview.UserId = userId;
             var args = this.EventArgsFactory.CreateBeerReviewInfoEventArgs(newReview);
-            this.CreateReview?.Invoke(this, args);
+            //this.CreateReview?.Invoke(this, args);
         }
 
         public void DeleteReview(BeerReview review)

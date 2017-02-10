@@ -3,6 +3,7 @@ using RememBeer.Business.Account.ForgotPassword.Contracts;
 using RememBeer.Business.Account.Login.Contracts;
 using RememBeer.Business.Account.ManagePassword.Contracts;
 using RememBeer.Business.Account.Register.Contracts;
+using RememBeer.Business.Common.EventArgs.Contracts;
 using RememBeer.Business.Reviews.My.Contracts;
 using RememBeer.Models.Contracts;
 
@@ -23,5 +24,9 @@ namespace RememBeer.Business.Common
         IRegisterEventArgs CreateRegisterEventArg(string userName, string email, string password);
 
         IBeerReviewInfoEventArgs CreateBeerReviewInfoEventArgs(IBeerReview beerReview);
+
+        IIdentifiableEventArgs<int> CreateIdentifiableEventArgs(int id);
+
+        IIdentifiableEventArgs<string> CreateIdentifiableEventArgs(string id);
     }
 }

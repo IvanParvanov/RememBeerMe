@@ -31,5 +31,7 @@ namespace RememBeer.Models.Contracts
         bool IsPublic { get; set; }
 
         string Place { get; set; }
+
+        string ImgUrl { get; set; }
     }
 }

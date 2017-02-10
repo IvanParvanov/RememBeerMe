@@ -3,7 +3,7 @@ using System.Web;
 
 using RememBeer.Common.Identity.Contracts;
 
-namespace RememBeer.Common.Identity.Models
+namespace RememBeer.Common.Identity
 {
     public class IdentityHelper : IIdentityHelper
     {
