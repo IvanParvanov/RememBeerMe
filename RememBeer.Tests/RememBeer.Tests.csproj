@@ -139,6 +139,13 @@
     <Compile Include="Common\MockedClasses\MockedHttpRequest.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpResponse.cs" />
     <Compile Include="Common\TestClassBase.cs" />
+    <Compile Include="Data\Services\UserServiceTests\ChangePassword_Should.cs" />
+    <Compile Include="Data\Services\UserServiceTests\ConfirmEmail_Should.cs" />
+    <Compile Include="Data\Services\UserServiceTests\Ctor_Should.cs" />
+    <Compile Include="Data\Services\UserServiceTests\FindByName_Should.cs" />
+    <Compile Include="Data\Services\UserServiceTests\IsEmailConfirmed_Should.cs" />
+    <Compile Include="Data\Services\UserServiceTests\PasswordSignIn_Should.cs" />
+    <Compile Include="Data\Services\UserServiceTests\RegisterUser_Should.cs" />
     <Compile Include="Models\BeerReviewTests.cs" />
     <Compile Include="Models\BeerTests.cs" />
     <Compile Include="Models\BeerTypeTests.cs" />

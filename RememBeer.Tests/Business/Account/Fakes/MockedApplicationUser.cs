@@ -12,8 +12,8 @@ namespace RememBeer.Tests.Business.Account.Fakes
         ///// <summary>Navigation property for user claims</summary>
         //public override ICollection<IdentityUserClaim> Claims { get; }
 
-        ///// <summary>Email</summary>
-        //public override string Email { get; set; }
+        /// <summary>Email</summary>
+        public override string Email { get; set; }
 
         ///// <summary>True if the email is confirmed, default is false</summary>
         //public override bool EmailConfirmed { get; set; }
@@ -54,7 +54,7 @@ namespace RememBeer.Tests.Business.Account.Fakes
         ///// <summary>Is two factor enabled for the user</summary>
         //public override bool TwoFactorEnabled { get; set; }
 
-        ///// <summary>User name</summary>
-        //public override string UserName { get; set; }
+        /// <summary>User name</summary>
+        public override string UserName { get; set; }
     }
 }
