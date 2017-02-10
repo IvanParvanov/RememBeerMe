@@ -28,11 +28,13 @@ namespace RememBeer.Business.Reviews.Create
         {
             var review = e.BeerReview;
             var image = e.Image;
+            if (image != null)
+            {
+                var url = this.imgUploadService.UploadImageSync(image, 300, 300);
+                review.ImgUrl = url;
+            }
 
-            var url = this.imgUploadService.UploadImageSync(image, 300, 300);
-            e.BeerReview.ImgUrl = url;
-
-            this.ReviewService.CreateReview(e.BeerReview);
+            this.ReviewService.CreateReview(review);
             //this.View.SuccessMessageText = "Review has been successfully created!";
             //this.View.SuccessMessageVisible = true;
 

@@ -13,6 +13,7 @@ namespace RememBeer.Models
         public BeerReview()
         {
             this.IsPublic = true;
+            this.ImgUrl = "/Content/Images/default-beer.png";
         }
 
         public int BeerId { get; set; }

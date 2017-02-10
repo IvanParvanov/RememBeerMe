@@ -25,6 +25,11 @@ namespace RememBeer.Business.Common.Utils
 
         public string UploadImageSync(byte[] image, int width, int height)
         {
+            if (image == null)
+            {
+                throw new ArgumentNullException(nameof(image));
+            }
+
             Stream stream = new MemoryStream(image);
             var id = Guid.NewGuid().ToString();
             var para = new ImageUploadParams
