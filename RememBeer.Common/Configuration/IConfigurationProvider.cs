@@ -21,5 +21,11 @@
         int DefaultAccountLockoutTimeSpan { get; }
 
         int MaxFailedAccessAttemptsBeforeLockout { get; }
+
+        string ImageUploadName { get; }
+
+        string ImageUploadApiKey { get; }
+
+        string ImageUploadApiSecret { get; }
     }
 }

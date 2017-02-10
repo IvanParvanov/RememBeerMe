@@ -50,7 +50,7 @@ namespace RememBeer.Models
         [Required]
         public string Place { get; set; }
 
-        [DefaultValue("~/Content/Images/default-beer.png")]
+        [DefaultValue("/Content/Images/default-beer.png")]
         public string ImgUrl { get; set; }
     }
 }

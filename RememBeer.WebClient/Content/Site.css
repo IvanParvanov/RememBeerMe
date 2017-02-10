@@ -97,3 +97,7 @@ div.panel-primary>.panel-heading {
     background-color: #2f4154;
     border-color: #2f4154;
 }
+
+.center {
+    margin: 0 auto;
+}

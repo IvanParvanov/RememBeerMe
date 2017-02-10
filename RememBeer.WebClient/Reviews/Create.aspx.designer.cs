@@ -13,13 +13,13 @@ namespace RememBeer.WebClient.Reviews {
     public partial class Create {
         
         /// <summary>
-        /// TextBox4 control.
+        /// BeerNameTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox BeerNameTextbox;
         
         /// <summary>
         /// HiddenBeerId control.

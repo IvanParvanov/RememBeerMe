@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CloudinaryDotNet, Version=1.0.30.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloudinaryDotNet.1.0.30\lib\net40\CloudinaryDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -117,11 +121,15 @@
     <Compile Include="Common\EventArgs\Contracts\IIdentifiableEventArgs.cs" />
     <Compile Include="Common\EventArgs\IdentifiableEventArgs.cs" />
     <Compile Include="Common\ICustomEventArgsFactory.cs" />
+    <Compile Include="Common\Utils\CloudinaryImageUpload.cs" />
+    <Compile Include="Common\Utils\IImageUploadService.cs" />
     <Compile Include="MvpPresenterFactory\IMvpPresenterFactory.cs" />
     <Compile Include="MvpPresenterFactory\MvpPresenterFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reviews\Common\Presenters\BeerReviewPresenter.cs" />
     <Compile Include="Reviews\Common\ViewModels\BeerReviewViewModel.cs" />
+    <Compile Include="Reviews\Create\CreateReviewPresenter.cs" />
+    <Compile Include="Reviews\Create\Contracts\ICreateReviewView.cs" />
     <Compile Include="Reviews\Default\Contracts\IReviewDetailsView.cs" />
     <Compile Include="Reviews\Default\DefaultPresenter.cs" />
     <Compile Include="Reviews\My\BeerReviewInfoEventArgs.cs" />

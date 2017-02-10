@@ -5,5 +5,7 @@ namespace RememBeer.Business.Reviews.My.Contracts
     public interface IBeerReviewInfoEventArgs
     {
         BeerReview BeerReview { get; set; }
+
+        byte[] Image { get; set; }
     }
 }

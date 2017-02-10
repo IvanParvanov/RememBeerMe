@@ -1,5 +1,5 @@
 ﻿function pageLoad(sender, args) {
-    $("#MainContent_ReviewsListView_TextBox4")
+    $("#MainContent_BeerNameTextbox")
         .autocomplete({
             serviceUrl: "/api/Beers",
             paramName: "name",
@@ -18,7 +18,7 @@
                 };
             },
             onSelect: function(suggestion) {
-                $("#MainContent_ReviewsListView_HiddenBeerId").val(suggestion.data);
+                $("#MainContent_HiddenBeerId").val(suggestion.data);
             }
         });
 

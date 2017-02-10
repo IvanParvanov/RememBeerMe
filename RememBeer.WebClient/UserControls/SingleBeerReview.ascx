@@ -10,7 +10,7 @@
         </div>
         <div class="panel-body">
             <div class="col-md-3">
-                <img class="img-responsive" src="http://lorempixel.com/200/200/">
+                <img class="img-responsive" src='<%# Review.ImgUrl %>'>
             </div>
             <div class="col-md-9 text-left">
                 <h6 class="media-heading">

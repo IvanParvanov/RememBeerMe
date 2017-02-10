@@ -3,7 +3,10 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 using Microsoft.AspNet.Identity;
+
+using RememBeer.WebClient.UserControls;
 
 namespace RememBeer.WebClient
 {
@@ -12,6 +15,8 @@ namespace RememBeer.WebClient
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
+
+        public UserNotifications Notifier => this.NotifierControl;
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -31,10 +36,10 @@ namespace RememBeer.WebClient
                 this.Page.ViewStateUserKey = this._antiXsrfTokenValue;
 
                 var responseCookie = new HttpCookie(AntiXsrfTokenKey)
-                {
-                    HttpOnly = true,
-                    Value = this._antiXsrfTokenValue
-                };
+                                     {
+                                         HttpOnly = true,
+                                         Value = this._antiXsrfTokenValue
+                                     };
                 if (FormsAuthentication.RequireSSL && this.Request.IsSecureConnection)
                 {
                     responseCookie.Secure = true;
@@ -66,7 +71,6 @@ namespace RememBeer.WebClient
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
@@ -74,5 +78,4 @@ namespace RememBeer.WebClient
             this.Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
     }
-
 }

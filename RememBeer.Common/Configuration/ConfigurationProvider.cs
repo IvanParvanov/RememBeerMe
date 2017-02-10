@@ -156,5 +156,11 @@ namespace RememBeer.Common.Configuration
                 }
             }
         }
+
+        public string ImageUploadName => ConfigurationManager.AppSettings["ImageUploadName"];
+
+        public string ImageUploadApiKey => ConfigurationManager.AppSettings["ImageUploadApiKey"];
+
+        public string ImageUploadApiSecret => ConfigurationManager.AppSettings["ImageUploadApiSecret"];
     }
 }

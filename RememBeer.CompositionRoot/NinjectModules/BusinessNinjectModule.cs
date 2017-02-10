@@ -11,6 +11,7 @@ using Ninject.Parameters;
 using RememBeer.Business.Account;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Common;
+using RememBeer.Business.Common.Utils;
 using RememBeer.Business.MvpPresenterFactory;
 using RememBeer.Common.Configuration;
 using RememBeer.Common.Identity;
@@ -59,6 +60,8 @@ namespace RememBeer.CompositionRoot.NinjectModules
 
                 return f.CreateApplicationUserManager(owinCtx);
             });
+
+            this.Bind<IImageUploadService>().To<CloudinaryImageUpload>();
         }
 
         private static IPresenter GetPresenter(IContext context)

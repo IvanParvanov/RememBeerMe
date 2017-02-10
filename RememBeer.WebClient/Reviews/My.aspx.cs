@@ -69,12 +69,6 @@ namespace RememBeer.WebClient.Reviews
 
         public void InsertReview(BeerReview newReview)
         {
-            var uploadControl = this.ReviewsListView.InsertItem.FindControl("ImageUpload") as FileUpload;
-            if (uploadControl.HasFile)
-            {
-                var a = uploadControl;
-            }
-
             var userId = this.User.Identity.GetUserId();
             newReview.UserId = userId;
             var args = this.EventArgsFactory.CreateBeerReviewInfoEventArgs(newReview);
