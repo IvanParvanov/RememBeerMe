@@ -113,7 +113,7 @@
                     </li>
                 </ul>
                 <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="ImageUpload" Text="Image :">
+                    <asp:Label runat="server" AssociatedControlID="ImageUpload" Text="Label image: ">
                     </asp:Label>
                     <asp:FileUpload runat="server"
                                     ID="ImageUpload"

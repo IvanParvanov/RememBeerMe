@@ -5,8 +5,9 @@ using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 
 using RememBeer.Common.Configuration;
+using RememBeer.Common.Services.Contracts;
 
-namespace RememBeer.Business.Common.Utils
+namespace RememBeer.Common.Services
 {
     public class CloudinaryImageUpload : IImageUploadService
     {
@@ -17,13 +18,11 @@ namespace RememBeer.Business.Common.Utils
             var name = config.ImageUploadName;
             var key = config.ImageUploadApiKey;
             var secret = config.ImageUploadApiSecret;
-            var dir = Directory.GetCurrentDirectory();
-            var account = new CloudinaryDotNet.Account(name, key, secret);
-
+            var account = new Account(name, key, secret);
             this.cloud = new Cloudinary(account);
         }
 
-        public string UploadImageSync(byte[] image, int width, int height)
+        public string UploadImage(byte[] image, int width, int height)
         {
             if (image == null)
             {
@@ -32,15 +31,23 @@ namespace RememBeer.Business.Common.Utils
 
             Stream stream = new MemoryStream(image);
             var id = Guid.NewGuid().ToString();
-            var para = new ImageUploadParams
+            var imageUploadParams = new ImageUploadParams
                        {
                            File = new FileDescription(id, stream),
                            Transformation = new Transformation().Width(width).Height(height).Crop("fit")
                        };
 
-            var result = this.cloud.Upload(para);
+            ImageUploadResult result = null;
+            try
+            {
+                result = this.cloud.Upload(imageUploadParams);
+            }
+            catch (Exception e)
+            {
+                //Log stuff
+            }
 
-            return result.Uri.AbsoluteUri;
+            return result?.Uri?.AbsoluteUri;
         }
     }
 }

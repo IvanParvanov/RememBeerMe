@@ -1,9 +1,10 @@
 ﻿using System;
 
-using RememBeer.Business.Common.Utils;
 using RememBeer.Business.Reviews.Common.Presenters;
 using RememBeer.Business.Reviews.Create.Contracts;
 using RememBeer.Business.Reviews.My.Contracts;
+using RememBeer.Common.Services;
+using RememBeer.Common.Services.Contracts;
 using RememBeer.Data.Services;
 
 namespace RememBeer.Business.Reviews.Create
@@ -30,8 +31,8 @@ namespace RememBeer.Business.Reviews.Create
             var image = e.Image;
             if (image != null)
             {
-                var url = this.imgUploadService.UploadImageSync(image, 300, 300);
-                review.ImgUrl = url;
+                var url = this.imgUploadService.UploadImage(image, 300, 300);
+                review.ImgUrl = url ?? review.ImgUrl;
             }
 
             this.ReviewService.CreateReview(review);
