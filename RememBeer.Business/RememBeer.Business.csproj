@@ -131,6 +131,9 @@
     <Compile Include="Reviews\My\Contracts\IMyReviewsView.cs" />
     <Compile Include="Reviews\My\MyReviewsPresenter.cs" />
     <Compile Include="Reviews\My\ReviewsViewModel.cs" />
+    <Compile Include="Common\Contracts\IInitializableView.cs" />
+    <Compile Include="Top\Beers\TopBeersPresenter.cs" />
+    <Compile Include="Top\Beers\TopBeersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -5,7 +5,6 @@ using RememBeer.Business.Reviews.Common.ViewModels;
 using RememBeer.Business.Reviews.Default;
 using RememBeer.Business.Reviews.Default.Contracts;
 using RememBeer.WebClient.BasePages;
-using RememBeer.WebClient.UserControls;
 
 using WebFormsMvp;
 

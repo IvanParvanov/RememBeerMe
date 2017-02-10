@@ -5,7 +5,7 @@ using System.Web.Http;
 using RememBeer.Data.DbContexts;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Models;
-using RememBeer.WebClient.Api.Dtos;
+using RememBeer.Models.Dtos;
 
 namespace RememBeer.WebClient.Api
 {

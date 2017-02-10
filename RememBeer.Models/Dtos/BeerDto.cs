@@ -1,4 +1,4 @@
-namespace RememBeer.WebClient.Api.Dtos
+namespace RememBeer.Models.Dtos
 {
     public class BeerDto
     {

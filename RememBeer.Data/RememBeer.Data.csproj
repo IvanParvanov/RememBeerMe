@@ -115,7 +115,9 @@
     <Compile Include="Repositories\Factories\IRepositoryFactory.cs" />
     <Compile Include="Repositories\RememBeerMeData.cs" />
     <Compile Include="Services\BeerReviewService.cs" />
+    <Compile Include="Services\TopBeersService.cs" />
     <Compile Include="Services\Contracts\IUserService.cs" />
+    <Compile Include="Services\Contracts\ITopBeersService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +150,9 @@
     <EmbeddedResource Include="Migrations\201702101413029_ImgUrlForReviews.resx">
       <DependentUpon>201702101413029_ImgUrlForReviews.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dtos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

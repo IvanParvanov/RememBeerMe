@@ -32,10 +32,13 @@ namespace RememBeer.Common.Services
             Stream stream = new MemoryStream(image);
             var id = Guid.NewGuid().ToString();
             var imageUploadParams = new ImageUploadParams
-                       {
-                           File = new FileDescription(id, stream),
-                           Transformation = new Transformation().Width(width).Height(height).Crop("fit")
-                       };
+                                    {
+                                        File = new FileDescription(id, stream),
+                                        Transformation = new Transformation()
+                                            .Width(width)
+                                            .Height(height)
+                                            .Crop("fit")
+                                    };
 
             ImageUploadResult result = null;
             try

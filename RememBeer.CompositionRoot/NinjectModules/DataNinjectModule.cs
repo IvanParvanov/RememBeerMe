@@ -20,6 +20,8 @@ namespace RememBeer.CompositionRoot.NinjectModules
             this.Bind<IUserData>().To<RememBeerMeData>().InRequestScope();
 
             this.Rebind<IUserService>().To<UserService>().InRequestScope();
+
+            this.Rebind<ITopBeersService>().To<TopBeersService>().InSingletonScope();
         }
     }
 }

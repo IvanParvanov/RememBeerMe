@@ -2,6 +2,8 @@ using System.IO;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
+using Microsoft.AspNet.Identity.EntityFramework;
+
 namespace RememBeer.Data.Migrations
 {
     internal sealed class Configuration : DbMigrationsConfiguration<RememBeer.Data.DbContexts.RememBeerMeDbContext>
@@ -15,11 +17,12 @@ namespace RememBeer.Data.Migrations
 
         protected override void Seed(RememBeer.Data.DbContexts.RememBeerMeDbContext context)
         {
-            //if ( !context.Beers.Any() )
-            //{
-            //    var seedQuery = File.ReadAllText("D:\\RememBeerDbSeed.sql");
-            //    context.Database.ExecuteSqlCommand(seedQuery);
-            //}
+            if (!context.Roles.Any())
+            {
+                context.Roles.Add(new IdentityRole("Admin"));
+            }
+
+            context.SaveChanges();
         }
     }
 }

@@ -59,6 +59,9 @@
     <Compile Include="Contracts\IBeerType.cs" />
     <Compile Include="Contracts\IBrewery.cs" />
     <Compile Include="Contracts\IIdentifiable.cs" />
+    <Compile Include="Dtos\BeerDto.cs" />
+    <Compile Include="Dtos\BeerRank.cs" />
+    <Compile Include="Dtos\IBeerRank.cs" />
     <Compile Include="Factories\IModelFactory.cs" />
     <Compile Include="Factories\ModelFactory.cs" />
     <Compile Include="Identifiable.cs" />
