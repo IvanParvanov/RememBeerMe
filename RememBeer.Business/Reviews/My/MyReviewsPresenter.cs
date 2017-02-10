@@ -18,7 +18,6 @@ namespace RememBeer.Business.Reviews.My
         {
             this.View.OnInitialise += this.OnViewInitialise;
             this.View.ReviewUpdate += this.OnUpdateReview;
-            this.View.CreateReview += this.OnCreateReview;
             this.View.ReviewDelete += this.OnDeleteReview;
         }
 
@@ -30,36 +29,6 @@ namespace RememBeer.Business.Reviews.My
 
             this.View.SuccessMessageText = "Review deleted!";
             this.View.SuccessMessageVisible = true;
-        }
-
-        private void OnCreateReview(object sender, IBeerReviewInfoEventArgs e)
-        {
-            try
-            {
-                this.ReviewService.CreateReview(e.BeerReview);
-                this.View.SuccessMessageText = "Review has been successfully created!";
-                this.View.SuccessMessageVisible = true;
-                this.OnViewInitialise(this, EventArgs.Empty);
-            }
-            catch ( DbEntityValidationException ex )
-            {
-                foreach ( var eve in ex.EntityValidationErrors )
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach ( var ve in eve.ValidationErrors )
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
-            catch (Exception ex)
-            {
-                //TODO: Error handling
-                throw;
-            }
         }
 
         private void OnUpdateReview(object sender, IBeerReviewInfoEventArgs e)

@@ -21,8 +21,6 @@ namespace RememBeer.WebClient.Reviews
 
         public event EventHandler<IBeerReviewInfoEventArgs> ReviewUpdate;
 
-        public event EventHandler<IBeerReviewInfoEventArgs> CreateReview;
-
         public event EventHandler<IBeerReviewInfoEventArgs> ReviewDelete;
 
         public string SuccessMessageText
@@ -65,14 +63,6 @@ namespace RememBeer.WebClient.Reviews
         {
             var args = this.EventArgsFactory.CreateBeerReviewInfoEventArgs(newReview);
             this.ReviewUpdate?.Invoke(this, args);
-        }
-
-        public void InsertReview(BeerReview newReview)
-        {
-            var userId = this.User.Identity.GetUserId();
-            newReview.UserId = userId;
-            var args = this.EventArgsFactory.CreateBeerReviewInfoEventArgs(newReview);
-            //this.CreateReview?.Invoke(this, args);
         }
 
         public void DeleteReview(BeerReview review)
