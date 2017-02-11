@@ -9,6 +9,8 @@ namespace RememBeer.Business.Top.Beers
 {
     public class TopBeersPresenter : Presenter<IInitializableView<TopBeersViewModel>>
     {
+        private const int TopBeersCount = 10;
+
         private readonly ITopBeersService topBeersService;
 
         public TopBeersPresenter(ITopBeersService topBeersService, IInitializableView<TopBeersViewModel> view)
@@ -25,7 +27,7 @@ namespace RememBeer.Business.Top.Beers
 
         private void OnViewInitialize(object sender, EventArgs e)
         {
-            var beers = this.topBeersService.GetTopBeers(10);
+            var beers = this.topBeersService.GetTopBeers(TopBeersCount);
             this.View.Model.Rankings = beers;
         }
     }

@@ -45,7 +45,7 @@ namespace RememBeer.Common.Services
             {
                 result = this.cloud.Upload(imageUploadParams);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //Log stuff
             }

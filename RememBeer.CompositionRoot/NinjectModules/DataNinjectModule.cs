@@ -5,6 +5,7 @@ using RememBeer.Data.Repositories;
 using RememBeer.Data.Repositories.Contracts;
 using RememBeer.Data.Services;
 using RememBeer.Data.Services.Contracts;
+using RememBeer.Data.Services.RankingStrategies;
 
 namespace RememBeer.CompositionRoot.NinjectModules
 {
@@ -22,6 +23,8 @@ namespace RememBeer.CompositionRoot.NinjectModules
             this.Rebind<IUserService>().To<UserService>().InRequestScope();
 
             this.Rebind<ITopBeersService>().To<TopBeersService>().InSingletonScope();
+
+            this.Bind<IBeerRankCalculationStrategy>().To<DoubleOverallScoreStrategy>().InSingletonScope();
         }
     }
 }

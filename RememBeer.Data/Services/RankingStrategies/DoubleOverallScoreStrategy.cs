@@ -37,14 +37,14 @@ namespace RememBeer.Data.Services.RankingStrategies
             }
 
             var beerReviews = reviews as IBeerReview[] ?? reviews.ToArray();
-            var reviewsCount = beerReviews.Count();
+            var reviewsCount = beerReviews.Length;
 
             decimal aggregateScore = beerReviews.Sum(beerReview =>
                                                          (decimal)(OverallScoreMultiplier * beerReview.Overall
                                                                    + beerReview.Look
                                                                    + beerReview.Smell
                                                                    + beerReview.Taste)
-                                                         / 5);
+                                                         / OverallScoreMultiplier + 3);
 
             var overallAverage = GetAverageScore(beerReviews, r => r.Overall);
             var tasteAverage = GetAverageScore(beerReviews, r => r.Taste);

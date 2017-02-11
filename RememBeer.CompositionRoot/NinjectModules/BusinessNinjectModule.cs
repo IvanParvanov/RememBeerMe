@@ -8,17 +8,14 @@ using Ninject.Extensions.Factory;
 using Ninject.Modules;
 using Ninject.Parameters;
 
-using RememBeer.Business.Account;
 using RememBeer.Business.Account.Auth;
 using RememBeer.Business.Common;
 using RememBeer.Business.MvpPresenterFactory;
 using RememBeer.Common.Configuration;
 using RememBeer.Common.Identity;
 using RememBeer.Common.Identity.Contracts;
-using RememBeer.Common.Identity.Models;
 using RememBeer.Common.Services;
 using RememBeer.Common.Services.Contracts;
-using RememBeer.Data.Services.RankingStrategies;
 
 using WebFormsMvp;
 using WebFormsMvp.Binder;
@@ -65,7 +62,6 @@ namespace RememBeer.CompositionRoot.NinjectModules
 
             this.Bind<IImageUploadService>().To<CloudinaryImageUpload>();
 
-            this.Bind<IBeerRankCalculationStrategy>().To<DoubleOverallScoreStrategy>();
         }
 
         private static IPresenter GetPresenter(IContext context)
