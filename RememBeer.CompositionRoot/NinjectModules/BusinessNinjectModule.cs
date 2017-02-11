@@ -18,6 +18,7 @@ using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
 using RememBeer.Common.Services;
 using RememBeer.Common.Services.Contracts;
+using RememBeer.Data.Services.RankingStrategies;
 
 using WebFormsMvp;
 using WebFormsMvp.Binder;
@@ -63,6 +64,8 @@ namespace RememBeer.CompositionRoot.NinjectModules
             });
 
             this.Bind<IImageUploadService>().To<CloudinaryImageUpload>();
+
+            this.Bind<IBeerRankCalculationStrategy>().To<DoubleOverallScoreStrategy>();
         }
 
         private static IPresenter GetPresenter(IContext context)

@@ -9,12 +9,13 @@ namespace RememBeer.Tests.Common.MockedClasses
     {
         private readonly HttpResponseBase response;
         private readonly HttpRequestBase request;
+        private readonly IDictionary items;
 
         public MockedHttpContextBase()
         {
             this.response = new MockedHttpResponse();
             this.request = new MockedHttpRequest();
-            this.Items = new Dictionary<string, IDictionary<string, object>>()
+            this.items = new Dictionary<string, IDictionary<string, object>>()
                          {
                              { "owin.Environment", new Dictionary<string, object>() }
                          };
@@ -24,7 +25,7 @@ namespace RememBeer.Tests.Common.MockedClasses
         {
             this.response = response;
             this.request = new MockedHttpRequest();
-            this.Items = new Dictionary<string, IDictionary<string, object>>()
+            this.items = new Dictionary<string, IDictionary<string, object>>()
                          {
                              { "owin.Environment", new Dictionary<string, object>() }
                          };
@@ -46,7 +47,7 @@ namespace RememBeer.Tests.Common.MockedClasses
 
         public override HttpRequestBase Request => this.request;
 
-        public override IDictionary Items { get; }
+        public override IDictionary Items => this.items;
 
         public override IPrincipal User { get; set; }
     }
