@@ -19,7 +19,17 @@ namespace RememBeer.WebClient.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Initialized?.Invoke(this, EventArgs.Empty);
+            var pattern = this.Request.QueryString["s"];
+            if (pattern != null)
+            {
+                var args = this.EventArgsFactory.CreateSearchEventArgs(pattern);
+                this.BrewerySearch?.Invoke(this, args);
+            }
+            else if (!this.IsPostBack)
+            {
+                this.Initialized?.Invoke(this, EventArgs.Empty);
+            }
+
             this.BindData();
         }
 
@@ -35,9 +45,7 @@ namespace RememBeer.WebClient.Admin
         protected void Search_OnClick(object sender, EventArgs e)
         {
             var pattern = this.SearchTb.Text;
-            var args = this.EventArgsFactory.CreateSearchEventArgs(pattern);
-            this.BrewerySearch?.Invoke(this, args);
-            this.BindData();
+            this.Response.Redirect("Default.aspx?s=" + pattern);
         }
 
         private void BindData()
