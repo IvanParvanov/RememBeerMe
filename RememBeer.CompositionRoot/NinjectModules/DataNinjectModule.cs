@@ -1,6 +1,8 @@
 ﻿using Ninject.Modules;
 using Ninject.Web.Common;
 
+using RememBeer.Data.DbContexts;
+using RememBeer.Data.DbContexts.Contracts;
 using RememBeer.Data.Repositories;
 using RememBeer.Data.Repositories.Contracts;
 using RememBeer.Data.Services;
@@ -13,9 +15,13 @@ namespace RememBeer.CompositionRoot.NinjectModules
     {
         public override void Load()
         {
-            this.Rebind<IUserService>().To<UserService>().InRequestScope();
+            this.Rebind<IRememBeerMeDbContext>().To<RememBeerMeDbContext>().InRequestScope();
+            this.Rebind<IRememBeerMeData>().To<RememBeerMeData>().InRequestScope();
 
+            this.Rebind<IUserService>().To<UserService>().InRequestScope();
             this.Rebind<ITopBeersService>().To<TopBeersService>().InRequestScope();
+            this.Rebind<IBeerReviewService>().To<BeerReviewService>().InRequestScope();
+            this.Rebind<IBreweryService>().To<BreweryService>().InRequestScope();
 
             this.Bind<IBeerRankCalculationStrategy>().To<DoubleOverallScoreStrategy>().InRequestScope();
         }

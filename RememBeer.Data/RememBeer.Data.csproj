@@ -115,7 +115,7 @@
     <Compile Include="Repositories\Factories\IRepositoryFactory.cs" />
     <Compile Include="Repositories\RememBeerMeData.cs" />
     <Compile Include="Services\BreweryService.cs" />
-    <Compile Include="Services\Contracts\BeerReviewService.cs" />
+    <Compile Include="Services\BeerReviewService.cs" />
     <Compile Include="Services\Contracts\IBeerReviewService.cs" />
     <Compile Include="Services\Contracts\IBreweryService.cs" />
     <Compile Include="Services\RankingStrategies\DoubleOverallScoreStrategy.cs" />

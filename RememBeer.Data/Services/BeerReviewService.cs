@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 
 using RememBeer.Data.Repositories.Base;
+using RememBeer.Data.Services.Contracts;
 using RememBeer.Models;
 using RememBeer.Models.Contracts;
 
-namespace RememBeer.Data.Services.Contracts
+namespace RememBeer.Data.Services
 {
     public class BeerReviewService : IBeerReviewService
     {

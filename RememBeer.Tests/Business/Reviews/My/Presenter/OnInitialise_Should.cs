@@ -39,7 +39,7 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
                 HttpContext = new MockedHttpContextBase(httpResponse)
             };
 
-            view.Raise(v => v.Initialized += null, view.Object, EventArgs.Empty);
+            view.Raise(v => v.Initialized += null, view.Object, System.EventArgs.Empty);
 
             Assert.AreSame(view.Object.Model.Reviews, expectedReviews);
         }
@@ -65,7 +65,7 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
                 HttpContext = new MockedHttpContextBase(httpResponse)
             };
 
-            view.Raise(v => v.Initialized += null, view.Object, EventArgs.Empty);
+            view.Raise(v => v.Initialized += null, view.Object, System.EventArgs.Empty);
 
             view.VerifySet(v => v.SuccessMessageVisible = false, Times.Once());
         }
