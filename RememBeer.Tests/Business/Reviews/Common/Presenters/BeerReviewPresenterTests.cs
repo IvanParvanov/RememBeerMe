@@ -6,7 +6,6 @@ using NUnit.Framework;
 
 using RememBeer.Business.Account.Register.Contracts;
 using RememBeer.Business.Reviews.Common.Presenters;
-using RememBeer.Data.Services;
 using RememBeer.Data.Services.Contracts;
 
 namespace RememBeer.Tests.Business.Reviews.Common.Presenters

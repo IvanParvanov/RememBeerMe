@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 
 using Moq;
 
@@ -12,7 +6,6 @@ using NUnit.Framework;
 
 using Ploeh.AutoFixture;
 
-using RememBeer.Business.Account.ManagePassword.Contracts;
 using RememBeer.Business.Account.Register;
 using RememBeer.Business.Account.Register.Contracts;
 using RememBeer.Common.Identity.Contracts;

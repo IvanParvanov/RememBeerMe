@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Moq;
 
@@ -13,7 +9,6 @@ using Ploeh.AutoFixture;
 using RememBeer.Business.Reviews.My;
 using RememBeer.Business.Reviews.My.Contracts;
 using RememBeer.Data.Services.Contracts;
-using RememBeer.Models;
 using RememBeer.Models.Contracts;
 using RememBeer.Tests.Common;
 using RememBeer.Tests.Common.MockedClasses;

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Data.Entity.Validation;
 using System.Linq;
 
 using Microsoft.AspNet.Identity;
 
 using RememBeer.Business.Reviews.Common.Presenters;
 using RememBeer.Business.Reviews.My.Contracts;
-using RememBeer.Data.Services;
 using RememBeer.Data.Services.Contracts;
-using RememBeer.Models;
 
 namespace RememBeer.Business.Reviews.My
 {
@@ -25,11 +22,20 @@ namespace RememBeer.Business.Reviews.My
         private void OnDeleteReview(object sender, IBeerReviewInfoEventArgs e)
         {
             var id = e.BeerReview.Id;
-            this.ReviewService.DeleteReview(id);
-            this.View.Model.Reviews = this.View.Model.Reviews.Where(r => !r.IsDeleted).ToList();
+            try
+            {
+                this.ReviewService.DeleteReview(id);
+                this.View.Model.Reviews = this.View.Model.Reviews.Where(r => !r.IsDeleted).ToList();
 
-            this.View.SuccessMessageText = "Review deleted!";
-            this.View.SuccessMessageVisible = true;
+                this.View.SuccessMessageText = "Review deleted!";
+                this.View.SuccessMessageVisible = true;
+            }
+            catch (Exception exception)
+            {
+                this.View.SuccessMessageText = exception.Message;
+                this.View.SuccessMessageVisible = true;
+            }
+            
         }
 
         private void OnUpdateReview(object sender, IBeerReviewInfoEventArgs e)

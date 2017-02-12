@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using Moq;
 
@@ -7,7 +6,6 @@ using NUnit.Framework;
 
 using RememBeer.Business.Reviews.My;
 using RememBeer.Business.Reviews.My.Contracts;
-using RememBeer.Data.Services;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models;
 using RememBeer.Tests.Common;
