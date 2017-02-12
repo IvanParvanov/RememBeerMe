@@ -38,6 +38,10 @@ namespace RememBeer.Data.Services.RankingStrategies
 
             var beerReviews = reviews as IBeerReview[] ?? reviews.ToArray();
             var reviewsCount = beerReviews.Length;
+            if (reviewsCount == 0)
+            {
+                throw new ArgumentException("Reviews cannot be empty!");
+            }
 
             decimal aggregateScore = beerReviews.Sum(beerReview =>
                                                          (decimal)(OverallScoreMultiplier * beerReview.Overall

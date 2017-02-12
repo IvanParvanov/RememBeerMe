@@ -30,12 +30,18 @@ namespace RememBeer.Data.Services
 
         public IEnumerable<IBrewery> GetAll<T>(int skip, int pageSize, Func<Brewery, T> order)
         {
-            return this.repository.All.OrderBy(order).Skip(skip).Take(pageSize).ToList();
+            return this.repository.All
+                       .OrderBy(order)
+                       .Skip(skip)
+                       .Take(pageSize)
+                       .ToList();
         }
 
         public IEnumerable<IBrewery> Search(string pattern)
         {
-            return this.repository.All.Where(b => b.Country.Contains(pattern) || b.Name.Contains(pattern)).ToList();
+            return this.repository.All
+                       .Where(b => b.Country.Contains(pattern) || b.Name.Contains(pattern))
+                       .ToList();
         }
     }
 }

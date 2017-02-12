@@ -35,8 +35,9 @@ namespace RememBeer.Tests.Models
                              Beer = null,
                              CreatedAt = expectedDate,
                              ModifiedAt = expectedDate,
-                             User = null
-                         };
+                             User = null,
+                             ImgUrl = expectedText
+            };
 
             Assert.AreEqual(expectedId, review.Id);
             Assert.AreEqual(expectedId, review.Overall);
@@ -50,6 +51,7 @@ namespace RememBeer.Tests.Models
             Assert.AreEqual(expectedText, review.UserId);
             Assert.AreSame(expectedText, review.Description);
             Assert.AreSame(expectedText, review.Place);
+            Assert.AreSame(expectedText, review.ImgUrl);
             Assert.AreSame(null, review.Beer);
             Assert.AreSame(null, review.User);
             Assert.AreEqual(expectedDate, review.CreatedAt);
