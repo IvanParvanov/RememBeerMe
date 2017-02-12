@@ -19,8 +19,7 @@
                     <uc:ValidatedHiddenField
                         runat="server"
                         ID="HiddenBeerId"
-                        ClientIDMode="Predictable"
-                        >
+                        ClientIDMode="Predictable">
                     </uc:ValidatedHiddenField>
                     <asp:RequiredFieldValidator runat="server"
                                                 ControlToValidate="HiddenBeerId"
@@ -63,8 +62,7 @@
                                  CssClass="form-control"
                                  ValidationGroup="Create"
                                  TextMode="MultiLine"
-                                 Rows="6"
-                                 >
+                                 Rows="6">
                     </asp:TextBox>
                     <asp:RequiredFieldValidator runat="server"
                                                 ControlToValidate="TbDescription"
@@ -93,21 +91,21 @@
                     <li>
                         <label>
                             Taste:
-                            <uc:BeerRatingSelect ID="BeerRatingSelect6" runat="server" >
+                            <uc:BeerRatingSelect ID="BeerRatingSelect6" runat="server">
                             </uc:BeerRatingSelect>
                         </label>
                     </li>
                     <li>
                         <label>
                             Look:
-                            <uc:BeerRatingSelect ID="BeerRatingSelect7" runat="server" >
+                            <uc:BeerRatingSelect ID="BeerRatingSelect7" runat="server">
                             </uc:BeerRatingSelect>
                         </label>
                     </li>
                     <li>
                         <label>
                             Aroma:
-                            <uc:BeerRatingSelect ID="BeerRatingSelect8" runat="server" >
+                            <uc:BeerRatingSelect ID="BeerRatingSelect8" runat="server">
                             </uc:BeerRatingSelect>
                         </label>
                     </li>
@@ -117,6 +115,7 @@
                     </asp:Label>
                     <asp:FileUpload runat="server"
                                     ID="ImageUpload"
+                                    accept="image/*"
                                     CssClass="form-control-static"
                                     AllowMultiple="False"/>
                 </div>
@@ -126,7 +125,7 @@
                             CssClass="btn btn-success btn-lg"
                             ID="InsertButton"
                             ValidationGroup="Create"
-                            OnClick="InsertButton_OnClick"    
+                            OnClick="InsertButton_OnClick"
                             Text="Save"/>
             </div>
         </div>

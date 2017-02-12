@@ -37,7 +37,9 @@ namespace RememBeer.Common.Services
                                         Transformation = new Transformation()
                                             .Width(width)
                                             .Height(height)
-                                            .Crop("fit")
+                                            .Crop("fit"),
+                                        PublicId = id,
+                                        Format = "jpg"
                                     };
 
             ImageUploadResult result = null;

@@ -2,6 +2,7 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMC8yOS8xMiKqq3kAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAABHklEQVRIib2Vyw6EIAxFW5idr///Qx9sfG3pLEyJ3tAwi5EmBqRo7vHawiEEERHS6x7MTMxMVv6+z3tPMUYSkfTM/R0fEaG2bbMv+Gc4nZzn+dN4HAcREa3r+hi3bcuu68jLskhVIlW073tWaYlQ9+F9IpqmSfq+fwskhdO/AwmUTJXrOuaRQNeRkOd5lq7rXmS5InmERKoER/QMvUAPlZDHcZRhGN4CSeGY+aHMqgcks5RrHv/eeh455x5KrMq2yHQdibDO6ncG/KZWL7M8xDyS1/MIO0NJqdULLS81X6/X6aR0nqBSJcPeZnlZrzN477NKURn2Nus8sjzmEII0TfMiyxUuxphVWjpJkbx0btUnshRihVv70Bv8ItXq6Asoi/ZiCbU6YgAAAABJRU5ErkJggg==);
 }
 
 /* Wrapping element */
@@ -39,9 +40,7 @@ input[type="select"] { max-width: 280px; }
     }
 }
 
-.spaced {
-     margin: 5px;
-}
+.spaced { margin: 5px; }
 
 .autocomplete-suggestions {
     border: 1px solid #999;
@@ -56,48 +55,52 @@ input[type="select"] { max-width: 280px; }
     overflow: hidden;
 }
 
-.autocomplete-selected {
-     background: #F0F0F0;
-}
+.autocomplete-selected { background: #F0F0F0; }
 
 .autocomplete-suggestions strong {
     font-weight: normal;
     color: #3399FF;
 }
 
-.autocomplete-group {
-     padding: 2px 5px;
-}
+.autocomplete-group { padding: 2px 5px; }
 
 .autocomplete-group strong {
     display: block;
     border-bottom: 1px solid #000;
 }
 
-.media>.pull-left.col-lg-3 {
-    margin-right: 0;
-}
+.media > .pull-left.col-lg-3 { margin-right: 0; }
 
-div.panel.panel-success {
-    border-color: #1abc9c;
-}
+div.panel.panel-success { border-color: #1abc9c; }
 
-div.panel-success>.panel-heading {
+div.panel-success > .panel-heading {
     color: #fff;
     background-color: #1abc9c;
     border-color: #1abc9c;
 }
 
-div.panel.panel-primary {
-    border-color: #2f4154;
-}
+div.panel.panel-primary { border-color: #2f4154; }
 
-div.panel-primary>.panel-heading {
+div.panel-primary > .panel-heading {
     color: #fff;
     background-color: #2f4154;
     border-color: #2f4154;
 }
 
-.center {
-    margin: 0 auto;
+.center { margin: 0 auto; }
+
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.error-actions {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.error-actions .btn { margin-right: 10px; }
+
+table.table-striped {
+    background-color: #ffffff
 }

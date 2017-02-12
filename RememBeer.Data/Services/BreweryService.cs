@@ -28,7 +28,7 @@ namespace RememBeer.Data.Services
             return this.repository.GetAll();
         }
 
-        public IEnumerable<IBrewery> GetAll<T>(int skip, int pageSize, Func<Brewery, T> order)
+        public IEnumerable<IBrewery> GetAll<T>(int skip, int pageSize, Func<IBrewery, T> order)
         {
             return this.repository.All
                        .OrderBy(order)
@@ -42,6 +42,11 @@ namespace RememBeer.Data.Services
             return this.repository.All
                        .Where(b => b.Country.Contains(pattern) || b.Name.Contains(pattern))
                        .ToList();
+        }
+
+        public IBrewery GetById(object id)
+        {
+            return this.repository.GetById(id);
         }
     }
 }
