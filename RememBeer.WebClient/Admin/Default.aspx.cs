@@ -25,7 +25,7 @@ namespace RememBeer.WebClient.Admin
                 var args = this.EventArgsFactory.CreateSearchEventArgs(pattern);
                 this.BrewerySearch?.Invoke(this, args);
             }
-            else if (!this.IsPostBack)
+            else
             {
                 this.Initialized?.Invoke(this, EventArgs.Empty);
             }

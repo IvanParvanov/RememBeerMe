@@ -7,7 +7,7 @@
 <head runat="server">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Your personal beer diary!" />
+    <meta name="description" content="Your personal beer diary!"/>
 
     <title><%: this.Page.Title %></title>
 
@@ -64,8 +64,19 @@
                                     <li>
                                         <a runat="server" href="~/Reviews/My" title="View your beers"><i class="fa fa-heart" aria-hidden="true"></i> My Beers</a>
                                     </li>
-                                    <li>
-                                        <a runat="server" href="~/Admin"><i class="fa fa-address-card" aria-hidden="true"></i> Admin</a>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-address-card" aria-hidden="true"></i> Admin <b class="caret"></b></a>
+                                        <span class="dropdown-arrow"></span>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a runat="server" href="~/Admin"><i class="fa fa-beer"></i> Breweries</a>
+                                            </li>
+                                            <li class="divider"></li>
+
+                                            <li>
+                                                <a runat="server" href="~/Admin/Users"><i class="fa fa-user" aria-hidden="true"></i> Users</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ContentTemplate>
                             </asp:RoleGroup>
