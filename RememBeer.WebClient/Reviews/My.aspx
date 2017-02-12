@@ -63,6 +63,7 @@
                             </div>
                             <div class="col-md-9 text-left">
                                 <h6 class="media-heading">
+                                    <asp:HiddenField runat="server" ID="ImageUrlField" Value='<%# Bind("ImgUrl") %>'/>
                                     <%#: Item.Beer.Name %>
                                     <span>
                                         @<asp:TextBox runat="server"

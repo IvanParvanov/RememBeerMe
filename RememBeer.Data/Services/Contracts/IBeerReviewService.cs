@@ -9,9 +9,9 @@ namespace RememBeer.Data.Services.Contracts
     {
         IEnumerable<IBeerReview> GetReviewsForUser(string user);
 
-        void UpdateReview(BeerReview review);
+        void UpdateReview(IBeerReview review);
 
-        void CreateReview(BeerReview review);
+        void CreateReview(IBeerReview review);
 
         void DeleteReview(object id);
 

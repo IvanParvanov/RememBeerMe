@@ -1,24 +1,24 @@
 ﻿using System;
 
 using RememBeer.Business.Reviews.My.Contracts;
-using RememBeer.Models;
+using RememBeer.Models.Contracts;
 
 namespace RememBeer.Business.Reviews.My
 {
     public class BeerReviewInfoEventArgs : EventArgs, IBeerReviewInfoEventArgs
     {
-        public BeerReviewInfoEventArgs(BeerReview beerReview)
+        public BeerReviewInfoEventArgs(IBeerReview beerReview)
         {
             this.BeerReview = beerReview;
         }
 
-        public BeerReviewInfoEventArgs(BeerReview beerReview, byte[] image)
+        public BeerReviewInfoEventArgs(IBeerReview beerReview, byte[] image)
             :this(beerReview)
         {
             this.Image = image;
         }
 
-        public BeerReview BeerReview { get; set; }
+        public IBeerReview BeerReview { get; set; }
 
         public byte[] Image { get; set; }
     }

@@ -21,15 +21,17 @@ namespace RememBeer.Data.Services.Contracts
             return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == user, x => x.CreatedAt).ToList();
         }
 
-        public void UpdateReview(BeerReview review)
+        public void UpdateReview(IBeerReview review)
         {
-            this.repository.Update(review);
+            var rv = review as BeerReview;
+            this.repository.Update(rv);
             this.repository.SaveChanges();
         }
 
-        public void CreateReview(BeerReview review)
+        public void CreateReview(IBeerReview review)
         {
-            this.repository.Add(review);
+            var rv = review as BeerReview;
+            this.repository.Add(rv);
             this.repository.SaveChanges();
         }
 
