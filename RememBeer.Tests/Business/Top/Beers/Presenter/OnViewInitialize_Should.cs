@@ -10,7 +10,7 @@ using RememBeer.Business.Top.Beers;
 using RememBeer.Common.Constants;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models.Dtos;
-using RememBeer.Tests.Business.Top.Fakes;
+using RememBeer.Tests.Business.Mocks;
 
 namespace RememBeer.Tests.Business.Top.Beers.Presenter
 {

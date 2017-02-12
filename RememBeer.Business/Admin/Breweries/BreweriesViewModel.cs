@@ -6,6 +6,6 @@ namespace RememBeer.Business.Admin.Breweries
 {
     public class BreweriesViewModel
     {
-        public IEnumerable<IBrewery> Breweries { get; set; }
+        public virtual IEnumerable<IBrewery> Breweries { get; set; }
     }
 }

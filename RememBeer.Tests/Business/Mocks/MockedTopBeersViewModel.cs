@@ -3,7 +3,7 @@
 using RememBeer.Business.Top.Beers;
 using RememBeer.Models.Dtos;
 
-namespace RememBeer.Tests.Business.Top.Fakes
+namespace RememBeer.Tests.Business.Mocks
 {
     public class MockedTopBeersViewModel : TopBeersViewModel
     {

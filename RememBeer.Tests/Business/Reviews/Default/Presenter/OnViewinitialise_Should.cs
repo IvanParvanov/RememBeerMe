@@ -9,7 +9,7 @@ using RememBeer.Business.Reviews.Default;
 using RememBeer.Business.Reviews.Default.Contracts;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models.Contracts;
-using RememBeer.Tests.Business.Reviews.Fakes;
+using RememBeer.Tests.Business.Mocks;
 using RememBeer.Tests.Common;
 
 namespace RememBeer.Tests.Business.Reviews.Default.Presenter

@@ -1,4 +1,4 @@
-﻿//using System;
+//using System;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Security.Claims;
@@ -679,3 +679,7 @@
 //        //}
 //    }
 //}
+
+namespace RememBeer.Tests.Business.Mocks
+{
+}

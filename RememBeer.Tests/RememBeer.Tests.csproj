@@ -119,8 +119,8 @@
     <Compile Include="Business\Account\Common\UserServicePresenterTests.cs" />
     <Compile Include="Business\Account\Confirm\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Account\Confirm\Presenter\OnSubmit_Should.cs" />
-    <Compile Include="Business\Account\Fakes\MockedApplicationUser.cs" />
-    <Compile Include="Business\Account\Fakes\MockedApplicationUserManager.cs" />
+    <Compile Include="Business\Mocks\MockedApplicationUser.cs" />
+    <Compile Include="Business\Mocks\MockedApplicationUserManager.cs" />
     <Compile Include="Business\Account\ForgotPassword\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Account\ForgotPassword\Presenter\OnForgot_Should.cs" />
     <Compile Include="Business\Account\Login\EventArgs\Ctor_Should.cs" />
@@ -138,7 +138,7 @@
     <Compile Include="Business\Reviews\Common\Presenters\BeerReviewPresenterTests.cs" />
     <Compile Include="Business\Reviews\Common\ViewModels\BeerReviewViewModelTests.cs" />
     <Compile Include="Business\Reviews\Default\Presenter\OnViewinitialise_Should.cs" />
-    <Compile Include="Business\Reviews\Fakes\MockedBeerReviewViewModel.cs" />
+    <Compile Include="Business\Mocks\MockedBeerReviewViewModel.cs" />
     <Compile Include="Business\Reviews\My\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Reviews\My\Presenter\OnDeleteReview_Should.cs" />
     <Compile Include="Business\Reviews\My\Presenter\OnInitialise_Should.cs" />
@@ -147,7 +147,7 @@
     <Compile Include="Business\Top\Beers\Presenter\Ctor_Should.cs" />
     <Compile Include="Business\Top\Beers\Presenter\OnViewInitialize_Should.cs" />
     <Compile Include="Business\Top\Beers\ViewModel\Setters_Should.cs" />
-    <Compile Include="Business\Top\Fakes\MockedTopBeersViewModel.cs" />
+    <Compile Include="Business\Mocks\MockedTopBeersViewModel.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpContextBase.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpRequest.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpResponse.cs" />
@@ -165,9 +165,7 @@
     <Compile Include="Models\BreweryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Business\Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

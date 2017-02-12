@@ -9,7 +9,7 @@ using Ploeh.AutoFixture;
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Data.Services;
 using RememBeer.Models.Factories;
-using RememBeer.Tests.Business.Account.Fakes;
+using RememBeer.Tests.Business.Mocks;
 using RememBeer.Tests.Common;
 
 namespace RememBeer.Tests.Data.Services.UserServiceTests

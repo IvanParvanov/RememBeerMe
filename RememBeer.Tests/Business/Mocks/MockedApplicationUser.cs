@@ -1,6 +1,6 @@
 ﻿using RememBeer.Common.Identity.Models;
 
-namespace RememBeer.Tests.Business.Account.Fakes
+namespace RememBeer.Tests.Business.Mocks
 {
     public class MockedApplicationUser : ApplicationUser
     {
