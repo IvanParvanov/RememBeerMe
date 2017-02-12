@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Moq;
 
@@ -58,7 +59,6 @@ namespace RememBeer.Tests.Data.Services.RankingStrategies.DoubleOverallScoreStra
             var tasteScore = this.Fixture.Create<int>();
             var smellScore = this.Fixture.Create<int>();
             var looksScore = this.Fixture.Create<int>();
-            var expectedAggregateScore = (decimal)((overallScore * 2) + tasteScore + smellScore + looksScore) / 5;
             var factory = new Mock<IModelFactory>();
 
             var mockedReview = new Mock<IBeerReview>();
@@ -67,11 +67,28 @@ namespace RememBeer.Tests.Data.Services.RankingStrategies.DoubleOverallScoreStra
             mockedReview.Setup(r => r.Smell).Returns(smellScore);
             mockedReview.Setup(r => r.Look).Returns(looksScore);
 
+            var mockedReview2 = new Mock<IBeerReview>();
+            mockedReview.Setup(r => r.Overall).Returns(overallScore + this.Fixture.Create<int>());
+            mockedReview.Setup(r => r.Taste).Returns(tasteScore + this.Fixture.Create<int>());
+            mockedReview.Setup(r => r.Smell).Returns(smellScore + this.Fixture.Create<int>());
+            mockedReview.Setup(r => r.Look).Returns(looksScore + this.Fixture.Create<int>());
+
             var beer = new Mock<IBeer>();
             var reviews = new List<IBeerReview>()
                           {
-                              mockedReview.Object
+                              mockedReview.Object,
+                              mockedReview2.Object
                           };
+            var expectedAggregateScore = reviews.Sum(beerReview =>
+                                                         (decimal)(2 * beerReview.Overall
+                                                                   + beerReview.Look
+                                                                   + beerReview.Smell
+                                                                   + beerReview.Taste)
+                                                         / 5) / reviews.Count;
+            var expectedOverall = (decimal)reviews.Sum(r => r.Overall) / reviews.Count;
+            var expectedTaste = (decimal)reviews.Sum(r => r.Taste) / reviews.Count;
+            var expectedSmell = (decimal)reviews.Sum(r => r.Smell) / reviews.Count;
+            var expectedLook = (decimal)reviews.Sum(r => r.Look) / reviews.Count;
 
             var strategy = new DoubleOverallScoreStrategy(factory.Object);
 
@@ -79,10 +96,10 @@ namespace RememBeer.Tests.Data.Services.RankingStrategies.DoubleOverallScoreStra
 
             factory.Verify(
                            f =>
-                               f.CreateBeerRank(overallScore,
-                                                tasteScore,
-                                                looksScore,
-                                                smellScore,
+                               f.CreateBeerRank(expectedOverall,
+                                                expectedTaste,
+                                                expectedLook,
+                                                expectedSmell,
                                                 beer.Object,
                                                 expectedAggregateScore,
                                                 reviews.Count),
