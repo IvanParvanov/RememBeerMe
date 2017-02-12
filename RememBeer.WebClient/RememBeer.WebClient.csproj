@@ -224,7 +224,9 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
+    <Content Include="Admin\Brewery.aspx" />
     <Content Include="Admin\Default.aspx" />
+    <Content Include="Admin\Users.aspx" />
     <Content Include="Content\bk\bootstrap.css" />
     <Content Include="Content\bk\bootstrap.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -450,12 +452,26 @@
     <Compile Include="Account\ResetPasswordConfirmation.aspx.designer.cs">
       <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Brewery.aspx.cs">
+      <DependentUpon>Brewery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Brewery.aspx.designer.cs">
+      <DependentUpon>Brewery.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="Api\BeersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -549,6 +565,7 @@
       <DependentUpon>UserNotifications.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ValidatedHiddenField.cs" />
+    <Compile Include="Utils\StringExtensions.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

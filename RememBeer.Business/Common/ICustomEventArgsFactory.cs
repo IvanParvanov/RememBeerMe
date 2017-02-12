@@ -27,8 +27,8 @@ namespace RememBeer.Business.Common
 
         IBeerReviewInfoEventArgs CreateBeerReviewInfoEventArgs(IBeerReview beerReview, byte[] image);
 
-        IIdentifiableEventArgs<int> CreateIdentifiableEventArgs(int id);
+        IIdentifiableEventArgs<T> CreateIdentifiableEventArgs<T>(T id);
 
-        IIdentifiableEventArgs<string> CreateIdentifiableEventArgs(string id);
+        ISearchEventArgs CreateSearchEventArgs(string pattern);
     }
 }

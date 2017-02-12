@@ -2,6 +2,7 @@
 using RememBeer.Business.Reviews.Common.Presenters;
 using RememBeer.Business.Reviews.Default.Contracts;
 using RememBeer.Data.Services;
+using RememBeer.Data.Services.Contracts;
 
 namespace RememBeer.Business.Reviews.Default
 {

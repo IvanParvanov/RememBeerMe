@@ -44,7 +44,7 @@ namespace RememBeer.Data.Services.RankingStrategies
                                                                    + beerReview.Look
                                                                    + beerReview.Smell
                                                                    + beerReview.Taste)
-                                                         / OverallScoreMultiplier + 3);
+                                                         / (OverallScoreMultiplier + 3));
 
             var overallAverage = GetAverageScore(beerReviews, r => r.Overall);
             var tasteAverage = GetAverageScore(beerReviews, r => r.Taste);

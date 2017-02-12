@@ -1,6 +1,7 @@
 ﻿using System;
 
 using RememBeer.Data.Services;
+using RememBeer.Data.Services.Contracts;
 
 using WebFormsMvp;
 

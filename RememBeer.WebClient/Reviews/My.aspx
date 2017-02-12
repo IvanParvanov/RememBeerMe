@@ -15,7 +15,7 @@
 
         <asp:ListView ID="ReviewsListView" runat="server"
                       InsertItemPosition="FirstItem"
-                      ItemType="RememBeer.Models.BeerReview"
+                      ItemType="RememBeer.Models.Contracts.IBeerReview"
                       SelectMethod="Select"
                       UpdateMethod="UpdateReview"
                       InsertMethod="InsertReview"

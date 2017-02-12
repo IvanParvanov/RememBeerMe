@@ -6,6 +6,7 @@ using RememBeer.Business.Reviews.My.Contracts;
 using RememBeer.Common.Services;
 using RememBeer.Common.Services.Contracts;
 using RememBeer.Data.Services;
+using RememBeer.Data.Services.Contracts;
 
 namespace RememBeer.Business.Reviews.Create
 {

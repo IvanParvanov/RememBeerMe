@@ -114,8 +114,13 @@
     <Compile Include="Account\Register\Contracts\IRegisterView.cs" />
     <Compile Include="Account\Register\RegisterEventArgs.cs" />
     <Compile Include="Account\Register\RegisterPresenter.cs" />
+    <Compile Include="Admin\Breweries\BreweriesPresenter.cs" />
+    <Compile Include="Admin\Breweries\BreweriesViewModel.cs" />
+    <Compile Include="Admin\Breweries\Contracts\IBreweriesView.cs" />
     <Compile Include="Common\EventArgs\Contracts\IIdentifiableEventArgs.cs" />
     <Compile Include="Common\EventArgs\IdentifiableEventArgs.cs" />
+    <Compile Include="Common\EventArgs\Contracts\ISearchEventArgs.cs" />
+    <Compile Include="Common\EventArgs\SearchEventArgs.cs" />
     <Compile Include="Common\ICustomEventArgsFactory.cs" />
     <Compile Include="MvpPresenterFactory\IMvpPresenterFactory.cs" />
     <Compile Include="MvpPresenterFactory\MvpPresenterFactory.cs" />
@@ -153,9 +158,7 @@
       <Name>RememBeer.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Admin\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

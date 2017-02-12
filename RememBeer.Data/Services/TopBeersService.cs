@@ -31,7 +31,7 @@ namespace RememBeer.Data.Services
             this.reviewsRepository = reviewsRepository;
         }
 
-        public ICollection<IBeerRank> GetTopBeers(int top)
+        public IEnumerable<IBeerRank> GetTopBeers(int top)
         {
             var rankings = new List<IBeerRank>();
 

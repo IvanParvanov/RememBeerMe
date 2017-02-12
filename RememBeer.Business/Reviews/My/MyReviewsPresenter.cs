@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using RememBeer.Business.Reviews.Common.Presenters;
 using RememBeer.Business.Reviews.My.Contracts;
 using RememBeer.Data.Services;
+using RememBeer.Data.Services.Contracts;
 using RememBeer.Models;
 
 namespace RememBeer.Business.Reviews.My

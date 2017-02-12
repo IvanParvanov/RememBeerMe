@@ -6,6 +6,6 @@ namespace RememBeer.Data.Services.Contracts
 {
     public interface ITopBeersService
     {
-        ICollection<IBeerRank> GetTopBeers(int top);
+        IEnumerable<IBeerRank> GetTopBeers(int top);
     }
 }

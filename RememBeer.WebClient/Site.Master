@@ -65,7 +65,7 @@
                                         <a runat="server" href="~/Reviews/My" title="View your beers"><i class="fa fa-heart" aria-hidden="true"></i> My Beers</a>
                                     </li>
                                     <li>
-                                        <a runat="server" href="~/Admin">Admin</a>
+                                        <a runat="server" href="~/Admin"><i class="fa fa-address-card" aria-hidden="true"></i> Admin</a>
                                     </li>
                                 </ContentTemplate>
                             </asp:RoleGroup>

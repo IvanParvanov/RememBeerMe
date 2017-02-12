@@ -30,6 +30,8 @@ namespace RememBeer.Models.Contracts
 
         bool IsPublic { get; set; }
 
+        bool IsDeleted { get; set; }
+
         string Place { get; set; }
 
         string ImgUrl { get; set; }

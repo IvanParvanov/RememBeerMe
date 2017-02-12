@@ -13,18 +13,11 @@ namespace RememBeer.CompositionRoot.NinjectModules
     {
         public override void Load()
         {
-            this.Bind<IRememBeerMeData>().To<RememBeerMeData>().InRequestScope();
-            this.Bind<IBeersData>().To<RememBeerMeData>().InRequestScope();
-            this.Bind<IBeerReviewsData>().To<RememBeerMeData>().InRequestScope();
-            this.Bind<IBeerTypesData>().To<RememBeerMeData>().InRequestScope();
-            this.Bind<IBreweriesData>().To<RememBeerMeData>().InRequestScope();
-            this.Bind<IUserData>().To<RememBeerMeData>().InRequestScope();
-
             this.Rebind<IUserService>().To<UserService>().InRequestScope();
 
-            this.Rebind<ITopBeersService>().To<TopBeersService>().InSingletonScope();
+            this.Rebind<ITopBeersService>().To<TopBeersService>().InRequestScope();
 
-            this.Bind<IBeerRankCalculationStrategy>().To<DoubleOverallScoreStrategy>().InSingletonScope();
+            this.Bind<IBeerRankCalculationStrategy>().To<DoubleOverallScoreStrategy>().InRequestScope();
         }
     }
 }

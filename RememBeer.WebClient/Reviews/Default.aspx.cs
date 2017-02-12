@@ -22,6 +22,11 @@ namespace RememBeer.WebClient.Reviews
 
             set
             {
+                if (value)
+                {
+                    this.ReviewPlaceholder.Controls.RemoveAt(0);
+                }
+
                 this.NotFound.Visible = value;
             }
         }
@@ -37,11 +42,9 @@ namespace RememBeer.WebClient.Reviews
             {
                 var args = this.EventArgsFactory.CreateIdentifiableEventArgs(id);
                 this.OnInitialise?.Invoke(this, args);
-                this.ReviewPlaceholder.Controls[0].Visible = true;
             }
             else
             {
-                this.ReviewPlaceholder.Controls.RemoveAt(0);
                 this.NotFoundVisible = true;
             }
         }

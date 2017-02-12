@@ -6,6 +6,6 @@
         <h3>The requested review cannot be found!</h3>
     </asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="ReviewPlaceholder" Visible="True">
-        <uc:SingleBeerReview runat="server" Visible="False" IsEdit="False" Review='<%# this.Model.Review %>' />
+        <uc:SingleBeerReview runat="server" Visible="True" IsEdit="False" Review='<%# this.Model.Review %>' />
     </asp:PlaceHolder>
 </asp:Content>

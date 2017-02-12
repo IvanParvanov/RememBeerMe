@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using RememBeer.Models;
+using RememBeer.Models.Contracts;
 
 namespace RememBeer.Business.Reviews.My
 {
@@ -8,9 +9,9 @@ namespace RememBeer.Business.Reviews.My
     {
         public ReviewsViewModel()
         {
-            this.Reviews = new HashSet<BeerReview>();
+            this.Reviews = new HashSet<IBeerReview>();
         }
 
-        public ICollection<BeerReview> Reviews { get; set; }
+        public IEnumerable<IBeerReview> Reviews { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using NUnit.Framework;
 using RememBeer.Business.Reviews.My;
 using RememBeer.Business.Reviews.My.Contracts;
 using RememBeer.Data.Services;
+using RememBeer.Data.Services.Contracts;
 using RememBeer.Models;
 using RememBeer.Tests.Common;
 using RememBeer.Tests.Common.MockedClasses;

@@ -6,6 +6,6 @@ namespace RememBeer.Business.Top.Beers
 {
     public class TopBeersViewModel
     {
-        public ICollection<IBeerRank> Rankings { get; set; }
+        public IEnumerable<IBeerRank> Rankings { get; set; }
     }
 }

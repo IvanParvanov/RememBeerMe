@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using RememBeer.Business.Reviews.My;
 using RememBeer.Business.Reviews.My.Contracts;
 using RememBeer.Models;
+using RememBeer.Models.Contracts;
 using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;
@@ -52,9 +53,9 @@ namespace RememBeer.WebClient.Reviews
             this.OnInitialise?.Invoke(this, EventArgs.Empty);
         }
 
-        public IEnumerable<BeerReview> Select(int startRowIndex, int maximumRows, out int totalRowCount)
+        public IEnumerable<IBeerReview> Select(int startRowIndex, int maximumRows, out int totalRowCount)
         {
-            totalRowCount = this.Model.Reviews.Count;
+            totalRowCount = this.Model.Reviews.Count();
 
             return this.Model.Reviews.Skip(startRowIndex).Take(maximumRows);
         }
