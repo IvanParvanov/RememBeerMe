@@ -10,6 +10,15 @@
 namespace RememBeer.WebClient.Top {
     
     
-    public partial class Beers {
+    public partial class TopBeers {
+        
+        /// <summary>
+        /// RankingGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView RankingGridView;
     }
 }

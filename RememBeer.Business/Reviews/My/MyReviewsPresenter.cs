@@ -17,7 +17,7 @@ namespace RememBeer.Business.Reviews.My
         public MyReviewsPresenter(IBeerReviewService reviewService, IMyReviewsView view)
             : base(reviewService, view)
         {
-            this.View.OnInitialise += this.OnViewInitialise;
+            this.View.Initialized += this.OnViewInitialise;
             this.View.ReviewUpdate += this.OnUpdateReview;
             this.View.ReviewDelete += this.OnDeleteReview;
         }

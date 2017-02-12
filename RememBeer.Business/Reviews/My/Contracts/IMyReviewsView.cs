@@ -1,13 +1,11 @@
 ﻿using System;
 
-using WebFormsMvp;
+using RememBeer.Business.Common.Contracts;
 
 namespace RememBeer.Business.Reviews.My.Contracts
 {
-    public interface IMyReviewsView : IView<ReviewsViewModel>
+    public interface IMyReviewsView : IInitializableView<ReviewsViewModel>
     {
-        event EventHandler<EventArgs> OnInitialise;
-
         event EventHandler<IBeerReviewInfoEventArgs> ReviewUpdate;
 
         event EventHandler<IBeerReviewInfoEventArgs> ReviewDelete;

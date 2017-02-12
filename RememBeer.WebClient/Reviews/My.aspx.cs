@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.UI.WebControls;
-
-using Microsoft.AspNet.Identity;
 
 using RememBeer.Business.Reviews.My;
 using RememBeer.Business.Reviews.My.Contracts;
@@ -18,7 +15,7 @@ namespace RememBeer.WebClient.Reviews
     [PresenterBinding(typeof(MyReviewsPresenter))]
     public partial class My : BaseMvpPage<ReviewsViewModel>, IMyReviewsView
     {
-        public event EventHandler<EventArgs> OnInitialise;
+        public event EventHandler<EventArgs> Initialized;
 
         public event EventHandler<IBeerReviewInfoEventArgs> ReviewUpdate;
 
@@ -50,7 +47,7 @@ namespace RememBeer.WebClient.Reviews
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.OnInitialise?.Invoke(this, EventArgs.Empty);
+            this.Initialized?.Invoke(this, EventArgs.Empty);
         }
 
         public IEnumerable<IBeerReview> Select(int startRowIndex, int maximumRows, out int totalRowCount)

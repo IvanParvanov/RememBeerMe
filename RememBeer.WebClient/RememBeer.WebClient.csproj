@@ -371,6 +371,7 @@
     <Content Include="Site.Master" />
     <Content Include="Top\Beers.aspx" />
     <Content Include="Top\Breweries.aspx" />
+    <Content Include="Top\TopBeers.ascx" />
     <Content Include="UserControls\BeerRatingSelect.ascx" />
     <Content Include="UserControls\SingleBeerReview.ascx" />
     <Content Include="UserControls\UserNotifications.ascx" />
@@ -542,6 +543,13 @@
     </Compile>
     <Compile Include="Top\Breweries.aspx.designer.cs">
       <DependentUpon>Breweries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Top\TopBeers.ascx.cs">
+      <DependentUpon>TopBeers.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Top\TopBeers.ascx.designer.cs">
+      <DependentUpon>TopBeers.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\BeerRatingSelect.ascx.cs">
       <DependentUpon>BeerRatingSelect.ascx</DependentUpon>

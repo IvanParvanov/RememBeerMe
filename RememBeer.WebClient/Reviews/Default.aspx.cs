@@ -13,6 +13,8 @@ namespace RememBeer.WebClient.Reviews
     [PresenterBinding(typeof(DefaultPresenter))]
     public partial class Default : BaseMvpPage<BeerReviewViewModel>, IReviewDetailsView
     {
+        public event EventHandler<IIdentifiableEventArgs<int>> OnInitialise;
+
         public bool NotFoundVisible
         {
             get
@@ -30,8 +32,6 @@ namespace RememBeer.WebClient.Reviews
                 this.NotFound.Visible = value;
             }
         }
-
-        public event EventHandler<IIdentifiableEventArgs<int>> OnInitialise;
 
         protected void Page_Load(object sender, EventArgs e)
         {

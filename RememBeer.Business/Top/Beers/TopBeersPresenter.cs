@@ -22,7 +22,7 @@ namespace RememBeer.Business.Top.Beers
             }
 
             this.topBeersService = topBeersService;
-            this.View.OnInitialize += this.OnViewInitialize;
+            this.View.Initialized += this.OnViewInitialize;
         }
 
         private void OnViewInitialize(object sender, EventArgs e)

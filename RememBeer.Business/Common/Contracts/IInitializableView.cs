@@ -6,6 +6,6 @@ namespace RememBeer.Business.Common.Contracts
 {
     public interface IInitializableView<T> : IView<T> where T: class, new()
     {
-        event EventHandler<System.EventArgs> OnInitialize;
+        event EventHandler<System.EventArgs> Initialized;
     }
 }

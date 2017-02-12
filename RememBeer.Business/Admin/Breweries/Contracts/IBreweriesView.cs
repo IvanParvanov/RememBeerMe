@@ -1,15 +1,12 @@
 ﻿using System;
 
+using RememBeer.Business.Common.Contracts;
 using RememBeer.Business.Common.EventArgs.Contracts;
-
-using WebFormsMvp;
 
 namespace RememBeer.Business.Admin.Breweries.Contracts
 {
-    public interface IBreweriesView : IView<BreweriesViewModel>
+    public interface IBreweriesView : IInitializableView<BreweriesViewModel>
     {
-        event EventHandler<EventArgs> Initialized;
-
         event EventHandler<ISearchEventArgs> BrewerySearch;
     }
 }
