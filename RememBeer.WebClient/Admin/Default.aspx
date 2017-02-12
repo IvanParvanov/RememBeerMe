@@ -4,7 +4,7 @@
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <div class="form-group form-inline">
-                <asp:TextBox CssClass="form-control" runat="server" ID="SearchTb"></asp:TextBox>
+                <asp:TextBox CssClass="form-control" runat="server" ID="SearchTb" placeholder="Brewery name/country"></asp:TextBox>
                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Search" OnClick="Search_OnClick"/>
             </div>
             <div class="">
