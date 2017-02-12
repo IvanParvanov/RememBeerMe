@@ -4,6 +4,6 @@ namespace RememBeer.Business.Reviews.Common.ViewModels
 {
     public class BeerReviewViewModel
     {
-        public IBeerReview Review { get; set; }
+        public virtual IBeerReview Review { get; set; }
     }
 }

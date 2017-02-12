@@ -137,6 +137,8 @@
     <Compile Include="Business\MvpPresenterFactory\Release_Should.cs" />
     <Compile Include="Business\Reviews\Common\Presenters\BeerReviewPresenterTests.cs" />
     <Compile Include="Business\Reviews\Common\ViewModels\BeerReviewViewModelTests.cs" />
+    <Compile Include="Business\Reviews\Default\Presenter\OnViewinitialise_Should.cs" />
+    <Compile Include="Business\Reviews\Fakes\MockedBeerReviewViewModel.cs" />
     <Compile Include="Business\Reviews\My\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Reviews\My\Presenter\OnDeleteReview_Should.cs" />
     <Compile Include="Business\Reviews\My\Presenter\OnInitialise_Should.cs" />

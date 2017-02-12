@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Moq;
 
@@ -10,6 +7,7 @@ using NUnit.Framework;
 
 using RememBeer.Business.Common.Contracts;
 using RememBeer.Business.Top.Beers;
+using RememBeer.Common.Constants;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models.Dtos;
 using RememBeer.Tests.Business.Top.Fakes;
@@ -22,8 +20,6 @@ namespace RememBeer.Tests.Business.Top.Beers.Presenter
         [Test]
         public void CallGetTopBeers()
         {
-            const int TopBeersCount = 10;
-
             var viewModel = new MockedTopBeersViewModel();
             var view = new Mock<IInitializableView<TopBeersViewModel>>();
             view.Setup(v => v.Model).Returns(viewModel);
@@ -32,7 +28,7 @@ namespace RememBeer.Tests.Business.Top.Beers.Presenter
             var presenter = new TopBeersPresenter(service.Object, view.Object);
             view.Raise(v => v.Initialized += null, view.Object, EventArgs.Empty);
 
-            service.Verify(s => s.GetTopBeers(TopBeersCount), Times.Once);
+            service.Verify(s => s.GetTopBeers(Constants.TopBeersCount), Times.Once);
         }
 
         [Test]

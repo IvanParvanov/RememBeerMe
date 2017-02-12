@@ -1,6 +1,7 @@
 ﻿using System;
 
 using RememBeer.Business.Common.Contracts;
+using RememBeer.Common.Constants;
 using RememBeer.Data.Services.Contracts;
 
 using WebFormsMvp;
@@ -9,8 +10,6 @@ namespace RememBeer.Business.Top.Beers
 {
     public class TopBeersPresenter : Presenter<IInitializableView<TopBeersViewModel>>
     {
-        private const int TopBeersCount = 10;
-
         private readonly ITopBeersService topBeersService;
 
         public TopBeersPresenter(ITopBeersService topBeersService, IInitializableView<TopBeersViewModel> view)
@@ -27,7 +26,7 @@ namespace RememBeer.Business.Top.Beers
 
         private void OnViewInitialize(object sender, EventArgs e)
         {
-            var beers = this.topBeersService.GetTopBeers(TopBeersCount);
+            var beers = this.topBeersService.GetTopBeers(Constants.TopBeersCount);
             this.View.Model.Rankings = beers;
         }
     }
