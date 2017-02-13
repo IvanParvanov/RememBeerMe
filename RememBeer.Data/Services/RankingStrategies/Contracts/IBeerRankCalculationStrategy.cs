@@ -3,7 +3,7 @@
 using RememBeer.Models.Contracts;
 using RememBeer.Models.Dtos;
 
-namespace RememBeer.Data.Services.RankingStrategies
+namespace RememBeer.Data.Services.RankingStrategies.Contracts
 {
     public interface IBeerRankCalculationStrategy
     {

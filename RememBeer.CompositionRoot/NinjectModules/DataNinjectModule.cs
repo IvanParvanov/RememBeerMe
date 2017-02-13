@@ -8,6 +8,8 @@ using RememBeer.Data.Repositories.Contracts;
 using RememBeer.Data.Services;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Data.Services.RankingStrategies;
+using RememBeer.Data.Services.RankingStrategies.Contracts;
+using RememBeer.Models.Factories;
 
 namespace RememBeer.CompositionRoot.NinjectModules
 {
@@ -22,6 +24,9 @@ namespace RememBeer.CompositionRoot.NinjectModules
             this.Rebind<ITopBeersService>().To<TopBeersService>().InRequestScope();
             this.Rebind<IBeerReviewService>().To<BeerReviewService>().InRequestScope();
             this.Rebind<IBreweryService>().To<BreweryService>().InRequestScope();
+
+            this.Rebind<IModelFactory>().To<ModelFactory>().InSingletonScope();
+            this.Bind<IBeerRankFactory>().To<IModelFactory>().InSingletonScope();
 
             this.Bind<IBeerRankCalculationStrategy>().To<DoubleOverallScoreStrategy>().InRequestScope();
         }

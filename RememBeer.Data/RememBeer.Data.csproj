@@ -118,8 +118,9 @@
     <Compile Include="Services\BeerReviewService.cs" />
     <Compile Include="Services\Contracts\IBeerReviewService.cs" />
     <Compile Include="Services\Contracts\IBreweryService.cs" />
+    <Compile Include="Services\RankingStrategies\Base\BeerRankCalculationStrategy.cs" />
     <Compile Include="Services\RankingStrategies\DoubleOverallScoreStrategy.cs" />
-    <Compile Include="Services\RankingStrategies\IBeerRankCalculationStrategy.cs" />
+    <Compile Include="Services\RankingStrategies\Contracts\IBeerRankCalculationStrategy.cs" />
     <Compile Include="Services\TopBeersService.cs" />
     <Compile Include="Services\Contracts\IUserService.cs" />
     <Compile Include="Services\Contracts\ITopBeersService.cs" />

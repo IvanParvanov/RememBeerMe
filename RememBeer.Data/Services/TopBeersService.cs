@@ -5,6 +5,7 @@ using System.Linq;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Data.Services.RankingStrategies;
+using RememBeer.Data.Services.RankingStrategies.Contracts;
 using RememBeer.Models;
 using RememBeer.Models.Dtos;
 

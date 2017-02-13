@@ -2,29 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using RememBeer.Data.Services.RankingStrategies.Base;
 using RememBeer.Models.Contracts;
 using RememBeer.Models.Dtos;
 using RememBeer.Models.Factories;
 
 namespace RememBeer.Data.Services.RankingStrategies
 {
-    public class DoubleOverallScoreStrategy : IBeerRankCalculationStrategy
+    public class DoubleOverallScoreStrategy : BeerRankCalculationStrategy
     {
         private const int OverallScoreMultiplier = 2;
 
-        private readonly IModelFactory factory;
-
-        public DoubleOverallScoreStrategy(IModelFactory factory)
+        public DoubleOverallScoreStrategy(IBeerRankFactory factory)
+            :base(factory)
         {
-            if (factory == null)
-            {
-                throw new ArgumentNullException(nameof(factory));
-            }
-
-            this.factory = factory;
         }
 
-        public IBeerRank GetRank(IEnumerable<IBeerReview> reviews, IBeer beer)
+        public override IBeerRank GetRank(IEnumerable<IBeerReview> reviews, IBeer beer)
         {
             if (reviews == null)
             {
@@ -56,7 +50,7 @@ namespace RememBeer.Data.Services.RankingStrategies
             var lookverage = GetAverageScore(beerReviews, r => r.Look);
 
             var finalScore = aggregateScore / reviewsCount;
-            var rank = this.factory.CreateBeerRank(overallAverage,
+            var rank = this.Factory.CreateBeerRank(overallAverage,
                                                    tasteAverage,
                                                    lookverage,
                                                    smellAverage,
