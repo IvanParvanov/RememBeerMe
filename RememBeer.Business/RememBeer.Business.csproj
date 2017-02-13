@@ -123,6 +123,10 @@
     <Compile Include="Admin\Brewery\Contracts\ISingleBreweryView.cs" />
     <Compile Include="Admin\Brewery\SingleBreweryViewModel.cs" />
     <Compile Include="Admin\Common\BreweryServicePresenter.cs" />
+    <Compile Include="Admin\ManageUsers\Contracts\IManageUsersView.cs" />
+    <Compile Include="Admin\ManageUsers\ManageUsersPresenter.cs" />
+    <Compile Include="Admin\ManageUsers\ManageUsersViewModel.cs" />
+    <Compile Include="Common\Contracts\IPaginatedView.cs" />
     <Compile Include="Common\Contracts\IUserNotificationsView.cs" />
     <Compile Include="Common\Contracts\IViewWithErrors.cs" />
     <Compile Include="Common\Contracts\IViewWithSuccess.cs" />

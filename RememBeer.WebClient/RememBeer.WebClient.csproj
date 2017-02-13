@@ -227,7 +227,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Admin\Brewery.aspx" />
     <Content Include="Admin\Default.aspx" />
-    <Content Include="Admin\Users.aspx" />
+    <Content Include="Admin\ManageUsers.aspx" />
     <Content Include="Content\bk\bootstrap.css" />
     <Content Include="Content\bk\bootstrap.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -473,12 +473,12 @@
     <Compile Include="Admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Users.aspx.cs">
-      <DependentUpon>Users.aspx</DependentUpon>
+    <Compile Include="Admin\ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Users.aspx.designer.cs">
-      <DependentUpon>Users.aspx</DependentUpon>
+    <Compile Include="Admin\ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Api\BeersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

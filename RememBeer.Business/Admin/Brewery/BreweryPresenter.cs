@@ -1,6 +1,4 @@
-﻿using System;
-
-using RememBeer.Business.Admin.Brewery.Contracts;
+﻿using RememBeer.Business.Admin.Brewery.Contracts;
 using RememBeer.Business.Admin.Common;
 using RememBeer.Business.Common.EventArgs.Contracts;
 using RememBeer.Data.Services.Contracts;

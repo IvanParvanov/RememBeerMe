@@ -45,9 +45,8 @@ namespace RememBeer.Business.Reviews.Create
             }
             else
             {
-                //this.View.ErrorMessageText = result.Errors.Join(", ");
+                this.View.ErrorMessageText = string.Join(", ", result.Errors);
             }
-
         }
     }
 }

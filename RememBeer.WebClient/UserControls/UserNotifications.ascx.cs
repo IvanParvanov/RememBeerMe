@@ -14,7 +14,11 @@ namespace RememBeer.WebClient.UserControls
         public string SuccessText
         {
             get { return this.SuccessMessage.Text; }
-            set { this.SuccessMessage.Text = value; }
+            set
+            {
+                this.SuccessMessagePlaceholder.Visible = true;
+                this.SuccessMessage.Text = value;
+            }
         }
 
         public bool WarningVisible
@@ -26,7 +30,11 @@ namespace RememBeer.WebClient.UserControls
         public string WarningText
         {
             get { return this.WarningMessage.Text; }
-            set { this.WarningMessage.Text = value; }
+            set
+            {
+                this.WarningMessagePlaceholder.Visible = true;
+                this.WarningMessage.Text = value; 
+            }
         }
 
         public bool ErrorVisible
@@ -38,7 +46,11 @@ namespace RememBeer.WebClient.UserControls
         public string ErrorText
         {
             get { return this.ErrorMessage.Text; }
-            set { this.ErrorMessage.Text = value; }
+            set
+            {
+                this.ErrorMessagePlaceholder.Visible = true;
+                this.ErrorMessage.Text = value; 
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)

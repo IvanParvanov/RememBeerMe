@@ -18,6 +18,30 @@ namespace RememBeer.WebClient.Reviews
     {
         public event EventHandler<IBeerReviewInfoEventArgs> OnCreateReview;
 
+        public string ErrorMessageText
+        {
+            get
+            {
+                return this.Notifier.ErrorText;
+            }
+            set
+            {
+                this.Notifier.ErrorText = value;
+            }
+        }
+
+        public bool ErrorMessageVisible
+        {
+            get
+            {
+                return this.Notifier.ErrorVisible;
+            }
+            set
+            {
+                this.Notifier.ErrorVisible = value;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }

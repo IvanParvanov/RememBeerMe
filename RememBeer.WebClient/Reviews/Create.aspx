@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="Create a new review" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="RememBeer.WebClient.Reviews.Create" %>
 <%@ Register TagPrefix="uc" TagName="BeerRatingSelect" Src="~/UserControls/BeerRatingSelect.ascx" %>
 <%@ Register TagPrefix="uc" Namespace="RememBeer.WebClient.UserControls" Assembly="RememBeer.WebClient" %>
+<%@ Register TagPrefix="uc" TagName="Notifier" Src="~/UserControls/UserNotifications.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <uc:Notifier runat="server" ID="Notifier"></uc:Notifier>
     <div class="container text-center">
         <div class="col-md-3"></div>
         <div class="col-md-6 text-left center well">

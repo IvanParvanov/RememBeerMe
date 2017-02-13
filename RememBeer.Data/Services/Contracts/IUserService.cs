@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
@@ -18,5 +20,13 @@ namespace RememBeer.Data.Services.Contracts
         bool IsEmailConfirmed(string userId);
 
         SignInStatus PasswordSignIn(string email, string password, bool isPersistent);
+
+        IEnumerable<IApplicationUser> PaginatedUsers(int currentPage, int pageSize);
+
+        int CountUsers();
+
+        IdentityResult DisableUser(string userId);
+
+        IdentityResult EnableUser(string userId);
     }
 }

@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
+using RememBeer.Data.Repositories;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models.Factories;
+using RememBeer.Data.Repositories.Base;
 
 namespace RememBeer.Data.Services
 {
@@ -15,9 +19,11 @@ namespace RememBeer.Data.Services
         private readonly IModelFactory factory;
         private readonly IApplicationSignInManager signInManager;
         private readonly IApplicationUserManager userManager;
+        private readonly IRepository<ApplicationUser> userRepository;
 
         public UserService(IApplicationUserManager userManager,
                            IApplicationSignInManager signInManager,
+                           IRepository<ApplicationUser> userRepository,
                            IModelFactory factory)
         {
             if (userManager == null)
@@ -35,9 +41,15 @@ namespace RememBeer.Data.Services
                 throw new ArgumentNullException(nameof(signInManager));
             }
 
+            if (userRepository == null)
+            {
+                throw new ArgumentNullException(nameof(userRepository));
+            }
+
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.factory = factory;
+            this.userRepository = userRepository;
         }
 
         public IdentityResult RegisterUser(string username, string email, string password)
@@ -82,6 +94,36 @@ namespace RememBeer.Data.Services
         public bool IsEmailConfirmed(string userId)
         {
             return this.userManager.IsEmailConfirmed(userId);
+        }
+
+        public IEnumerable<IApplicationUser> PaginatedUsers(int currentPage, int pageSize)
+        {
+            return this.userRepository.All
+                       .OrderBy(u => u.UserName)
+                       .Skip(currentPage * pageSize)
+                       .Take(pageSize)
+                       .ToList();
+        }
+
+        public int CountUsers()
+        {
+            return this.userRepository.All.Count();
+        }
+
+        public IdentityResult DisableUser(string userId)
+        {
+            var result = this.userManager.UpdateSecurityStampAsync(userId).Result;
+            if (!result.Succeeded)
+            {
+                return result;
+            }
+
+            return this.userManager.SetLockoutEndDateAsync(userId, DateTimeOffset.MaxValue).Result;
+        }
+
+        public IdentityResult EnableUser(string userId)
+        {
+            return this.userManager.SetLockoutEndDateAsync(userId, DateTimeOffset.MinValue).Result;
         }
     }
 }

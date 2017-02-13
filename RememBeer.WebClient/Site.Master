@@ -74,7 +74,7 @@
                                             <li class="divider"></li>
 
                                             <li>
-                                                <a runat="server" href="~/Admin/Users"><i class="fa fa-user" aria-hidden="true"></i> Users</a>
+                                                <a runat="server" href="~/Admin/ManageUsers"><i class="fa fa-user" aria-hidden="true"></i> Users</a>
                                             </li>
                                         </ul>
                                     </li>
