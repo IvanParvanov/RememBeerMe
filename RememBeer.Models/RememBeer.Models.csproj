@@ -62,6 +62,7 @@
     <Compile Include="Dtos\BeerDto.cs" />
     <Compile Include="Dtos\BeerRank.cs" />
     <Compile Include="Dtos\IBeerRank.cs" />
+    <Compile Include="Factories\IBeerRankFactory.cs" />
     <Compile Include="Factories\IModelFactory.cs" />
     <Compile Include="Factories\ModelFactory.cs" />
     <Compile Include="Identifiable.cs" />

@@ -4,6 +4,6 @@ namespace RememBeer.Business.Admin.Brewery
 {
     public class SingleBreweryViewModel
     {
-        public IBrewery Brewery { get; set; }
+        public virtual IBrewery Brewery { get; set; }
     }
 }

@@ -123,6 +123,9 @@
     <Compile Include="Business\Admin\Breweries\Presenter\OnViewInitialized_Should.cs" />
     <Compile Include="Business\Admin\Breweries\Presenter\OnViewSearch_Should.cs" />
     <Compile Include="Business\Admin\Breweries\ViewModel\Setters_Should.cs" />
+    <Compile Include="Business\Admin\Brewery\EventArgs\UpdateEventArgsTests.cs" />
+    <Compile Include="Business\Admin\Brewery\Presenter\OnUpdateBrewery_Should.cs" />
+    <Compile Include="Business\Admin\Brewery\ViewModel\Setters_Should.cs" />
     <Compile Include="Business\Mocks\MockedApplicationUser.cs" />
     <Compile Include="Business\Mocks\MockedApplicationUserManager.cs" />
     <Compile Include="Business\Account\ForgotPassword\EventArgs\Ctor_Should.cs" />
@@ -138,6 +141,7 @@
     <Compile Include="Business\Common\EventArgs\SearchEventArgsTests.cs" />
     <Compile Include="Business\Mocks\IDisposablePresenter.cs" />
     <Compile Include="Business\Mocks\MockedBreweriesViewModel.cs" />
+    <Compile Include="Business\Mocks\MockedSingleBreweryViewModel.cs" />
     <Compile Include="Business\MvpPresenterFactory\Create_Should.cs" />
     <Compile Include="Business\MvpPresenterFactory\Release_Should.cs" />
     <Compile Include="Business\Reviews\Common\Presenters\BeerReviewPresenterTests.cs" />

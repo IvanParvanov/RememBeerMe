@@ -15,11 +15,11 @@ namespace RememBeer.Business.Admin.Brewery
         public BreweryPresenter(IBreweryService breweryService, ISingleBreweryView view)
             : base(breweryService, view)
         {
-            this.View.BreweryUpdate += this.UpdateBrewery;
+            this.View.BreweryUpdate += this.OnUpdateBrewery;
             this.View.Initialized += this.OnViewInitialized;
         }
 
-        private void UpdateBrewery(object sender, IBreweryUpdateEventArgs e)
+        private void OnUpdateBrewery(object sender, IBreweryUpdateEventArgs e)
         {
             try
             {
