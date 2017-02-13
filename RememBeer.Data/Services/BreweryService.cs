@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using RememBeer.Data.Repositories;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models;
@@ -49,16 +50,15 @@ namespace RememBeer.Data.Services
             return this.repository.GetById(id);
         }
 
-        public IBrewery UpdateBrewery(int id, string name, string country, string description)
+        public IDataModifiedResult UpdateBrewery(int id, string name, string country, string description)
         {
             var brewery = this.repository.GetById(id);
             brewery.Name = name;
             brewery.Country = country;
             brewery.Description = description;
             this.repository.Update(brewery);
-            this.repository.SaveChanges();
 
-            return brewery;
+            return this.repository.SaveChanges();
         }
     }
 }

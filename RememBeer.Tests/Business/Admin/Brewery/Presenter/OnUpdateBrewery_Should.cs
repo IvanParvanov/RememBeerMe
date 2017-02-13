@@ -1,6 +1,4 @@
-﻿using System;
-
-using Moq;
+﻿using Moq;
 
 using NUnit.Framework;
 
@@ -8,8 +6,8 @@ using Ploeh.AutoFixture;
 
 using RememBeer.Business.Admin.Brewery;
 using RememBeer.Business.Admin.Brewery.Contracts;
+using RememBeer.Data.Repositories;
 using RememBeer.Data.Services.Contracts;
-using RememBeer.Models.Contracts;
 using RememBeer.Tests.Business.Mocks;
 using RememBeer.Tests.Common;
 
@@ -37,7 +35,12 @@ namespace RememBeer.Tests.Business.Admin.Brewery.Presenter
             args.Setup(a => a.Country).Returns(expectedCountry);
             args.Setup(a => a.Name).Returns(expectedName);
 
+            var result = new Mock<IDataModifiedResult>();
+            result.Setup(r => r.Successful).Returns(true);
+
             var service = new Mock<IBreweryService>();
+            service.Setup(s => s.UpdateBrewery(expectedId, expectedName, expectedCountry, expectedDescr))
+                   .Returns(result.Object);
 
             var presenter = new BreweryPresenter(service.Object, view.Object);
             view.Raise(v => v.BreweryUpdate += null, view.Object, args.Object);
@@ -55,7 +58,12 @@ namespace RememBeer.Tests.Business.Admin.Brewery.Presenter
 
             var args = new Mock<IBreweryUpdateEventArgs>();
 
+            var result = new Mock<IDataModifiedResult>();
+            result.Setup(r => r.Successful).Returns(true);
+
             var service = new Mock<IBreweryService>();
+            service.Setup(s => s.UpdateBrewery(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                   .Returns(result.Object);
 
             var presenter = new BreweryPresenter(service.Object, view.Object);
             view.Raise(v => v.BreweryUpdate += null, view.Object, args.Object);
@@ -65,32 +73,9 @@ namespace RememBeer.Tests.Business.Admin.Brewery.Presenter
         }
 
         [Test]
-        public void SetViewModelsBreweryToReturnValueFromService()
-        {
-            var expectedBrewery = new Mock<IBrewery>();
-
-            var viewModel = new MockedSingleBreweryViewModel();
-            var view = new Mock<ISingleBreweryView>();
-            view.Setup(v => v.Model)
-                .Returns(viewModel);
-
-            var args = new Mock<IBreweryUpdateEventArgs>();
-
-            var service = new Mock<IBreweryService>();
-            service.Setup(s => s.UpdateBrewery(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                   .Returns(expectedBrewery.Object);
-
-            var presenter = new BreweryPresenter(service.Object, view.Object);
-            view.Raise(v => v.BreweryUpdate += null, view.Object, args.Object);
-
-            Assert.AreEqual(expectedBrewery.Object, viewModel.Brewery);
-        }
-
-        [Test]
         public void CatchExceptionAndSetViewsErrorMessageCorrectly()
         {
             var expectedMessage = this.Fixture.Create<string>();
-            var expectedException = new Exception(expectedMessage);
 
             var viewModel = new MockedSingleBreweryViewModel();
             var view = new Mock<ISingleBreweryView>();
@@ -99,9 +84,13 @@ namespace RememBeer.Tests.Business.Admin.Brewery.Presenter
 
             var args = new Mock<IBreweryUpdateEventArgs>();
 
+            var result = new Mock<IDataModifiedResult>();
+            result.Setup(r => r.Errors).Returns(new[] { expectedMessage });
+            result.Setup(r => r.Successful).Returns(false);
+
             var service = new Mock<IBreweryService>();
             service.Setup(s => s.UpdateBrewery(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                   .Throws(expectedException);
+                   .Returns(result.Object);
 
             var presenter = new BreweryPresenter(service.Object, view.Object);
             view.Raise(v => v.BreweryUpdate += null, view.Object, args.Object);

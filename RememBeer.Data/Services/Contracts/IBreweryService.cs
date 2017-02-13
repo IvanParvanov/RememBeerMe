@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using RememBeer.Data.Repositories;
 using RememBeer.Models.Contracts;
 
 namespace RememBeer.Data.Services.Contracts
@@ -15,6 +16,6 @@ namespace RememBeer.Data.Services.Contracts
 
         IBrewery GetById(object id);
 
-        IBrewery UpdateBrewery(int id, string name, string country, string description);
+        IDataModifiedResult UpdateBrewery(int id, string name, string country, string description);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 
 using RememBeer.Data.Repositories.Base;
@@ -22,14 +21,16 @@ namespace RememBeer.WebClient.Api
         // GET api/Beers
         public IEnumerable<BeerDto> Get()
         {
-            return this.beers.GetAll()
-                       .Select(b => new BeerDto()
-                                    {
-                                        Id = b.Id,
-                                        Name = b.Name,
-                                        BreweryId = b.Brewery.Id,
-                                        BreweryName = b.Brewery.Name
-                                    });
+            return this.beers.GetAll<Beer, BeerDto>(null,
+                                                    null,
+                                                    null,
+                                                    b => new BeerDto()
+                                                         {
+                                                             Id = b.Id,
+                                                             Name = b.Name,
+                                                             BreweryId = b.Brewery.Id,
+                                                             BreweryName = b.Brewery.Name
+                                                         });
         }
 
         // GET api/Beers?name={name}
@@ -38,14 +39,15 @@ namespace RememBeer.WebClient.Api
             return this.beers
                        .GetAll((beer) => beer.Name.StartsWith(name) || beer.Brewery.Name.StartsWith(name),
                                beer => beer.Name,
-                               SortOrder.Ascending)
-                       .Select(b => new BeerDto()
+                               SortOrder.Ascending,
+                               b => new BeerDto()
                                     {
                                         Id = b.Id,
                                         Name = b.Name,
                                         BreweryId = b.Brewery.Id,
                                         BreweryName = b.Brewery.Name
-                                    });
+                                    }
+                              );
         }
 
         // GET api/Beers/5

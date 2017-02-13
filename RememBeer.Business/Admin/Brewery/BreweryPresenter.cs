@@ -21,16 +21,15 @@ namespace RememBeer.Business.Admin.Brewery
 
         private void OnUpdateBrewery(object sender, IBreweryUpdateEventArgs e)
         {
-            try
+            var result = this.BreweryService.UpdateBrewery(e.Id, e.Name, e.Country, e.Description);
+            if (result.Successful)
             {
-                var brewery = this.BreweryService.UpdateBrewery(e.Id, e.Name, e.Country, e.Description);
                 this.View.SuccessMessageText = UpdateSuccessMessage;
                 this.View.SuccessMessageVisible = true;
-                this.View.Model.Brewery = brewery;
             }
-            catch (Exception exception)
+            else
             {
-                this.View.ErrorMessageText = exception.Message;
+                this.View.ErrorMessageText = string.Join(", ", result.Errors);
                 this.View.ErrorMessageVisible = true;
             }
         }

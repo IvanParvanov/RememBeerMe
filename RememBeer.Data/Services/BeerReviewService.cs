@@ -21,7 +21,10 @@ namespace RememBeer.Data.Services
 
         public IEnumerable<IBeerReview> GetReviewsForUser(string user)
         {
-            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == user, x => x.CreatedAt, SortOrder.Descending).ToList();
+            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == user,
+                                          x => x.CreatedAt,
+                                          SortOrder.Descending)
+                       .ToList();
         }
 
         public IDataModifiedResult UpdateReview(IBeerReview review)
@@ -49,6 +52,5 @@ namespace RememBeer.Data.Services
         {
             return this.repository.GetById(id);
         }
-         
     }
 }
