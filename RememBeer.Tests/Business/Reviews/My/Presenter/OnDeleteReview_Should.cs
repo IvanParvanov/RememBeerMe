@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using Moq;
 
@@ -11,6 +10,7 @@ using Ploeh.AutoFixture;
 
 using RememBeer.Business.Reviews.My;
 using RememBeer.Business.Reviews.My.Contracts;
+using RememBeer.Data.Repositories;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models.Contracts;
 using RememBeer.Tests.Common.MockedClasses;
@@ -44,8 +44,12 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
             var view = new Mock<IMyReviewsView>();
             view.SetupGet(v => v.Model).Returns(viewModel);
 
+            var result = new Mock<IDataModifiedResult>();
+            result.Setup(r => r.Successful).Returns(false);
+
             var reviewService = new Mock<IBeerReviewService>();
-            reviewService.Setup(s => s.DeleteReview(reviewId));
+            reviewService.Setup(s => s.DeleteReview(reviewId))
+                .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
@@ -85,8 +89,12 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
             var view = new Mock<IMyReviewsView>();
             view.SetupGet(v => v.Model).Returns(viewModel);
 
+            var result = new Mock<IDataModifiedResult>();
+            result.Setup(r => r.Successful).Returns(true);
+
             var reviewService = new Mock<IBeerReviewService>();
-            reviewService.Setup(s => s.DeleteReview(reviewId));
+            reviewService.Setup(s => s.DeleteReview(reviewId))
+                .Returns(result.Object); 
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
@@ -126,8 +134,11 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
             var view = new Mock<IMyReviewsView>();
             view.SetupGet(v => v.Model).Returns(viewModel);
 
+            var result = new Mock<IDataModifiedResult>();
+            result.Setup(r => r.Successful).Returns(true);
             var reviewService = new Mock<IBeerReviewService>();
-            reviewService.Setup(s => s.DeleteReview(reviewId));
+            reviewService.Setup(s => s.DeleteReview(reviewId))
+                .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
@@ -142,10 +153,9 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
         }
 
         [Test]
-        public void CatchExceptionAndSetViewProperties()
+        public void SetViewProperties_WhenResultIsNotSuccessfull()
         {
             var expectedMessage = this.Fixture.Create<string>();
-            var exception = new Exception(expectedMessage);
 
             var reviewId = this.Fixture.Create<int>();
 
@@ -169,9 +179,13 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
             var view = new Mock<IMyReviewsView>();
             view.SetupGet(v => v.Model).Returns(viewModel);
 
+            var result = new Mock<IDataModifiedResult>();
+            result.Setup(r => r.Successful).Returns(false);
+            result.Setup(r => r.Errors).Returns(new[] { expectedMessage });
+
             var reviewService = new Mock<IBeerReviewService>();
             reviewService.Setup(s => s.DeleteReview(reviewId))
-                         .Throws(exception);
+                .Returns(result.Object); 
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)

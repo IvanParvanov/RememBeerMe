@@ -1,8 +1,10 @@
-﻿using Ninject.Modules;
+﻿using Ninject.Extensions.Factory;
+using Ninject.Modules;
 using Ninject.Web.Common;
 
 using RememBeer.Data.DbContexts;
 using RememBeer.Data.DbContexts.Contracts;
+using RememBeer.Data.Repositories;
 using RememBeer.Data.Services;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Data.Services.RankingStrategies;
@@ -26,6 +28,8 @@ namespace RememBeer.CompositionRoot.NinjectModules
             this.Bind<IBeerRankFactory>().To<ModelFactory>().InSingletonScope();
 
             this.Bind<IBeerRankCalculationStrategy>().To<DoubleOverallScoreStrategy>().InRequestScope();
+
+            this.Bind<IDataModifiedResultFactory>().ToFactory().InSingletonScope();
         }
     }
 }

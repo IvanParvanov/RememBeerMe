@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using RememBeer.Business.Reviews.Common.Presenters;
 using RememBeer.Business.Reviews.Create.Contracts;
@@ -34,11 +35,19 @@ namespace RememBeer.Business.Reviews.Create
                 review.ImgUrl = url ?? review.ImgUrl;
             }
 
-            this.ReviewService.CreateReview(review);
-            //this.View.SuccessMessageText = "Review has been successfully created!";
-            //this.View.SuccessMessageVisible = true;
+            var result = this.ReviewService.CreateReview(review);
+            if (result.Successful)
+            {
+                //this.View.SuccessMessageText = "Review has been successfully created!";
+                //this.View.SuccessMessageVisible = true;
 
-            this.Response.Redirect("/Reviews/My");
+                this.Response.Redirect("/Reviews/My");
+            }
+            else
+            {
+                //this.View.ErrorMessageText = result.Errors.Join(", ");
+            }
+
         }
     }
 }

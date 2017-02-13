@@ -70,6 +70,7 @@ namespace RememBeer.WebClient.App_Start
         {
             var composition = new DefaultComposition();
             composition.RegisterServices(kernel);
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
         }        
     }
 }

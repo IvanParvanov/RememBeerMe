@@ -38,19 +38,19 @@ namespace RememBeer.Tests.Data.Services.BreweryServiceTests
             Assert.AreSame(expected, actual);
         }
 
-        [Test]
-        public void CallOrderBySkipAndTakeLinqMethods()
-        {
-            //TODO:
-            //var expected = new List<Brewery>();
-            //var repository = new Mock<IRepository<Brewery>>();
-            //repository.Setup(r => r.GetAll())
-            //          .Returns(expected);
+        //TODO:
+        //[Test]
+        //public void CallOrderBySkipAndTakeLinqMethods()
+        //{
+        //    //var expected = new List<Brewery>();
+        //    //var repository = new Mock<IRepository<Brewery>>();
+        //    //repository.Setup(r => r.GetAll())
+        //    //          .Returns(expected);
 
-            //var service = new BreweryService(repository.Object);
+        //    //var service = new BreweryService(repository.Object);
 
-            //var actual = service.GetAll();
-            //Assert.AreSame(expected, actual);
-        }
+        //    //var actual = service.GetAll();
+        //    //Assert.AreSame(expected, actual);
+        //}
     }
 }

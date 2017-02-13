@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+using RememBeer.Data.Repositories;
 using RememBeer.Models.Contracts;
 
 namespace RememBeer.Data.Services.Contracts
@@ -8,11 +9,11 @@ namespace RememBeer.Data.Services.Contracts
     {
         IEnumerable<IBeerReview> GetReviewsForUser(string user);
 
-        void UpdateReview(IBeerReview review);
+        IDataModifiedResult UpdateReview(IBeerReview review);
 
-        void CreateReview(IBeerReview review);
+        IDataModifiedResult CreateReview(IBeerReview review);
 
-        void DeleteReview(object id);
+        IDataModifiedResult DeleteReview(object id);
 
         IBeerReview GetById(object id);
     }

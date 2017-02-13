@@ -22,34 +22,33 @@ namespace RememBeer.Business.Reviews.My
         private void OnDeleteReview(object sender, IBeerReviewInfoEventArgs e)
         {
             var id = e.BeerReview.Id;
-            try
+            var result = this.ReviewService.DeleteReview(id);
+            if (result.Successful)
             {
-                this.ReviewService.DeleteReview(id);
                 this.View.Model.Reviews = this.View.Model.Reviews.Where(r => !r.IsDeleted).ToList();
-
                 this.View.SuccessMessageText = "Review deleted!";
                 this.View.SuccessMessageVisible = true;
             }
-            catch (Exception exception)
+            else
             {
-                this.View.SuccessMessageText = exception.Message;
+                this.View.SuccessMessageText = string.Join(", ", result.Errors);
                 this.View.SuccessMessageVisible = true;
             }
-            
         }
 
         private void OnUpdateReview(object sender, IBeerReviewInfoEventArgs e)
         {
             var review = e.BeerReview;
-            try
+
+            var result = this.ReviewService.UpdateReview(review);
+            if (result.Successful)
             {
-                this.ReviewService.UpdateReview(review);
                 this.View.SuccessMessageText = "Review successfully updated!";
                 this.View.SuccessMessageVisible = true;
             }
-            catch (Exception ex)
+            else
             {
-                this.View.SuccessMessageText = ex.Message;
+                this.View.SuccessMessageText = string.Join(", ", result.Errors);
                 this.View.SuccessMessageVisible = true;
             }
         }

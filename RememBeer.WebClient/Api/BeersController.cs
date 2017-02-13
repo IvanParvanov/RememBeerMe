@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web.Http;
 
-using RememBeer.Data.DbContexts;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Models;
 using RememBeer.Models.Dtos;
@@ -13,13 +12,7 @@ namespace RememBeer.WebClient.Api
     {
         private readonly IRepository<Beer> beers;
 
-        //TODO: DI & use service
-        public BeersController()
-        {
-            var db = new RememBeerMeDbContext();
-            this.beers = new Repository<Beer>(db);
-        }
-
+        //TODO: use service
         public BeersController(IRepository<Beer> beers)
         {
             this.beers = beers;
@@ -42,7 +35,8 @@ namespace RememBeer.WebClient.Api
         public IEnumerable<BeerDto> Get(string name)
         {
             return this.beers
-                       .GetAll((beer) => beer.Name.StartsWith(name) || beer.Brewery.Name.StartsWith(name), beer => beer.Name)
+                       .GetAll((beer) => beer.Name.StartsWith(name) || beer.Brewery.Name.StartsWith(name),
+                               beer => beer.Name)
                        .Select(b => new BeerDto()
                                     {
                                         Id = b.Id,

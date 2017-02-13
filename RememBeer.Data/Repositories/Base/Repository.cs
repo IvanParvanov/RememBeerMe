@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -13,16 +14,26 @@ namespace RememBeer.Data.Repositories.Base
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        public Repository(IRememBeerMeDbContext context)
+        private readonly IDataModifiedResultFactory resultFactory;
+
+        public Repository(IRememBeerMeDbContext context, IDataModifiedResultFactory resultFactory)
         {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            if (resultFactory == null)
+            {
+                throw new ArgumentNullException(nameof(resultFactory));
+            }
+
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
+            this.resultFactory = resultFactory;
         }
 
-        public IQueryable<T> All
-        {
-            get { return this.DbSet; }
-        }
+        public IQueryable<T> All => this.DbSet;
 
         public T GetById(object id)
         {
@@ -95,9 +106,25 @@ namespace RememBeer.Data.Repositories.Base
             entry.State = EntityState.Deleted;
         }
 
-        public void SaveChanges()
+        public IDataModifiedResult SaveChanges()
         {
-            this.Context.SaveChanges();
+            try
+            {
+                this.Context.SaveChanges();
+                return this.resultFactory.CreateDatabaseUpdateResult(isSuccessfull: true);
+            }
+            catch (DbEntityValidationException e)
+            {
+                var errors = from eve in e.EntityValidationErrors
+                             from ve in eve.ValidationErrors
+                             select $"Error: \"{ve.ErrorMessage}\"";
+
+                return this.resultFactory.CreateDatabaseUpdateResult(false, errors);
+            }
+            catch (DbUpdateException e)
+            {
+                return this.resultFactory.CreateDatabaseUpdateResult(false, new[] { e.Message });
+            }
         }
 
         private DbEntityEntry AttachIfDetached(T entity)

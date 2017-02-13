@@ -1,6 +1,4 @@
-﻿using System;
-
-using Moq;
+﻿using Moq;
 
 using NUnit.Framework;
 
@@ -8,6 +6,7 @@ using Ploeh.AutoFixture;
 
 using RememBeer.Business.Reviews.My;
 using RememBeer.Business.Reviews.My.Contracts;
+using RememBeer.Data.Repositories;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models.Contracts;
 using RememBeer.Tests.Common;
@@ -27,8 +26,12 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
 
             var view = new Mock<IMyReviewsView>();
 
+            var result = new Mock<IDataModifiedResult>();
+            result.Setup(r => r.Successful).Returns(false);
+
             var reviewService = new Mock<IBeerReviewService>();
-            reviewService.Setup(s => s.UpdateReview(review.Object));
+            reviewService.Setup(s => s.UpdateReview(review.Object))
+                .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
@@ -51,8 +54,12 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
 
             var view = new Mock<IMyReviewsView>();
 
+            var result = new Mock<IDataModifiedResult>();
+            result.Setup(r => r.Successful).Returns(true);
+
             var reviewService = new Mock<IBeerReviewService>();
-            reviewService.Setup(s => s.UpdateReview(review.Object));
+            reviewService.Setup(s => s.UpdateReview(review.Object))
+                .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
@@ -70,7 +77,6 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
         public void CatchUpdateExceptionAndSetViewProperties()
         {
             var expectedMessage = this.Fixture.Create<string>();
-            var exception = new Exception(expectedMessage);
 
             var review = new Mock<IBeerReview>();
             var args = new Mock<IBeerReviewInfoEventArgs>();
@@ -78,8 +84,13 @@ namespace RememBeer.Tests.Business.Reviews.My.Presenter
 
             var view = new Mock<IMyReviewsView>();
 
+            var result = new Mock<IDataModifiedResult>();
+            result.Setup(r => r.Successful).Returns(false);
+            result.Setup(r => r.Errors).Returns(new[] { expectedMessage });
+
             var reviewService = new Mock<IBeerReviewService>();
-            reviewService.Setup(s => s.UpdateReview(review.Object)).Throws(exception);
+            reviewService.Setup(s => s.UpdateReview(review.Object))
+                         .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
