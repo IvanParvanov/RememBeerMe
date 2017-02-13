@@ -8,6 +8,7 @@ using Ploeh.AutoFixture;
 
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
+using RememBeer.Data.Repositories.Base;
 using RememBeer.Data.Services;
 using RememBeer.Models.Factories;
 using RememBeer.Tests.Business.Mocks;
@@ -31,9 +32,11 @@ namespace RememBeer.Tests.Data.Services.UserServiceTests
             var modelFactory = new Mock<IModelFactory>();
             modelFactory.Setup(f => f.CreateApplicationUser(userName, email))
                         .Returns(mockedUser);
+            var userRepository = new Mock<IRepository<ApplicationUser>>();
 
             var service = new UserService(userManager.Object,
                                           signInManager.Object,
+                                          userRepository.Object,
                                           modelFactory.Object);
 
             var result = service.RegisterUser(userName, email, password);
@@ -52,11 +55,14 @@ namespace RememBeer.Tests.Data.Services.UserServiceTests
             var userManager = new Mock<IApplicationUserManager>();
             var signInManager = new Mock<IApplicationSignInManager>();
             var modelFactory = new Mock<IModelFactory>();
+            var userRepository = new Mock<IRepository<ApplicationUser>>();
+
             modelFactory.Setup(f => f.CreateApplicationUser(userName, email))
                         .Returns(mockedUser);
 
             var service = new UserService(userManager.Object,
                                           signInManager.Object,
+                                          userRepository.Object,
                                           modelFactory.Object);
 
             var result = service.RegisterUser(userName, email, password);
@@ -81,9 +87,11 @@ namespace RememBeer.Tests.Data.Services.UserServiceTests
             var modelFactory = new Mock<IModelFactory>();
             modelFactory.Setup(f => f.CreateApplicationUser(userName, email))
                         .Returns(mockedUser);
+            var userRepository = new Mock<IRepository<ApplicationUser>>();
 
             var service = new UserService(userManager.Object,
                                           signInManager.Object,
+                                          userRepository.Object,
                                           modelFactory.Object);
 
             var result = service.RegisterUser(userName, email, password);

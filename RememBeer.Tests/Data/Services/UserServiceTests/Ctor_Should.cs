@@ -5,6 +5,8 @@ using Moq;
 using NUnit.Framework;
 
 using RememBeer.Common.Identity.Contracts;
+using RememBeer.Common.Identity.Models;
+using RememBeer.Data.Repositories.Base;
 using RememBeer.Data.Services;
 using RememBeer.Models.Factories;
 
@@ -18,7 +20,9 @@ namespace RememBeer.Tests.Data.Services.UserServiceTests
         {
             var signInManager = new Mock<IApplicationSignInManager>().Object;
             var modelFactory = new Mock<IModelFactory>().Object;
-            var ex = Assert.Throws<ArgumentNullException>(() => new UserService(null, signInManager, modelFactory));
+            var userRepository = new Mock<IRepository<ApplicationUser>>().Object;
+
+            var ex = Assert.Throws<ArgumentNullException>(() => new UserService(null, signInManager, userRepository, modelFactory));
         }
 
         [Test]
@@ -26,7 +30,9 @@ namespace RememBeer.Tests.Data.Services.UserServiceTests
         {
             var userManager = new Mock<IApplicationUserManager>().Object;
             var modelFactory = new Mock<IModelFactory>().Object;
-            Assert.Throws<ArgumentNullException>(() => new UserService(userManager, null, modelFactory));
+            var userRepository = new Mock<IRepository<ApplicationUser>>().Object;
+
+            Assert.Throws<ArgumentNullException>(() => new UserService(userManager, null,userRepository, modelFactory));
         }
 
         [Test]
@@ -34,7 +40,19 @@ namespace RememBeer.Tests.Data.Services.UserServiceTests
         {
             var userManager = new Mock<IApplicationUserManager>().Object;
             var signInManager = new Mock<IApplicationSignInManager>().Object;
-            Assert.Throws<ArgumentNullException>(() => new UserService(userManager, signInManager, null));
+            var userRepository = new Mock<IRepository<ApplicationUser>>();
+
+            Assert.Throws<ArgumentNullException>(() => new UserService(userManager, signInManager, userRepository.Object, null));
+        }
+
+        [Test]
+        public void ThrowArgumentNullException_WhenIRepositoryArgumentIsNull()
+        {
+            var userManager = new Mock<IApplicationUserManager>().Object;
+            var signInManager = new Mock<IApplicationSignInManager>().Object;
+            var modelFactory = new Mock<IModelFactory>().Object;
+
+            Assert.Throws<ArgumentNullException>(() => new UserService(userManager, signInManager, null, modelFactory));
         }
     }
 }
