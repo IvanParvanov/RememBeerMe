@@ -125,6 +125,7 @@
     <Compile Include="Business\Admin\Breweries\ViewModel\Setters_Should.cs" />
     <Compile Include="Business\Admin\Brewery\EventArgs\UpdateEventArgsTests.cs" />
     <Compile Include="Business\Admin\Brewery\Presenter\OnUpdateBrewery_Should.cs" />
+    <Compile Include="Business\Admin\Brewery\Presenter\OnViewInitialized_Should.cs" />
     <Compile Include="Business\Admin\Brewery\ViewModel\Setters_Should.cs" />
     <Compile Include="Business\Mocks\MockedApplicationUser.cs" />
     <Compile Include="Business\Mocks\MockedApplicationUserManager.cs" />

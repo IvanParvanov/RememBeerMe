@@ -1,0 +1,113 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Moq;
+
+using NUnit.Framework;
+
+using Ploeh.AutoFixture;
+
+using RememBeer.Business.Admin.Brewery;
+using RememBeer.Business.Admin.Brewery.Contracts;
+using RememBeer.Business.Common.EventArgs.Contracts;
+using RememBeer.Data.Services.Contracts;
+using RememBeer.Models.Contracts;
+using RememBeer.Tests.Business.Mocks;
+using RememBeer.Tests.Common;
+
+namespace RememBeer.Tests.Business.Admin.Brewery.Presenter
+{
+    [TestFixture]
+    class OnViewInitialized_Should : TestClassBase
+    {
+        [Test]
+        public void ShowErrors_WhenIdIsInvalid()
+        {
+            var viewModel = new MockedSingleBreweryViewModel();
+            var view = new Mock<ISingleBreweryView>();
+            view.Setup(v => v.Model)
+                .Returns(viewModel);
+
+            var args = new Mock<IIdentifiableEventArgs<string>>();
+            args.Setup(a => a.Id).Returns("thisshouldalwaysbeinvalidID" + this.Fixture.Create<string>());
+
+            var service = new Mock<IBreweryService>();
+
+            var presenter = new BreweryPresenter(service.Object, view.Object);
+            view.Raise(v => v.Initialized += null, view.Object, args.Object);
+
+            view.VerifySet(v => v.ErrorMessageText = It.IsAny<string>(), Times.Once);
+            view.VerifySet(v => v.ErrorMessageVisible = true, Times.Once);
+        }
+
+        [Test]
+        public void CallServiceGetByIdMethodOnceWithCorrectParams_WhenIdIsValid()
+        {
+            var expectedId = this.Fixture.Create<int>().ToString();
+            var viewModel = new MockedSingleBreweryViewModel();
+            var view = new Mock<ISingleBreweryView>();
+            view.Setup(v => v.Model)
+                .Returns(viewModel);
+
+            var args = new Mock<IIdentifiableEventArgs<string>>();
+            args.Setup(a => a.Id).Returns(expectedId);
+
+            var service = new Mock<IBreweryService>();
+
+            var presenter = new BreweryPresenter(service.Object, view.Object);
+            view.Raise(v => v.Initialized += null, view.Object, args.Object);
+
+            service.Verify(s => s.GetById(int.Parse(expectedId)), Times.Once);
+        }
+
+        [Test]
+        public void ShowErrors_ServiceDoesNotFindBrewery()
+        {
+            var expectedId = this.Fixture.Create<int>().ToString();
+            var viewModel = new MockedSingleBreweryViewModel();
+            var view = new Mock<ISingleBreweryView>();
+            view.Setup(v => v.Model)
+                .Returns(viewModel);
+
+            var args = new Mock<IIdentifiableEventArgs<string>>();
+            args.Setup(a => a.Id).Returns(expectedId);
+
+            var service = new Mock<IBreweryService>();
+            service.Setup(s => s.GetById(It.IsAny<object>()))
+                   .Returns((IBrewery)null);
+
+            var presenter = new BreweryPresenter(service.Object, view.Object);
+            view.Raise(v => v.Initialized += null, view.Object, args.Object);
+
+            view.VerifySet(v => v.ErrorMessageText = It.IsAny<string>(), Times.Once);
+            view.VerifySet(v => v.ErrorMessageVisible = true, Times.Once);
+        }
+
+        [Test]
+        public void SetViewModelProperties_WhenServiceFindsBrewery()
+        {
+            var expectedBrewery = new Mock<IBrewery>();
+            var viewModel = new MockedSingleBreweryViewModel();
+
+            var view = new Mock<ISingleBreweryView>();
+            view.Setup(v => v.Model)
+                .Returns(viewModel);
+
+            var expectedId = this.Fixture.Create<int>().ToString();
+            var args = new Mock<IIdentifiableEventArgs<string>>();
+            args.Setup(a => a.Id).Returns(expectedId);
+
+            var service = new Mock<IBreweryService>();
+            service.Setup(s => s.GetById(It.IsAny<object>()))
+                   .Returns(expectedBrewery.Object);
+
+            var presenter = new BreweryPresenter(service.Object, view.Object);
+            view.Raise(v => v.Initialized += null, view.Object, args.Object);
+
+            Assert.AreSame(expectedBrewery.Object, viewModel.Brewery);
+        }
+    }
+}
