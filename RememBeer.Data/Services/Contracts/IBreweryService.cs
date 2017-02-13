@@ -14,5 +14,7 @@ namespace RememBeer.Data.Services.Contracts
         IEnumerable<IBrewery> Search(string pattern);
 
         IBrewery GetById(object id);
+
+        IBrewery UpdateBrewery(int id, string name, string country, string description);
     }
 }

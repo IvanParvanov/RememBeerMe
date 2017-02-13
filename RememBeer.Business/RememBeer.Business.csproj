@@ -118,10 +118,15 @@
     <Compile Include="Admin\Breweries\BreweriesViewModel.cs" />
     <Compile Include="Admin\Breweries\Contracts\IBreweriesView.cs" />
     <Compile Include="Admin\Brewery\BreweryPresenter.cs" />
-    <Compile Include="Admin\Brewery\ISingleBreweryView.cs" />
+    <Compile Include="Admin\Brewery\BreweryUpdateEventArgs.cs" />
+    <Compile Include="Admin\Brewery\Contracts\IBreweryUpdateEventArgs.cs" />
+    <Compile Include="Admin\Brewery\Contracts\ISingleBreweryView.cs" />
     <Compile Include="Admin\Brewery\SingleBreweryViewModel.cs" />
     <Compile Include="Admin\Common\BreweryServicePresenter.cs" />
+    <Compile Include="Common\Contracts\IUserNotificationsView.cs" />
     <Compile Include="Common\Contracts\IViewWithErrors.cs" />
+    <Compile Include="Common\Contracts\IViewWithSuccess.cs" />
+    <Compile Include="Common\Contracts\IViewWithWarning.cs" />
     <Compile Include="Common\EventArgs\Contracts\IIdentifiableEventArgs.cs" />
     <Compile Include="Common\EventArgs\IdentifiableEventArgs.cs" />
     <Compile Include="Common\EventArgs\Contracts\ISearchEventArgs.cs" />
@@ -163,9 +168,7 @@
       <Name>RememBeer.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Admin\Brewery\Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

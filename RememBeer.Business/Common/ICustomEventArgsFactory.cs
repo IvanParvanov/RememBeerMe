@@ -3,6 +3,7 @@ using RememBeer.Business.Account.ForgotPassword.Contracts;
 using RememBeer.Business.Account.Login.Contracts;
 using RememBeer.Business.Account.ManagePassword.Contracts;
 using RememBeer.Business.Account.Register.Contracts;
+using RememBeer.Business.Admin.Brewery.Contracts;
 using RememBeer.Business.Common.EventArgs.Contracts;
 using RememBeer.Business.Reviews.My.Contracts;
 using RememBeer.Models.Contracts;
@@ -30,5 +31,7 @@ namespace RememBeer.Business.Common
         IIdentifiableEventArgs<T> CreateIdentifiableEventArgs<T>(T id);
 
         ISearchEventArgs CreateSearchEventArgs(string pattern);
+
+        IBreweryUpdateEventArgs CreateBreweryUpdateEventArgs(int id, string description, string name, string country);
     }
 }

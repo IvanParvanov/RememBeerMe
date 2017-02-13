@@ -48,5 +48,17 @@ namespace RememBeer.Data.Services
         {
             return this.repository.GetById(id);
         }
+
+        public IBrewery UpdateBrewery(int id, string name, string country, string description)
+        {
+            var brewery = this.repository.GetById(id);
+            brewery.Name = name;
+            brewery.Country = country;
+            brewery.Description = description;
+            this.repository.Update(brewery);
+            this.repository.SaveChanges();
+
+            return brewery;
+        }
     }
 }

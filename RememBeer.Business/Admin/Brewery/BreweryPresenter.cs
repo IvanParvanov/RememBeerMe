@@ -1,4 +1,7 @@
-﻿using RememBeer.Business.Admin.Common;
+﻿using System;
+
+using RememBeer.Business.Admin.Brewery.Contracts;
+using RememBeer.Business.Admin.Common;
 using RememBeer.Business.Common.EventArgs.Contracts;
 using RememBeer.Data.Services.Contracts;
 
@@ -6,10 +9,29 @@ namespace RememBeer.Business.Admin.Brewery
 {
     public class BreweryPresenter : BreweryServicePresenter<ISingleBreweryView>
     {
+        private const string NotFoundMessage = "Brewery not found!";
+        private const string UpdateSuccessMessage = "Brewery updated!";
+
         public BreweryPresenter(IBreweryService breweryService, ISingleBreweryView view)
             : base(breweryService, view)
         {
+            this.View.BreweryUpdate += this.UpdateBrewery;
             this.View.Initialized += this.OnViewInitialized;
+        }
+
+        private void UpdateBrewery(object sender, IBreweryUpdateEventArgs e)
+        {
+            try
+            {
+                this.BreweryService.UpdateBrewery(e.Id, e.Name, e.Country, e.Description);
+                this.View.SuccessMessageText = UpdateSuccessMessage;
+                this.View.SuccessMessageVisible = true;
+            }
+            catch (Exception exception)
+            {
+                this.View.ErrorMessageText = exception.Message;
+                this.View.ErrorMessageVisible = true;
+            }
         }
 
         private void OnViewInitialized(object sender, IIdentifiableEventArgs<string> e)
@@ -23,7 +45,7 @@ namespace RememBeer.Business.Admin.Brewery
                 var brewery = this.BreweryService.GetById(intId);
                 if (brewery == null)
                 {
-                    this.ShowNotFound();
+                    this.ShowError(NotFoundMessage);
                 }
                 else
                 {
@@ -32,13 +54,13 @@ namespace RememBeer.Business.Admin.Brewery
             }
             else
             {
-                this.ShowNotFound();
+                this.ShowError(NotFoundMessage);
             }
         }
 
-        private void ShowNotFound()
+        private void ShowError(string message)
         {
-            this.View.ErrorMessageText = "Brewery not found!";
+            this.View.ErrorMessageText = message;
             this.View.ErrorMessageVisible = true;
         }
     }
