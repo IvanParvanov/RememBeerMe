@@ -105,15 +105,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Base\Repository.cs" />
     <Compile Include="Repositories\Base\IRepository.cs" />
-    <Compile Include="Repositories\Contracts\IBeersData.cs" />
-    <Compile Include="Repositories\Contracts\IBeerReviewsData.cs" />
-    <Compile Include="Repositories\Contracts\IBeerTypesData.cs" />
-    <Compile Include="Repositories\Contracts\IBreweriesData.cs" />
-    <Compile Include="Repositories\Contracts\IRememBeerMeData.cs" />
-    <Compile Include="Repositories\Contracts\IRolesData.cs" />
-    <Compile Include="Repositories\Contracts\IUserData.cs" />
-    <Compile Include="Repositories\Factories\IRepositoryFactory.cs" />
-    <Compile Include="Repositories\RememBeerMeData.cs" />
     <Compile Include="Services\BreweryService.cs" />
     <Compile Include="Services\BeerReviewService.cs" />
     <Compile Include="Services\Contracts\IBeerReviewService.cs" />

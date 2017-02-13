@@ -7,7 +7,6 @@ using NUnit.Framework;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Data.Services;
 using RememBeer.Models;
-using RememBeer.Models.Contracts;
 
 namespace RememBeer.Tests.Data.Services.BreweryServiceTests
 {

@@ -5,11 +5,8 @@ using Moq;
 
 using NUnit.Framework;
 
-using Ploeh.AutoFixture;
-
 using RememBeer.Business.Admin.Breweries;
 using RememBeer.Business.Admin.Breweries.Contracts;
-using RememBeer.Business.Common.EventArgs.Contracts;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models.Contracts;
 using RememBeer.Tests.Business.Mocks;

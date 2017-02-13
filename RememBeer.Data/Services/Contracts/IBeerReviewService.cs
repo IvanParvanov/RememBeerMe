@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 
-using RememBeer.Models;
 using RememBeer.Models.Contracts;
 
 namespace RememBeer.Data.Services.Contracts
