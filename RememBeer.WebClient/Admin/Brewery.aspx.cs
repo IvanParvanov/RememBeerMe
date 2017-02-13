@@ -77,20 +77,11 @@ namespace RememBeer.WebClient.Admin
                 var id = this.Request.QueryString["id"];
                 var args = this.EventArgsFactory.CreateIdentifiableEventArgs(id);
                 this.Initialized?.Invoke(this, args);
-                if (this.Model.Brewery != null && !this.IsPostBack )
+                if (this.Model.Brewery != null && !this.IsPostBack)
                 {
                     this.BindData();
                 }
             }
-        }
-
-        private void BindData()
-        {
-            this.BreweryDetails.DataSource = new List<IBrewery>()
-                                             {
-                                                 this.Model.Brewery
-                                             };
-            this.BreweryDetails.DataBind();
         }
 
         protected void BreweryDetails_OnModeChanging(object sender, DetailsViewModeEventArgs e)
@@ -108,6 +99,17 @@ namespace RememBeer.WebClient.Admin
 
             var args = this.EventArgsFactory.CreateBreweryUpdateEventArgs(id, descr, name, country);
             this.BreweryUpdate?.Invoke(this, args);
+            this.BreweryDetails.ChangeMode(DetailsViewMode.ReadOnly);
+            this.BindData();
+        }
+
+        private void BindData()
+        {
+            this.BreweryDetails.DataSource = new List<IBrewery>()
+                                             {
+                                                 this.Model.Brewery
+                                             };
+            this.BreweryDetails.DataBind();
         }
     }
 }

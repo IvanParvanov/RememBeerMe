@@ -2,7 +2,7 @@
 <%@ Import Namespace="RememBeer.WebClient.Utils" %>
 <%@ Register tagPrefix="uc" tagName="Notifier" src="../UserControls/UserNotifications.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <uc:Notifier runat="server" ID="Notifier"/>
+    <uc:Notifier runat="server" ID="Notifier" ViewStateMode="Disabled"/>
     <div class="container">
         <div class="col-md-6 col-md-offset-3">
             <asp:DetailsView runat="server"

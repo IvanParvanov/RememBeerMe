@@ -23,9 +23,10 @@ namespace RememBeer.Business.Admin.Brewery
         {
             try
             {
-                this.BreweryService.UpdateBrewery(e.Id, e.Name, e.Country, e.Description);
+                var brewery = this.BreweryService.UpdateBrewery(e.Id, e.Name, e.Country, e.Description);
                 this.View.SuccessMessageText = UpdateSuccessMessage;
                 this.View.SuccessMessageVisible = true;
+                this.View.Model.Brewery = brewery;
             }
             catch (Exception exception)
             {
