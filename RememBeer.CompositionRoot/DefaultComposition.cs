@@ -12,7 +12,7 @@ namespace RememBeer.CompositionRoot
 {
     public class DefaultComposition : IModuleComposition
     {
-        public virtual void RegisterServices(IKernel kernel)
+        public void RegisterServices(IKernel kernel)
         {
             BindDefaultInterfaces(kernel);
             this.LoadModules(kernel);
@@ -24,7 +24,7 @@ namespace RememBeer.CompositionRoot
             kernel.Load(new DataNinjectModule());
         }
 
-        protected static void BindDefaultInterfaces(IBindingRoot kernel)
+        private static void BindDefaultInterfaces(IBindingRoot kernel)
         {
             kernel.Bind(x =>
                         {

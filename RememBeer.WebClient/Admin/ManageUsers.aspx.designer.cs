@@ -13,6 +13,15 @@ namespace RememBeer.WebClient.Admin {
     public partial class ManageUsers {
         
         /// <summary>
+        /// GridViewUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel GridViewUpdate;
+        
+        /// <summary>
         /// Notification control.
         /// </summary>
         /// <remarks>

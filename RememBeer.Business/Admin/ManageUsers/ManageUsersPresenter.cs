@@ -67,14 +67,14 @@ namespace RememBeer.Business.Admin.ManageUsers
 
         private void SetError(string error)
         {
-            this.View.ErrorMessageText = error;
             this.View.ErrorMessageVisible = true;
+            this.View.ErrorMessageText = error;
         }
 
         private void SetSuccess(string message)
         {
-            this.View.SuccessMessageText = message;
             this.View.SuccessMessageVisible = true;
+            this.View.SuccessMessageText = message;
         }
     }
 }

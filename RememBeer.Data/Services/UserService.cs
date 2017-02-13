@@ -7,7 +7,6 @@ using Microsoft.AspNet.Identity.Owin;
 
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
-using RememBeer.Data.Repositories;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models.Factories;
 using RememBeer.Data.Repositories.Base;

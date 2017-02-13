@@ -168,9 +168,13 @@
     <Compile Include="Data\Services\RankingStrategies\DoubleOverallScoreStrategyTests\GetRank_Should.cs" />
     <Compile Include="Data\Services\UserServiceTests\ChangePassword_Should.cs" />
     <Compile Include="Data\Services\UserServiceTests\ConfirmEmail_Should.cs" />
+    <Compile Include="Data\Services\UserServiceTests\CountUsers_Should.cs" />
     <Compile Include="Data\Services\UserServiceTests\Ctor_Should.cs" />
+    <Compile Include="Data\Services\UserServiceTests\DisableUser_Should.cs" />
+    <Compile Include="Data\Services\UserServiceTests\EnableUser_Should.cs" />
     <Compile Include="Data\Services\UserServiceTests\FindByName_Should.cs" />
     <Compile Include="Data\Services\UserServiceTests\IsEmailConfirmed_Should.cs" />
+    <Compile Include="Data\Services\UserServiceTests\PaginatedUsers_Should.cs" />
     <Compile Include="Data\Services\UserServiceTests\PasswordSignIn_Should.cs" />
     <Compile Include="Data\Services\UserServiceTests\RegisterUser_Should.cs" />
     <Compile Include="Models\BeerReviewTests.cs" />

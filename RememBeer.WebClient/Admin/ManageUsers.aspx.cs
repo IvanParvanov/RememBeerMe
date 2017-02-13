@@ -25,30 +25,9 @@ namespace RememBeer.WebClient.Admin
 
         public event EventHandler UserSearch;
 
-        public int CurrentPage
-        {
-            get
-            {
-                return this.UserGridView.PageIndex;
-            }
+        public int CurrentPage => this.UserGridView.PageIndex;
 
-            //set
-            //{
-            //    this.UserGridView.SetPageIndex(value);
-            //}
-        }
-
-        public int PageSize
-        {
-            get
-            {
-                return this.UserGridView.PageSize;
-            }
-            //set
-            //{
-            //    this.UserGridView.PageSize = value;
-            //}
-        }
+        public int PageSize => this.UserGridView.PageSize;
 
         public int TotalPages { get; set; }
 
