@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Http;
 
 using RememBeer.Data.Repositories.Base;
+using RememBeer.Data.Repositories.Enums;
 using RememBeer.Models;
 using RememBeer.Models.Dtos;
 
@@ -36,7 +37,8 @@ namespace RememBeer.WebClient.Api
         {
             return this.beers
                        .GetAll((beer) => beer.Name.StartsWith(name) || beer.Brewery.Name.StartsWith(name),
-                               beer => beer.Name)
+                               beer => beer.Name,
+                               SortOrder.Ascending)
                        .Select(b => new BeerDto()
                                     {
                                         Id = b.Id,

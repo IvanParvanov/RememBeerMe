@@ -3,6 +3,7 @@ using System.Linq;
 
 using RememBeer.Data.Repositories;
 using RememBeer.Data.Repositories.Base;
+using RememBeer.Data.Repositories.Enums;
 using RememBeer.Data.Services.Contracts;
 using RememBeer.Models;
 using RememBeer.Models.Contracts;
@@ -20,7 +21,7 @@ namespace RememBeer.Data.Services
 
         public IEnumerable<IBeerReview> GetReviewsForUser(string user)
         {
-            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == user, x => x.CreatedAt).ToList();
+            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == user, x => x.CreatedAt, SortOrder.Descending).ToList();
         }
 
         public IDataModifiedResult UpdateReview(IBeerReview review)

@@ -107,6 +107,7 @@
     <Compile Include="Repositories\Base\Repository.cs" />
     <Compile Include="Repositories\Base\IRepository.cs" />
     <Compile Include="Repositories\DataModifiedResult.cs" />
+    <Compile Include="Repositories\Enums\SortOrder.cs" />
     <Compile Include="Repositories\IDataModifiedResultFactory.cs" />
     <Compile Include="Repositories\IDataModifiedResult.cs" />
     <Compile Include="Services\BreweryService.cs" />

@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 
 using RememBeer.Data.DbContexts.Contracts;
+using RememBeer.Data.Repositories.Enums;
 
 namespace RememBeer.Data.Repositories.Base
 {
@@ -51,13 +52,15 @@ namespace RememBeer.Data.Repositories.Base
         }
 
         public IEnumerable<T> GetAll<T1>(Expression<Func<T, bool>> filterExpression,
-                                         Expression<Func<T, T1>> sortExpression)
+                                         Expression<Func<T, T1>> sortExpression,
+                                         SortOrder? sortOrder = null)
         {
-            return this.GetAll<T1, T>(filterExpression, sortExpression, null);
+            return this.GetAll<T1, T>(filterExpression, sortExpression, sortOrder, null);
         }
 
         public IEnumerable<T2> GetAll<T1, T2>(Expression<Func<T, bool>> filterExpression,
                                               Expression<Func<T, T1>> sortExpression,
+                                              SortOrder? sortOrder,
                                               Expression<Func<T, T2>> selectExpression)
         {
             IQueryable<T> result = this.DbSet;
@@ -69,7 +72,14 @@ namespace RememBeer.Data.Repositories.Base
 
             if (sortExpression != null)
             {
-                result = result.OrderBy(sortExpression);
+                if (sortOrder != null && sortOrder == SortOrder.Descending)
+                {
+                    result = result.OrderByDescending(sortExpression);
+                }
+                else
+                {
+                    result = result.OrderBy(sortExpression);
+                }
             }
 
             if (selectExpression != null)
