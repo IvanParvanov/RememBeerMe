@@ -2,7 +2,7 @@
 
 using Ploeh.AutoFixture;
 
-using RememBeer.Business.Common.EventArgs;
+using RememBeer.Business.Logic.Common.EventArgs;
 using RememBeer.Tests.Common;
 
 namespace RememBeer.Tests.Business.Common.EventArgs

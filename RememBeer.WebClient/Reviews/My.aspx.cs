@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using RememBeer.Business.Reviews.My;
-using RememBeer.Business.Reviews.My.Contracts;
+using RememBeer.Business.Logic.Reviews.My;
+using RememBeer.Business.Logic.Reviews.My.Contracts;
 using RememBeer.Models;
 using RememBeer.Models.Contracts;
 using RememBeer.WebClient.BasePages;

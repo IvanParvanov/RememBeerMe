@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
 
-using RememBeer.Business.Admin.Brewery;
-using RememBeer.Business.Admin.Brewery.Contracts;
-using RememBeer.Business.Common.EventArgs.Contracts;
+using RememBeer.Business.Logic.Admin.Brewery;
+using RememBeer.Business.Logic.Admin.Brewery.Contracts;
+using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Models.Contracts;
 using RememBeer.WebClient.BasePages;
 

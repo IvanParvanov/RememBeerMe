@@ -1,4 +1,4 @@
-﻿using RememBeer.Business.Reviews.Common.ViewModels;
+﻿using RememBeer.Business.Logic.Reviews.Common.ViewModels;
 using RememBeer.Models.Contracts;
 
 namespace RememBeer.Tests.Business.Mocks

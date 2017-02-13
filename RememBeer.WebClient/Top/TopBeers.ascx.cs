@@ -1,7 +1,7 @@
 ﻿using System;
 
-using RememBeer.Business.Common.Contracts;
-using RememBeer.Business.Top.Beers;
+using RememBeer.Business.Logic.Common.Contracts;
+using RememBeer.Business.Logic.Top.Beers;
 
 using WebFormsMvp;
 using WebFormsMvp.Web;

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Web.Http.Dependencies;
 
+using Ninject;
 using Ninject.Syntax;
 
-namespace Ninject.WebApi.DependencyResolver
+namespace RememBeer.CompositionRoot.Resolvers
 {
     public class NinjectDependencyScope : IDependencyScope
     {

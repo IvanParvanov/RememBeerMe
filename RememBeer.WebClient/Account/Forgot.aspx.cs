@@ -1,8 +1,8 @@
 ﻿using System;
 
-using RememBeer.Business.Account.Common.ViewModels;
-using RememBeer.Business.Account.ForgotPassword;
-using RememBeer.Business.Account.ForgotPassword.Contracts;
+using RememBeer.Business.Logic.Account.Common.ViewModels;
+using RememBeer.Business.Logic.Account.ForgotPassword;
+using RememBeer.Business.Logic.Account.ForgotPassword.Contracts;
 using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web;
 
-using RememBeer.Business.Account.Common.ViewModels;
-using RememBeer.Business.Account.Login;
-using RememBeer.Business.Account.Login.Contracts;
+using RememBeer.Business.Logic.Account.Common.ViewModels;
+using RememBeer.Business.Logic.Account.Login;
+using RememBeer.Business.Logic.Account.Login.Contracts;
 using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;

@@ -2,10 +2,10 @@
 
 using Microsoft.AspNet.Identity;
 
-using RememBeer.Business.Account.Common.ViewModels;
-using RememBeer.Business.Reviews.Create;
-using RememBeer.Business.Reviews.Create.Contracts;
-using RememBeer.Business.Reviews.My.Contracts;
+using RememBeer.Business.Logic.Account.Common.ViewModels;
+using RememBeer.Business.Logic.Reviews.Create;
+using RememBeer.Business.Logic.Reviews.Create.Contracts;
+using RememBeer.Business.Logic.Reviews.My.Contracts;
 using RememBeer.Models;
 using RememBeer.WebClient.BasePages;
 

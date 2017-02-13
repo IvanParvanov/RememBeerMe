@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.UI.WebControls;
 
-using RememBeer.Business.Admin.Breweries;
-using RememBeer.Business.Admin.Breweries.Contracts;
-using RememBeer.Business.Common.EventArgs.Contracts;
+using RememBeer.Business.Logic.Admin.Breweries;
+using RememBeer.Business.Logic.Admin.Breweries.Contracts;
+using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;

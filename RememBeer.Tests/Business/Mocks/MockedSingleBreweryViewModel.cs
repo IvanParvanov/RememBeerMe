@@ -1,4 +1,4 @@
-﻿using RememBeer.Business.Admin.Brewery;
+﻿using RememBeer.Business.Logic.Admin.Brewery;
 using RememBeer.Models.Contracts;
 
 namespace RememBeer.Tests.Business.Mocks

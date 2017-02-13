@@ -1,9 +1,9 @@
 ﻿using System;
 
-using RememBeer.Business.Common.EventArgs.Contracts;
-using RememBeer.Business.Reviews.Common.ViewModels;
-using RememBeer.Business.Reviews.Default;
-using RememBeer.Business.Reviews.Default.Contracts;
+using RememBeer.Business.Logic.Common.EventArgs.Contracts;
+using RememBeer.Business.Logic.Reviews.Common.ViewModels;
+using RememBeer.Business.Logic.Reviews.Default;
+using RememBeer.Business.Logic.Reviews.Default.Contracts;
 using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;

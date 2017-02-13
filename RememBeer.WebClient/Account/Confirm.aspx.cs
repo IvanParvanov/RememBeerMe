@@ -1,8 +1,8 @@
 ﻿using System;
 
-using RememBeer.Business.Account.Common.ViewModels;
-using RememBeer.Business.Account.Confirm;
-using RememBeer.Business.Account.Confirm.Contracts;
+using RememBeer.Business.Logic.Account.Common.ViewModels;
+using RememBeer.Business.Logic.Account.Confirm;
+using RememBeer.Business.Logic.Account.Confirm.Contracts;
 using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;

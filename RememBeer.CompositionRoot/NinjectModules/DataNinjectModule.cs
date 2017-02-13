@@ -2,13 +2,13 @@
 using Ninject.Modules;
 using Ninject.Web.Common;
 
+using RememBeer.Business.Services;
+using RememBeer.Business.Services.Contracts;
+using RememBeer.Business.Services.RankingStrategies;
+using RememBeer.Business.Services.RankingStrategies.Contracts;
 using RememBeer.Data.DbContexts;
 using RememBeer.Data.DbContexts.Contracts;
 using RememBeer.Data.Repositories;
-using RememBeer.Data.Services;
-using RememBeer.Data.Services.Contracts;
-using RememBeer.Data.Services.RankingStrategies;
-using RememBeer.Data.Services.RankingStrategies.Contracts;
 using RememBeer.Models.Factories;
 
 namespace RememBeer.CompositionRoot.NinjectModules

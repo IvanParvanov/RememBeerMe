@@ -110,17 +110,6 @@
     <Compile Include="Repositories\Enums\SortOrder.cs" />
     <Compile Include="Repositories\IDataModifiedResultFactory.cs" />
     <Compile Include="Repositories\IDataModifiedResult.cs" />
-    <Compile Include="Services\BreweryService.cs" />
-    <Compile Include="Services\BeerReviewService.cs" />
-    <Compile Include="Services\Contracts\IBeerReviewService.cs" />
-    <Compile Include="Services\Contracts\IBreweryService.cs" />
-    <Compile Include="Services\RankingStrategies\Base\BeerRankCalculationStrategy.cs" />
-    <Compile Include="Services\RankingStrategies\DoubleOverallScoreStrategy.cs" />
-    <Compile Include="Services\RankingStrategies\Contracts\IBeerRankCalculationStrategy.cs" />
-    <Compile Include="Services\TopBeersService.cs" />
-    <Compile Include="Services\Contracts\IUserService.cs" />
-    <Compile Include="Services\Contracts\ITopBeersService.cs" />
-    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -153,9 +142,7 @@
       <DependentUpon>201702101413029_ImgUrlForReviews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

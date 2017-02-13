@@ -1,8 +1,7 @@
 using System.Web.Http;
 
-using Ninject.WebApi.DependencyResolver;
-
 using RememBeer.CompositionRoot;
+using RememBeer.CompositionRoot.Resolvers;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(RememBeer.WebClient.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(RememBeer.WebClient.App_Start.NinjectWebCommon), "Stop")]

@@ -8,9 +8,11 @@ using Ninject.Extensions.Factory;
 using Ninject.Modules;
 using Ninject.Parameters;
 
-using RememBeer.Business.Account.Auth;
-using RememBeer.Business.Common;
-using RememBeer.Business.MvpPresenterFactory;
+using RememBeer.Business.Logic.Account.Auth;
+using RememBeer.Business.Logic.Common;
+using RememBeer.Business.Logic.MvpPresenterFactory;
+using RememBeer.Business.Services;
+using RememBeer.Business.Services.Contracts;
 using RememBeer.Common.Configuration;
 using RememBeer.Common.Identity;
 using RememBeer.Common.Identity.Contracts;

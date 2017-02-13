@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 using Microsoft.AspNet.Identity;
 
-using RememBeer.Business.Account.Common.ViewModels;
-using RememBeer.Business.Account.ManagePassword;
-using RememBeer.Business.Account.ManagePassword.Contracts;
+using RememBeer.Business.Logic.Account.Common.ViewModels;
+using RememBeer.Business.Logic.Account.ManagePassword;
+using RememBeer.Business.Logic.Account.ManagePassword.Contracts;
 using RememBeer.WebClient.BasePages;
 
 using WebFormsMvp;

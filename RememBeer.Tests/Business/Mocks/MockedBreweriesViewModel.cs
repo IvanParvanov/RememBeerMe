@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-using RememBeer.Business.Admin.Breweries;
+using RememBeer.Business.Logic.Admin.Breweries;
 using RememBeer.Models.Contracts;
 
 namespace RememBeer.Tests.Business.Mocks
