@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -125,6 +126,16 @@ namespace RememBeer.Business.Services
         public IdentityResult EnableUser(string userId)
         {
             return this.userManager.SetLockoutEndDateAsync(userId, DateTimeOffset.MinValue).Result;
+        }
+
+        public IdentityResult MakeAdmin(string userId)
+        {
+            return this.userManager.AddToRoleAsync(userId, "Admin").Result;
+        }
+
+        public IdentityResult RemoveAdmin(string userId)
+        {
+            return this.userManager.RemoveFromRoleAsync(userId, "Admin").Result;
         }
     }
 }

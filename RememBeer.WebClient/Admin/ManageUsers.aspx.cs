@@ -13,6 +13,8 @@ namespace RememBeer.WebClient.Admin
     [PresenterBinding(typeof(ManageUsersPresenter))]
     public partial class ManageUsers : BaseMvpPage<ManageUsersViewModel>, IManageUsersView
     {
+        public event EventHandler<IIdentifiableEventArgs<string>> UserRemoveAdmin;
+
         public event EventHandler<EventArgs> Initialized;
 
         public event EventHandler<IIdentifiableEventArgs<string>> UserDisable;
@@ -128,7 +130,7 @@ namespace RememBeer.WebClient.Admin
             throw new NotImplementedException();
         }
 
-        protected void OnDisableEnableCommand(object sender, CommandEventArgs e)
+        protected void OnUserCommand(object sender, CommandEventArgs e)
         {
             var userId = (string)e.CommandArgument;
             var args = this.EventArgsFactory.CreateIdentifiableEventArgs(userId);
@@ -139,6 +141,12 @@ namespace RememBeer.WebClient.Admin
                     break;
                 case "DisableUser":
                     this.UserDisable?.Invoke(this, args);
+                    break;
+                case "MakeAdmin":
+                    this.UserMakeAdmin?.Invoke(this, args);
+                    break;
+                case "RemoveAdmin":
+                    this.UserRemoveAdmin?.Invoke(this, args);
                     break;
             }
         }

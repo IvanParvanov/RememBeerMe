@@ -49,6 +49,11 @@
                                 <asp:CheckBox ID="ConfirmCheckbox" CssClass="form-control" runat="server" Checked='<%# Bind("EmailConfirmed") %>'></asp:CheckBox>
                             </EditItemTemplate>
                         </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Admin" AccessibleHeaderText="Admin">
+                            <ItemTemplate>
+                                <asp:Label runat="server" Text='<%# Item.Roles.Any() ? "True" : "False" %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Locked Until" AccessibleHeaderText="Locked Until">
                             <ItemTemplate>
                                 <asp:Label runat="server" Text='<%# Eval("LockoutEndDateUtc") %>'></asp:Label>
@@ -57,14 +62,16 @@
                                 <asp:TextBox ID="LockoutTb" CssClass="form-control" runat="server" Text='<%# Eval("LockoutEndDateUtc") %>' ReadOnly="True"></asp:TextBox>
                             </EditItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Disable" AccessibleHeaderText="Disable">
+                        <asp:TemplateField HeaderText="Disable/Enable" AccessibleHeaderText="Disable/Enable">
                             <ItemTemplate>
-                                <asp:Button runat="server" CssClass="btn btn-danger" CommandName="DisableUser" Text="Disable" CommandArgument='<%# Eval("Id") %>' OnCommand="OnDisableEnableCommand"/>
+                                <asp:Button runat="server" CssClass="btn btn-success btn-sm" CommandName="EnableUser" Text="Enable" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
+                                <asp:Button runat="server" CssClass="btn btn-danger btn-sm" CommandName="DisableUser" Text="Disable" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Disable" AccessibleHeaderText="Disable">
+                        <asp:TemplateField HeaderText="Make Admin" AccessibleHeaderText="Make Admin">
                             <ItemTemplate>
-                                <asp:Button runat="server" CssClass="btn btn-success" CommandName="EnableUser" Text="Enable" CommandArgument='<%# Eval("Id") %>' OnCommand="OnDisableEnableCommand"/>
+                                <asp:Button runat="server" CssClass="btn btn-danger btn-sm" CommandName="MakeAdmin" Text="Make Admin" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
+                                <asp:Button runat="server" CssClass="btn btn-warning btn-sm" CommandName="RemoveAdmin" Text="Remove Admin" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

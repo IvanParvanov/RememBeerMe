@@ -14,6 +14,7 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers
         {
             this.View.UserUpdate += this.OnViewUpdateUser;
             this.View.UserMakeAdmin += this.OnViewMakeAdmin;
+            this.View.UserRemoveAdmin += this.OnViewRemoveAdmin;
             this.View.UserDisable += this.OnViewDisableUser;
             this.View.UserEnable += this.OnViewEnableUser;
             this.View.Initialized += this.OnViewInitialized;
@@ -76,7 +77,28 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers
 
         private void OnViewMakeAdmin(object sender, IIdentifiableEventArgs<string> e)
         {
-            throw new NotImplementedException();
+            var result = this.UserService.MakeAdmin(e.Id);
+            if (result.Succeeded)
+            {
+                this.SetSuccess("User is now an administrator.");
+            }
+            else
+            {
+                this.SetError(string.Join(", ", result.Errors));
+            }
+        }
+
+        private void OnViewRemoveAdmin(object sender, IIdentifiableEventArgs<string> e)
+        {
+            var result = this.UserService.RemoveAdmin(e.Id);
+            if (result.Succeeded)
+            {
+                this.SetSuccess("Administrator removed.");
+            }
+            else
+            {
+                this.SetError(string.Join(", ", result.Errors));
+            }
         }
 
         private void SetError(string error)

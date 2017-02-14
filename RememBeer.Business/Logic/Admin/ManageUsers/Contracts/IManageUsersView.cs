@@ -26,6 +26,11 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers.Contracts
         event EventHandler<IIdentifiableEventArgs<string>> UserMakeAdmin;
 
         /// <summary>
+        /// Triggered when a user needs to be Removed from to the Administrator role.
+        /// </summary>
+        event EventHandler<IIdentifiableEventArgs<string>> UserRemoveAdmin;
+
+        /// <summary>
         /// Triggered when a user's profile information needs to be updated.
         /// </summary>
         event EventHandler<IUserUpdateEventArgs> UserUpdate;
