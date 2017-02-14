@@ -21,9 +21,7 @@ namespace RememBeer.Business.Services.Contracts
 
         SignInStatus PasswordSignIn(string email, string password, bool isPersistent);
 
-        IEnumerable<IApplicationUser> PaginatedUsers(int currentPage, int pageSize, out int total);
-
-        IEnumerable<IApplicationUser> PaginatedUsers(int currentPage, int pageSize, out int total, string searchPattern);
+        IEnumerable<IApplicationUser> PaginatedUsers(int currentPage, int pageSize, out int total, string searchPattern = null);
 
         int CountUsers();
 

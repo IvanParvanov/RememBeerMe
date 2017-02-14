@@ -86,29 +86,22 @@ namespace RememBeer.Business.Services
             return this.userManager.IsEmailConfirmed(userId);
         }
 
-        public IEnumerable<IApplicationUser> PaginatedUsers(int currentPage, int pageSize, out int totalCount)
-        {
-            totalCount = this.userManager.Users.Count();
-
-            return this.userManager.Users
-                       .OrderBy(u => u.UserName)
-                       .Skip(currentPage * pageSize)
-                       .Take(pageSize)
-                       .ToList();
-        }
-
         public IEnumerable<IApplicationUser> PaginatedUsers(int currentPage,
                                                             int pageSize,
                                                             out int totalCount,
-                                                            string searchPattern)
+                                                            string searchPattern = null)
         {
-            var result = this.userManager.Users
-                             .Where(u => u.UserName.Contains(searchPattern))
-                             .OrderBy(u => u.UserName);
+            var result = this.userManager.Users;
+
+            if (searchPattern != null)
+            {
+                result = result.Where(u => u.UserName.Contains(searchPattern));
+            }
 
             totalCount = result.Count();
 
-            return result.Skip(currentPage * pageSize)
+            return result.OrderBy(u => u.UserName)
+                         .Skip(currentPage * pageSize)
                          .Take(pageSize)
                          .ToList();
         }
