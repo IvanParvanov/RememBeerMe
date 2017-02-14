@@ -158,6 +158,9 @@
     <Compile Include="Business\Logic\Top\Beers\Presenter\OnViewInitialize_Should.cs" />
     <Compile Include="Business\Logic\Top\Beers\ViewModel\Setters_Should.cs" />
     <Compile Include="Business\Mocks\MockedTopBeersViewModel.cs" />
+    <Compile Include="Business\Services\BreweryServiceTests\GetById_Should.cs" />
+    <Compile Include="Business\Services\BreweryServiceTests\UpdateBrewery_Should.cs" />
+    <Compile Include="Business\Services\UserServiceTests\Search_Should.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpContextBase.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpRequest.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpResponse.cs" />
