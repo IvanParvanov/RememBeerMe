@@ -16,7 +16,7 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers.Contracts
 
         event EventHandler<IIdentifiableEventArgs<string>> UserMakeAdmin;
 
-        event EventHandler UserUpdate;
+        event EventHandler<IUserUpdateEventArgs> UserUpdate;
 
         event EventHandler<ISearchEventArgs> UserSearch;
     }

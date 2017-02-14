@@ -34,7 +34,7 @@
                         <asp:TemplateField HeaderText="Details">
                             <ItemTemplate>
                                 <asp:HyperLink runat="server" CssClass="btn btn-primary" NavigateUrl='<%# "Brewery.aspx?id=" + this.Eval("Id") %>'>
-                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                 </asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>

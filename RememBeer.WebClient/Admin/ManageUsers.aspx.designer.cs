@@ -31,6 +31,15 @@ namespace RememBeer.WebClient.Admin {
         protected global::RememBeer.WebClient.UserControls.UserNotifications Notification;
         
         /// <summary>
+        /// SearchTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox SearchTb;
+        
+        /// <summary>
         /// UserGridView control.
         /// </summary>
         /// <remarks>

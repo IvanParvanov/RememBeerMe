@@ -69,7 +69,7 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers
             }
         }
 
-        private void OnViewUpdateUser(object sender, EventArgs e)
+        private void OnViewUpdateUser(object sender, IUserUpdateEventArgs e)
         {
             throw new NotImplementedException();
         }

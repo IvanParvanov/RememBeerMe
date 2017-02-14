@@ -21,7 +21,7 @@ namespace RememBeer.WebClient.Admin
 
         public event EventHandler<IIdentifiableEventArgs<string>> UserMakeAdmin;
 
-        public event EventHandler UserUpdate;
+        public event EventHandler<IUserUpdateEventArgs> UserUpdate;
 
         public event EventHandler<ISearchEventArgs> UserSearch;
 
@@ -141,6 +141,12 @@ namespace RememBeer.WebClient.Admin
                     this.UserDisable?.Invoke(this, args);
                     break;
             }
+        }
+
+        protected void Search_OnClick(object sender, EventArgs e)
+        {
+            var pattern = this.SearchTb.Text;
+            this.Response.Redirect("ManageUsers.aspx?s=" + pattern);
         }
     }
 }

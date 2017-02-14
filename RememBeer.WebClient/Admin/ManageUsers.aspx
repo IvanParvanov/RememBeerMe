@@ -6,6 +6,10 @@
         <ContentTemplate>
             <uc:Notifier runat="server" ID="Notification" ViewStateMode="Disabled"></uc:Notifier>
             <div class="container">
+                <div class="form-group form-inline">
+                    <asp:TextBox CssClass="form-control" runat="server" ID="SearchTb" placeholder="Username/Email"></asp:TextBox>
+                    <asp:Button runat="server" CssClass="btn btn-primary" Text="Search" OnClick="Search_OnClick"/>
+                </div>
                 <asp:GridView ID="UserGridView" runat="server"
                               ItemType="RememBeer.Common.Identity.Contracts.IApplicationUser"
                               CssClass="table table-bordered table-striped table-hover table-responsive"

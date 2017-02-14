@@ -124,8 +124,10 @@
     <Compile Include="Logic\Admin\Brewery\SingleBreweryViewModel.cs" />
     <Compile Include="Logic\Admin\Common\BreweryServicePresenter.cs" />
     <Compile Include="Logic\Admin\ManageUsers\Contracts\IManageUsersView.cs" />
+    <Compile Include="Logic\Admin\ManageUsers\Contracts\IUserUpdateEventArgs.cs" />
     <Compile Include="Logic\Admin\ManageUsers\ManageUsersPresenter.cs" />
     <Compile Include="Logic\Admin\ManageUsers\ManageUsersViewModel.cs" />
+    <Compile Include="Logic\Admin\ManageUsers\UserUpdateEventArgs.cs" />
     <Compile Include="Logic\Common\Contracts\IPaginatedView.cs" />
     <Compile Include="Logic\Common\Contracts\IUserNotificationsView.cs" />
     <Compile Include="Logic\Common\Contracts\IViewWithErrors.cs" />
