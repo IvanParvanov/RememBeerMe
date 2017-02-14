@@ -93,7 +93,7 @@
                                              CssClass="form-control"
                                              TextMode="MultiLine"
                                              ValidationGroup="Edit"
-                                             Rows="6"
+                                             Rows="3"
                                              Text='<%#Bind("Description") %>'>
                                 </asp:TextBox>
                                 <asp:RequiredFieldValidator runat="server"

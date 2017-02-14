@@ -23,7 +23,7 @@ namespace RememBeer.WebClient.Admin
 
         public event EventHandler UserUpdate;
 
-        public event EventHandler UserSearch;
+        public event EventHandler<ISearchEventArgs> UserSearch;
 
         public int CurrentPage => this.UserGridView.PageIndex;
 
@@ -81,7 +81,17 @@ namespace RememBeer.WebClient.Admin
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            this.Initialized?.Invoke(this, EventArgs.Empty);
+            var pattern = this.Request.QueryString["s"];
+            if (pattern != null)
+            {
+                var args = this.EventArgsFactory.CreateSearchEventArgs(pattern);
+                this.UserSearch?.Invoke(this, args);
+            }
+            else
+            {
+                this.Initialized?.Invoke(this, EventArgs.Empty);
+            }
+
             this.BindData();
         }
 

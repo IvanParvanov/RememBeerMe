@@ -6,8 +6,6 @@ using Ploeh.AutoFixture;
 
 using RememBeer.Business.Services;
 using RememBeer.Common.Identity.Contracts;
-using RememBeer.Common.Identity.Models;
-using RememBeer.Data.Repositories.Base;
 using RememBeer.Models.Factories;
 using RememBeer.Tests.Common;
 
@@ -28,11 +26,9 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
 
             var signInManager = new Mock<IApplicationSignInManager>();
             var modelFactory = new Mock<IModelFactory>();
-            var userRepository = new Mock<IRepository<ApplicationUser>>();
 
             var service = new UserService(userManager.Object,
                                           signInManager.Object,
-                                          userRepository.Object,
                                           modelFactory.Object);
 
             var result = service.IsEmailConfirmed(userId);
@@ -52,11 +48,9 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
 
             var signInManager = new Mock<IApplicationSignInManager>();
             var modelFactory = new Mock<IModelFactory>();
-            var userRepository = new Mock<IRepository<ApplicationUser>>();
 
             var service = new UserService(userManager.Object,
                                           signInManager.Object,
-                                          userRepository.Object,
                                           modelFactory.Object);
 
             var result = service.IsEmailConfirmed(userId);

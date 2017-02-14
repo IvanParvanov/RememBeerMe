@@ -11,7 +11,6 @@ using Ploeh.AutoFixture;
 using RememBeer.Business.Services;
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
-using RememBeer.Data.Repositories.Base;
 using RememBeer.Models.Factories;
 using RememBeer.Tests.Business.Mocks;
 using RememBeer.Tests.Common;
@@ -25,14 +24,14 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
         [TestCase(0, 4, 15)]
         [TestCase(4, 4, 20)]
         [TestCase(0, 10, 15)]
-        public void ReturnCorrectPartOfTheCollectionInOrder(int currentPage, int pageSize, int totalCount)
+        public void ReturnCorrectPartOfTheCollectionInOrder(int currentPage, int expectedPageSize, int expectedTotalCount)
         {
             var usernameComparer =
                 Comparer<ApplicationUser>.Create(
                                                  (a, b) =>
                                                      string.Compare(a.UserName, b.UserName, StringComparison.Ordinal));
             var users = new List<MockedApplicationUser>();
-            for (var i = 0; i < totalCount; i++)
+            for (var i = 0; i < expectedTotalCount; i++)
             {
                 users.Add(new MockedApplicationUser()
                           {
@@ -41,25 +40,24 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             }
 
             var queryableUsers = users.AsQueryable();
-
             var userManager = new Mock<IApplicationUserManager>();
-            var signInManager = new Mock<IApplicationSignInManager>();
-            var repository = new Mock<IRepository<ApplicationUser>>();
-            repository.Setup(r => r.All)
+            userManager.Setup(r => r.Users)
                       .Returns(queryableUsers);
 
+            var signInManager = new Mock<IApplicationSignInManager>();
             var modelFactory = new Mock<IModelFactory>();
-
             var service = new UserService(userManager.Object,
                                           signInManager.Object,
-                                          repository.Object,
                                           modelFactory.Object);
+            int actualTotal;
 
-            var result = service.PaginatedUsers(currentPage, pageSize);
+            var result = service.PaginatedUsers(currentPage, expectedPageSize, out actualTotal);
+
             var actualUsers = result as IApplicationUser[] ?? result.ToArray();
             var actualCount = actualUsers.Count();
 
-            Assert.AreEqual(pageSize, actualCount);
+            Assert.AreEqual(expectedTotalCount, actualTotal);
+            Assert.AreEqual(expectedPageSize, actualCount);
             CollectionAssert.IsOrdered(actualUsers, usernameComparer);
         }
     }

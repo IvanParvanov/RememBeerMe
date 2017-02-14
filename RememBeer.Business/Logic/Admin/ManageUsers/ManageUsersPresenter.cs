@@ -17,15 +17,29 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers
             this.View.UserDisable += this.OnViewDisableUser;
             this.View.UserEnable += this.OnViewEnableUser;
             this.View.Initialized += this.OnViewInitialized;
+            this.View.UserSearch += this.OnViewUserSearch;
+        }
+
+        private void OnViewUserSearch(object sender, ISearchEventArgs e)
+        {
+            var pattern = e.Pattern;
+            var currentPage = this.View.CurrentPage;
+            var pageSize = this.View.PageSize;
+            var total = 0;
+            var users = this.UserService.PaginatedUsers(currentPage, pageSize, out total, pattern);
+
+            this.View.TotalPages = total;
+            this.View.Model.Users = users;
         }
 
         private void OnViewInitialized(object sender, EventArgs e)
         {
             var currentPage = this.View.CurrentPage;
             var pageSize = this.View.PageSize;
+            var total = 0;
+            var users = this.UserService.PaginatedUsers(currentPage, pageSize, out total);
 
-            var users = this.UserService.PaginatedUsers(currentPage, pageSize);
-            this.View.TotalPages = this.UserService.CountUsers();
+            this.View.TotalPages = total;
             this.View.Model.Users = users;
         }
 

@@ -8,7 +8,6 @@ using Microsoft.AspNet.Identity.Owin;
 using RememBeer.Business.Services.Contracts;
 using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Identity.Models;
-using RememBeer.Data.Repositories.Base;
 using RememBeer.Models.Factories;
 
 namespace RememBeer.Business.Services
@@ -18,11 +17,9 @@ namespace RememBeer.Business.Services
         private readonly IModelFactory factory;
         private readonly IApplicationSignInManager signInManager;
         private readonly IApplicationUserManager userManager;
-        private readonly IRepository<ApplicationUser> userRepository;
 
         public UserService(IApplicationUserManager userManager,
                            IApplicationSignInManager signInManager,
-                           IRepository<ApplicationUser> userRepository,
                            IModelFactory factory)
         {
             if (userManager == null)
@@ -40,15 +37,9 @@ namespace RememBeer.Business.Services
                 throw new ArgumentNullException(nameof(signInManager));
             }
 
-            if (userRepository == null)
-            {
-                throw new ArgumentNullException(nameof(userRepository));
-            }
-
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.factory = factory;
-            this.userRepository = userRepository;
         }
 
         public IdentityResult RegisterUser(string username, string email, string password)
@@ -95,18 +86,36 @@ namespace RememBeer.Business.Services
             return this.userManager.IsEmailConfirmed(userId);
         }
 
-        public IEnumerable<IApplicationUser> PaginatedUsers(int currentPage, int pageSize)
+        public IEnumerable<IApplicationUser> PaginatedUsers(int currentPage, int pageSize, out int totalCount)
         {
-            return this.userRepository.All
+            totalCount = this.userManager.Users.Count();
+
+            return this.userManager.Users
                        .OrderBy(u => u.UserName)
                        .Skip(currentPage * pageSize)
                        .Take(pageSize)
                        .ToList();
         }
 
+        public IEnumerable<IApplicationUser> PaginatedUsers(int currentPage,
+                                                            int pageSize,
+                                                            out int totalCount,
+                                                            string searchPattern)
+        {
+            var result = this.userManager.Users
+                             .Where(u => u.UserName.Contains(searchPattern))
+                             .OrderBy(u => u.UserName);
+
+            totalCount = result.Count();
+
+            return result.Skip(currentPage * pageSize)
+                         .Take(pageSize)
+                         .ToList();
+        }
+
         public int CountUsers()
         {
-            return this.userRepository.All.Count();
+            return this.userManager.Users.Count();
         }
 
         public IdentityResult DisableUser(string userId)

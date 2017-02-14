@@ -7,8 +7,6 @@ using NUnit.Framework;
 
 using RememBeer.Business.Services;
 using RememBeer.Common.Identity.Contracts;
-using RememBeer.Common.Identity.Models;
-using RememBeer.Data.Repositories.Base;
 using RememBeer.Models.Factories;
 using RememBeer.Tests.Business.Mocks;
 
@@ -34,23 +32,21 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
 
             var expectedCount = users.Count();
 
-            var userManager = new Mock<IApplicationUserManager>();
             var signInManager = new Mock<IApplicationSignInManager>();
-            var repository = new Mock<IRepository<ApplicationUser>>();
-            repository.Setup(r => r.All)
+            var userManager = new Mock<IApplicationUserManager>();
+            userManager.Setup(r => r.Users)
                       .Returns(queryableUsers);
 
             var modelFactory = new Mock<IModelFactory>();
 
             var service = new UserService(userManager.Object,
                                           signInManager.Object,
-                                          repository.Object,
                                           modelFactory.Object);
 
             var result = service.CountUsers();
 
             Assert.AreEqual(expectedCount, result);
-            repository.VerifyGet(r => r.All, Times.Once);
+            userManager.VerifyGet(r => r.Users, Times.Once);
         }
     }
 }

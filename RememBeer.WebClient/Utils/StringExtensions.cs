@@ -4,7 +4,19 @@
     {
         public static string Crop(this string text, int maxLength)
         {
-            if (text == null)
+            if (string.IsNullOrEmpty(text))
+            {
+                return string.Empty;
+            }
+
+            return text.Length < maxLength
+                ? text
+                : text.Substring(0, maxLength);
+        }
+
+        public static string Truncate(this string text, int maxLength, string end = "...")
+        {
+            if (string.IsNullOrEmpty(text))
             {
                 return string.Empty;
             }
@@ -14,11 +26,6 @@
                 return text;
             }
 
-            return text.Substring(0, maxLength);
-        }
-
-        public static string Truncate(this string text, int maxLength, string end = "...")
-        {
             return text.Crop(maxLength) + end;
         }
     }

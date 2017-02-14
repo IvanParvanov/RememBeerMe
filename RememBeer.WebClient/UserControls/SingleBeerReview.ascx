@@ -18,6 +18,8 @@
                         <em>@<%#:Review.Place %></em>
                     </span>
                 </h6>
+                <p><%#: Review.Beer.BeerType.Type %></p>
+                <hr/>
                 <p><%#: Review.Description %></p>
                 <p>
                     <small>

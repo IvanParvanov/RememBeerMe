@@ -18,6 +18,6 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers.Contracts
 
         event EventHandler UserUpdate;
 
-        event EventHandler UserSearch;
+        event EventHandler<ISearchEventArgs> UserSearch;
     }
 }
