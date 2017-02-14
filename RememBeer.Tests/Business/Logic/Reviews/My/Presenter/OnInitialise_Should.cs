@@ -33,9 +33,9 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
-            {
-                HttpContext = new MockedHttpContextBase(httpResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(httpResponse)
+                            };
 
             view.Raise(v => v.Initialized += null, view.Object, System.EventArgs.Empty);
 
@@ -47,9 +47,9 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
         {
             var expectedReviews = new List<BeerReview>();
             var viewModel = new ReviewsViewModel()
-            {
-                Reviews = expectedReviews
-            };
+                            {
+                                Reviews = expectedReviews
+                            };
             var view = new Mock<IMyReviewsView>();
             view.SetupGet(v => v.Model).Returns(viewModel);
             view.SetupSet(v => v.SuccessMessageVisible = false);
@@ -59,9 +59,9 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
-            {
-                HttpContext = new MockedHttpContextBase(httpResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(httpResponse)
+                            };
 
             view.Raise(v => v.Initialized += null, view.Object, System.EventArgs.Empty);
 

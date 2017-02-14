@@ -8,7 +8,7 @@ namespace RememBeer.Business.Logic.Account.Common.Presenters
 {
     public class UserServicePresenter<TView> : Presenter<TView> where TView : class, IView
     {
-        public UserServicePresenter(IUserService userService, TView view) 
+        public UserServicePresenter(IUserService userService, TView view)
             : base(view)
         {
             if (userService == null)

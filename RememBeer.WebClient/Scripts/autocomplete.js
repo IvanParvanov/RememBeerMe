@@ -8,7 +8,7 @@
             transformResult: function(response) {
                 return {
                     suggestions: $.map(
-                       response,
+                        response,
                         function(dataItem) {
                             return {
                                 value: dataItem.Name + ", " + dataItem.BreweryName,

@@ -14,7 +14,7 @@ namespace RememBeer.Business.Services.RankingStrategies
         private const int OverallScoreMultiplier = 2;
 
         public DoubleOverallScoreStrategy(IBeerRankFactory factory)
-            :base(factory)
+            : base(factory)
         {
         }
 

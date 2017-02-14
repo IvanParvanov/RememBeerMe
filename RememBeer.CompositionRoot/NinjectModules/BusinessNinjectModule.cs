@@ -11,8 +11,6 @@ using Ninject.Parameters;
 using RememBeer.Business.Logic.Account.Auth;
 using RememBeer.Business.Logic.Common;
 using RememBeer.Business.Logic.MvpPresenterFactory;
-using RememBeer.Business.Services;
-using RememBeer.Business.Services.Contracts;
 using RememBeer.Common.Configuration;
 using RememBeer.Common.Identity;
 using RememBeer.Common.Identity.Contracts;
@@ -39,31 +37,30 @@ namespace RememBeer.CompositionRoot.NinjectModules
                 .ToMethod(GetPresenter)
                 .NamedLikeFactoryMethod(
                                         (IMvpPresenterFactory factory) => factory.GetPresenter(null, null)
-                );
+                                       );
 
             this.Rebind<IIdentityHelper>().To<IdentityHelper>().InSingletonScope();
             this.Rebind<IConfigurationProvider>().To<ConfigurationProvider>().InSingletonScope();
 
             this.Rebind<IApplicationSignInManager>().ToMethod((context) =>
-            {
-                var cbase = new HttpContextWrapper(HttpContext.Current);
-                var f = context.Kernel.Get<IAuthProvider>();
-                var owinCtx = f.CreateOwinContext(cbase);
+                                                              {
+                                                                  var cbase = new HttpContextWrapper(HttpContext.Current);
+                                                                  var f = context.Kernel.Get<IAuthProvider>();
+                                                                  var owinCtx = f.CreateOwinContext(cbase);
 
-                return f.CreateApplicationSignInManager(owinCtx);
-            });
+                                                                  return f.CreateApplicationSignInManager(owinCtx);
+                                                              });
 
             this.Rebind<IApplicationUserManager>().ToMethod((context) =>
-            {
-                var cbase = new HttpContextWrapper(HttpContext.Current);
-                var f = context.Kernel.Get<IAuthProvider>();
-                var owinCtx = f.CreateOwinContext(cbase);
+                                                            {
+                                                                var cbase = new HttpContextWrapper(HttpContext.Current);
+                                                                var f = context.Kernel.Get<IAuthProvider>();
+                                                                var owinCtx = f.CreateOwinContext(cbase);
 
-                return f.CreateApplicationUserManager(owinCtx);
-            });
+                                                                return f.CreateApplicationUserManager(owinCtx);
+                                                            });
 
             this.Bind<IImageUploadService>().To<CloudinaryImageUpload>();
-
         }
 
         private static IPresenter GetPresenter(IContext context)

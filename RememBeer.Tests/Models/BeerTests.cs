@@ -27,7 +27,6 @@ namespace RememBeer.Tests.Models
                            BreweryId = expectedBreweryId,
                            BeerTypeId = expectedBeerTypeId,
                            Name = expectedName
-
                        };
 
             Assert.AreEqual(expectedId, beer.Id);

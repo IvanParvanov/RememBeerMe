@@ -37,7 +37,7 @@ namespace RememBeer.Tests.Models
                              ModifiedAt = expectedDate,
                              User = null,
                              ImgUrl = expectedText
-            };
+                         };
 
             Assert.AreEqual(expectedId, review.Id);
             Assert.AreEqual(expectedId, review.Overall);

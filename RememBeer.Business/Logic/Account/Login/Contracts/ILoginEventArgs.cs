@@ -3,7 +3,9 @@
     public interface ILoginEventArgs
     {
         string Email { get; }
+
         string Password { get; }
+
         bool RememberMe { get; }
     }
 }

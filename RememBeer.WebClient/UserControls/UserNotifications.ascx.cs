@@ -7,13 +7,22 @@ namespace RememBeer.WebClient.UserControls
     {
         public bool SuccessVisible
         {
-            get { return this.SuccessMessagePlaceholder.Visible; }
-            set { this.SuccessMessagePlaceholder.Visible = value; }
+            get
+            {
+                return this.SuccessMessagePlaceholder.Visible;
+            }
+            set
+            {
+                this.SuccessMessagePlaceholder.Visible = value;
+            }
         }
 
         public string SuccessText
         {
-            get { return this.SuccessMessage.Text; }
+            get
+            {
+                return this.SuccessMessage.Text;
+            }
             set
             {
                 this.SuccessMessagePlaceholder.Visible = true;
@@ -23,33 +32,51 @@ namespace RememBeer.WebClient.UserControls
 
         public bool WarningVisible
         {
-            get { return this.WarningMessagePlaceholder.Visible; }
-            set { this.WarningMessagePlaceholder.Visible = value; }
+            get
+            {
+                return this.WarningMessagePlaceholder.Visible;
+            }
+            set
+            {
+                this.WarningMessagePlaceholder.Visible = value;
+            }
         }
 
         public string WarningText
         {
-            get { return this.WarningMessage.Text; }
+            get
+            {
+                return this.WarningMessage.Text;
+            }
             set
             {
                 this.WarningMessagePlaceholder.Visible = true;
-                this.WarningMessage.Text = value; 
+                this.WarningMessage.Text = value;
             }
         }
 
         public bool ErrorVisible
         {
-            get { return this.ErrorMessagePlaceholder.Visible; }
-            set { this.ErrorMessagePlaceholder.Visible = value; }
+            get
+            {
+                return this.ErrorMessagePlaceholder.Visible;
+            }
+            set
+            {
+                this.ErrorMessagePlaceholder.Visible = value;
+            }
         }
 
         public string ErrorText
         {
-            get { return this.ErrorMessage.Text; }
+            get
+            {
+                return this.ErrorMessage.Text;
+            }
             set
             {
                 this.ErrorMessagePlaceholder.Visible = true;
-                this.ErrorMessage.Text = value; 
+                this.ErrorMessage.Text = value;
             }
         }
 

@@ -19,13 +19,13 @@ namespace RememBeer.Tests.Models
             var beers = new HashSet<Beer>();
 
             var brewery = new Brewery()
-            {
-                Id = expectedId,
-                Country = expectedCountry,
-                Description = expectedDescription,
-                Name = expectedName,
-                Beers = beers
-            };
+                          {
+                              Id = expectedId,
+                              Country = expectedCountry,
+                              Description = expectedDescription,
+                              Name = expectedName,
+                              Beers = beers
+                          };
 
             Assert.AreEqual(expectedId, brewery.Id);
             Assert.AreEqual(expectedCountry, brewery.Country);

@@ -27,7 +27,10 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
         [TestCase(0, 10, 15)]
         public void ReturnCorrectPartOfTheCollectionInOrder(int currentPage, int pageSize, int totalCount)
         {
-            var usernameComparer = Comparer<ApplicationUser>.Create((a, b) => string.Compare(a.UserName, b.UserName, StringComparison.Ordinal));
+            var usernameComparer =
+                Comparer<ApplicationUser>.Create(
+                                                 (a, b) =>
+                                                     string.Compare(a.UserName, b.UserName, StringComparison.Ordinal));
             var users = new List<MockedApplicationUser>();
             for (var i = 0; i < totalCount; i++)
             {

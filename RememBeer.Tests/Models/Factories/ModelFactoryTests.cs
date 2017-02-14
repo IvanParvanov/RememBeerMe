@@ -41,7 +41,13 @@ namespace RememBeer.Tests.Models.Factories
             var compositeScore = this.Fixture.Create<decimal>();
             var beer = new Mock<IBeer>();
 
-            var rank = new ModelFactory().CreateBeerRank(overallScore, tasteScore, looksScore, smellScore, beer.Object, compositeScore, totalReviews);
+            var rank = new ModelFactory().CreateBeerRank(overallScore,
+                                                         tasteScore,
+                                                         looksScore,
+                                                         smellScore,
+                                                         beer.Object,
+                                                         compositeScore,
+                                                         totalReviews);
 
             Assert.IsNotNull(rank);
             Assert.IsInstanceOf<BeerRank>(rank);

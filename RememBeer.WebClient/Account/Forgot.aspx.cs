@@ -16,26 +16,50 @@ namespace RememBeer.WebClient.Account
 
         public string FailureMessage
         {
-            get { return this.FailureText.Text; }
-            set { this.FailureText.Text = value; }
+            get
+            {
+                return this.FailureText.Text;
+            }
+            set
+            {
+                this.FailureText.Text = value;
+            }
         }
 
         public bool ErrorMessageVisible
         {
-            get { return this.ErrorMessage.Visible; }
-            set { this.ErrorMessage.Visible = value; }
+            get
+            {
+                return this.ErrorMessage.Visible;
+            }
+            set
+            {
+                this.ErrorMessage.Visible = value;
+            }
         }
 
         public bool LoginFormVisible
         {
-            get { return this.loginForm.Visible; }
-            set { this.loginForm.Visible = value; }
+            get
+            {
+                return this.loginForm.Visible;
+            }
+            set
+            {
+                this.loginForm.Visible = value;
+            }
         }
 
         public bool DisplayEmailVisible
         {
-            get { return this.DisplayEmail.Visible; }
-            set { this.DisplayEmail.Visible = value; }
+            get
+            {
+                return this.DisplayEmail.Visible;
+            }
+            set
+            {
+                this.DisplayEmail.Visible = value;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)

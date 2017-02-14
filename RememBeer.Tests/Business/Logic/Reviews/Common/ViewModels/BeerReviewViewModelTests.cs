@@ -8,7 +8,7 @@ using RememBeer.Models.Contracts;
 namespace RememBeer.Tests.Business.Logic.Reviews.Common.ViewModels
 {
     [TestFixture]
-    public class BeerReviewViewModelTests 
+    public class BeerReviewViewModelTests
     {
         [Test]
         public void Setters_ShouldSetCorrectly()

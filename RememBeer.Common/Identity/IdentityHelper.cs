@@ -39,7 +39,8 @@ namespace RememBeer.Common.Identity
 
         public string GetUserConfirmationRedirectUrl(string code, string userId, HttpRequest request)
         {
-            var absoluteUri = "/Account/Confirm?" + CodeKey + "=" + HttpUtility.UrlEncode(code) + "&" + UserIdKey + "=" +
+            var absoluteUri = "/Account/Confirm?" + CodeKey + "=" + HttpUtility.UrlEncode(code) + "&" + UserIdKey + "="
+                              +
                               HttpUtility.UrlEncode(userId);
             return new Uri(request.Url, absoluteUri).AbsoluteUri.ToString();
         }

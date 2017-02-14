@@ -62,7 +62,12 @@ namespace RememBeer.Tests.Business.Logic.Admin.Brewery.Presenter
             result.Setup(r => r.Successful).Returns(true);
 
             var service = new Mock<IBreweryService>();
-            service.Setup(s => s.UpdateBrewery(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+            service.Setup(
+                          s =>
+                              s.UpdateBrewery(It.IsAny<int>(),
+                                              It.IsAny<string>(),
+                                              It.IsAny<string>(),
+                                              It.IsAny<string>()))
                    .Returns(result.Object);
 
             var presenter = new BreweryPresenter(service.Object, view.Object);
@@ -89,7 +94,12 @@ namespace RememBeer.Tests.Business.Logic.Admin.Brewery.Presenter
             result.Setup(r => r.Successful).Returns(false);
 
             var service = new Mock<IBreweryService>();
-            service.Setup(s => s.UpdateBrewery(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+            service.Setup(
+                          s =>
+                              s.UpdateBrewery(It.IsAny<int>(),
+                                              It.IsAny<string>(),
+                                              It.IsAny<string>(),
+                                              It.IsAny<string>()))
                    .Returns(result.Object);
 
             var presenter = new BreweryPresenter(service.Object, view.Object);

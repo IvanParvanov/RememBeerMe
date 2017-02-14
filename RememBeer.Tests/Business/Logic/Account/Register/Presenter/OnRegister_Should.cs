@@ -17,7 +17,6 @@ namespace RememBeer.Tests.Business.Logic.Account.Register.Presenter
 {
     public class OnRegister_Should : TestClassBase
     {
-
         [Test]
         public void CallUserServiceRegisterUserMethod_WithCorrectParameters()
         {
@@ -39,9 +38,9 @@ namespace RememBeer.Tests.Business.Logic.Account.Register.Presenter
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new RegisterPresenter(userService.Object, identityHelper.Object, view.Object)
-            {
-                HttpContext = new MockedHttpContextBase(httpResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(httpResponse)
+                            };
 
             view.Raise(v => v.OnRegister += null, view.Object, args.Object);
 
@@ -66,13 +65,13 @@ namespace RememBeer.Tests.Business.Logic.Account.Register.Presenter
 
             var userService = new Mock<IUserService>();
             userService.Setup(s => s.RegisterUser(expectedName, expectedEmail, expectedPassword))
-                       .Returns(IdentityResult.Failed(new [] { expectedMessage }));
+                       .Returns(IdentityResult.Failed(new[] { expectedMessage }));
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new RegisterPresenter(userService.Object, identityHelper.Object, view.Object)
-            {
-                HttpContext = new MockedHttpContextBase(httpResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(httpResponse)
+                            };
 
             view.Raise(v => v.OnRegister += null, view.Object, args.Object);
 
@@ -100,13 +99,13 @@ namespace RememBeer.Tests.Business.Logic.Account.Register.Presenter
 
             var identityHelper = new Mock<IIdentityHelper>();
             identityHelper.Setup(i => i.GetReturnUrl(returnUrl))
-                .Returns(returnUrl);
+                          .Returns(returnUrl);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new RegisterPresenter(userService.Object, identityHelper.Object, view.Object)
-            {
-                HttpContext = new MockedHttpContextBase(httpResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(httpResponse)
+                            };
             presenter.HttpContext.Request.QueryString.Add(returnUrlKey, returnUrl);
 
             view.Raise(v => v.OnRegister += null, view.Object, args.Object);
@@ -136,13 +135,13 @@ namespace RememBeer.Tests.Business.Logic.Account.Register.Presenter
 
             var identityHelper = new Mock<IIdentityHelper>();
             identityHelper.Setup(i => i.GetReturnUrl(query))
-                .Returns(returnUrl);
+                          .Returns(returnUrl);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new RegisterPresenter(userService.Object, identityHelper.Object, view.Object)
-            {
-                HttpContext = new MockedHttpContextBase(httpResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(httpResponse)
+                            };
             presenter.HttpContext.Request.QueryString.Add(returnUrlKey, query);
 
             view.Raise(v => v.OnRegister += null, view.Object, args.Object);

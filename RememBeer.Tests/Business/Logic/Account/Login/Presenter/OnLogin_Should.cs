@@ -111,9 +111,9 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
 
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
             var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object)
-            {
-                HttpContext = new MockedHttpContextBase()
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase()
+                            };
 
             presenter.HttpContext.Request.QueryString.Add(ReturnUrlKey, ReturnUrl);
 
@@ -141,9 +141,9 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
             var mockedResponse = new MockedHttpResponse();
             var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object)
-            {
-                HttpContext = new MockedHttpContextBase(mockedResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(mockedResponse)
+                            };
 
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
@@ -169,9 +169,9 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
             var mockedResponse = new MockedHttpResponse();
             var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object)
-            {
-                HttpContext = new MockedHttpContextBase(mockedResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(mockedResponse)
+                            };
 
             presenter.HttpContext.Request.QueryString.Add(ReturnUrlKey, ReturnUrl);
 

@@ -20,7 +20,7 @@ namespace RememBeer.Data.DbContexts
             : base("name=RememBeerMeDbContext")
         {
             this.Configuration.LazyLoadingEnabled = true;
-            //this.Database.CreateIfNotExists();
+            // this.Database.CreateIfNotExists();
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 

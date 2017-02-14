@@ -17,7 +17,7 @@ using RememBeer.Tests.Common;
 namespace RememBeer.Tests.Business.Logic.Admin.Breweries.Presenter
 {
     [TestFixture]
-    public class OnViewSearch_Should: TestClassBase
+    public class OnViewSearch_Should : TestClassBase
     {
         [Test]
         public void CallBreweryServiceSearchMethodOnceWithCorrectParams()

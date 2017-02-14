@@ -36,11 +36,17 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Common.Presenters
 
     public class MockedBeerReviewPresenter : BeerReviewPresenter<IRegisterView>
     {
-        public MockedBeerReviewPresenter(IBeerReviewService reviewService, IRegisterView view) 
+        public MockedBeerReviewPresenter(IBeerReviewService reviewService, IRegisterView view)
             : base(reviewService, view)
         {
         }
 
-        public IBeerReviewService ActualReviewService { get { return base.ReviewService; } }
+        public IBeerReviewService ActualReviewService
+        {
+            get
+            {
+                return base.ReviewService;
+            }
+        }
     }
 }

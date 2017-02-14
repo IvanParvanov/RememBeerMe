@@ -26,7 +26,13 @@ namespace RememBeer.Tests.Models.Dtos
             var compositeScore = this.Fixture.Create<decimal>();
             var beer = new Mock<IBeer>();
 
-            var rank = new BeerRank(overallScore, tasteScore, looksScore, smellScore, beer.Object, compositeScore, totalReviews);
+            var rank = new BeerRank(overallScore,
+                                    tasteScore,
+                                    looksScore,
+                                    smellScore,
+                                    beer.Object,
+                                    compositeScore,
+                                    totalReviews);
 
             Assert.AreEqual(overallScore, rank.OverallScore);
             Assert.AreEqual(tasteScore, rank.TasteScore);

@@ -34,7 +34,7 @@ namespace RememBeer.Common.Identity
         {
             var manager =
                 new ApplicationUserManager(
-                    new UserStore<ApplicationUser>(dbContext));
+                                           new UserStore<ApplicationUser>(dbContext));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
                                     {

@@ -18,7 +18,7 @@ using RememBeer.Tests.Common;
 
 namespace RememBeer.Tests.Business.Services.UserServiceTests
 {
-   public class DisableUser_Should  :TestClassBase
+    public class DisableUser_Should : TestClassBase
     {
         [Test]
         public void CallUserManagerUpdateSecurityStampAsyncMethodOnceWithCorrectParams()
@@ -32,7 +32,10 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var repository = new Mock<IRepository<ApplicationUser>>();
             var modelFactory = new Mock<IModelFactory>();
 
-            var service = new UserService(userManager.Object, signInManager.Object, repository.Object, modelFactory.Object);
+            var service = new UserService(userManager.Object,
+                                          signInManager.Object,
+                                          repository.Object,
+                                          modelFactory.Object);
 
             var result = service.DisableUser(expectedId);
 
@@ -52,7 +55,10 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var repository = new Mock<IRepository<ApplicationUser>>();
             var modelFactory = new Mock<IModelFactory>();
 
-            var service = new UserService(userManager.Object, signInManager.Object, repository.Object, modelFactory.Object);
+            var service = new UserService(userManager.Object,
+                                          signInManager.Object,
+                                          repository.Object,
+                                          modelFactory.Object);
 
             var result = service.DisableUser(expectedId);
 
@@ -72,7 +78,10 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var repository = new Mock<IRepository<ApplicationUser>>();
             var modelFactory = new Mock<IModelFactory>();
 
-            var service = new UserService(userManager.Object, signInManager.Object, repository.Object, modelFactory.Object);
+            var service = new UserService(userManager.Object,
+                                          signInManager.Object,
+                                          repository.Object,
+                                          modelFactory.Object);
 
             var result = service.DisableUser(expectedId);
 
@@ -80,7 +89,9 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
         }
 
         [Test]
-        public void ReturnResultFrom_UserManagerSetLockoutEndDateAsyncMethodOnceWithCorrectparams_WhenTimeStampChangeIsSuccessfull()
+        public void
+            ReturnResultFrom_UserManagerSetLockoutEndDateAsyncMethodOnceWithCorrectparams_WhenTimeStampChangeIsSuccessfull
+            ()
         {
             var expectedResult = IdentityResult.Success;
             var expectedId = this.Fixture.Create<string>();
@@ -94,7 +105,10 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var repository = new Mock<IRepository<ApplicationUser>>();
             var modelFactory = new Mock<IModelFactory>();
 
-            var service = new UserService(userManager.Object, signInManager.Object, repository.Object, modelFactory.Object);
+            var service = new UserService(userManager.Object,
+                                          signInManager.Object,
+                                          repository.Object,
+                                          modelFactory.Object);
 
             var result = service.DisableUser(expectedId);
 

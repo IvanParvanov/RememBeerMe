@@ -49,7 +49,7 @@
         </div>
         <asp:PlaceHolder runat="server" ID="EditPlaceholder" Visible="False">
             <div class="panel-footer">
-                <asp:Button runat="server" CssClass="btn btn-warning" ID="EditButton" CommandName="Edit" Text="Edit" />
+                <asp:Button runat="server" CssClass="btn btn-warning" ID="EditButton" CommandName="Edit" Text="Edit"/>
 
                 <a type="button" class="btn btn-danger" data-toggle="modal" data-target='<%# "#review" + Review.Id %>'>Delete</a>
                 <div id='<%# "review" + Review.Id %>' class="modal fade" role="dialog">

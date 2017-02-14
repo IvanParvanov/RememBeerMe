@@ -31,13 +31,13 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
 
             var reviewService = new Mock<IBeerReviewService>();
             reviewService.Setup(s => s.UpdateReview(review.Object))
-                .Returns(result.Object);
+                         .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
-            {
-                HttpContext = new MockedHttpContextBase(httpResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(httpResponse)
+                            };
 
             view.Raise(v => v.ReviewUpdate += null, view.Object, args.Object);
 
@@ -59,13 +59,13 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
 
             var reviewService = new Mock<IBeerReviewService>();
             reviewService.Setup(s => s.UpdateReview(review.Object))
-                .Returns(result.Object);
+                         .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
-            {
-                HttpContext = new MockedHttpContextBase(httpResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(httpResponse)
+                            };
 
             view.Raise(v => v.ReviewUpdate += null, view.Object, args.Object);
 
@@ -94,9 +94,9 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
-            {
-                HttpContext = new MockedHttpContextBase(httpResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(httpResponse)
+                            };
 
             view.Raise(v => v.ReviewUpdate += null, view.Object, args.Object);
 

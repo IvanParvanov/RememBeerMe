@@ -32,6 +32,7 @@ namespace RememBeer.Models
             {
                 return this.beers;
             }
+
             set
             {
                 this.beers = value;

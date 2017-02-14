@@ -16,8 +16,14 @@ namespace RememBeer.WebClient.Account
 
         public string ErrorMessageText
         {
-            get { return this.ErrorMessage.Text; }
-            set { this.ErrorMessage.Text = value; }
+            get
+            {
+                return this.ErrorMessage.Text;
+            }
+            set
+            {
+                this.ErrorMessage.Text = value;
+            }
         }
 
         protected void CreateUser_Click(object sender, EventArgs e)

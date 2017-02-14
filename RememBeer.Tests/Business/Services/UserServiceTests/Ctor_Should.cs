@@ -22,7 +22,13 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var modelFactory = new Mock<IModelFactory>().Object;
             var userRepository = new Mock<IRepository<ApplicationUser>>().Object;
 
-            var ex = Assert.Throws<ArgumentNullException>(() => new UserService(null, signInManager, userRepository, modelFactory));
+            var ex =
+                Assert.Throws<ArgumentNullException>(
+                                                     () =>
+                                                         new UserService(null,
+                                                                         signInManager,
+                                                                         userRepository,
+                                                                         modelFactory));
         }
 
         [Test]
@@ -32,7 +38,7 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var modelFactory = new Mock<IModelFactory>().Object;
             var userRepository = new Mock<IRepository<ApplicationUser>>().Object;
 
-            Assert.Throws<ArgumentNullException>(() => new UserService(userManager, null,userRepository, modelFactory));
+            Assert.Throws<ArgumentNullException>(() => new UserService(userManager, null, userRepository, modelFactory));
         }
 
         [Test]
@@ -42,7 +48,12 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var signInManager = new Mock<IApplicationSignInManager>().Object;
             var userRepository = new Mock<IRepository<ApplicationUser>>();
 
-            Assert.Throws<ArgumentNullException>(() => new UserService(userManager, signInManager, userRepository.Object, null));
+            Assert.Throws<ArgumentNullException>(
+                                                 () =>
+                                                     new UserService(userManager,
+                                                                     signInManager,
+                                                                     userRepository.Object,
+                                                                     null));
         }
 
         [Test]

@@ -10,7 +10,7 @@ using RememBeer.Business.Logic.Top.Beers;
 namespace RememBeer.Tests.Business.Logic.Top.Beers.Presenter
 {
     [TestFixture]
-   public class Ctor_Should
+    public class Ctor_Should
     {
         [Test]
         public void ThrowArgumentNullException_WhenBeerServiceIsNull()

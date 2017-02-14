@@ -101,6 +101,4 @@ div.panel-primary > .panel-heading {
 
 .error-actions .btn { margin-right: 10px; }
 
-table.table-striped {
-    background-color: #ffffff
-}
+table.table-striped { background-color: #ffffff }

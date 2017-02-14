@@ -23,7 +23,10 @@ namespace RememBeer.Business.Logic.Reviews.Common.Presenters
 
         protected IBeerReviewService ReviewService
         {
-            get { return this.reviewService; }
+            get
+            {
+                return this.reviewService;
+            }
         }
     }
 }

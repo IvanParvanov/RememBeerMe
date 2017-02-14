@@ -33,7 +33,7 @@ namespace RememBeer.Tests.Business.Logic.MvpPresenterFactory
 
             var mockedFactory = new Mock<IMvpPresenterFactory>();
             mockedFactory.Setup(f => f.GetPresenter(expectedPresenterType, mockedView.Object))
-                .Returns(mockedPresenter.Object);
+                         .Returns(mockedPresenter.Object);
 
             var sut = new RememBeer.Business.Logic.MvpPresenterFactory.MvpPresenterFactory(mockedFactory.Object);
 

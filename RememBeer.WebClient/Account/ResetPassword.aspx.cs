@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
@@ -14,11 +15,7 @@ namespace RememBeer.WebClient.Account
 {
     public partial class ResetPassword : Page
     {
-        protected string StatusMessage
-        {
-            get;
-            private set;
-        }
+        protected string StatusMessage { get; private set; }
 
         [Inject]
         public IIdentityHelper IdentityHelper { get; set; }
@@ -36,6 +33,7 @@ namespace RememBeer.WebClient.Account
                     this.ErrorMessage.Text = "No user found";
                     return;
                 }
+
                 var result = manager.ResetPassword(user.Id, code, this.Password.Text);
                 if (result.Succeeded)
                 {

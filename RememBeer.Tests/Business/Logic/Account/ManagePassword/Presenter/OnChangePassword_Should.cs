@@ -45,9 +45,9 @@ namespace RememBeer.Tests.Business.Logic.Account.ManagePassword.Presenter
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new ManagePasswordPresenter(userService.Object, view.Object)
-            {
-                HttpContext = new MockedHttpContextBase(httpResponse)
-            };
+                            {
+                                HttpContext = new MockedHttpContextBase(httpResponse)
+                            };
 
             view.Raise(v => v.ChangePassword += null, view.Object, args.Object);
 
@@ -60,7 +60,7 @@ namespace RememBeer.Tests.Business.Logic.Account.ManagePassword.Presenter
             var view = new Mock<IManagePasswordView>();
             var userService = new Mock<IUserService>();
             userService.Setup(m => m.ChangePassword(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                   .Returns(IdentityResult.Failed("error"));
+                       .Returns(IdentityResult.Failed("error"));
 
             var args = new Mock<IChangePasswordEventArgs>();
 

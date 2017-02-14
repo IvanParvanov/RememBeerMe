@@ -48,7 +48,7 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
 
             var reviewService = new Mock<IBeerReviewService>();
             reviewService.Setup(s => s.DeleteReview(reviewId))
-                .Returns(result.Object);
+                         .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
@@ -93,7 +93,7 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
 
             var reviewService = new Mock<IBeerReviewService>();
             reviewService.Setup(s => s.DeleteReview(reviewId))
-                .Returns(result.Object); 
+                         .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
@@ -137,7 +137,7 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
             result.Setup(r => r.Successful).Returns(true);
             var reviewService = new Mock<IBeerReviewService>();
             reviewService.Setup(s => s.DeleteReview(reviewId))
-                .Returns(result.Object);
+                         .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)
@@ -184,7 +184,7 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
 
             var reviewService = new Mock<IBeerReviewService>();
             reviewService.Setup(s => s.DeleteReview(reviewId))
-                .Returns(result.Object); 
+                         .Returns(result.Object);
 
             var httpResponse = new MockedHttpResponse();
             var presenter = new MyReviewsPresenter(reviewService.Object, view.Object)

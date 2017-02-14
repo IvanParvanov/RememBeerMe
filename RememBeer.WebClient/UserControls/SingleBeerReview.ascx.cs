@@ -10,7 +10,10 @@ namespace RememBeer.WebClient.UserControls
 
         public bool IsEdit
         {
-            get { return this.EditButton.Visible; }
+            get
+            {
+                return this.EditButton.Visible;
+            }
             set
             {
                 this.EditPlaceholder.Visible = value;
@@ -19,11 +22,12 @@ namespace RememBeer.WebClient.UserControls
 
         public IBeerReview Review
         {
-            get { return this.beerReview; }
+            get
+            {
+                return this.beerReview;
+            }
             set
             {
-
-
                 this.beerReview = value;
             }
         }

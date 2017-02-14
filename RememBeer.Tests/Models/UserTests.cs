@@ -17,7 +17,6 @@ namespace RememBeer.Tests.Models
             user.BeerReviews = beers;
 
             Assert.AreSame(beers, user.BeerReviews);
-
         }
 
         [Test]

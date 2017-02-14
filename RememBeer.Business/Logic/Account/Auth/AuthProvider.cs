@@ -30,7 +30,7 @@ namespace RememBeer.Business.Logic.Account.Auth
 
             return context.GetOwinContext();
         }
-        
+
         private static void ThrowIfNull(object obj)
         {
             if (obj == null)

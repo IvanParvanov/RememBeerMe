@@ -44,9 +44,9 @@
                             <label class="checkbox" for="MainContent_RememberMe">
                                 <input type="checkbox" runat="server" id="RememberMe" data-toggle="checkbox" class="custom-checkbox"/>
                                 <span class="icons">
-                                        <span class="icon-unchecked"></span>
-                                        <span class="icon-checked"></span>
-                                    </span>
+                                    <span class="icon-unchecked"></span>
+                                    <span class="icon-checked"></span>
+                                </span>
                                 Remember me?
                             </label>
                         </div>

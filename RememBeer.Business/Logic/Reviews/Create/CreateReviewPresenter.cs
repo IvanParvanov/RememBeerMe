@@ -12,7 +12,9 @@ namespace RememBeer.Business.Logic.Reviews.Create
     {
         private readonly IImageUploadService imgUploadService;
 
-        public CreateReviewPresenter(IBeerReviewService reviewService, IImageUploadService imgUploadService, ICreateReviewView view)
+        public CreateReviewPresenter(IBeerReviewService reviewService,
+                                     IImageUploadService imgUploadService,
+                                     ICreateReviewView view)
             : base(reviewService, view)
         {
             if (imgUploadService == null)

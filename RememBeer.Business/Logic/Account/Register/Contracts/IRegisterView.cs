@@ -9,7 +9,7 @@ namespace RememBeer.Business.Logic.Account.Register.Contracts
     public interface IRegisterView : IView<StatelessViewModel>
     {
         event EventHandler<IRegisterEventArgs> OnRegister;
-         
+
         string ErrorMessageText { get; set; }
     }
 }

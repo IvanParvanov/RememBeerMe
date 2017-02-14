@@ -9,7 +9,7 @@ using RememBeer.Tests.Common;
 namespace RememBeer.Tests.Business.Logic.Reviews.My.EventArgs
 {
     [TestFixture]
-   public class Ctor_Should : TestClassBase
+    public class Ctor_Should : TestClassBase
     {
         [Test]
         public void SetUpPropertiesCorrectly()

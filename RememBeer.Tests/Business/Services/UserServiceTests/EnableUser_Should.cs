@@ -33,7 +33,10 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var repository = new Mock<IRepository<ApplicationUser>>();
             var modelFactory = new Mock<IModelFactory>();
 
-            var service = new UserService(userManager.Object, signInManager.Object, repository.Object, modelFactory.Object);
+            var service = new UserService(userManager.Object,
+                                          signInManager.Object,
+                                          repository.Object,
+                                          modelFactory.Object);
 
             var result = service.EnableUser(expectedId);
 
@@ -54,7 +57,10 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var repository = new Mock<IRepository<ApplicationUser>>();
             var modelFactory = new Mock<IModelFactory>();
 
-            var service = new UserService(userManager.Object, signInManager.Object, repository.Object, modelFactory.Object);
+            var service = new UserService(userManager.Object,
+                                          signInManager.Object,
+                                          repository.Object,
+                                          modelFactory.Object);
 
             var result = service.EnableUser(id);
 

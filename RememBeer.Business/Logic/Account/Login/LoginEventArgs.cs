@@ -2,7 +2,7 @@
 
 namespace RememBeer.Business.Logic.Account.Login
 {
-    public class LoginEventArgs:  ILoginEventArgs
+    public class LoginEventArgs : ILoginEventArgs
     {
         public LoginEventArgs(string email, string password, bool rememberMe)
         {

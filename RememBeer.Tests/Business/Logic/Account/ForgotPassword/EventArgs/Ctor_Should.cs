@@ -15,7 +15,6 @@ namespace RememBeer.Tests.Business.Logic.Account.ForgotPassword.EventArgs
             var args = new ForgotPasswordEventArgs(email);
 
             Assert.AreSame(email, args.Email);
-
         }
     }
 }

@@ -13,7 +13,7 @@ namespace RememBeer.Business.Logic.Reviews.My
         }
 
         public BeerReviewInfoEventArgs(IBeerReview beerReview, byte[] image)
-            :this(beerReview)
+            : this(beerReview)
         {
             this.Image = image;
         }

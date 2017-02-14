@@ -9,8 +9,11 @@ namespace RememBeer.Common.Identity
 {
     public interface IIdentityFactory
     {
-        IApplicationUserManager GetApplicationUserManager(IdentityFactoryOptions<IApplicationUserManager> options, IOwinContext context, DbContext dbContext);
+        IApplicationUserManager GetApplicationUserManager(IdentityFactoryOptions<IApplicationUserManager> options,
+                                                          IOwinContext context,
+                                                          DbContext dbContext);
 
-        IApplicationSignInManager GetApplicationSignInManager(IdentityFactoryOptions<IApplicationSignInManager> options, IOwinContext context);
+        IApplicationSignInManager GetApplicationSignInManager(IdentityFactoryOptions<IApplicationSignInManager> options,
+                                                              IOwinContext context);
     }
 }
