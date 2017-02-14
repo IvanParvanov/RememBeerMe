@@ -8,6 +8,9 @@ namespace RememBeer.Business.Logic.Account.ForgotPassword.Contracts
 {
     public interface IForgotPasswordView : IView<StatelessViewModel>
     {
+        /// <summary>
+        /// Triggered when a user sends a reset password request.
+        /// </summary>
         event EventHandler<IForgotPasswordEventArgs> OnForgot;
 
         string FailureMessage { get; set; }

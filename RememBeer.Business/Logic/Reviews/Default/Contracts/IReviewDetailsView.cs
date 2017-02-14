@@ -11,6 +11,9 @@ namespace RememBeer.Business.Logic.Reviews.Default.Contracts
     {
         bool NotFoundVisible { get; set; }
 
+        /// <summary>
+        /// Triggered when the view is being initialized.
+        /// </summary>
         event EventHandler<IIdentifiableEventArgs<int>> OnInitialise;
     }
 }

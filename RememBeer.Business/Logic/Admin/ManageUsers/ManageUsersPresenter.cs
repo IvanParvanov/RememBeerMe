@@ -25,7 +25,7 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers
             var pattern = e.Pattern;
             var currentPage = this.View.CurrentPage;
             var pageSize = this.View.PageSize;
-            var total = 0;
+            int total;
             var users = this.UserService.PaginatedUsers(currentPage, pageSize, out total, pattern);
 
             this.View.TotalPages = total;
@@ -36,7 +36,7 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers
         {
             var currentPage = this.View.CurrentPage;
             var pageSize = this.View.PageSize;
-            var total = 0;
+            int total;
             var users = this.UserService.PaginatedUsers(currentPage, pageSize, out total);
 
             this.View.TotalPages = total;

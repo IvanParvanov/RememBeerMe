@@ -9,6 +9,9 @@ namespace RememBeer.Business.Logic.Account.ManagePassword.Contracts
 {
     public interface IManagePasswordView : IView<StatelessViewModel>
     {
+        /// <summary>
+        /// Triggered when a user's password needs to be changed.
+        /// </summary>
         event EventHandler<IChangePasswordEventArgs> ChangePassword;
 
         string SuccessMessage { get; set; }

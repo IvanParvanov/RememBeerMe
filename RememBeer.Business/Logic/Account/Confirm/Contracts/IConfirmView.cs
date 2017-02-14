@@ -8,6 +8,9 @@ namespace RememBeer.Business.Logic.Account.Confirm.Contracts
 {
     public interface IConfirmView : IView<StatelessViewModel>
     {
+        /// <summary>
+        /// Triggered when a user should be confirmed.
+        /// </summary>
         event EventHandler<IConfirmEventArgs> OnSubmit;
 
         string StatusMessage { get; set; }

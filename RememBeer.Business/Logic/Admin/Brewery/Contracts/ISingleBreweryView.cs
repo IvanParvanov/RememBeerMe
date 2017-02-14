@@ -9,8 +9,14 @@ namespace RememBeer.Business.Logic.Admin.Brewery.Contracts
 {
     public interface ISingleBreweryView : IView<SingleBreweryViewModel>, IViewWithErrors, IViewWithSuccess
     {
+        /// <summary>
+        /// Triggered when the view is being initialized.
+        /// </summary>
         event EventHandler<IIdentifiableEventArgs<string>> Initialized;
 
+        /// <summary>
+        /// Triggered when a brewery needs to be updated.
+        /// </summary>
         event EventHandler<IBreweryUpdateEventArgs> BreweryUpdate;
     }
 }

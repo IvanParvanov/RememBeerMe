@@ -10,6 +10,9 @@ namespace RememBeer.Business.Logic.Reviews.Create.Contracts
 {
     public interface ICreateReviewView : IView<StatelessViewModel>, IViewWithErrors
     {
+        /// <summary>
+        /// Triggered when a new review needs to be created.
+        /// </summary>
         event EventHandler<IBeerReviewInfoEventArgs> OnCreateReview;
     }
 }
