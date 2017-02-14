@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdatePanel runat="server" ID="GridViewUpdate">
         <ContentTemplate>
-            <uc:Notifier runat="server" ID="Notification"></uc:Notifier>
+            <uc:Notifier runat="server" ID="Notification" ViewStateMode="Disabled"></uc:Notifier>
             <div class="container">
                 <asp:GridView ID="UserGridView" runat="server"
                               ItemType="RememBeer.Common.Identity.Contracts.IApplicationUser"
