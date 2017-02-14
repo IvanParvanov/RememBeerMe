@@ -129,6 +129,7 @@
     <Compile Include="NinjectModules\DataNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolvers\NinjectDependencyResolver.cs" />
+    <Compile Include="Resolvers\NinjectDependencyScope.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

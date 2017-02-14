@@ -6,6 +6,6 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers
 {
     public class ManageUsersViewModel
     {
-        public IEnumerable<IApplicationUser> Users { get; set; }
+        public virtual IEnumerable<IApplicationUser> Users { get; set; }
     }
 }
