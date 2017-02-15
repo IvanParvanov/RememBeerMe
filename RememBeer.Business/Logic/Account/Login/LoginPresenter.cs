@@ -42,10 +42,7 @@ namespace RememBeer.Business.Logic.Account.Login
                     this.Response.Redirect("/Account/Lockout");
                     break;
                 case SignInStatus.RequiresVerification:
-                    var returnUrl = string.Format(
-                                                  "/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}",
-                                                  this.Request.QueryString["ReturnUrl"],
-                                                  isPersistentLogin);
+                    var returnUrl = $"/Account/TwoFactorAuthenticationSignIn?ReturnUrl={this.Request.QueryString["ReturnUrl"]}&RememberMe={isPersistentLogin}";
                     this.Response.Redirect(returnUrl, true);
                     break;
                 case SignInStatus.Failure:

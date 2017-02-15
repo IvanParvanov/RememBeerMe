@@ -4,6 +4,7 @@ using RememBeer.Business.Logic.Reviews.Common.Presenters;
 using RememBeer.Business.Logic.Reviews.Create.Contracts;
 using RememBeer.Business.Logic.Reviews.My.Contracts;
 using RememBeer.Business.Services.Contracts;
+using RememBeer.Common.Constants;
 using RememBeer.Common.Services.Contracts;
 
 namespace RememBeer.Business.Logic.Reviews.Create
@@ -32,7 +33,7 @@ namespace RememBeer.Business.Logic.Reviews.Create
             var image = e.Image;
             if (image != null)
             {
-                var url = this.imgUploadService.UploadImage(image, 300, 300);
+                var url = this.imgUploadService.UploadImage(image, Constants.DefaultThumbnailSizePx, Constants.DefaultThumbnailSizePx);
                 review.ImgUrl = url ?? review.ImgUrl;
             }
 

@@ -148,6 +148,8 @@ namespace RememBeer.WebClient.Admin
                 case "RemoveAdmin":
                     this.UserRemoveAdmin?.Invoke(this, args);
                     break;
+                default:
+                    throw new ArgumentException("Invalid command!");
             }
         }
 

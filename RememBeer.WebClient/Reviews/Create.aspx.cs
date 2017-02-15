@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 using Microsoft.AspNet.Identity;
 
@@ -65,8 +66,22 @@ namespace RememBeer.WebClient.Reviews
             byte[] image = null;
             if (uploadControl.HasFile)
             {
-                var a = uploadControl;
-                image = a.FileBytes;
+                var extension = Path.GetExtension(uploadControl.PostedFile.FileName).ToLower();
+                if (extension != ".jpg" && extension != ".jpeg" && extension != ".png" && extension != ".gif" && extension != ".psd")
+                {
+                    this.ErrorMessageText = "The uploaded file is not a valid image!";
+                    this.ErrorMessageVisible = true;
+                    return;
+                }
+
+                if (uploadControl.PostedFile.ContentLength >= 4193280)
+                {
+                    this.ErrorMessageText = "Your image must be less than 4MB!";
+                    this.ErrorMessageVisible = true;
+                    return;
+                }
+
+                image = uploadControl.FileBytes;
             }
 
             var args = this.EventArgsFactory.CreateBeerReviewInfoEventArgs(review, image);

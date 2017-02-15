@@ -13,7 +13,8 @@ namespace RememBeer.Common.Configuration
             {
                 try
                 {
-                    return bool.Parse(ConfigurationManager.AppSettings["UserNamesAllowOnlyAlphanumeric"]);
+                    var val = TryGetValue("UserNamesAllowOnlyAlphanumeric");
+                    return bool.Parse(val);
                 }
                 catch (FormatException)
                 {
@@ -28,7 +29,8 @@ namespace RememBeer.Common.Configuration
             {
                 try
                 {
-                    return bool.Parse(ConfigurationManager.AppSettings["RequireUniqueEmail"]);
+                    var val = TryGetValue("RequireUniqueEmail");
+                    return bool.Parse(val);
                 }
                 catch (FormatException)
                 {
@@ -43,7 +45,8 @@ namespace RememBeer.Common.Configuration
             {
                 try
                 {
-                    return int.Parse(ConfigurationManager.AppSettings["PasswordMinLength"]);
+                    var val = TryGetValue("PasswordMinLength");
+                    return int.Parse(val);
                 }
                 catch (FormatException)
                 {
@@ -58,7 +61,8 @@ namespace RememBeer.Common.Configuration
             {
                 try
                 {
-                    return bool.Parse(ConfigurationManager.AppSettings["PasswordRequireNonLetterOrDigit"]);
+                    var val = TryGetValue("PasswordRequireNonLetterOrDigit");
+                    return bool.Parse(val);
                 }
                 catch (FormatException)
                 {
@@ -73,7 +77,8 @@ namespace RememBeer.Common.Configuration
             {
                 try
                 {
-                    return bool.Parse(ConfigurationManager.AppSettings["PasswordRequireDigit"]);
+                    var val = TryGetValue("PasswordRequireDigit");
+                    return bool.Parse(val);
                 }
                 catch (FormatException)
                 {
@@ -88,7 +93,8 @@ namespace RememBeer.Common.Configuration
             {
                 try
                 {
-                    return bool.Parse(ConfigurationManager.AppSettings["PasswordRequireLowercase"]);
+                    var val = TryGetValue("PasswordRequireLowercase");
+                    return bool.Parse(val);
                 }
                 catch (FormatException)
                 {
@@ -103,7 +109,8 @@ namespace RememBeer.Common.Configuration
             {
                 try
                 {
-                    return bool.Parse(ConfigurationManager.AppSettings["PasswordRequireUppercase"]);
+                    var val = TryGetValue("PasswordRequireUppercase");
+                    return bool.Parse(val);
                 }
                 catch (FormatException)
                 {
@@ -118,7 +125,8 @@ namespace RememBeer.Common.Configuration
             {
                 try
                 {
-                    return bool.Parse(ConfigurationManager.AppSettings["UserLockoutEnabledByDefault"]);
+                    var val = TryGetValue("UserLockoutEnabledByDefault");
+                    return bool.Parse(val);
                 }
                 catch (FormatException)
                 {
@@ -133,7 +141,8 @@ namespace RememBeer.Common.Configuration
             {
                 try
                 {
-                    return int.Parse(ConfigurationManager.AppSettings["DefaultAccountLockoutTimeSpan"]);
+                    var val = TryGetValue("DefaultAccountLockoutTimeSpan");
+                    return int.Parse(val);
                 }
                 catch (FormatException)
                 {
@@ -148,7 +157,8 @@ namespace RememBeer.Common.Configuration
             {
                 try
                 {
-                    return int.Parse(ConfigurationManager.AppSettings["MaxFailedAccessAttemptsBeforeLockout"]);
+                    var val = TryGetValue("MaxFailedAccessAttemptsBeforeLockout");
+                    return int.Parse(val);
                 }
                 catch (FormatException)
                 {
@@ -157,10 +167,39 @@ namespace RememBeer.Common.Configuration
             }
         }
 
-        public string ImageUploadName => ConfigurationManager.AppSettings["ImageUploadName"];
+        public string ImageUploadName
+        {
+            get
+            {
+                return TryGetValue("ImageUploadName");
+            }
+        }
 
-        public string ImageUploadApiKey => ConfigurationManager.AppSettings["ImageUploadApiKey"];
+        public string ImageUploadApiKey
+        {
+            get
+            {
+                return TryGetValue("ImageUploadApiKey");
+            }
+        }
 
-        public string ImageUploadApiSecret => ConfigurationManager.AppSettings["ImageUploadApiSecret"];
+        public string ImageUploadApiSecret
+        {
+            get
+            {
+                return TryGetValue("ImageUploadApiSecret");
+            }
+        }
+
+        private static string TryGetValue(string settingName)
+        {
+            var value = ConfigurationManager.AppSettings[settingName];
+            if (value == null)
+            {
+                throw new InvalidConfigurationOptionException(settingName);
+            }
+
+            return value;
+        }
     }
 }

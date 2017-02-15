@@ -89,7 +89,6 @@ namespace RememBeer.Tests.Business.Logic.Account.ForgotPassword.Presenter
             mockedArgs.Setup(a => a.Email).Returns(Email);
 
             var mockedUser = new Mock<IApplicationUser>();
-
             var userService = new Mock<IUserService>();
             userService.Setup(s => s.FindByName(Email))
                        .Returns(mockedUser.Object);
