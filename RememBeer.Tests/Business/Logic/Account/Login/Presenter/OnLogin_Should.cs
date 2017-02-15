@@ -22,7 +22,7 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
         private const bool IsPersistent = true;
 
         [Test]
-        public void CallSetViewProperties_WhenLoginFails()
+        public void SetViewProperties_WhenLoginFails()
         {
             var mockedView = new Mock<ILoginView>();
             mockedView.SetupSet(v => v.FailureMessage = "");
@@ -47,7 +47,7 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
         }
 
         [Test]
-        public void CallDependenciesMethods_WhenLoginFails()
+        public void CallPasswordSignInMethodWithCorrectParams_WhenLoginFails()
         {
             var mockedView = new Mock<ILoginView>();
 
@@ -69,7 +69,30 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
         }
 
         [Test]
-        public void CallDependenciesMethods_WhenLoginSuccessfull()
+        public void SetViewErrorMessages_WhenLoginFails()
+        {
+            var mockedView = new Mock<ILoginView>();
+
+            var mockedArgs = new Mock<ILoginEventArgs>();
+            mockedArgs.Setup(a => a.Email).Returns(Email);
+            mockedArgs.Setup(a => a.Password).Returns(Password);
+            mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
+
+            var userService = new Mock<IUserService>();
+            userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
+                       .Returns(SignInStatus.Failure);
+
+            var mockedIdentityHelper = new Mock<IIdentityHelper>();
+
+            var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object);
+            mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
+
+            mockedView.VerifySet(v => v.FailureMessage = It.IsAny<string>(), Times.Once);
+            mockedView.VerifySet(v => v.ErrorMessageVisible = true, Times.Once);
+        }
+
+        [Test]
+        public void CallPasswordSignInMethodWithCorrectParams_WhenLoginSuccessfull()
         {
             var mockedView = new Mock<ILoginView>();
 

@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace RememBeer.Data.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<RememBeer.Data.DbContexts.RememBeerMeDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DbContexts.RememBeerMeDbContext>
     {
         public Configuration()
         {
@@ -14,7 +14,7 @@ namespace RememBeer.Data.Migrations
             this.ContextKey = "RememBeer.Data.DbContexts.RememBeerMeDbContext";
         }
 
-        protected override void Seed(RememBeer.Data.DbContexts.RememBeerMeDbContext context)
+        protected override void Seed(DbContexts.RememBeerMeDbContext context)
         {
             if (!context.Roles.Any())
             {

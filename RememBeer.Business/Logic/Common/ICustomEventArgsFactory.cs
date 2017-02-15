@@ -33,5 +33,7 @@ namespace RememBeer.Business.Logic.Common
         ISearchEventArgs CreateSearchEventArgs(string pattern);
 
         IBreweryUpdateEventArgs CreateBreweryUpdateEventArgs(int id, string description, string name, string country);
+
+        IPaginationEventArgs CreatePaginationEventArgs(int startRowIndex, int pageSize);
     }
 }

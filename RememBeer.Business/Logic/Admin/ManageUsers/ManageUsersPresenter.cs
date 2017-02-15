@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 using RememBeer.Business.Logic.Account.Common.Presenters;
 using RememBeer.Business.Logic.Admin.ManageUsers.Contracts;
 using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Business.Services.Contracts;
+using RememBeer.Common.Identity.Contracts;
 
 namespace RememBeer.Business.Logic.Admin.ManageUsers
 {
@@ -17,28 +19,15 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers
             this.View.UserRemoveAdmin += this.OnViewRemoveAdmin;
             this.View.UserDisable += this.OnViewDisableUser;
             this.View.UserEnable += this.OnViewEnableUser;
-            this.View.Initialized += this.OnViewInitialized;
             this.View.UserSearch += this.OnViewUserSearch;
         }
 
         private void OnViewUserSearch(object sender, ISearchEventArgs e)
         {
-            var pattern = e.Pattern;
             var currentPage = this.View.CurrentPage;
             var pageSize = this.View.PageSize;
             int total;
-            var users = this.UserService.PaginatedUsers(currentPage, pageSize, out total, pattern);
-
-            this.View.TotalPages = total;
-            this.View.Model.Users = users;
-        }
-
-        private void OnViewInitialized(object sender, EventArgs e)
-        {
-            var currentPage = this.View.CurrentPage;
-            var pageSize = this.View.PageSize;
-            int total;
-            var users = this.UserService.PaginatedUsers(currentPage, pageSize, out total);
+            var users = this.UserService.PaginatedUsers(currentPage, pageSize, out total, e?.Pattern);
 
             this.View.TotalPages = total;
             this.View.Model.Users = users;

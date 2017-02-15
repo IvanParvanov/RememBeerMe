@@ -113,6 +113,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Business\Common\EventArgs\PaginationEventArgsTests.cs" />
     <Compile Include="Business\Logic\Account\Auth\AuthProvider\CreateApplicationSignInManager_Should.cs" />
     <Compile Include="Business\Logic\Account\Auth\AuthProvider\CreateApplicationUserManager_Should.cs" />
     <Compile Include="Business\Logic\Account\Auth\AuthProvider\CreateOwinContext_Should.cs" />
@@ -161,7 +162,7 @@
     <Compile Include="Business\Mocks\MockedBeerReviewViewModel.cs" />
     <Compile Include="Business\Logic\Reviews\My\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Logic\Reviews\My\Presenter\OnDeleteReview_Should.cs" />
-    <Compile Include="Business\Logic\Reviews\My\Presenter\OnInitialise_Should.cs" />
+    <Compile Include="Business\Logic\Reviews\My\Presenter\OnViewInitialise_Should.cs" />
     <Compile Include="Business\Logic\Reviews\My\Presenter\OnUpdateReview_Should.cs" />
     <Compile Include="Business\Logic\Reviews\My\ViewModel\Ctor_Should.cs" />
     <Compile Include="Business\Logic\Top\Beers\Presenter\Ctor_Should.cs" />

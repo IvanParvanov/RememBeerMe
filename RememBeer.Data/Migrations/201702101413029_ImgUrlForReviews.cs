@@ -6,12 +6,12 @@ namespace RememBeer.Data.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.BeerReviews", "ImgUrl", c => c.String(defaultValue: "~/Content/Images/default-beer.png"));
+            this.AddColumn("dbo.BeerReviews", "ImgUrl", c => c.String(defaultValue: "/Content/Images/default-beer.png"));
         }
 
         public override void Down()
         {
-            DropColumn("dbo.BeerReviews", "ImgUrl");
+            this.DropColumn("dbo.BeerReviews", "ImgUrl");
         }
     }
 }

@@ -15,8 +15,6 @@ namespace RememBeer.WebClient.Admin
     {
         public event EventHandler<IIdentifiableEventArgs<string>> UserRemoveAdmin;
 
-        public event EventHandler<EventArgs> Initialized;
-
         public event EventHandler<IIdentifiableEventArgs<string>> UserDisable;
 
         public event EventHandler<IIdentifiableEventArgs<string>> UserEnable;
@@ -84,16 +82,8 @@ namespace RememBeer.WebClient.Admin
         protected void Page_PreRender(object sender, EventArgs e)
         {
             var pattern = this.Request.QueryString["s"];
-            if (pattern != null)
-            {
-                var args = this.EventArgsFactory.CreateSearchEventArgs(pattern);
-                this.UserSearch?.Invoke(this, args);
-            }
-            else
-            {
-                this.Initialized?.Invoke(this, EventArgs.Empty);
-            }
-
+            var args = this.EventArgsFactory.CreateSearchEventArgs(pattern);
+            this.UserSearch?.Invoke(this, args);
             this.BindData();
         }
 

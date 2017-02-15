@@ -12,5 +12,7 @@ namespace RememBeer.Business.Logic.Reviews.My
         }
 
         public IEnumerable<IBeerReview> Reviews { get; set; }
+
+        public int TotalCount { get; set; }
     }
 }

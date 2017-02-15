@@ -13,7 +13,7 @@ namespace RememBeer.Tests.Business.Logic.Account.ForgotPassword.Presenter
     public class OnForgot_Should
     {
         [Test]
-        public void CallFindByNameMethodOnce()
+        public void CallFindByNameMethodOnceWithCorrectParams()
         {
             const string Email = "test@abv.bg";
             var mockedView = new Mock<IForgotPasswordView>();

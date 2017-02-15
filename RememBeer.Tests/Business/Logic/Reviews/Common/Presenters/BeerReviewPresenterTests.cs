@@ -41,12 +41,6 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Common.Presenters
         {
         }
 
-        public IBeerReviewService ActualReviewService
-        {
-            get
-            {
-                return base.ReviewService;
-            }
-        }
+        public IBeerReviewService ActualReviewService => base.ReviewService;
     }
 }

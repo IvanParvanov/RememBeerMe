@@ -40,13 +40,13 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
             }
 
             var expectedGroups = reviews.Where(r => !r.IsDeleted).GroupBy(r => r.Beer);
-            var enumerable = expectedGroups as IGrouping<Beer, BeerReview>[] ?? expectedGroups.ToArray();
-            for (var i = 0; i < enumerable.Count(); i++)
+            var enumeratedGroups = expectedGroups as IGrouping<Beer, BeerReview>[] ?? expectedGroups.ToArray();
+            for (var i = 0; i < enumeratedGroups.Length; i++)
             {
                 var rank = new Mock<IBeerRank>();
                 rank.SetupGet(r => r.CompositeScore)
                     .Returns(i);
-                strategy.Setup(s => s.GetRank(enumerable[i], enumerable[i].Key))
+                strategy.Setup(s => s.GetRank(enumeratedGroups[i], enumeratedGroups[i].Key))
                         .Returns(rank.Object);
             }
 
@@ -58,7 +58,7 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
 
             topBeersService.GetTopBeers(10);
 
-            foreach (var expectedGroup in enumerable)
+            foreach (var expectedGroup in enumeratedGroups)
             {
                 strategy.Verify(s => s.GetRank(expectedGroup, expectedGroup.Key), Times.Once);
             }
@@ -78,13 +78,13 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
             }
 
             var expectedGroups = reviews.Where(r => !r.IsDeleted).GroupBy(r => r.Beer);
-            var enumerable = expectedGroups as IGrouping<Beer, BeerReview>[] ?? expectedGroups.ToArray();
-            for (var i = 0; i < enumerable.Length; i++)
+            var enumeratedGroups = expectedGroups as IGrouping<Beer, BeerReview>[] ?? expectedGroups.ToArray();
+            for (var i = 0; i < enumeratedGroups.Length; i++)
             {
                 var rank = new Mock<IBeerRank>();
                 rank.SetupGet(r => r.CompositeScore)
                     .Returns(i);
-                strategy.Setup(s => s.GetRank(enumerable[i], enumerable[i].Key))
+                strategy.Setup(s => s.GetRank(enumeratedGroups[i], enumeratedGroups[i].Key))
                         .Returns(rank.Object);
             }
 
@@ -113,13 +113,13 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
             }
 
             var expectedGroups = reviews.Where(r => !r.IsDeleted).GroupBy(r => r.Beer);
-            var enumerable = expectedGroups as IGrouping<Beer, BeerReview>[] ?? expectedGroups.ToArray();
-            for (var i = 0; i < enumerable.Count(); i++)
+            var enumeratedGroups = expectedGroups as IGrouping<Beer, BeerReview>[] ?? expectedGroups.ToArray();
+            for (var i = 0; i < enumeratedGroups.Length; i++)
             {
                 var rank = new Mock<IBeerRank>();
                 rank.SetupGet(r => r.CompositeScore)
                     .Returns(i);
-                strategy.Setup(s => s.GetRank(enumerable[i], enumerable[i].Key))
+                strategy.Setup(s => s.GetRank(enumeratedGroups[i], enumeratedGroups[i].Key))
                         .Returns(rank.Object);
             }
 

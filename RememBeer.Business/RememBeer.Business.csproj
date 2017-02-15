@@ -140,6 +140,8 @@
     <Compile Include="Logic\Common\ICustomEventArgsFactory.cs" />
     <Compile Include="Logic\MvpPresenterFactory\IMvpPresenterFactory.cs" />
     <Compile Include="Logic\MvpPresenterFactory\MvpPresenterFactory.cs" />
+    <Compile Include="Logic\Common\EventArgs\Contracts\IPaginationEventArgs.cs" />
+    <Compile Include="Logic\Common\EventArgs\PaginationEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Logic\Reviews\Common\Presenters\BeerReviewPresenter.cs" />
     <Compile Include="Logic\Reviews\Common\ViewModels\BeerReviewViewModel.cs" />

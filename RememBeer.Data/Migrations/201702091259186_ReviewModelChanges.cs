@@ -6,12 +6,12 @@ namespace RememBeer.Data.Migrations
     {
         public override void Up()
         {
-            AlterColumn("dbo.BeerReviews", "Place", c => c.String(nullable: false, maxLength: 128));
+            this.AlterColumn("dbo.BeerReviews", "Place", c => c.String(nullable: false, maxLength: 128));
         }
 
         public override void Down()
         {
-            AlterColumn("dbo.BeerReviews", "Place", c => c.String(nullable: false, maxLength: 512));
+            this.AlterColumn("dbo.BeerReviews", "Place", c => c.String(nullable: false, maxLength: 512));
         }
     }
 }

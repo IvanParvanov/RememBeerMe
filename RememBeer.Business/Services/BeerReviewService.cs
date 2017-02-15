@@ -29,8 +29,21 @@ namespace RememBeer.Business.Services
         {
             return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == userId,
                                           x => x.CreatedAt,
+                                          SortOrder.Descending);
+        }
+
+        public IEnumerable<IBeerReview> GetReviewsForUser(string userId, int skip, int pageSize)
+        {
+            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == userId,
+                                          x => x.CreatedAt,
                                           SortOrder.Descending)
-                       .ToList();
+                       .Skip(skip)
+                       .Take(pageSize);
+        }
+
+        public int CountUserReviews(string userId)
+        {
+            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == userId).Count();
         }
 
         public IDataModifiedResult UpdateReview(IBeerReview review)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Business.Logic.Reviews.My;
 using RememBeer.Business.Logic.Reviews.My.Contracts;
 using RememBeer.Models;
@@ -15,7 +16,7 @@ namespace RememBeer.WebClient.Reviews
     [PresenterBinding(typeof(MyReviewsPresenter))]
     public partial class My : BaseMvpPage<ReviewsViewModel>, IMyReviewsView
     {
-        public event EventHandler<EventArgs> Initialized;
+        public event EventHandler<IPaginationEventArgs> Initialized;
 
         public event EventHandler<IBeerReviewInfoEventArgs> ReviewUpdate;
 
@@ -45,16 +46,13 @@ namespace RememBeer.WebClient.Reviews
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            this.Initialized?.Invoke(this, EventArgs.Empty);
-        }
-
         public IEnumerable<IBeerReview> Select(int startRowIndex, int maximumRows, out int totalRowCount)
         {
-            totalRowCount = this.Model.Reviews.Count();
+            var args = this.EventArgsFactory.CreatePaginationEventArgs(startRowIndex, maximumRows);
+            this.Initialized?.Invoke(this, args);
 
-            return this.Model.Reviews.Skip(startRowIndex).Take(maximumRows);
+            totalRowCount = this.Model.TotalCount;
+            return this.Model.Reviews;
         }
 
         public void UpdateReview(BeerReview newReview)

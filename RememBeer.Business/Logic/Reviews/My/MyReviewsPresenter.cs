@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 using Microsoft.AspNet.Identity;
 
+using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Business.Logic.Reviews.Common.Presenters;
 using RememBeer.Business.Logic.Reviews.My.Contracts;
 using RememBeer.Business.Services.Contracts;
@@ -53,14 +53,15 @@ namespace RememBeer.Business.Logic.Reviews.My
             }
         }
 
-        private void OnViewInitialise(object sender, EventArgs e)
+        private void OnViewInitialise(object sender, IPaginationEventArgs e)
         {
             this.View.SuccessMessageVisible = false;
 
             var userId = this.HttpContext?.User?.Identity.GetUserId();
-            var beerReviews = this.ReviewService.GetReviewsForUser(userId);
+            var beerReviews = this.ReviewService.GetReviewsForUser(userId, e.StartRowIndex, e.PageSize);
 
             this.View.Model.Reviews = beerReviews;
+            this.View.Model.TotalCount = this.ReviewService.CountUserReviews(userId);
         }
     }
 }

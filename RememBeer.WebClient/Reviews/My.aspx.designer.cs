@@ -31,6 +31,15 @@ namespace RememBeer.WebClient.Reviews {
         protected global::RememBeer.WebClient.UserControls.UserNotifications Notifier;
         
         /// <summary>
+        /// UpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel;
+        
+        /// <summary>
         /// ReviewsListView control.
         /// </summary>
         /// <remarks>
@@ -38,5 +47,14 @@ namespace RememBeer.WebClient.Reviews {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ReviewsListView;
+        
+        /// <summary>
+        /// Pagination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager Pagination;
     }
 }

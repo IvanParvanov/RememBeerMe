@@ -18,7 +18,7 @@ namespace RememBeer.Tests.Business.Logic.Top.Beers.Presenter
     public class OnViewInitialize_Should
     {
         [Test]
-        public void CallGetTopBeers()
+        public void CallGetTopBeersWithCorrectParametersOnce()
         {
             var viewModel = new MockedTopBeersViewModel();
             var view = new Mock<IInitializableView<TopBeersViewModel>>();
@@ -46,7 +46,7 @@ namespace RememBeer.Tests.Business.Logic.Top.Beers.Presenter
             var presenter = new TopBeersPresenter(service.Object, view.Object);
             view.Raise(v => v.Initialized += null, view.Object, EventArgs.Empty);
 
-            Assert.AreSame(view.Object.Model.Rankings, expectedResult);
+            Assert.AreSame(viewModel.Rankings, expectedResult);
         }
     }
 }

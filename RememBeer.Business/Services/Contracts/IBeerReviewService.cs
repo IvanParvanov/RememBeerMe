@@ -9,6 +9,10 @@ namespace RememBeer.Business.Services.Contracts
     {
         IEnumerable<IBeerReview> GetReviewsForUser(string userId);
 
+        IEnumerable<IBeerReview> GetReviewsForUser(string userId, int skip, int pageSize);
+
+        int CountUserReviews(string userId);
+
         IDataModifiedResult UpdateReview(IBeerReview review);
 
         IDataModifiedResult CreateReview(IBeerReview review);

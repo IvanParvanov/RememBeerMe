@@ -6,14 +6,14 @@ namespace RememBeer.Data.Migrations
     {
         public override void Up()
         {
-            AlterColumn("dbo.BeerReviews", "CreatedAt", c => c.DateTime(nullable: false));
-            AlterColumn("dbo.BeerReviews", "ModifiedAt", c => c.DateTime(nullable: false));
+            this.AlterColumn("dbo.BeerReviews", "CreatedAt", c => c.DateTime(nullable: false));
+            this.AlterColumn("dbo.BeerReviews", "ModifiedAt", c => c.DateTime(nullable: false));
         }
 
         public override void Down()
         {
-            AlterColumn("dbo.BeerReviews", "ModifiedAt", c => c.DateTime());
-            AlterColumn("dbo.BeerReviews", "CreatedAt", c => c.DateTime());
+            this.AlterColumn("dbo.BeerReviews", "ModifiedAt", c => c.DateTime());
+            this.AlterColumn("dbo.BeerReviews", "CreatedAt", c => c.DateTime());
         }
     }
 }

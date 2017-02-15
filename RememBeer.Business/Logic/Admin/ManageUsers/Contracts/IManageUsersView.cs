@@ -3,9 +3,11 @@
 using RememBeer.Business.Logic.Common.Contracts;
 using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 
+using WebFormsMvp;
+
 namespace RememBeer.Business.Logic.Admin.ManageUsers.Contracts
 {
-    public interface IManageUsersView : IInitializableView<ManageUsersViewModel>,
+    public interface IManageUsersView : IView<ManageUsersViewModel>,
                                         IViewWithErrors,
                                         IViewWithSuccess,
                                         IPaginatedView
