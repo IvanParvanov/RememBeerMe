@@ -7,7 +7,7 @@ namespace RememBeer.Business.Services.Contracts
 {
     public interface IBeerReviewService
     {
-        IEnumerable<IBeerReview> GetReviewsForUser(string user);
+        IEnumerable<IBeerReview> GetReviewsForUser(string userId);
 
         IDataModifiedResult UpdateReview(IBeerReview review);
 

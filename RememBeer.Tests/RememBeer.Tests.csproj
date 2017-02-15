@@ -134,6 +134,8 @@
     <Compile Include="Business\Logic\Admin\ManageUsers\Presenter\OnViewRemoveAdmin_Should.cs" />
     <Compile Include="Business\Logic\Admin\ManageUsers\Presenter\OnViewUserSearch_Should.cs" />
     <Compile Include="Business\Logic\Admin\ManageUsers\ViewModel\Setters_Should.cs" />
+    <Compile Include="Business\Logic\Reviews\Create\Presenter\Ctor_Should.cs" />
+    <Compile Include="Business\Logic\Reviews\Create\Presenter\OnViewCreateReview_Should.cs" />
     <Compile Include="Business\Mocks\MockedApplicationUser.cs" />
     <Compile Include="Business\Mocks\MockedApplicationUserManager.cs" />
     <Compile Include="Business\Logic\Account\ForgotPassword\EventArgs\Ctor_Should.cs" />
@@ -166,6 +168,11 @@
     <Compile Include="Business\Logic\Top\Beers\Presenter\OnViewInitialize_Should.cs" />
     <Compile Include="Business\Logic\Top\Beers\ViewModel\Setters_Should.cs" />
     <Compile Include="Business\Mocks\MockedTopBeersViewModel.cs" />
+    <Compile Include="Business\Services\BeerReviewServiceTests\CreateReview_Should.cs" />
+    <Compile Include="Business\Services\BeerReviewServiceTests\Ctor_Should.cs" />
+    <Compile Include="Business\Services\BeerReviewServiceTests\DeleteReview_Should.cs" />
+    <Compile Include="Business\Services\BeerReviewServiceTests\GetById_Should.cs" />
+    <Compile Include="Business\Services\BeerReviewServiceTests\UpdateReview_Should.cs" />
     <Compile Include="Business\Services\BreweryServiceTests\GetById_Should.cs" />
     <Compile Include="Business\Services\BreweryServiceTests\UpdateBrewery_Should.cs" />
     <Compile Include="Business\Services\TopBeerServiceTests\Ctor_Should.cs" />

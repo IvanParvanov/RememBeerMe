@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,12 +17,17 @@ namespace RememBeer.Business.Services
 
         public BeerReviewService(IRepository<BeerReview> repository)
         {
+            if (repository == null)
+            {
+                throw new ArgumentNullException(nameof(repository));
+            }
+
             this.repository = repository;
         }
 
-        public IEnumerable<IBeerReview> GetReviewsForUser(string user)
+        public IEnumerable<IBeerReview> GetReviewsForUser(string userId)
         {
-            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == user,
+            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == userId,
                                           x => x.CreatedAt,
                                           SortOrder.Descending)
                        .ToList();
