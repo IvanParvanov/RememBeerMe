@@ -57,9 +57,9 @@ namespace RememBeer.Tests.Business.Services.BeerReviewServiceTests
             var expected = new Mock<IDataModifiedResult>();
             var id = this.Fixture.Create<string>();
             var review = new BeerReview
-            {
-                IsDeleted = false
-            };
+                         {
+                             IsDeleted = false
+                         };
 
             var repository = new Mock<IRepository<BeerReview>>();
             repository.Setup(r => r.GetById(id))

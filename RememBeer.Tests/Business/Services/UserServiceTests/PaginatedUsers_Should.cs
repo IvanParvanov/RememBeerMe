@@ -90,7 +90,7 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
                 users.Add(new MockedApplicationUser()
                           {
                               UserName = this.Fixture.Create<string>() + searchPattern + this.Fixture.Create<string>()
-                });
+                          });
             }
 
             var queryableUsers = users.AsQueryable();

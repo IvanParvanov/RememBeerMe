@@ -33,7 +33,7 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var userManager = new Mock<IApplicationUserManager>().Object;
             var modelFactory = new Mock<IModelFactory>().Object;
 
-            Assert.Throws<ArgumentNullException>(() => new UserService(userManager, null,  modelFactory));
+            Assert.Throws<ArgumentNullException>(() => new UserService(userManager, null, modelFactory));
         }
 
         [Test]

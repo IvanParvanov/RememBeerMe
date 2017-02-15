@@ -80,7 +80,6 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
             var expectedUrl = this.Fixture.Create<string>();
 
             var view = new Mock<ICreateReviewView>();
-
             var review = new Mock<IBeerReview>();
             var imageToUpload = new byte[50];
             var createReviewResult = new Mock<IDataModifiedResult>();
@@ -94,7 +93,6 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
             var imgUpload = new Mock<IImageUploadService>();
             imgUpload.Setup(img => img.UploadImage(imageToUpload, 300, 300))
                      .Returns(expectedUrl);
-
             var args = new Mock<IBeerReviewInfoEventArgs>();
             args.Setup(a => a.BeerReview)
                 .Returns(review.Object);
@@ -182,7 +180,7 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
             createReviewResult.Setup(r => r.Successful)
                               .Returns(false);
             createReviewResult.Setup(r => r.Errors)
-                              .Returns(new [] { expectedMessage });
+                              .Returns(new[] { expectedMessage });
 
             var reviewService = new Mock<IBeerReviewService>();
             reviewService.Setup(r => r.CreateReview(It.IsAny<IBeerReview>()))
@@ -206,8 +204,6 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
         [Test]
         public void RedirectToCorrectUrl_WhenCreateReviewIsSuccessful()
         {
-            var expectedMessage = this.Fixture.Create<string>();
-
             var view = new Mock<ICreateReviewView>();
 
             var review = new Mock<IBeerReview>();

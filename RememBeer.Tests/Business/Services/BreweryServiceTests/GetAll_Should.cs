@@ -9,13 +9,9 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 using RememBeer.Business.Services;
-using RememBeer.Common.Identity.Contracts;
-using RememBeer.Common.Identity.Models;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Models;
 using RememBeer.Models.Contracts;
-using RememBeer.Models.Factories;
-using RememBeer.Tests.Business.Mocks;
 using RememBeer.Tests.Common;
 
 namespace RememBeer.Tests.Business.Services.BreweryServiceTests
@@ -64,15 +60,15 @@ namespace RememBeer.Tests.Business.Services.BreweryServiceTests
             for (var i = 0; i < expectedTotalCount; i++)
             {
                 breweries.Add(new Brewery()
-                          {
-                              Name = this.Fixture.Create<string>()
-                          });
+                              {
+                                  Name = this.Fixture.Create<string>()
+                              });
             }
 
             var queryableBreweries = breweries.AsQueryable();
             var repository = new Mock<IRepository<Brewery>>();
             repository.Setup(r => r.All)
-                       .Returns(queryableBreweries);
+                      .Returns(queryableBreweries);
 
             var service = new BreweryService(repository.Object);
             var result = service.GetAll(currentPage, expectedPageSize, (a) => a.Name);

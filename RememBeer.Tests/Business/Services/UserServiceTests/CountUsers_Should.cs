@@ -35,7 +35,7 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var signInManager = new Mock<IApplicationSignInManager>();
             var userManager = new Mock<IApplicationUserManager>();
             userManager.Setup(r => r.Users)
-                      .Returns(queryableUsers);
+                       .Returns(queryableUsers);
 
             var modelFactory = new Mock<IModelFactory>();
 
