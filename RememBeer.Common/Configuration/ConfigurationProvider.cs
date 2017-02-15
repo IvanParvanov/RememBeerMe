@@ -196,7 +196,7 @@ namespace RememBeer.Common.Configuration
             var value = ConfigurationManager.AppSettings[settingName];
             if (value == null)
             {
-                throw new InvalidConfigurationOptionException(settingName);
+                throw new MissingConfigurationOption(settingName);
             }
 
             return value;

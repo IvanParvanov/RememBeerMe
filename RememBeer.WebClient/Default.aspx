@@ -7,6 +7,6 @@
        </p>
        <p>The sad part is you would never remember it for so long...</p>
         <h5>Until now.</h5>
-  <p><a class="btn btn-primary btn-lg" href="Reviews/My">Get Started</a></p>
+  <p><a class="btn btn-success btn-hg" href="Reviews/My">Get Started</a></p>
 </div>
 </asp:Content>
