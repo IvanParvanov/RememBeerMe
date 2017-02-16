@@ -4,6 +4,7 @@ using RememBeer.Business.Logic.Account.Login.Contracts;
 using RememBeer.Business.Logic.Account.ManagePassword.Contracts;
 using RememBeer.Business.Logic.Account.Register.Contracts;
 using RememBeer.Business.Logic.Admin.Brewery.Contracts;
+using RememBeer.Business.Logic.Admin.ManageUsers.Contracts;
 using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Business.Logic.Reviews.My.Contracts;
 using RememBeer.Models.Contracts;
@@ -37,5 +38,7 @@ namespace RememBeer.Business.Logic.Common
         IPaginationEventArgs CreatePaginationEventArgs(int startRowIndex, int pageSize);
 
         IUserReviewsEventArgs CreateUserReviewsEventArgs(int startRowIndex, int pageSize, string userId);
+
+        IUserUpdateEventArgs CreateUserUpdateEventArgs(string id, string email, string userName, bool isConfirmed);
     }
 }

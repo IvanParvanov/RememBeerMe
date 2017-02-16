@@ -13,19 +13,19 @@ using RememBeer.Models.Factories;
 using RememBeer.Models.Identity.Contracts;
 using RememBeer.Tests.Common;
 
+using Constants = RememBeer.Common.Constants.Constants;
+
 namespace RememBeer.Tests.Business.Services.UserServiceTests
 {
     [TestFixture]
     internal class MakeAdmin_Should : TestClassBase
     {
-        private const string Role = "Admin";
-
         [Test]
         public void Call_UserManagerAddToRoleAsyncMethodOnceWithCorrectParams()
         {
             var expectedId = this.Fixture.Create<string>();
             var userManager = new Mock<IApplicationUserManager>();
-            userManager.Setup(m => m.AddToRoleAsync(expectedId, Role))
+            userManager.Setup(m => m.AddToRoleAsync(expectedId, Constants.AdminRole))
                        .Returns(Task.FromResult(IdentityResult.Failed()));
 
             var signInManager = new Mock<IApplicationSignInManager>();
@@ -37,7 +37,7 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
 
             var result = service.MakeAdmin(expectedId);
 
-            userManager.Verify(m => m.AddToRoleAsync(expectedId, Role), Times.Once);
+            userManager.Verify(m => m.AddToRoleAsync(expectedId, Constants.AdminRole), Times.Once);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var expectedResult = IdentityResult.Failed();
             var expectedId = this.Fixture.Create<string>();
             var userManager = new Mock<IApplicationUserManager>();
-            userManager.Setup(m => m.AddToRoleAsync(expectedId, Role))
+            userManager.Setup(m => m.AddToRoleAsync(expectedId, Constants.AdminRole))
                        .Returns(Task.FromResult(expectedResult));
 
             var signInManager = new Mock<IApplicationSignInManager>();

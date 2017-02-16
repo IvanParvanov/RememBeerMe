@@ -118,9 +118,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Business\Common\EventArgs\PaginationEventArgsTests.cs" />
-    <Compile Include="Business\Logic\Account\Auth\AuthProvider\CreateApplicationSignInManager_Should.cs" />
-    <Compile Include="Business\Logic\Account\Auth\AuthProvider\CreateApplicationUserManager_Should.cs" />
-    <Compile Include="Business\Logic\Account\Auth\AuthProvider\CreateOwinContext_Should.cs" />
     <Compile Include="Business\Logic\Account\Common\UserServicePresenterTests.cs" />
     <Compile Include="Business\Logic\Account\Confirm\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Logic\Account\Confirm\Presenter\OnSubmit_Should.cs" />
@@ -137,6 +134,7 @@
     <Compile Include="Business\Logic\Admin\ManageUsers\Presenter\OnViewEnableUser_Should.cs" />
     <Compile Include="Business\Logic\Admin\ManageUsers\Presenter\OnViewMakeAdmin_Should.cs" />
     <Compile Include="Business\Logic\Admin\ManageUsers\Presenter\OnViewRemoveAdmin_Should.cs" />
+    <Compile Include="Business\Logic\Admin\ManageUsers\Presenter\OnViewUpdateUser_Should.cs" />
     <Compile Include="Business\Logic\Admin\ManageUsers\Presenter\OnViewUserSearch_Should.cs" />
     <Compile Include="Business\Logic\Admin\ManageUsers\ViewModel\Setters_Should.cs" />
     <Compile Include="Business\Logic\Admin\UserDetails\Presenter\OnViewInitialized_Should.cs" />
@@ -191,9 +189,11 @@
     <Compile Include="Business\Services\TopBeerServiceTests\Ctor_Should.cs" />
     <Compile Include="Business\Services\TopBeerServiceTests\GetTopBeers_Should.cs" />
     <Compile Include="Business\Services\TopBeerServiceTests\GetTopBreweries_Should.cs" />
+    <Compile Include="Business\Services\UserServiceTests\GetById_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\MakeAdmin_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\RemoveAdmin_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\Search_Should.cs" />
+    <Compile Include="Business\Services\UserServiceTests\UpdateUser_Should.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpContextBase.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpRequest.cs" />
     <Compile Include="Common\MockedClasses\MockedHttpResponse.cs" />

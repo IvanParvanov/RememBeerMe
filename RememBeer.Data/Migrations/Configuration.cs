@@ -3,6 +3,8 @@ using System.Linq;
 
 using Microsoft.AspNet.Identity.EntityFramework;
 
+using RememBeer.Common.Constants;
+
 namespace RememBeer.Data.Migrations
 {
     internal sealed class Configuration : DbMigrationsConfiguration<DbContexts.RememBeerMeDbContext>
@@ -18,7 +20,7 @@ namespace RememBeer.Data.Migrations
         {
             if (!context.Roles.Any())
             {
-                context.Roles.Add(new IdentityRole("Admin"));
+                context.Roles.Add(new IdentityRole(Constants.AdminRole));
             }
 
             context.SaveChanges();

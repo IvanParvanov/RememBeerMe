@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 
 using RememBeer.Business.Logic.Account.Common.Presenters;
 using RememBeer.Business.Logic.Admin.ManageUsers.Contracts;
@@ -35,53 +34,38 @@ namespace RememBeer.Business.Logic.Admin.ManageUsers
         private void OnViewDisableUser(object sender, IIdentifiableEventArgs<string> e)
         {
             var result = this.UserService.DisableUser(e.Id);
-            if (result.Succeeded)
-            {
-                this.SetSuccess("User locked out!");
-            }
-            else
-            {
-                this.SetError(string.Join(", ", result.Errors));
-            }
+            this.ProcessResult(result, "User locked out!");
         }
 
         private void OnViewEnableUser(object sender, IIdentifiableEventArgs<string> e)
         {
             var result = this.UserService.EnableUser(e.Id);
-            if (result.Succeeded)
-            {
-                this.SetSuccess("User has been enabled!");
-            }
-            else
-            {
-                this.SetError(string.Join(", ", result.Errors));
-            }
+            this.ProcessResult(result, "User has been enabled!");
         }
 
         private void OnViewUpdateUser(object sender, IUserUpdateEventArgs e)
         {
-            throw new NotImplementedException();
+            var result = this.UserService.UpdateUser(e.Id, e.Email, e.UserName, e.IsConfirmed);
+            this.ProcessResult(result, "User has been updated!");
         }
 
         private void OnViewMakeAdmin(object sender, IIdentifiableEventArgs<string> e)
         {
             var result = this.UserService.MakeAdmin(e.Id);
-            if (result.Succeeded)
-            {
-                this.SetSuccess("User is now an administrator.");
-            }
-            else
-            {
-                this.SetError(string.Join(", ", result.Errors));
-            }
+            this.ProcessResult(result, "User is now an administrator.");
         }
 
         private void OnViewRemoveAdmin(object sender, IIdentifiableEventArgs<string> e)
         {
             var result = this.UserService.RemoveAdmin(e.Id);
+            this.ProcessResult(result, "Administrator removed.");
+        }
+
+        private void ProcessResult(IdentityResult result, string successMessage)
+        {
             if (result.Succeeded)
             {
-                this.SetSuccess("Administrator removed.");
+                this.SetSuccess(successMessage);
             }
             else
             {

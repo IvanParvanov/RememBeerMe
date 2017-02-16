@@ -1,8 +1,5 @@
 ﻿using System.Linq;
 
-using Microsoft.AspNet.Identity;
-
-using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Business.Logic.Reviews.Common.Presenters;
 using RememBeer.Business.Logic.Reviews.My.Contracts;
 using RememBeer.Business.Services.Contracts;

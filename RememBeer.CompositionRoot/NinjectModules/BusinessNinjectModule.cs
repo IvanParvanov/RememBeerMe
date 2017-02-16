@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Linq;
-using System.Web;
 
 using Ninject;
 using Ninject.Activation;
 using Ninject.Extensions.Factory;
 using Ninject.Modules;
 using Ninject.Parameters;
+using Ninject.Web.Common;
 
-using RememBeer.Business.Logic.Account.Auth;
 using RememBeer.Business.Logic.Common;
 using RememBeer.Business.Logic.MvpPresenterFactory;
+using RememBeer.Business.Services;
+using RememBeer.Business.Services.Contracts;
+using RememBeer.Business.Services.RankingStrategies;
+using RememBeer.Business.Services.RankingStrategies.Contracts;
 using RememBeer.Common.Configuration;
 using RememBeer.Common.Services;
 using RememBeer.Common.Services.Contracts;
@@ -42,25 +45,13 @@ namespace RememBeer.CompositionRoot.NinjectModules
             this.Rebind<IIdentityHelper>().To<IdentityHelper>().InSingletonScope();
             this.Rebind<IConfigurationProvider>().To<ConfigurationProvider>().InSingletonScope();
 
-            this.Rebind<IApplicationSignInManager>().ToMethod((context) =>
-                                                              {
-                                                                  var cbase = new HttpContextWrapper(HttpContext.Current);
-                                                                  var f = context.Kernel.Get<IAuthProvider>();
-                                                                  var owinCtx = f.CreateOwinContext(cbase);
-
-                                                                  return f.CreateApplicationSignInManager(owinCtx);
-                                                              });
-
-            this.Rebind<IApplicationUserManager>().ToMethod((context) =>
-                                                            {
-                                                                var cbase = new HttpContextWrapper(HttpContext.Current);
-                                                                var f = context.Kernel.Get<IAuthProvider>();
-                                                                var owinCtx = f.CreateOwinContext(cbase);
-
-                                                                return f.CreateApplicationUserManager(owinCtx);
-                                                            });
+            this.Bind<IRankCalculationStrategy>().To<DoubleOverallScoreStrategy>().InRequestScope();
 
             this.Bind<IImageUploadService>().To<CloudinaryImageUpload>();
+            this.Rebind<IUserService>().To<UserService>().InRequestScope();
+            this.Rebind<ITopBeersService>().To<TopBeersService>().InRequestScope();
+            this.Rebind<IBeerReviewService>().To<BeerReviewService>().InRequestScope();
+            this.Rebind<IBreweryService>().To<BreweryService>().InRequestScope();
         }
 
         private static IPresenter GetPresenter(IContext context)

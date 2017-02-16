@@ -1,7 +1,5 @@
 ﻿using System;
 
-using RememBeer.Business.Logic.Common.EventArgs.Contracts;
-
 using WebFormsMvp;
 
 namespace RememBeer.Business.Logic.Reviews.My.Contracts

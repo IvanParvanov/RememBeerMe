@@ -117,7 +117,13 @@ namespace RememBeer.WebClient.Admin
 
         protected void UserGridView_OnRowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            throw new NotImplementedException();
+            var userId = (string)e.NewValues["Id"];
+            var email = (string)e.NewValues["Email"];
+            var isConfirmed = (bool)e.NewValues["EmailConfirmed"];
+
+            var args = this.EventArgsFactory.CreateUserUpdateEventArgs(userId, email, email, isConfirmed);
+            this.UserUpdate?.Invoke(this, args);
+            this.UserGridView.EditIndex = -1;
         }
 
         protected void OnUserCommand(object sender, CommandEventArgs e)

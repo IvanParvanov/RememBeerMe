@@ -3,16 +3,11 @@ using System.Web.Routing;
 
 using Microsoft.Owin;
 
-using Ninject;
-
 using Owin;
 
 using RememBeer.WebClient.App_Start;
 
-using WebFormsMvp.Binder;
-
-[assembly: OwinStartupAttribute(typeof(RememBeer.WebClient.Startup))]
-
+[assembly: OwinStartup(typeof(RememBeer.WebClient.Startup))]
 namespace RememBeer.WebClient
 {
     public partial class Startup
@@ -20,7 +15,6 @@ namespace RememBeer.WebClient
         public void Configuration(IAppBuilder app)
         {
             var kernel = NinjectWebCommon.Kernel;
-            PresenterBinder.Factory = kernel.Get<IPresenterFactory>();
 
             this.ConfigureAuth(app, kernel);
 
@@ -29,7 +23,7 @@ namespace RememBeer.WebClient
                                            routeTemplate: "api/{controller}/{id}",
                                            defaults: new
                                                      {
-                                                         id = System.Web.Http.RouteParameter.Optional
+                                                         id = RouteParameter.Optional
                                                      }
                                           );
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();

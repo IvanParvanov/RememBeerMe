@@ -34,5 +34,7 @@ namespace RememBeer.Business.Services.Contracts
         IdentityResult MakeAdmin(string userId);
 
         IApplicationUser GetById(string id);
+
+        IdentityResult UpdateUser(string id, string email, string username, bool isConfirmed);
     }
 }

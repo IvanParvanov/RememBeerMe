@@ -11,6 +11,8 @@ using RememBeer.Models.Contracts;
 using RememBeer.Models.Factories;
 using RememBeer.Models.Identity.Contracts;
 
+using Constants = RememBeer.Common.Constants.Constants;
+
 namespace RememBeer.Business.Services
 {
     public class UserService : IUserService
@@ -130,17 +132,27 @@ namespace RememBeer.Business.Services
 
         public IdentityResult MakeAdmin(string userId)
         {
-            return this.userManager.AddToRoleAsync(userId, "Admin").Result;
+            return this.userManager.AddToRoleAsync(userId, Constants.AdminRole).Result;
         }
 
         public IdentityResult RemoveAdmin(string userId)
         {
-            return this.userManager.RemoveFromRoleAsync(userId, "Admin").Result;
+            return this.userManager.RemoveFromRoleAsync(userId, Constants.AdminRole).Result;
         }
 
         public IApplicationUser GetById(string id)
         {
             return this.userManager.FindById(id);
+        }
+
+        public IdentityResult UpdateUser(string id, string email, string username, bool isConfirmed)
+        {
+            var user = this.userManager.FindById(id);
+            user.Email = email;
+            user.UserName = username;
+            user.EmailConfirmed = isConfirmed;
+
+            return this.userManager.UpdateAsync(user).Result;
         }
     }
 }

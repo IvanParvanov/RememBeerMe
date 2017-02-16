@@ -7,5 +7,7 @@
         public const int DefaultThumbnailSizePx = 300;
 
         public const double DefaultCacheDurationInMinutes = 10;
+
+        public const string AdminRole = "Admin";
     }
 }

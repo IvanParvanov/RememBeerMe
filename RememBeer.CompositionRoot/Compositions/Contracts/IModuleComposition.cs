@@ -1,6 +1,6 @@
 ﻿using Ninject;
 
-namespace RememBeer.CompositionRoot
+namespace RememBeer.CompositionRoot.Compositions.Contracts
 {
     public interface IModuleComposition
     {

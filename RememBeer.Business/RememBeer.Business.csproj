@@ -106,8 +106,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\Account\Auth\AuthProvider.cs" />
-    <Compile Include="Logic\Account\Auth\IAuthProvider.cs" />
     <Compile Include="Logic\Account\Common\Presenters\UserServicePresenter.cs" />
     <Compile Include="Logic\Account\Common\ViewModels\StatelessViewModel.cs" />
     <Compile Include="Logic\Account\Confirm\ConfirmEventArgs.cs" />
