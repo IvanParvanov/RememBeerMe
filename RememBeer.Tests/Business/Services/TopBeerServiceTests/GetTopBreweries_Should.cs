@@ -30,6 +30,7 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
         [Test]
         public void Call_StrategyGetBreweryRankForEachBeerRanking()
         {
+            // Arrange
             var totalReviews = 15;
             var reviews = new List<BeerReview>();
             var strategy = new Mock<IRankCalculationStrategy>();
@@ -62,11 +63,14 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
 
             var topBeersService = new TopBeersService(repository.Object, strategy.Object);
 
+            // Act
             topBeersService.GetTopBreweries(10);
 
-            foreach (var expecredBreweryRankGroup in reviewRankingList.GroupBy(r => r.Beer.Brewery.Name))
+            // Assert
+            var expectedGroupings = reviewRankingList.GroupBy(r => r.Beer.Brewery.Name);
+            foreach (var expectedBreweryRankGroup in expectedGroupings)
             {
-                strategy.Verify(s => s.GetBreweryRank(expecredBreweryRankGroup, expecredBreweryRankGroup.Key),
+                strategy.Verify(s => s.GetBreweryRank(expectedBreweryRankGroup, expectedBreweryRankGroup.Key),
                                 Times.Once);
             }
         }

@@ -75,7 +75,7 @@ namespace RememBeer.Business.Services.RankingStrategies
             var enumeratedRanks = beerRanks as IBeerRank[] ?? beerRanks.ToArray();
 
             var totalCount = enumeratedRanks.Length;
-            var totalScore = enumeratedRanks.Sum(s => (decimal)s.CompositeScore) / totalCount;
+            var totalScore = enumeratedRanks.Sum(s => s.CompositeScore) / totalCount;
             var totalReviewCount = enumeratedRanks.Sum(b => b.Beer.Reviews.Count);
 
             var ranking = this.Factory.CreateBreweryRank(totalScore, totalReviewCount, breweryName);

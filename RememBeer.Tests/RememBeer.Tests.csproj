@@ -40,6 +40,10 @@
       <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="dotMemory.Unit, Version=103.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.dotMemoryUnit.2.3.20160517.113140\lib\dotMemory.Unit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -183,6 +187,7 @@
     <Compile Include="Business\Services\BeerReviewServiceTests\UpdateReview_Should.cs" />
     <Compile Include="Business\Services\BreweryServiceTests\GetById_Should.cs" />
     <Compile Include="Business\Services\BreweryServiceTests\UpdateBrewery_Should.cs" />
+    <Compile Include="Business\Services\RankingStrategies\DoubleOverallScoreStrategyTests\GetBreweryRank_Should.cs" />
     <Compile Include="Business\Services\TopBeerServiceTests\Ctor_Should.cs" />
     <Compile Include="Business\Services\TopBeerServiceTests\GetTopBeers_Should.cs" />
     <Compile Include="Business\Services\TopBeerServiceTests\GetTopBreweries_Should.cs" />
