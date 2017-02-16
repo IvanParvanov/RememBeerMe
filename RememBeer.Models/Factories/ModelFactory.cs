@@ -1,6 +1,4 @@
-﻿using RememBeer.Common.Identity.Contracts;
-using RememBeer.Common.Identity.Models;
-using RememBeer.Models.Contracts;
+﻿using RememBeer.Models.Contracts;
 using RememBeer.Models.Dtos;
 
 namespace RememBeer.Models.Factories

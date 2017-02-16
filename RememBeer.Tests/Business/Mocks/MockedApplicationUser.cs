@@ -1,4 +1,4 @@
-﻿using RememBeer.Common.Identity.Models;
+﻿using RememBeer.Models;
 
 namespace RememBeer.Tests.Business.Mocks
 {

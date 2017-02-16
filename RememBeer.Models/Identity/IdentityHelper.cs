@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web;
 
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Identity.Contracts;
 
-namespace RememBeer.Common.Identity
+namespace RememBeer.Models.Identity
 {
     public class IdentityHelper : IIdentityHelper
     {

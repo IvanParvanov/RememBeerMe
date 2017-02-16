@@ -5,7 +5,7 @@ using NUnit.Framework;
 using RememBeer.Business.Logic.Account.ForgotPassword;
 using RememBeer.Business.Logic.Account.ForgotPassword.Contracts;
 using RememBeer.Business.Services.Contracts;
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Contracts;
 
 namespace RememBeer.Tests.Business.Logic.Account.ForgotPassword.Presenter
 {

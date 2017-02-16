@@ -107,7 +107,7 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
         }
 
         [Test]
-        public void Set_ReviewImgUrlToSelfFromUploadImage_WhenUrlIsNull()
+        public void Set_ReviewImgUrlToSelf_WhenUrlIsNull()
         {
             var view = new Mock<ICreateReviewView>();
             var review = new Mock<IBeerReview>();

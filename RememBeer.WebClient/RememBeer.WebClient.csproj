@@ -228,6 +228,7 @@
     <Content Include="Admin\Brewery.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\ManageUsers.aspx" />
+    <Content Include="Admin\UserDetails.aspx" />
     <Content Include="Content\bk\bootstrap.css" />
     <Content Include="Content\bk\bootstrap.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -479,6 +480,13 @@
     </Compile>
     <Compile Include="Admin\ManageUsers.aspx.designer.cs">
       <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserDetails.aspx.cs">
+      <DependentUpon>UserDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserDetails.aspx.designer.cs">
+      <DependentUpon>UserDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Api\BeersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

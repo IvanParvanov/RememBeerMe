@@ -3,7 +3,7 @@
 using RememBeer.Business.Logic.Account.Common.Presenters;
 using RememBeer.Business.Logic.Account.Register.Contracts;
 using RememBeer.Business.Services.Contracts;
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Identity.Contracts;
 
 namespace RememBeer.Business.Logic.Account.Register
 {

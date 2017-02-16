@@ -1,7 +1,7 @@
 ﻿using Ninject;
 
 using RememBeer.Business.Logic.Common;
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Identity.Contracts;
 
 using WebFormsMvp.Web;
 

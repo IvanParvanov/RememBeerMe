@@ -3,7 +3,7 @@
 using NUnit.Framework;
 
 using RememBeer.Business.Logic.Admin.ManageUsers;
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Contracts;
 
 namespace RememBeer.Tests.Business.Logic.Admin.ManageUsers.ViewModel
 {

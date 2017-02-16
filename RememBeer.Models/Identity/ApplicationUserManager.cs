@@ -2,10 +2,9 @@
 
 using Microsoft.AspNet.Identity;
 
-using RememBeer.Common.Identity.Contracts;
-using RememBeer.Common.Identity.Models;
+using RememBeer.Models.Identity.Contracts;
 
-namespace RememBeer.Common.Identity
+namespace RememBeer.Models.Identity
 {
     public class ApplicationUserManager : UserManager<ApplicationUser>, IApplicationUserManager
     {

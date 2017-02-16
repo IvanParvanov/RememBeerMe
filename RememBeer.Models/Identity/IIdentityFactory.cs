@@ -3,9 +3,9 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Identity.Contracts;
 
-namespace RememBeer.Common.Identity
+namespace RememBeer.Models.Identity
 {
     public interface IIdentityFactory
     {

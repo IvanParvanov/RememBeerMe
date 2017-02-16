@@ -4,7 +4,7 @@ using System.Web;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Identity.Contracts;
 
 namespace RememBeer.Business.Logic.Account.Auth
 {

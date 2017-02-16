@@ -6,9 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
-using RememBeer.Common.Identity.Models;
-
-namespace RememBeer.Common.Identity.Contracts
+namespace RememBeer.Models.Identity.Contracts
 {
     public interface IApplicationSignInManager : IDisposable
     {

@@ -23,7 +23,7 @@ namespace RememBeer.Tests.Models
                          {
                              Id = expectedId,
                              BeerId = expectedId,
-                             UserId = expectedText,
+                             ApplicationUserId = expectedText,
                              IsDeleted = isPublic,
                              Overall = expectedId,
                              Look = expectedId,
@@ -48,7 +48,7 @@ namespace RememBeer.Tests.Models
             Assert.AreEqual(isPublic, review.IsPublic);
             Assert.AreEqual(isPublic, review.IsDeleted);
 
-            Assert.AreEqual(expectedText, review.UserId);
+            Assert.AreEqual(expectedText, review.ApplicationUserId);
             Assert.AreSame(expectedText, review.Description);
             Assert.AreSame(expectedText, review.Place);
             Assert.AreSame(expectedText, review.ImgUrl);

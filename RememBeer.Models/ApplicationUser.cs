@@ -1,15 +1,30 @@
-﻿using System.Security.Claims;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Contracts;
+using RememBeer.Models.Identity.Contracts;
 
-namespace RememBeer.Common.Identity.Models
+namespace RememBeer.Models
 {
     public class ApplicationUser : IdentityUser, IApplicationUser
     {
+        public ApplicationUser()
+        {
+            this.BeerReviews = new HashSet<BeerReview>();
+        }
+
+        public ApplicationUser(string userName)
+            : base(userName)
+        {
+            this.BeerReviews = new HashSet<BeerReview>();
+        }
+
+        public virtual ICollection<BeerReview> BeerReviews { get; set; }
+
         public virtual ClaimsIdentity GenerateUserIdentity(IApplicationUserManager manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

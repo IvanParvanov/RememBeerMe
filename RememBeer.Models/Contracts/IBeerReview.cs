@@ -1,7 +1,5 @@
 ﻿using System;
 
-using RememBeer.Common.Identity.Models;
-
 namespace RememBeer.Models.Contracts
 {
     public interface IBeerReview : IIdentifiable
@@ -10,7 +8,7 @@ namespace RememBeer.Models.Contracts
 
         Beer Beer { get; set; }
 
-        string UserId { get; set; }
+        string ApplicationUserId { get; set; }
 
         ApplicationUser User { get; set; }
 

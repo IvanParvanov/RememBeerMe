@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using RememBeer.Business.Logic.Admin.ManageUsers;
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Contracts;
 
 namespace RememBeer.Tests.Business.Mocks
 {

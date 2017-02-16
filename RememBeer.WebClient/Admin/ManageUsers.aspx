@@ -11,7 +11,7 @@
                     <asp:Button runat="server" CssClass="btn btn-primary" Text="Search" OnClick="Search_OnClick"/>
                 </div>
                 <asp:GridView ID="UserGridView" runat="server"
-                              ItemType="RememBeer.Common.Identity.Contracts.IApplicationUser"
+                              ItemType="RememBeer.Models.Contracts.IApplicationUser"
                               CssClass="table table-bordered table-striped table-hover table-responsive"
                               AllowPaging="True"
                               AutoGenerateColumns="False"
@@ -64,7 +64,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Disable/Enable" AccessibleHeaderText="Disable/Enable">
                             <ItemTemplate>
-                                <asp:Button runat="server" CssClass="btn btn-success btn-sm" CommandName="EnableUser" Text="Enable" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
+                                <asp:Button runat="server" CssClass="btn btn-primary btn-sm" CommandName="EnableUser" Text="Enable" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
                                 <asp:Button runat="server" CssClass="btn btn-danger btn-sm" CommandName="DisableUser" Text="Disable" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -72,6 +72,11 @@
                             <ItemTemplate>
                                 <asp:Button runat="server" CssClass="btn btn-danger btn-sm" CommandName="MakeAdmin" Text="Make Admin" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
                                 <asp:Button runat="server" CssClass="btn btn-warning btn-sm" CommandName="RemoveAdmin" Text="Remove Admin" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Details" AccessibleHeaderText="Details">
+                            <ItemTemplate>
+                                <a class="btn btn-primary" href='<%#: "UserDetails?id=" + Eval("Id") %>'><i class="fa fa-link"></i></a>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

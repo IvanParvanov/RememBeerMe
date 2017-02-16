@@ -6,7 +6,7 @@ using Moq;
 
 using NUnit.Framework;
 
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Identity.Contracts;
 
 namespace RememBeer.Tests.Business.Logic.Account.Auth.AuthProvider
 {

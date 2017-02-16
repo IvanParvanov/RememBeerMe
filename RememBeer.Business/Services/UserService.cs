@@ -6,9 +6,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 using RememBeer.Business.Services.Contracts;
-using RememBeer.Common.Identity.Contracts;
-using RememBeer.Common.Identity.Models;
+using RememBeer.Models;
+using RememBeer.Models.Contracts;
 using RememBeer.Models.Factories;
+using RememBeer.Models.Identity.Contracts;
 
 namespace RememBeer.Business.Services
 {
@@ -135,6 +136,11 @@ namespace RememBeer.Business.Services
         public IdentityResult RemoveAdmin(string userId)
         {
             return this.userManager.RemoveFromRoleAsync(userId, "Admin").Result;
+        }
+
+        public IApplicationUser GetById(string id)
+        {
+            return this.userManager.FindById(id);
         }
     }
 }

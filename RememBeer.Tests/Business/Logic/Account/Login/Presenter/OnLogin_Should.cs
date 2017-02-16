@@ -7,7 +7,7 @@ using NUnit.Framework;
 using RememBeer.Business.Logic.Account.Login;
 using RememBeer.Business.Logic.Account.Login.Contracts;
 using RememBeer.Business.Services.Contracts;
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Identity.Contracts;
 using RememBeer.Tests.Common.MockedClasses;
 
 namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter

@@ -7,11 +7,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
 using RememBeer.Common.Configuration;
-using RememBeer.Common.Identity.Contracts;
-using RememBeer.Common.Identity.Models;
 using RememBeer.Common.Services;
+using RememBeer.Models.Identity.Contracts;
 
-namespace RememBeer.Common.Identity
+namespace RememBeer.Models.Identity
 {
     public class IdentityFactory : IIdentityFactory
     {

@@ -59,7 +59,7 @@ namespace RememBeer.WebClient.Reviews
                              Taste = int.Parse(this.BeerRatingSelect6.SelectedValue),
                              Look = int.Parse(this.BeerRatingSelect7.SelectedValue),
                              Smell = int.Parse(this.BeerRatingSelect8.SelectedValue),
-                             UserId = userId
+                             ApplicationUserId = userId
                          };
 
             var uploadControl = this.ImageUpload;

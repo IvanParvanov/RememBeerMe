@@ -9,7 +9,7 @@ using Ploeh.AutoFixture;
 using RememBeer.Business.Logic.Account.Register;
 using RememBeer.Business.Logic.Account.Register.Contracts;
 using RememBeer.Business.Services.Contracts;
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Identity.Contracts;
 using RememBeer.Tests.Common;
 using RememBeer.Tests.Common.MockedClasses;
 

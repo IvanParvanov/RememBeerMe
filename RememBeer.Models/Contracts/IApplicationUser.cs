@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace RememBeer.Common.Identity.Contracts
+using RememBeer.Models.Identity.Contracts;
+
+namespace RememBeer.Models.Contracts
 {
     public interface IApplicationUser : IUser<string>
     {
@@ -33,6 +35,8 @@ namespace RememBeer.Common.Identity.Contracts
         bool LockoutEnabled { get; set; }
 
         int AccessFailedCount { get; set; }
+
+        ICollection<BeerReview> BeerReviews { get; set; }
 
         ICollection<IdentityUserRole> Roles { get; }
 

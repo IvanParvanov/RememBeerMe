@@ -9,9 +9,10 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 using RememBeer.Business.Services;
-using RememBeer.Common.Identity.Contracts;
-using RememBeer.Common.Identity.Models;
+using RememBeer.Models;
+using RememBeer.Models.Contracts;
 using RememBeer.Models.Factories;
+using RememBeer.Models.Identity.Contracts;
 using RememBeer.Tests.Business.Mocks;
 using RememBeer.Tests.Common;
 

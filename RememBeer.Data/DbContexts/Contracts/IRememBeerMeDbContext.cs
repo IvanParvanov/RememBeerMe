@@ -4,7 +4,6 @@ using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Threading.Tasks;
 
-using RememBeer.Common.Identity.Models;
 using RememBeer.Models;
 
 namespace RememBeer.Data.DbContexts.Contracts

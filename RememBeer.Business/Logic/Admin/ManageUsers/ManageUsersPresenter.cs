@@ -5,7 +5,6 @@ using RememBeer.Business.Logic.Account.Common.Presenters;
 using RememBeer.Business.Logic.Admin.ManageUsers.Contracts;
 using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Business.Services.Contracts;
-using RememBeer.Common.Identity.Contracts;
 
 namespace RememBeer.Business.Logic.Admin.ManageUsers
 {

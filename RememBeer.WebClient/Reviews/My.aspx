@@ -20,7 +20,7 @@
                               UpdateMethod="UpdateReview"
                               InsertMethod="InsertReview"
                               DeleteMethod="DeleteReview"
-                              DataKeyNames="BeerId, CreatedAt, Id, IsDeleted, IsPublic, ModifiedAt, UserId">
+                              DataKeyNames="BeerId, CreatedAt, Id, IsDeleted, IsPublic, ModifiedAt, ApplicationUserId">
                     <LayoutTemplate>
 
                         <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>

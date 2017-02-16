@@ -10,8 +10,8 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 using RememBeer.Business.Services;
-using RememBeer.Common.Identity.Contracts;
 using RememBeer.Models.Factories;
+using RememBeer.Models.Identity.Contracts;
 using RememBeer.Tests.Common;
 
 namespace RememBeer.Tests.Business.Services.UserServiceTests

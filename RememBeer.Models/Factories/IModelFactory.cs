@@ -1,4 +1,4 @@
-﻿using RememBeer.Common.Identity.Contracts;
+﻿using RememBeer.Models.Contracts;
 
 namespace RememBeer.Models.Factories
 {

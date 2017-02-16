@@ -207,7 +207,6 @@
     <Compile Include="Models\Dtos\BeerDtoTests.cs" />
     <Compile Include="Models\Dtos\BeerRankTests.cs" />
     <Compile Include="Models\Factories\ModelFactoryTests.cs" />
-    <Compile Include="Models\UserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

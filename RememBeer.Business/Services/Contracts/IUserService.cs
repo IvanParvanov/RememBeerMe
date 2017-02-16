@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Contracts;
 
 namespace RememBeer.Business.Services.Contracts
 {
@@ -32,5 +32,7 @@ namespace RememBeer.Business.Services.Contracts
         IdentityResult RemoveAdmin(string userId);
 
         IdentityResult MakeAdmin(string userId);
+
+        IApplicationUser GetById(string id);
     }
 }

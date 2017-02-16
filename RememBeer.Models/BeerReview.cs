@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using RememBeer.Common.Identity.Models;
 using RememBeer.Models.Contracts;
 
 namespace RememBeer.Models
@@ -21,7 +20,7 @@ namespace RememBeer.Models
         public virtual Beer Beer { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public string ApplicationUserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 

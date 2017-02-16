@@ -8,8 +8,8 @@ using Microsoft.AspNet.Identity.Owin;
 
 using Ninject;
 
-using RememBeer.Common.Identity;
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Identity;
+using RememBeer.Models.Identity.Contracts;
 
 namespace RememBeer.WebClient.Account
 {

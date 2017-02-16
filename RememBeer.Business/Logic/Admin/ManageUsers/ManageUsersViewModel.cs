@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-using RememBeer.Common.Identity.Contracts;
+using RememBeer.Models.Contracts;
 
 namespace RememBeer.Business.Logic.Admin.ManageUsers
 {

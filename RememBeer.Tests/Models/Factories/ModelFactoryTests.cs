@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 using Ploeh.AutoFixture;
 
-using RememBeer.Common.Identity.Models;
+using RememBeer.Models;
 using RememBeer.Models.Contracts;
 using RememBeer.Models.Dtos;
 using RememBeer.Models.Factories;

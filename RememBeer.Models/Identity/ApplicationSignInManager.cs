@@ -4,10 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
-using RememBeer.Common.Identity.Contracts;
-using RememBeer.Common.Identity.Models;
+using RememBeer.Models.Identity.Contracts;
 
-namespace RememBeer.Common.Identity
+namespace RememBeer.Models.Identity
 {
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>, IApplicationSignInManager
     {

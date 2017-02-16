@@ -12,10 +12,10 @@ using RememBeer.Business.Logic.Account.Auth;
 using RememBeer.Business.Logic.Common;
 using RememBeer.Business.Logic.MvpPresenterFactory;
 using RememBeer.Common.Configuration;
-using RememBeer.Common.Identity;
-using RememBeer.Common.Identity.Contracts;
 using RememBeer.Common.Services;
 using RememBeer.Common.Services.Contracts;
+using RememBeer.Models.Identity;
+using RememBeer.Models.Identity.Contracts;
 
 using WebFormsMvp;
 using WebFormsMvp.Binder;

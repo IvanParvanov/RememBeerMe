@@ -1,6 +1,6 @@
 using System.Web;
 
-namespace RememBeer.Common.Identity.Contracts
+namespace RememBeer.Models.Identity.Contracts
 {
     public interface IIdentityHelper
     {

@@ -27,14 +27,14 @@ namespace RememBeer.Business.Services
 
         public IEnumerable<IBeerReview> GetReviewsForUser(string userId)
         {
-            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == userId,
+            return this.repository.GetAll(x => x.IsDeleted == false && x.ApplicationUserId == userId,
                                           x => x.CreatedAt,
                                           SortOrder.Descending);
         }
 
         public IEnumerable<IBeerReview> GetReviewsForUser(string userId, int skip, int pageSize)
         {
-            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == userId,
+            return this.repository.GetAll(x => x.IsDeleted == false && x.ApplicationUserId == userId,
                                           x => x.CreatedAt,
                                           SortOrder.Descending)
                        .Skip(skip)
@@ -43,7 +43,7 @@ namespace RememBeer.Business.Services
 
         public int CountUserReviews(string userId)
         {
-            return this.repository.GetAll(x => x.IsDeleted == false && x.UserId == userId).Count();
+            return this.repository.GetAll(x => x.IsDeleted == false && x.ApplicationUserId == userId).Count();
         }
 
         public IDataModifiedResult UpdateReview(IBeerReview review)

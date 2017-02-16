@@ -128,6 +128,9 @@
     <Compile Include="Logic\Admin\ManageUsers\ManageUsersPresenter.cs" />
     <Compile Include="Logic\Admin\ManageUsers\ManageUsersViewModel.cs" />
     <Compile Include="Logic\Admin\ManageUsers\UserUpdateEventArgs.cs" />
+    <Compile Include="Logic\Admin\UserDetails\Contracts\IUserDetailsView.cs" />
+    <Compile Include="Logic\Admin\UserDetails\UserDetailsPresenter.cs" />
+    <Compile Include="Logic\Admin\UserDetails\UserDetailsViewModel.cs" />
     <Compile Include="Logic\Common\Contracts\IPaginatedView.cs" />
     <Compile Include="Logic\Common\Contracts\IUserNotificationsView.cs" />
     <Compile Include="Logic\Common\Contracts\IViewWithErrors.cs" />
