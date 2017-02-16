@@ -24,5 +24,10 @@ namespace RememBeer.Models.Factories
         {
             return new BeerRank(overallScore, tasteScore, lookScore, smellScore, beer, compositeScore, totalReviews);
         }
+
+        public IBreweryRank CreateBreweryRank(decimal averagePerBeer, int totalBeersCount, string name)
+        {
+            return new BreweryRank(averagePerBeer, totalBeersCount, name);
+        }
     }
 }

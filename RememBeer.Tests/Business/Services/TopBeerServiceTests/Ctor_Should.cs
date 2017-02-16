@@ -17,7 +17,7 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
         [Test]
         public void ThrowArgumentNullException_WhenRepositoryIsNull()
         {
-            var strategy = new Mock<IBeerRankCalculationStrategy>();
+            var strategy = new Mock<IRankCalculationStrategy>();
             Assert.Throws<ArgumentNullException>(() => new TopBeersService(null, strategy.Object));
         }
 

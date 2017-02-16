@@ -27,9 +27,9 @@ namespace RememBeer.CompositionRoot.NinjectModules
             this.Rebind<IBreweryService>().To<BreweryService>().InRequestScope();
 
             this.Rebind<IModelFactory>().To<ModelFactory>().InSingletonScope();
-            this.Bind<IBeerRankFactory>().To<ModelFactory>().InSingletonScope();
+            this.Bind<IRankFactory>().To<ModelFactory>().InSingletonScope();
 
-            this.Bind<IBeerRankCalculationStrategy>().To<DoubleOverallScoreStrategy>().InRequestScope();
+            this.Bind<IRankCalculationStrategy>().To<DoubleOverallScoreStrategy>().InRequestScope();
 
             this.Bind<IDataModifiedResultFactory>().ToFactory().InSingletonScope();
 

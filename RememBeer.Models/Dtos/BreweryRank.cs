@@ -1,16 +1,14 @@
 ﻿namespace RememBeer.Models.Dtos
 {
-    public interface IBreweryRank
-    {
-        decimal AveragePerBeer { get; set; }
-
-        int TotalBeersCount { get; set; }
-
-        string Name { get; set; }
-    }
-
     public class BreweryRank : IBreweryRank
     {
+        public BreweryRank(decimal averagePerBeer, int totalBeersCount, string name)
+        {
+            this.AveragePerBeer = averagePerBeer;
+            this.TotalBeersCount = totalBeersCount;
+            this.Name = name;
+        }
+
         public decimal AveragePerBeer { get; set; }
 
         public int TotalBeersCount { get; set; }

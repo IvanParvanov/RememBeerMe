@@ -8,11 +8,11 @@ using RememBeer.Models.Factories;
 
 namespace RememBeer.Business.Services.RankingStrategies.Base
 {
-    public abstract class BeerRankCalculationStrategy : IBeerRankCalculationStrategy
+    public abstract class RankCalculationStrategy : IRankCalculationStrategy
     {
-        private readonly IBeerRankFactory factory;
+        private readonly IRankFactory factory;
 
-        protected BeerRankCalculationStrategy(IBeerRankFactory factory)
+        protected RankCalculationStrategy(IRankFactory factory)
         {
             if (factory == null)
             {
@@ -22,8 +22,10 @@ namespace RememBeer.Business.Services.RankingStrategies.Base
             this.factory = factory;
         }
 
-        protected IBeerRankFactory Factory => this.factory;
+        protected IRankFactory Factory => this.factory;
 
-        public abstract IBeerRank GetRank(IEnumerable<IBeerReview> reviews, IBeer beer);
+        public abstract IBeerRank GetBeerRank(IEnumerable<IBeerReview> reviews, IBeer beer);
+
+        public abstract IBreweryRank GetBreweryRank(IEnumerable<IBeerRank> beerRanks, string breweryName);
     }
 }

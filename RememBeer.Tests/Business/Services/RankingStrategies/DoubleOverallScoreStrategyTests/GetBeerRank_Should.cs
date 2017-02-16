@@ -17,7 +17,7 @@ using RememBeer.Tests.Common;
 namespace RememBeer.Tests.Business.Services.RankingStrategies.DoubleOverallScoreStrategyTests
 {
     [TestFixture]
-    public class GetRank_Should : TestClassBase
+    public class GetBeerRank_Should : TestClassBase
     {
         [Test]
         public void ThrowArgumentNullException_WhenReviewsArgumentIsNull()
@@ -26,7 +26,7 @@ namespace RememBeer.Tests.Business.Services.RankingStrategies.DoubleOverallScore
             var beer = new Mock<IBeer>();
             var strategy = new DoubleOverallScoreStrategy(factory.Object);
 
-            Assert.Throws<ArgumentNullException>(() => strategy.GetRank(null, beer.Object));
+            Assert.Throws<ArgumentNullException>(() => strategy.GetBeerRank(null, beer.Object));
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace RememBeer.Tests.Business.Services.RankingStrategies.DoubleOverallScore
 
             var strategy = new DoubleOverallScoreStrategy(factory.Object);
 
-            Assert.Throws<ArgumentNullException>(() => strategy.GetRank(reviews.Object, null));
+            Assert.Throws<ArgumentNullException>(() => strategy.GetBeerRank(reviews.Object, null));
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace RememBeer.Tests.Business.Services.RankingStrategies.DoubleOverallScore
             var reviews = new List<IBeerReview>();
             var strategy = new DoubleOverallScoreStrategy(factory.Object);
 
-            Assert.Throws<ArgumentException>(() => strategy.GetRank(reviews, beer.Object));
+            Assert.Throws<ArgumentException>(() => strategy.GetBeerRank(reviews, beer.Object));
         }
 
         [Test]
@@ -92,7 +92,7 @@ namespace RememBeer.Tests.Business.Services.RankingStrategies.DoubleOverallScore
 
             var strategy = new DoubleOverallScoreStrategy(factory.Object);
 
-            var result = strategy.GetRank(reviews, beer.Object);
+            var result = strategy.GetBeerRank(reviews, beer.Object);
 
             factory.Verify(
                            f =>
@@ -141,7 +141,7 @@ namespace RememBeer.Tests.Business.Services.RankingStrategies.DoubleOverallScore
 
             var strategy = new DoubleOverallScoreStrategy(factory.Object);
 
-            var result = strategy.GetRank(reviews, beer.Object);
+            var result = strategy.GetBeerRank(reviews, beer.Object);
 
             Assert.IsNotNull(result);
             Assert.AreSame(expectedRank.Object, result);

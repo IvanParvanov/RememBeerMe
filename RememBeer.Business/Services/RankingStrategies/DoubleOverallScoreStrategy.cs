@@ -9,16 +9,16 @@ using RememBeer.Models.Factories;
 
 namespace RememBeer.Business.Services.RankingStrategies
 {
-    public class DoubleOverallScoreStrategy : BeerRankCalculationStrategy
+    public class DoubleOverallScoreStrategy : RankCalculationStrategy
     {
         private const int OverallScoreMultiplier = 2;
 
-        public DoubleOverallScoreStrategy(IBeerRankFactory factory)
+        public DoubleOverallScoreStrategy(IRankFactory factory)
             : base(factory)
         {
         }
 
-        public override IBeerRank GetRank(IEnumerable<IBeerReview> reviews, IBeer beer)
+        public override IBeerRank GetBeerRank(IEnumerable<IBeerReview> reviews, IBeer beer)
         {
             if (reviews == null)
             {
@@ -58,6 +58,29 @@ namespace RememBeer.Business.Services.RankingStrategies
                                                    finalScore,
                                                    reviewsCount);
             return rank;
+        }
+
+        public override IBreweryRank GetBreweryRank(IEnumerable<IBeerRank> beerRanks, string breweryName)
+        {
+            if (beerRanks == null)
+            {
+                throw new ArgumentNullException(nameof(beerRanks));
+            }
+
+            if (string.IsNullOrEmpty(breweryName))
+            {
+                throw new ArgumentNullException(nameof(breweryName));
+            }
+
+            var enumeratedRanks = beerRanks as IBeerRank[] ?? beerRanks.ToArray();
+
+            var totalCount = enumeratedRanks.Length;
+            var totalScore = enumeratedRanks.Sum(s => (decimal)s.CompositeScore) / totalCount;
+            var totalReviewCount = enumeratedRanks.Sum(b => b.Beer.Reviews.Count);
+
+            var ranking = this.Factory.CreateBreweryRank(totalScore, totalReviewCount, breweryName);
+
+            return ranking;
         }
 
         private static decimal GetAverageScore(ICollection<IBeerReview> beerReviews, Func<IBeerReview, decimal> action)

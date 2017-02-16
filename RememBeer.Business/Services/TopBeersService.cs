@@ -14,9 +14,9 @@ namespace RememBeer.Business.Services
     public class TopBeersService : ITopBeersService
     {
         private readonly IRepository<BeerReview> reviewsRepository;
-        private readonly IBeerRankCalculationStrategy strategy;
+        private readonly IRankCalculationStrategy strategy;
 
-        public TopBeersService(IRepository<BeerReview> reviewsRepository, IBeerRankCalculationStrategy strategy)
+        public TopBeersService(IRepository<BeerReview> reviewsRepository, IRankCalculationStrategy strategy)
         {
             if (reviewsRepository == null)
             {
@@ -40,7 +40,7 @@ namespace RememBeer.Business.Services
             var groupedReviews = this.reviewsRepository.All.Where(r => !r.IsDeleted).GroupBy(r => r.Beer);
             foreach (var grouping in groupedReviews)
             {
-                var rank = this.strategy.GetRank(grouping, grouping.Key);
+                var rank = this.strategy.GetBeerRank(grouping, grouping.Key);
                 rankings.Add(rank);
             }
 
@@ -58,15 +58,7 @@ namespace RememBeer.Business.Services
             var rankings = new List<IBreweryRank>();
             foreach (var breweryBeers in groupedByBrewery)
             {
-                var totalCount = breweryBeers.Count();
-                var totalScore = breweryBeers.Sum(s => (decimal)s.CompositeScore) / totalCount;
-                var totalReviewCount = breweryBeers.Sum(b => b.Beer.Reviews.Count);
-                var ranking = new BreweryRank()
-                              {
-                                  AveragePerBeer = totalScore,
-                                  TotalBeersCount = totalReviewCount,
-                                  Name = breweryBeers.Key
-                              };
+                var ranking = this.strategy.GetBreweryRank(breweryBeers, breweryBeers.Key);
                 rankings.Add(ranking);
             }
 

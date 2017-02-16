@@ -185,6 +185,7 @@
     <Compile Include="Business\Services\BreweryServiceTests\UpdateBrewery_Should.cs" />
     <Compile Include="Business\Services\TopBeerServiceTests\Ctor_Should.cs" />
     <Compile Include="Business\Services\TopBeerServiceTests\GetTopBeers_Should.cs" />
+    <Compile Include="Business\Services\TopBeerServiceTests\GetTopBreweries_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\MakeAdmin_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\RemoveAdmin_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\Search_Should.cs" />
@@ -195,7 +196,7 @@
     <Compile Include="Business\Services\BreweryServiceTests\Ctor_Should.cs" />
     <Compile Include="Business\Services\BreweryServiceTests\GetAll_Should.cs" />
     <Compile Include="Business\Services\RankingStrategies\DoubleOverallScoreStrategyTests\Ctor_Should.cs" />
-    <Compile Include="Business\Services\RankingStrategies\DoubleOverallScoreStrategyTests\GetRank_Should.cs" />
+    <Compile Include="Business\Services\RankingStrategies\DoubleOverallScoreStrategyTests\GetBeerRank_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\ChangePassword_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\ConfirmEmail_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\CountUsers_Should.cs" />

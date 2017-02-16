@@ -2,7 +2,7 @@
 
 namespace RememBeer.Models.Factories
 {
-    public interface IModelFactory : IBeerRankFactory
+    public interface IModelFactory : IRankFactory
     {
         IApplicationUser CreateApplicationUser(string username, string email);
     }

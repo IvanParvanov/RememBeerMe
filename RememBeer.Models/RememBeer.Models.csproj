@@ -95,7 +95,8 @@
     <Compile Include="Dtos\BeerRank.cs" />
     <Compile Include="Dtos\BreweryRank.cs" />
     <Compile Include="Dtos\IBeerRank.cs" />
-    <Compile Include="Factories\IBeerRankFactory.cs" />
+    <Compile Include="Dtos\IBreweryRank.cs" />
+    <Compile Include="Factories\IRankFactory.cs" />
     <Compile Include="Factories\IModelFactory.cs" />
     <Compile Include="Factories\ModelFactory.cs" />
     <Compile Include="Identifiable.cs" />

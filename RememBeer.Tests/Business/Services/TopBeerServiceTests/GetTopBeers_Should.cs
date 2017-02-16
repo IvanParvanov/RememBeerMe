@@ -32,7 +32,7 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
         {
             var totalReviews = 15;
             var reviews = new List<BeerReview>();
-            var strategy = new Mock<IBeerRankCalculationStrategy>();
+            var strategy = new Mock<IRankCalculationStrategy>();
             for (var i = 0; i < totalReviews; i++)
             {
                 var rv = this.Fixture.Create<BeerReview>();
@@ -46,7 +46,7 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
                 var rank = new Mock<IBeerRank>();
                 rank.SetupGet(r => r.CompositeScore)
                     .Returns(i);
-                strategy.Setup(s => s.GetRank(enumeratedGroups[i], enumeratedGroups[i].Key))
+                strategy.Setup(s => s.GetBeerRank(enumeratedGroups[i], enumeratedGroups[i].Key))
                         .Returns(rank.Object);
             }
 
@@ -60,7 +60,7 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
 
             foreach (var expectedGroup in enumeratedGroups)
             {
-                strategy.Verify(s => s.GetRank(expectedGroup, expectedGroup.Key), Times.Once);
+                strategy.Verify(s => s.GetBeerRank(expectedGroup, expectedGroup.Key), Times.Once);
             }
         }
 
@@ -70,7 +70,7 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
         public void ReturnCorrectNumberOfRanks(int totalReviews, int expectedCount)
         {
             var reviews = new List<BeerReview>();
-            var strategy = new Mock<IBeerRankCalculationStrategy>();
+            var strategy = new Mock<IRankCalculationStrategy>();
             for (var i = 0; i < totalReviews; i++)
             {
                 var rv = this.Fixture.Create<BeerReview>();
@@ -84,7 +84,7 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
                 var rank = new Mock<IBeerRank>();
                 rank.SetupGet(r => r.CompositeScore)
                     .Returns(i);
-                strategy.Setup(s => s.GetRank(enumeratedGroups[i], enumeratedGroups[i].Key))
+                strategy.Setup(s => s.GetBeerRank(enumeratedGroups[i], enumeratedGroups[i].Key))
                         .Returns(rank.Object);
             }
 
@@ -105,7 +105,7 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
         public void ReturnRanksOrderedByDescendingCompositeScore(int totalReviews, int expectedCount)
         {
             var reviews = new List<BeerReview>();
-            var strategy = new Mock<IBeerRankCalculationStrategy>();
+            var strategy = new Mock<IRankCalculationStrategy>();
             for (var i = 0; i < totalReviews; i++)
             {
                 var rv = this.Fixture.Create<BeerReview>();
@@ -119,7 +119,7 @@ namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
                 var rank = new Mock<IBeerRank>();
                 rank.SetupGet(r => r.CompositeScore)
                     .Returns(i);
-                strategy.Setup(s => s.GetRank(enumeratedGroups[i], enumeratedGroups[i].Key))
+                strategy.Setup(s => s.GetBeerRank(enumeratedGroups[i], enumeratedGroups[i].Key))
                         .Returns(rank.Object);
             }
 
