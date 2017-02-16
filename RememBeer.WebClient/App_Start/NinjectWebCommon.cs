@@ -1,4 +1,11 @@
 using System.Web.Http;
+using System;
+using System.Web;
+
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+
+using Ninject;
+using Ninject.Web.Common;
 
 using RememBeer.CompositionRoot;
 using RememBeer.CompositionRoot.Resolvers;
@@ -8,17 +15,29 @@ using RememBeer.CompositionRoot.Resolvers;
 
 namespace RememBeer.WebClient.App_Start
 {
-    using System;
-    using System.Web;
-
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+
+        private static IKernel kernel;
+
+        public static IKernel Kernel
+        {
+            get
+            {
+                return kernel;
+            }
+
+            private set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(Kernel));
+                }
+
+                kernel = value;
+            }
+        }
 
         /// <summary>
         /// Starts the application
@@ -42,7 +61,7 @@ namespace RememBeer.WebClient.App_Start
         /// Creates the kernel that will manage your application.
         /// </summary>
         /// <returns>The created kernel.</returns>
-        public static IKernel CreateKernel()
+        private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
             try
@@ -51,7 +70,7 @@ namespace RememBeer.WebClient.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
                 RegisterServices(kernel);
 
-                //GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+                NinjectWebCommon.Kernel = kernel;
                 return kernel;
             }
             catch

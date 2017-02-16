@@ -19,7 +19,7 @@ namespace RememBeer.WebClient
     {
         public void Configuration(IAppBuilder app)
         {
-            var kernel = NinjectWebCommon.CreateKernel();
+            var kernel = NinjectWebCommon.Kernel;
             PresenterBinder.Factory = kernel.Get<IPresenterFactory>();
 
             this.ConfigureAuth(app, kernel);

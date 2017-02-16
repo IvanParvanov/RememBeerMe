@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserDetails.aspx.cs" ValidateRequest="false" Inherits="RememBeer.WebClient.Admin.UserDetails" %>
+﻿<%@ Page Title="Admin - User Reviews" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserDetails.aspx.cs" ValidateRequest="false" Inherits="RememBeer.WebClient.Admin.UserDetails" %>
 <%@ Register tagPrefix="uc" tagName="Notifier" src="../UserControls/UserNotifications.ascx" %>
 <%@ Register TagPrefix="uc" TagName="ReviewsEditView" Src="~/UserControls/ReviewsEditView.ascx" %>
 
