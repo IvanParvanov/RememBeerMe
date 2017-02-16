@@ -6,6 +6,8 @@ using RememBeer.Business.Services;
 using RememBeer.Business.Services.Contracts;
 using RememBeer.Business.Services.RankingStrategies;
 using RememBeer.Business.Services.RankingStrategies.Contracts;
+using RememBeer.Common.Cache;
+using RememBeer.Common.Constants;
 using RememBeer.Data.DbContexts;
 using RememBeer.Data.DbContexts.Contracts;
 using RememBeer.Data.Repositories;
@@ -30,6 +32,10 @@ namespace RememBeer.CompositionRoot.NinjectModules
             this.Bind<IBeerRankCalculationStrategy>().To<DoubleOverallScoreStrategy>().InRequestScope();
 
             this.Bind<IDataModifiedResultFactory>().ToFactory().InSingletonScope();
+
+            this.Rebind<ICacheManager>()
+                .ToMethod(context => new CacheManager(Constants.DefaultCacheDurationInMinutes))
+                .InSingletonScope();
         }
     }
 }

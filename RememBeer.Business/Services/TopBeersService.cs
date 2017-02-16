@@ -4,6 +4,7 @@ using System.Linq;
 
 using RememBeer.Business.Services.Contracts;
 using RememBeer.Business.Services.RankingStrategies.Contracts;
+using RememBeer.Common.Cache.Attributes;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Models;
 using RememBeer.Models.Dtos;
@@ -31,7 +32,8 @@ namespace RememBeer.Business.Services
             this.reviewsRepository = reviewsRepository;
         }
 
-        public IEnumerable<IBeerRank> GetTopBeers(int top)
+        [Cache(10)]
+        public virtual IEnumerable<IBeerRank> GetTopBeers(int top = int.MaxValue)
         {
             var rankings = new List<IBeerRank>();
 
@@ -45,6 +47,31 @@ namespace RememBeer.Business.Services
             return rankings.OrderByDescending(r => r.CompositeScore)
                            .Take(top)
                            .ToList();
+        }
+
+        [Cache(20)]
+        public virtual IEnumerable<IBreweryRank> GetTopBreweries(int top)
+        {
+            var allBeerRankings = this.GetTopBeers();
+            var groupedByBrewery = allBeerRankings.GroupBy(b => b.Beer.Brewery.Name);
+
+            var rankings = new List<IBreweryRank>();
+            foreach (var breweryBeers in groupedByBrewery)
+            {
+                var totalCount = breweryBeers.Count();
+                var totalScore = breweryBeers.Sum(s => (decimal)s.CompositeScore) / totalCount;
+                var totalReviewCount = breweryBeers.Sum(b => b.Beer.Reviews.Count);
+                var ranking = new BreweryRank()
+                              {
+                                  AveragePerBeer = totalScore,
+                                  TotalBeersCount = totalReviewCount,
+                                  Name = breweryBeers.Key
+                              };
+                rankings.Add(ranking);
+            }
+
+            return rankings.OrderByDescending(r => r.AveragePerBeer)
+                           .Take(top);
         }
     }
 }

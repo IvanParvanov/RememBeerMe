@@ -7,5 +7,7 @@ namespace RememBeer.Business.Services.Contracts
     public interface ITopBeersService
     {
         IEnumerable<IBeerRank> GetTopBeers(int top);
+
+        IEnumerable<IBreweryRank> GetTopBreweries(int top);
     }
 }

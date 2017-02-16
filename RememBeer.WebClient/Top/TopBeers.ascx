@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TopBeers.ascx.cs" Inherits="RememBeer.WebClient.Top.TopBeers" %>
-<%@ OutputCache Duration="600" VaryByParam="None" %>
 <asp:GridView runat="server"
               CssClass="table table-bordered table-hover table-striped"
               ID="RankingGridView"
