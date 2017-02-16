@@ -5,7 +5,7 @@ using RememBeer.Models.Identity.Contracts;
 
 using WebFormsMvp.Web;
 
-namespace RememBeer.WebClient.BasePages
+namespace RememBeer.WebClient.BaseClasses
 {
     public class BaseMvpPage<TModel> : MvpPage<TModel> where TModel : class, new()
     {

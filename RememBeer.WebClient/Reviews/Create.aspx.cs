@@ -8,7 +8,7 @@ using RememBeer.Business.Logic.Reviews.Create;
 using RememBeer.Business.Logic.Reviews.Create.Contracts;
 using RememBeer.Business.Logic.Reviews.My.Contracts;
 using RememBeer.Models;
-using RememBeer.WebClient.BasePages;
+using RememBeer.WebClient.BaseClasses;
 
 using WebFormsMvp;
 

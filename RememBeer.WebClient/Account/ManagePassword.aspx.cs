@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity;
 using RememBeer.Business.Logic.Account.Common.ViewModels;
 using RememBeer.Business.Logic.Account.ManagePassword;
 using RememBeer.Business.Logic.Account.ManagePassword.Contracts;
-using RememBeer.WebClient.BasePages;
+using RememBeer.WebClient.BaseClasses;
 
 using WebFormsMvp;
 

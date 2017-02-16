@@ -24,8 +24,6 @@ namespace RememBeer.Business.Logic.Admin.UserDetails
             }
             else
             {
-                this.View.ErrorMessageText = user.Id;
-                this.View.ErrorMessageVisible = true;
                 this.View.Model.User = user;
                 this.View.Model.Reviews = user.BeerReviews;
             }

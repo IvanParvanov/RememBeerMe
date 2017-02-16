@@ -4,7 +4,7 @@ using System.Web;
 using RememBeer.Business.Logic.Account.Common.ViewModels;
 using RememBeer.Business.Logic.Account.Login;
 using RememBeer.Business.Logic.Account.Login.Contracts;
-using RememBeer.WebClient.BasePages;
+using RememBeer.WebClient.BaseClasses;
 
 using WebFormsMvp;
 

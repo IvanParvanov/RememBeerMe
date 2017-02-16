@@ -53,15 +53,14 @@ namespace RememBeer.Business.Logic.Reviews.My
             }
         }
 
-        private void OnViewInitialise(object sender, IPaginationEventArgs e)
+        private void OnViewInitialise(object sender, IUserReviewsEventArgs e)
         {
             this.View.SuccessMessageVisible = false;
 
-            var userId = this.HttpContext?.User?.Identity.GetUserId();
-            var beerReviews = this.ReviewService.GetReviewsForUser(userId, e.StartRowIndex, e.PageSize);
+            var beerReviews = this.ReviewService.GetReviewsForUser(e.UserId, e.StartRowIndex, e.PageSize);
 
             this.View.Model.Reviews = beerReviews;
-            this.View.Model.TotalCount = this.ReviewService.CountUserReviews(userId);
+            this.View.Model.TotalCount = this.ReviewService.CountUserReviews(e.UserId);
         }
     }
 }

@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RememBeer.WebClient.Admin {
+namespace RememBeer.WebClient.UserControls {
     
     
-    public partial class UserDetails {
+    public partial class ReviewsEditView {
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// Notifier control.
@@ -22,21 +31,30 @@ namespace RememBeer.WebClient.Admin {
         protected global::RememBeer.WebClient.UserControls.UserNotifications Notifier;
         
         /// <summary>
-        /// UserNameLabel control.
+        /// UpdatePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserNameLabel;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel;
         
         /// <summary>
-        /// EditReviews control.
+        /// ReviewsListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RememBeer.WebClient.UserControls.ReviewsEditView EditReviews;
+        protected global::System.Web.UI.WebControls.ListView ReviewsListView;
+        
+        /// <summary>
+        /// Pagination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager Pagination;
     }
 }

@@ -4,7 +4,7 @@ using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Business.Logic.Reviews.Common.ViewModels;
 using RememBeer.Business.Logic.Reviews.Default;
 using RememBeer.Business.Logic.Reviews.Default.Contracts;
-using RememBeer.WebClient.BasePages;
+using RememBeer.WebClient.BaseClasses;
 
 using WebFormsMvp;
 

@@ -3,7 +3,7 @@
 using RememBeer.Business.Logic.Account.Common.ViewModels;
 using RememBeer.Business.Logic.Account.Confirm;
 using RememBeer.Business.Logic.Account.Confirm.Contracts;
-using RememBeer.WebClient.BasePages;
+using RememBeer.WebClient.BaseClasses;
 
 using WebFormsMvp;
 

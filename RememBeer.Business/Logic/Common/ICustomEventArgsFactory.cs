@@ -35,5 +35,7 @@ namespace RememBeer.Business.Logic.Common
         IBreweryUpdateEventArgs CreateBreweryUpdateEventArgs(int id, string description, string name, string country);
 
         IPaginationEventArgs CreatePaginationEventArgs(int startRowIndex, int pageSize);
+
+        IUserReviewsEventArgs CreateUserReviewsEventArgs(int startRowIndex, int pageSize, string userId);
     }
 }

@@ -3,7 +3,7 @@
 using RememBeer.Business.Logic.Admin.UserDetails;
 using RememBeer.Business.Logic.Admin.UserDetails.Contracts;
 using RememBeer.Business.Logic.Common.EventArgs.Contracts;
-using RememBeer.WebClient.BasePages;
+using RememBeer.WebClient.BaseClasses;
 
 using WebFormsMvp;
 
@@ -40,12 +40,14 @@ namespace RememBeer.WebClient.Admin
 
         public event EventHandler<IIdentifiableEventArgs<string>> Initialized;
 
-        protected void Page_PreRender(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             var userId = this.Request.QueryString["id"];
 
             var args = this.EventArgsFactory.CreateIdentifiableEventArgs(userId);
             this.Initialized?.Invoke(this, args);
+            this.EditReviews.UserId = this.Model.User?.Id;
+            this.UserNameLabel.Text = this.Model.User?.UserName;
         }
     }
 }

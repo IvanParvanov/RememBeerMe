@@ -11,7 +11,7 @@ namespace RememBeer.Business.Logic.Reviews.My.Contracts
         /// <summary>
         /// Triggered when a the view is being initialized.
         /// </summary>
-        event EventHandler<IPaginationEventArgs> Initialized; 
+        event EventHandler<IUserReviewsEventArgs> Initialized; 
 
         /// <summary>
         /// Triggered when a review needs to be updated.

@@ -74,7 +74,7 @@
                                 <asp:Button runat="server" CssClass="btn btn-warning btn-sm" CommandName="RemoveAdmin" Text="Remove Admin" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Details" AccessibleHeaderText="Details">
+                        <asp:TemplateField HeaderText="Reviews" AccessibleHeaderText="Reviews">
                             <ItemTemplate>
                                 <a class="btn btn-primary" href='<%#: "UserDetails?id=" + Eval("Id") %>'><i class="fa fa-link"></i></a>
                             </ItemTemplate>

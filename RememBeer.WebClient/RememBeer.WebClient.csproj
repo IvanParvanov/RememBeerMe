@@ -375,6 +375,7 @@
     <Content Include="Top\Breweries.aspx" />
     <Content Include="Top\TopBeers.ascx" />
     <Content Include="UserControls\BeerRatingSelect.ascx" />
+    <Content Include="UserControls\ReviewsEditView.ascx" />
     <Content Include="UserControls\SingleBeerReview.ascx" />
     <Content Include="UserControls\UserNotifications.ascx" />
     <Content Include="Web.config" />
@@ -494,7 +495,10 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="BasePages\BaseMvpPage.cs">
+    <Compile Include="BaseClasses\BaseMvpPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaseClasses\BaseMvpUserControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.cs">
@@ -564,6 +568,13 @@
     </Compile>
     <Compile Include="UserControls\BeerRatingSelect.ascx.designer.cs">
       <DependentUpon>BeerRatingSelect.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReviewsEditView.ascx.cs">
+      <DependentUpon>ReviewsEditView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReviewsEditView.ascx.designer.cs">
+      <DependentUpon>ReviewsEditView.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SingleBeerReview.ascx.cs">
       <DependentUpon>SingleBeerReview.ascx</DependentUpon>

@@ -6,7 +6,7 @@ using RememBeer.Business.Logic.Admin.Brewery;
 using RememBeer.Business.Logic.Admin.Brewery.Contracts;
 using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Models.Contracts;
-using RememBeer.WebClient.BasePages;
+using RememBeer.WebClient.BaseClasses;
 
 using WebFormsMvp;
 
