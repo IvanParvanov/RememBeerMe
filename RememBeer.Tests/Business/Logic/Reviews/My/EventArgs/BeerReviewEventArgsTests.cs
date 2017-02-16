@@ -9,10 +9,10 @@ using RememBeer.Tests.Common;
 namespace RememBeer.Tests.Business.Logic.Reviews.My.EventArgs
 {
     [TestFixture]
-    public class Ctor_Should : TestClassBase
+    public class BeerReviewEventArgsTests : TestClassBase
     {
         [Test]
-        public void SetUpPropertiesCorrectly()
+        public void Ctor_ShouldSetUpPropertiesCorrectly()
         {
             var review = new Mock<IBeerReview>();
             var image = new byte[1];
@@ -24,7 +24,7 @@ namespace RememBeer.Tests.Business.Logic.Reviews.My.EventArgs
         }
 
         [Test]
-        public void SetUpPropertiesCorrectly_WhenCalledWithOneArg()
+        public void Ctor_ShouldSetUpPropertiesCorrectly_WhenCalledWithOneArg()
         {
             var review = new Mock<IBeerReview>();
 

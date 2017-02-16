@@ -15,6 +15,6 @@ namespace RememBeer.Business.Logic.Reviews.My
 
         public int PageSize { get; }
 
-        public string UserId { get; set; }
+        public string UserId { get; }
     }
 }
