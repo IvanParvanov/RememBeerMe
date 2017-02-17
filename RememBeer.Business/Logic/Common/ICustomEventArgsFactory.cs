@@ -40,5 +40,7 @@ namespace RememBeer.Business.Logic.Common
         IUserReviewsEventArgs CreateUserReviewsEventArgs(int startRowIndex, int pageSize, string userId);
 
         IUserUpdateEventArgs CreateUserUpdateEventArgs(string id, string email, string userName, bool isConfirmed);
+
+        ICreateBeerEventArgs CreateCreateBeerEventArgs(int id, int beerTypeId, string beerName);
     }
 }

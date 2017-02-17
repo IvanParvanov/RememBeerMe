@@ -12,26 +12,33 @@ namespace RememBeer.Business.Services
 {
     public class BreweryService : IBreweryService
     {
-        private readonly IRepository<Brewery> repository;
+        private readonly IRepository<Brewery> breweryRepository;
+        private readonly IRepository<Beer> beerRepository;
 
-        public BreweryService(IRepository<Brewery> repository)
+        public BreweryService(IRepository<Brewery> breweryRepository, IRepository<Beer> beerRepository)
         {
-            if (repository == null)
+            if (breweryRepository == null)
             {
-                throw new ArgumentNullException(nameof(repository));
+                throw new ArgumentNullException(nameof(breweryRepository));
             }
 
-            this.repository = repository;
+            if (beerRepository == null)
+            {
+                throw new ArgumentNullException(nameof(beerRepository));
+            }
+
+            this.beerRepository = beerRepository;
+            this.breweryRepository = breweryRepository;
         }
 
         public IEnumerable<IBrewery> GetAll()
         {
-            return this.repository.GetAll();
+            return this.breweryRepository.GetAll();
         }
 
         public IEnumerable<IBrewery> GetAll<T>(int skip, int pageSize, Func<IBrewery, T> order)
         {
-            return this.repository.All
+            return this.breweryRepository.All
                        .OrderBy(order)
                        .Skip(skip)
                        .Take(pageSize)
@@ -40,25 +47,38 @@ namespace RememBeer.Business.Services
 
         public IEnumerable<IBrewery> Search(string pattern)
         {
-            return this.repository.All
+            return this.breweryRepository.All
                        .Where(b => b.Country.Contains(pattern) || b.Name.Contains(pattern))
                        .ToList();
         }
 
         public IBrewery GetById(object id)
         {
-            return this.repository.GetById(id);
+            return this.breweryRepository.GetById(id);
         }
 
         public IDataModifiedResult UpdateBrewery(int id, string name, string country, string description)
         {
-            var brewery = this.repository.GetById(id);
+            var brewery = this.breweryRepository.GetById(id);
             brewery.Name = name;
             brewery.Country = country;
             brewery.Description = description;
-            this.repository.Update(brewery);
+            this.breweryRepository.Update(brewery);
 
-            return this.repository.SaveChanges();
+            return this.breweryRepository.SaveChanges();
+        }
+
+        public IDataModifiedResult AddNewBeer(int breweryId, int beerTypeId, string name)
+        {
+            var beer = new Beer()
+                       {
+                           BreweryId = breweryId,
+                           BeerTypeId = beerTypeId,
+                           Name = name
+                       };
+            this.beerRepository.Add(beer);
+
+            return this.beerRepository.SaveChanges();
         }
     }
 }

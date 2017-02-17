@@ -22,6 +22,15 @@ namespace RememBeer.WebClient.Admin {
         protected global::RememBeer.WebClient.UserControls.UserNotifications Notifier;
         
         /// <summary>
+        /// Content control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder Content;
+        
+        /// <summary>
         /// BreweryDetails control.
         /// </summary>
         /// <remarks>
@@ -29,5 +38,41 @@ namespace RememBeer.WebClient.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DetailsView BreweryDetails;
+        
+        /// <summary>
+        /// BeerTypeTextbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox BeerTypeTextbox;
+        
+        /// <summary>
+        /// HiddenBeerTypeId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::RememBeer.WebClient.UserControls.ValidatedHiddenField HiddenBeerTypeId;
+        
+        /// <summary>
+        /// BeerNameTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox BeerNameTb;
+        
+        /// <summary>
+        /// CreateBeer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CreateBeer;
     }
 }

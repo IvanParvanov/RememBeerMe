@@ -2,6 +2,7 @@
 using RememBeer.Business.Logic.Admin.Common;
 using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Business.Services.Contracts;
+using RememBeer.Data.Repositories;
 
 namespace RememBeer.Business.Logic.Admin.Brewery
 {
@@ -9,27 +10,30 @@ namespace RememBeer.Business.Logic.Admin.Brewery
     {
         private const string NotFoundMessage = "Brewery not found!";
         private const string UpdateSuccessMessage = "Brewery updated!";
+        private const string BeerCreatedSuccessMessage = "Beer has been added to this brewery!";
 
         public BreweryPresenter(IBreweryService breweryService, ISingleBreweryView view)
             : base(breweryService, view)
         {
             this.View.BreweryUpdate += this.OnUpdateBrewery;
             this.View.Initialized += this.OnViewInitialized;
+            this.View.BreweryAddBeer += this.OnViewBreweryAddBeer;
+        }
+
+        private void OnViewBreweryAddBeer(object sender, ICreateBeerEventArgs e)
+        {
+            var breweryId = e.Id;
+            var beertypeId = e.BeerTypeId;
+            var beerName = e.BeerName;
+
+            var result = this.BreweryService.AddNewBeer(breweryId, beertypeId, beerName);
+            this.HandleResult(result, BeerCreatedSuccessMessage);
         }
 
         private void OnUpdateBrewery(object sender, IBreweryUpdateEventArgs e)
         {
             var result = this.BreweryService.UpdateBrewery(e.Id, e.Name, e.Country, e.Description);
-            if (result.Successful)
-            {
-                this.View.SuccessMessageText = UpdateSuccessMessage;
-                this.View.SuccessMessageVisible = true;
-            }
-            else
-            {
-                this.View.ErrorMessageText = string.Join(", ", result.Errors);
-                this.View.ErrorMessageVisible = true;
-            }
+            this.HandleResult(result, UpdateSuccessMessage);
         }
 
         private void OnViewInitialized(object sender, IIdentifiableEventArgs<string> e)
@@ -53,6 +57,19 @@ namespace RememBeer.Business.Logic.Admin.Brewery
             else
             {
                 this.ShowError(NotFoundMessage);
+            }
+        }
+
+        private void HandleResult(IDataModifiedResult result, string successMessage)
+        {
+            if (result.Successful)
+            {
+                this.View.SuccessMessageText = successMessage;
+                this.View.SuccessMessageVisible = true;
+            }
+            else
+            {
+                this.ShowError(string.Join(", ", result.Errors));
             }
         }
 

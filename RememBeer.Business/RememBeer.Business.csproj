@@ -134,7 +134,9 @@
     <Compile Include="Logic\Admin\Brewery\BreweryPresenter.cs" />
     <Compile Include="Logic\Admin\Brewery\BreweryUpdateEventArgs.cs" />
     <Compile Include="Logic\Admin\Brewery\Contracts\IBreweryUpdateEventArgs.cs" />
+    <Compile Include="Logic\Admin\Brewery\Contracts\ICreateBeerEventArgs.cs" />
     <Compile Include="Logic\Admin\Brewery\Contracts\ISingleBreweryView.cs" />
+    <Compile Include="Logic\Admin\Brewery\CreateBeerEventArgs.cs" />
     <Compile Include="Logic\Admin\Brewery\SingleBreweryViewModel.cs" />
     <Compile Include="Logic\Admin\Common\BreweryServicePresenter.cs" />
     <Compile Include="Logic\Admin\ManageUsers\Contracts\IManageUsersView.cs" />

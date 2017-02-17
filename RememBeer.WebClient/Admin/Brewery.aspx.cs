@@ -15,6 +15,8 @@ namespace RememBeer.WebClient.Admin
     [PresenterBinding(typeof(BreweryPresenter))]
     public partial class Brewery : BaseMvpPage<SingleBreweryViewModel>, ISingleBreweryView
     {
+        public event EventHandler<ICreateBeerEventArgs> BreweryAddBeer;
+
         public event EventHandler<IBreweryUpdateEventArgs> BreweryUpdate;
 
         public event EventHandler<IIdentifiableEventArgs<string>> Initialized;
@@ -67,20 +69,19 @@ namespace RememBeer.WebClient.Admin
 
             set
             {
+                this.Content.Visible = !value;
                 this.Notifier.ErrorVisible = value;
             }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var id = this.Request.QueryString["id"];
+            var args = this.EventArgsFactory.CreateIdentifiableEventArgs(id);
+            this.Initialized?.Invoke(this, args);
+            if (this.Model.Brewery != null && !this.IsPostBack)
             {
-                var id = this.Request.QueryString["id"];
-                var args = this.EventArgsFactory.CreateIdentifiableEventArgs(id);
-                this.Initialized?.Invoke(this, args);
-                if (this.Model.Brewery != null && !this.IsPostBack)
-                {
-                    this.BindData();
-                }
+                this.BindData();
             }
         }
 
@@ -110,6 +111,16 @@ namespace RememBeer.WebClient.Admin
                                                  this.Model.Brewery
                                              };
             this.BreweryDetails.DataBind();
+        }
+
+        protected void CreateBeer_OnClick(object sender, EventArgs e)
+        {
+            var breweryId = int.Parse(this.Request.QueryString["id"]);
+            var beerTypeId = int.Parse(this.HiddenBeerTypeId.Value);
+            var beerName = this.BeerNameTb.Text;
+
+            var args = this.EventArgsFactory.CreateCreateBeerEventArgs(breweryId, beerTypeId, beerName);
+            this.BreweryAddBeer?.Invoke(this, args);
         }
     }
 }

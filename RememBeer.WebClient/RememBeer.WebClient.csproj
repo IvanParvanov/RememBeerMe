@@ -343,6 +343,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Reviews\My.aspx" />
     <Content Include="Scripts\autocomplete.js" />
+    <Content Include="Scripts\beertypes-autocomplete.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\devbridge-autocomplete.min.js" />

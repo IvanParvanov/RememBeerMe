@@ -17,5 +17,7 @@ namespace RememBeer.Business.Services.Contracts
         IBrewery GetById(object id);
 
         IDataModifiedResult UpdateBrewery(int id, string name, string country, string description);
+
+        IDataModifiedResult AddNewBeer(int breweryId, int beerTypeId, string name);
     }
 }
