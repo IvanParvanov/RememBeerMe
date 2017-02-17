@@ -93,6 +93,7 @@
     <Compile Include="Contracts\IIdentifiable.cs" />
     <Compile Include="Dtos\BeerDto.cs" />
     <Compile Include="Dtos\BeerRank.cs" />
+    <Compile Include="Dtos\BeerTypeDto.cs" />
     <Compile Include="Dtos\BreweryRank.cs" />
     <Compile Include="Dtos\IBeerRank.cs" />
     <Compile Include="Dtos\IBreweryRank.cs" />

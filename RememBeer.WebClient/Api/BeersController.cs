@@ -12,7 +12,6 @@ namespace RememBeer.WebClient.Api
     {
         private readonly IRepository<Beer> beers;
 
-        //TODO: use service
         public BeersController(IRepository<Beer> beers)
         {
             this.beers = beers;

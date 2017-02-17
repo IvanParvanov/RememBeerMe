@@ -498,6 +498,7 @@
       <DependentUpon>UserDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Api\BeersController.cs" />
+    <Compile Include="Api\BeerTypesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\NinjectWeb.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />

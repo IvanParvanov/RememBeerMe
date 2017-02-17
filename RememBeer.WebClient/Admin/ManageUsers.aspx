@@ -16,7 +16,6 @@
                               AllowPaging="True"
                               AutoGenerateColumns="False"
                               AutoGenerateEditButton="True"
-                              AutoGenerateSelectButton="True"
                               AllowCustomPaging="True"
                               OnPageIndexChanging="UserGridView_OnPageIndexChanging"
                               OnRowEditing="UserGridView_OnRowEditing"
@@ -26,7 +25,7 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Id" AccessibleHeaderText="Id">
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                                <asp:Label runat="server" Text='<%#: Eval("Id") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:TextBox ID="IdTb" CssClass="form-control" runat="server" Text='<%# Bind("Id") %>' ReadOnly="True"></asp:TextBox>
@@ -35,7 +34,7 @@
 
                         <asp:TemplateField HeaderText="Email" AccessibleHeaderText="Email">
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Eval("Email") %>'></asp:Label>
+                                <asp:Label runat="server" Text='<%#: Eval("Email") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:TextBox ID="EmailTb" CssClass="form-control" runat="server" Text='<%# Bind("Email") %>'></asp:TextBox>
@@ -43,7 +42,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Confirmed" AccessibleHeaderText="Confirmed">
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Eval("EmailConfirmed") %>'></asp:Label>
+                                <asp:Label runat="server" Text='<%#: Eval("EmailConfirmed") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
                                 <asp:CheckBox ID="ConfirmCheckbox" CssClass="form-control" runat="server" Checked='<%# Bind("EmailConfirmed") %>'></asp:CheckBox>
@@ -51,21 +50,21 @@
                         </asp:TemplateField>
                          <asp:TemplateField HeaderText="Admin" AccessibleHeaderText="Admin">
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Item.Roles.Any() ? "True" : "False" %>'></asp:Label>
+                                <asp:Label runat="server" Text='<%#: Item.Roles.Any() ? "True" : "False" %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Locked Until" AccessibleHeaderText="Locked Until">
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Eval("LockoutEndDateUtc") %>'></asp:Label>
+                                <asp:Label runat="server" Text='<%#: Eval("LockoutEndDateUtc") %>'></asp:Label>
                             </ItemTemplate>
                             <EditItemTemplate>
-                                <asp:TextBox ID="LockoutTb" CssClass="form-control" runat="server" Text='<%# Eval("LockoutEndDateUtc") %>' ReadOnly="True"></asp:TextBox>
+                                <asp:TextBox ID="LockoutTb" CssClass="form-control" runat="server" Text='<%#: Eval("LockoutEndDateUtc") %>' ReadOnly="True"></asp:TextBox>
                             </EditItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Disable/Enable" AccessibleHeaderText="Disable/Enable">
                             <ItemTemplate>
-                                <asp:Button runat="server" CssClass="btn btn-primary btn-sm" CommandName="EnableUser" Text="Enable" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
-                                <asp:Button runat="server" CssClass="btn btn-danger btn-sm" CommandName="DisableUser" Text="Disable" CommandArgument='<%# Eval("Id") %>' OnCommand="OnUserCommand"/>
+                                <asp:Button runat="server" CssClass="btn btn-primary btn-sm" CommandName="EnableUser" Text="Enable" CommandArgument='<%#: Eval("Id") %>' OnCommand="OnUserCommand"/>
+                                <asp:Button runat="server" CssClass="btn btn-danger btn-sm" CommandName="DisableUser" Text="Disable" CommandArgument='<%#: Eval("Id") %>' OnCommand="OnUserCommand"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Make Admin" AccessibleHeaderText="Make Admin">

@@ -28,8 +28,11 @@ namespace RememBeer.WebClient.Account
 
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            var args = this.EventArgsFactory.CreateRegisterEventArg(this.Email.Text, this.Email.Text, this.Password.Text);
-            this.OnRegister?.Invoke(this, args);
+            if (this.IsValid)
+            {
+                var args = this.EventArgsFactory.CreateRegisterEventArg(this.Email.Text, this.Email.Text, this.Password.Text);
+                this.OnRegister?.Invoke(this, args);
+            }
         }
     }
 }

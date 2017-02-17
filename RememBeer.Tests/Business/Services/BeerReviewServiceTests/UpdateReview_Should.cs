@@ -43,8 +43,8 @@ namespace RememBeer.Tests.Business.Services.BeerReviewServiceTests
             var reviewService = new BeerReviewService(repository.Object);
 
             var actual = reviewService.UpdateReview(review);
-
             repository.Verify(r => r.SaveChanges(), Times.Once);
+
             Assert.AreSame(expected.Object, actual);
         }
     }
