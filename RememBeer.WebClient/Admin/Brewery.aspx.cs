@@ -106,11 +106,13 @@ namespace RememBeer.WebClient.Admin
 
         private void BindData()
         {
+            this.BeersRepeater.DataSource = this.Model.Brewery.Beers;
             this.BreweryDetails.DataSource = new List<IBrewery>()
                                              {
                                                  this.Model.Brewery
                                              };
             this.BreweryDetails.DataBind();
+            this.BeersRepeater.DataBind();
         }
 
         protected void CreateBeer_OnClick(object sender, EventArgs e)
@@ -121,6 +123,12 @@ namespace RememBeer.WebClient.Admin
 
             var args = this.EventArgsFactory.CreateCreateBeerEventArgs(breweryId, beerTypeId, beerName);
             this.BreweryAddBeer?.Invoke(this, args);
+            this.BindData();
+        }
+
+        protected void OnBeerCommand(object sender, CommandEventArgs e)
+        {
+            this.BindData();
         }
     }
 }
