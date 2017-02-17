@@ -183,6 +183,7 @@
     <Compile Include="Business\Services\BeerReviewServiceTests\DeleteReview_Should.cs" />
     <Compile Include="Business\Services\BeerReviewServiceTests\GetById_Should.cs" />
     <Compile Include="Business\Services\BeerReviewServiceTests\UpdateReview_Should.cs" />
+    <Compile Include="Business\Services\BreweryServiceTests\AddNewBeer_Should.cs" />
     <Compile Include="Business\Services\BreweryServiceTests\GetById_Should.cs" />
     <Compile Include="Business\Services\BreweryServiceTests\UpdateBrewery_Should.cs" />
     <Compile Include="Business\Services\RankingStrategies\DoubleOverallScoreStrategyTests\GetBreweryRank_Should.cs" />
