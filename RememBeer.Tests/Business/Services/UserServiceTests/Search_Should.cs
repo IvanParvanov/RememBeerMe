@@ -61,8 +61,9 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var repository = new Mock<IRepository<Brewery>>();
             repository.Setup(r => r.All)
                       .Returns(queryableBreweries);
+            var beerRepo = new Mock<IRepository<Beer>>();
 
-            var service = new BreweryService(repository.Object);
+            var service = new BreweryService(repository.Object, beerRepo.Object);
             var result = service.Search(pattern);
 
             var actualBreweries = result as IBrewery[] ?? result.ToArray();

@@ -23,8 +23,9 @@ namespace RememBeer.Tests.Business.Services.BreweryServiceTests
         public void CallRepositoryGetAllMethodOnce()
         {
             var repository = new Mock<IRepository<Brewery>>();
+            var beerRepo = new Mock<IRepository<Beer>>();
 
-            var service = new BreweryService(repository.Object);
+            var service = new BreweryService(repository.Object, beerRepo.Object);
 
             service.GetAll();
 
@@ -34,12 +35,14 @@ namespace RememBeer.Tests.Business.Services.BreweryServiceTests
         [Test]
         public void ReturnResultFromRepositoryGetAllMethod()
         {
+
             var expected = new List<Brewery>();
             var repository = new Mock<IRepository<Brewery>>();
             repository.Setup(r => r.GetAll())
                       .Returns(expected);
+            var beerRepo = new Mock<IRepository<Beer>>();
 
-            var service = new BreweryService(repository.Object);
+            var service = new BreweryService(repository.Object, beerRepo.Object);
 
             var actual = service.GetAll();
             Assert.AreSame(expected, actual);
@@ -69,8 +72,9 @@ namespace RememBeer.Tests.Business.Services.BreweryServiceTests
             var repository = new Mock<IRepository<Brewery>>();
             repository.Setup(r => r.All)
                       .Returns(queryableBreweries);
+            var beerRepo = new Mock<IRepository<Beer>>();
 
-            var service = new BreweryService(repository.Object);
+            var service = new BreweryService(repository.Object, beerRepo.Object);
             var result = service.GetAll(currentPage, expectedPageSize, (a) => a.Name);
 
             var actualUsers = result as IBrewery[] ?? result.ToArray();

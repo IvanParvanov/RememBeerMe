@@ -26,8 +26,9 @@ namespace RememBeer.Tests.Business.Services.BreweryServiceTests
             var repository = new Mock<IRepository<Brewery>>();
             repository.Setup(r => r.GetById(id))
                       .Returns(expected);
+            var beerRepo = new Mock<IRepository<Beer>>();
 
-            var service = new BreweryService(repository.Object);
+            var service = new BreweryService(repository.Object, beerRepo.Object);
 
             var result = service.UpdateBrewery(id, name, country, descr);
 
@@ -46,8 +47,9 @@ namespace RememBeer.Tests.Business.Services.BreweryServiceTests
             var repository = new Mock<IRepository<Brewery>>();
             repository.Setup(r => r.GetById(id))
                       .Returns(brewery);
+            var beerRepo = new Mock<IRepository<Beer>>();
 
-            var service = new BreweryService(repository.Object);
+            var service = new BreweryService(repository.Object, beerRepo.Object);
 
             var result = service.UpdateBrewery(id, name, country, descr);
 
@@ -66,6 +68,7 @@ namespace RememBeer.Tests.Business.Services.BreweryServiceTests
             var descr = this.Fixture.Create<string>();
             var country = this.Fixture.Create<string>();
             var brewery = new Brewery();
+            var beerRepo = new Mock<IRepository<Beer>>();
 
             var repository = new Mock<IRepository<Brewery>>();
             repository.Setup(r => r.GetById(id))
@@ -73,7 +76,7 @@ namespace RememBeer.Tests.Business.Services.BreweryServiceTests
             repository.Setup(r => r.SaveChanges())
                       .Returns(expectedResult.Object);
 
-            var service = new BreweryService(repository.Object);
+            var service = new BreweryService(repository.Object, beerRepo.Object);
 
             var result = service.UpdateBrewery(id, name, country, descr);
 
