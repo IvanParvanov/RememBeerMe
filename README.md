@@ -5,7 +5,7 @@
 <p>So, you are in <em>&lt;insert foreign country with great beers&gt;</em> having an ice-cold pint of <br> <em>&lt;insert beer with a complicated name&gt;</em>. You really like it. 
            You would like to try it again on your next visit.
        </p>
-       <p>The sad part is you would never remember it for so long...</p>
+<p>The sad part is you would never remember it for so long...</p>
        
 #### Until now.
 
@@ -39,18 +39,18 @@
 ###Temporarily hosted on:
 - [My ASP](http://j0hnybg-001-site1.dtempurl.com/)
  
- ###Youtube demo:
+###Youtube demo:
  - [TODO]()
  
- ### Public Section
+### Public Section
  
  Anyone can view a specific beer review when they have the link. All top beers and brewery rankings are publicly visible.
  
- ### Private Section
+### Private Section
  
  Registered users can create and edit their own beer reviews.
  
- ### Administrative Section
+### Administrative Section
  
    * User Management
    
