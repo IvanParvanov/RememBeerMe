@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 
 using RememBeer.Data.Repositories.Base;
@@ -14,6 +15,11 @@ namespace RememBeer.WebClient.Api
 
         public BeerTypesController(IRepository<BeerType> beerTypes)
         {
+            if (beerTypes == null)
+            {
+                throw new ArgumentNullException(nameof(beerTypes));
+            }
+
             this.beerTypes = beerTypes;
         }
 
