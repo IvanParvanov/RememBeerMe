@@ -11,6 +11,7 @@ namespace RememBeer.Business.Logic.Admin.Brewery
         private const string NotFoundMessage = "Brewery not found!";
         private const string UpdateSuccessMessage = "Brewery updated!";
         private const string BeerCreatedSuccessMessage = "Beer has been added to this brewery!";
+        private const string BeerDeletedSuccessMessage = "Beer has been removed from this brewery!";
 
         public BreweryPresenter(IBreweryService breweryService, ISingleBreweryView view)
             : base(breweryService, view)
@@ -18,6 +19,14 @@ namespace RememBeer.Business.Logic.Admin.Brewery
             this.View.BreweryUpdate += this.OnUpdateBrewery;
             this.View.Initialized += this.OnViewInitialized;
             this.View.BreweryAddBeer += this.OnViewBreweryAddBeer;
+            this.View.BreweryRemoveBeer += this.OnViewBreweryRemoveBeer;
+        }
+
+        private void OnViewBreweryRemoveBeer(object sender, IIdentifiableEventArgs<int> e)
+        {
+            var id = e.Id;
+            var result = this.BreweryService.DeleteBeer(id);
+            this.HandleResult(result, BeerDeletedSuccessMessage);
         }
 
         private void OnViewBreweryAddBeer(object sender, ICreateBeerEventArgs e)

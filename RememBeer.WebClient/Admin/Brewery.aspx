@@ -142,7 +142,7 @@
                           ID="BeersRepeater"
                           ItemType="RememBeer.Models.Contracts.IBeer">
                 <ItemTemplate>
-                    <tr>
+                    <tr runat="server" Visible='<%# !Item.IsDeleted %>'>
                         <td><%# Item.Name %> </td>
                         <td>
                             <em>

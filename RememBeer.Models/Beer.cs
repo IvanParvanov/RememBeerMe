@@ -25,5 +25,7 @@ namespace RememBeer.Models
         public int BreweryId { get; set; }
 
         public virtual ICollection<BeerReview> Reviews { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

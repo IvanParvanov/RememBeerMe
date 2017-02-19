@@ -17,6 +17,8 @@ namespace RememBeer.WebClient.Admin
     {
         public event EventHandler<ICreateBeerEventArgs> BreweryAddBeer;
 
+        public event EventHandler<IIdentifiableEventArgs<int>> BreweryRemoveBeer;
+
         public event EventHandler<IBreweryUpdateEventArgs> BreweryUpdate;
 
         public event EventHandler<IIdentifiableEventArgs<string>> Initialized;
@@ -128,6 +130,10 @@ namespace RememBeer.WebClient.Admin
 
         protected void OnBeerCommand(object sender, CommandEventArgs e)
         {
+            var id = int.Parse((string)e.CommandArgument);
+            var args = this.EventArgsFactory.CreateIdentifiableEventArgs(id);
+            this.BreweryRemoveBeer?.Invoke(this, args);
+
             this.BindData();
         }
     }

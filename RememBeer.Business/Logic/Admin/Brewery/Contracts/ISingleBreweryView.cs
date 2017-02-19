@@ -23,5 +23,10 @@ namespace RememBeer.Business.Logic.Admin.Brewery.Contracts
         /// Triggered when a new beer needs to be added to a brewery.
         /// </summary>
         event EventHandler<ICreateBeerEventArgs> BreweryAddBeer;
+
+        /// <summary>
+        /// Triggered when a new beer needs to be removed from a brewery.
+        /// </summary>
+        event EventHandler<IIdentifiableEventArgs<int>> BreweryRemoveBeer;
     }
 }

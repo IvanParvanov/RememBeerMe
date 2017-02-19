@@ -75,7 +75,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Reviews" AccessibleHeaderText="Reviews">
                             <ItemTemplate>
-                                <a class="btn btn-primary" href='<%#: "UserDetails?id=" + Eval("Id") %>'><i class="fa fa-link"></i></a>
+                                <a class="btn btn-primary" href='<%#: "UserDetails?id=" + Eval("Id") %>'><i class="fa fa-arrow-right"></i></a>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

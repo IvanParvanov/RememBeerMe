@@ -15,5 +15,7 @@ namespace RememBeer.Models.Contracts
         int BreweryId { get; set; }
 
         string Name { get; set; }
+
+        bool IsDeleted { get; set; }
     }
 }

@@ -80,5 +80,12 @@ namespace RememBeer.Business.Services
 
             return this.beerRepository.SaveChanges();
         }
+
+        public IDataModifiedResult DeleteBeer(int beerId)
+        {
+            var beer = this.beerRepository.GetById(beerId);
+            beer.IsDeleted = true;
+            return this.beerRepository.SaveChanges();
+        }
     }
 }

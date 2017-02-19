@@ -20,7 +20,7 @@ namespace RememBeer.WebClient.Api
         // GET api/Beers
         public IEnumerable<BeerDto> Get()
         {
-            return this.beers.GetAll<Beer, BeerDto>(null,
+            return this.beers.GetAll<Beer, BeerDto>(beer => beer.IsDeleted == false,
                                                     null,
                                                     null,
                                                     b => new BeerDto()
@@ -36,7 +36,7 @@ namespace RememBeer.WebClient.Api
         public IEnumerable<BeerDto> Get(string name)
         {
             return this.beers
-                       .GetAll((beer) => beer.Name.StartsWith(name) || beer.Brewery.Name.StartsWith(name),
+                       .GetAll((beer) => beer.IsDeleted == false && beer.Name.StartsWith(name) || beer.Brewery.Name.StartsWith(name),
                                beer => beer.Name,
                                SortOrder.Ascending,
                                b => new BeerDto()
