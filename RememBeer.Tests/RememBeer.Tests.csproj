@@ -125,8 +125,10 @@
     <Compile Include="Business\Logic\Admin\Breweries\Presenter\OnViewInitialized_Should.cs" />
     <Compile Include="Business\Logic\Admin\Breweries\Presenter\OnViewSearch_Should.cs" />
     <Compile Include="Business\Logic\Admin\Breweries\ViewModel\Setters_Should.cs" />
+    <Compile Include="Business\Logic\Admin\Brewery\EventArgs\CreateBeerEventArgsTests.cs" />
     <Compile Include="Business\Logic\Admin\Brewery\EventArgs\UpdateEventArgsTests.cs" />
     <Compile Include="Business\Logic\Admin\Brewery\Presenter\OnUpdateBrewery_Should.cs" />
+    <Compile Include="Business\Logic\Admin\Brewery\Presenter\OnViewBreweryAddBeer_Should.cs" />
     <Compile Include="Business\Logic\Admin\Brewery\Presenter\OnViewInitialized_Should.cs" />
     <Compile Include="Business\Logic\Admin\Brewery\ViewModel\Setters_Should.cs" />
     <Compile Include="Business\Logic\Admin\ManageUsers\EventArgs\Ctor_Should.cs" />

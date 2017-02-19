@@ -45,8 +45,7 @@ namespace RememBeer.Business.Services
             }
 
             return rankings.OrderByDescending(r => r.CompositeScore)
-                           .Take(top)
-                           .ToList();
+                           .Take(top);
         }
 
         [Cache(20)]
