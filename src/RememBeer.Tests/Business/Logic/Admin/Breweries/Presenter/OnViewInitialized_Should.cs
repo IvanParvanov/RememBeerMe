@@ -9,8 +9,8 @@ using RememBeer.Business.Logic.Admin.Breweries;
 using RememBeer.Business.Logic.Admin.Breweries.Contracts;
 using RememBeer.Business.Services.Contracts;
 using RememBeer.Models.Contracts;
-using RememBeer.Tests.Business.Mocks;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
+using RememBeer.Tests.Utils.MockedClasses;
 
 namespace RememBeer.Tests.Business.Logic.Admin.Breweries.Presenter
 {

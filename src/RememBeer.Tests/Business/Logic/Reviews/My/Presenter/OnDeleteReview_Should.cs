@@ -11,8 +11,8 @@ using RememBeer.Business.Logic.Reviews.My.Contracts;
 using RememBeer.Business.Services.Contracts;
 using RememBeer.Data.Repositories;
 using RememBeer.Models.Contracts;
-using RememBeer.Tests.Common;
-using RememBeer.Tests.Common.MockedClasses;
+using RememBeer.Tests.Utils;
+using RememBeer.Tests.Utils.MockedClasses;
 
 namespace RememBeer.Tests.Business.Logic.Reviews.My.Presenter
 {

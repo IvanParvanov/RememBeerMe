@@ -3,7 +3,7 @@
 using Ploeh.AutoFixture;
 
 using RememBeer.Business.Logic.Admin.ManageUsers;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Business.Logic.Admin.ManageUsers.EventArgs
 {

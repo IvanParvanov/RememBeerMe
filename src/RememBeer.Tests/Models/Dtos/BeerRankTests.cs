@@ -8,7 +8,7 @@ using Ploeh.AutoFixture;
 
 using RememBeer.Models.Contracts;
 using RememBeer.Models.Dtos;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Models.Dtos
 {

@@ -8,7 +8,7 @@ using RememBeer.Business.Logic.Admin.Brewery;
 using RememBeer.Business.Logic.Admin.Brewery.Contracts;
 using RememBeer.Business.Services.Contracts;
 using RememBeer.Data.Repositories;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Business.Logic.Admin.Brewery.Presenter
 {

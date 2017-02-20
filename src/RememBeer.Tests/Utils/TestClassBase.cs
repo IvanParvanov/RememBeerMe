@@ -1,6 +1,6 @@
 ﻿using Ploeh.AutoFixture;
 
-namespace RememBeer.Tests.Common
+namespace RememBeer.Tests.Utils
 {
     public class TestClassBase
     {

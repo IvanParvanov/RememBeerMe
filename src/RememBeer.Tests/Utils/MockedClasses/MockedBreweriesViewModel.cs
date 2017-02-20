@@ -3,7 +3,7 @@
 using RememBeer.Business.Logic.Admin.Breweries;
 using RememBeer.Models.Contracts;
 
-namespace RememBeer.Tests.Business.Mocks
+namespace RememBeer.Tests.Utils.MockedClasses
 {
     public class MockedBreweriesViewModel : BreweriesViewModel
     {

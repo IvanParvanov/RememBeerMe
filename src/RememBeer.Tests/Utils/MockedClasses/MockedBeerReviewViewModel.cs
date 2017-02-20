@@ -1,7 +1,7 @@
 ﻿using RememBeer.Business.Logic.Reviews.Common.ViewModels;
 using RememBeer.Models.Contracts;
 
-namespace RememBeer.Tests.Business.Mocks
+namespace RememBeer.Tests.Utils.MockedClasses
 {
     public class MockedBeerReviewViewModel : BeerReviewViewModel
     {

@@ -680,6 +680,6 @@
 //    }
 //}
 
-namespace RememBeer.Tests.Business.Mocks
+namespace RememBeer.Tests.Utils.MockedClasses
 {
 }

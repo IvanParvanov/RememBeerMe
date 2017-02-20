@@ -8,7 +8,7 @@ using RememBeer.Business.Logic.Account.Login;
 using RememBeer.Business.Logic.Account.Login.Contracts;
 using RememBeer.Business.Services.Contracts;
 using RememBeer.Models.Identity.Contracts;
-using RememBeer.Tests.Common.MockedClasses;
+using RememBeer.Tests.Utils.MockedClasses;
 
 namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
 {
@@ -25,16 +25,8 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
         public void SetViewProperties_WhenLoginFails()
         {
             var mockedView = new Mock<ILoginView>();
-            mockedView.SetupSet(v => v.FailureMessage = "");
-            mockedView.SetupSet(v => v.ErrorMessageVisible = true);
-
-            var mockedArgs = new Mock<ILoginEventArgs>();
-            mockedArgs.Setup(a => a.Email).Returns(Email);
-            mockedArgs.Setup(a => a.Password).Returns(Password);
-            mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-
+            var mockedArgs = GetMockedEventArgs();
             var mockedIdentityHelper = new Mock<IIdentityHelper>();
-
             var userService = new Mock<IUserService>();
             userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
                        .Returns(SignInStatus.Failure);
@@ -42,20 +34,15 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
             var presenter = new LoginPresenter(userService.Object, mockedIdentityHelper.Object, mockedView.Object);
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
-            mockedView.VerifySet(v => v.FailureMessage = It.IsAny<string>());
-            mockedView.VerifySet(v => v.ErrorMessageVisible = true);
+            mockedView.VerifySet(v => v.FailureMessage = It.IsAny<string>(), Times.Once);
+            mockedView.VerifySet(v => v.ErrorMessageVisible = true, Times.Once);
         }
 
         [Test]
         public void CallPasswordSignInMethodWithCorrectParams_WhenLoginFails()
         {
             var mockedView = new Mock<ILoginView>();
-
-            var mockedArgs = new Mock<ILoginEventArgs>();
-            mockedArgs.Setup(a => a.Email).Returns(Email);
-            mockedArgs.Setup(a => a.Password).Returns(Password);
-            mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-
+            var mockedArgs = GetMockedEventArgs();
             var userService = new Mock<IUserService>();
             userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
                        .Returns(SignInStatus.Failure);
@@ -72,12 +59,7 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
         public void SetViewErrorMessages_WhenLoginFails()
         {
             var mockedView = new Mock<ILoginView>();
-
-            var mockedArgs = new Mock<ILoginEventArgs>();
-            mockedArgs.Setup(a => a.Email).Returns(Email);
-            mockedArgs.Setup(a => a.Password).Returns(Password);
-            mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-
+            var mockedArgs = GetMockedEventArgs();
             var userService = new Mock<IUserService>();
             userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
                        .Returns(SignInStatus.Failure);
@@ -95,12 +77,7 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
         public void CallPasswordSignInMethodWithCorrectParams_WhenLoginSuccessfull()
         {
             var mockedView = new Mock<ILoginView>();
-
-            var mockedArgs = new Mock<ILoginEventArgs>();
-            mockedArgs.Setup(a => a.Email).Returns(Email);
-            mockedArgs.Setup(a => a.Password).Returns(Password);
-            mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-
+            var mockedArgs = GetMockedEventArgs();
             var userService = new Mock<IUserService>();
             userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
                        .Returns(SignInStatus.Success);
@@ -123,11 +100,7 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
         {
             var mockedView = new Mock<ILoginView>();
 
-            var mockedArgs = new Mock<ILoginEventArgs>();
-            mockedArgs.Setup(a => a.Email).Returns(Email);
-            mockedArgs.Setup(a => a.Password).Returns(Password);
-            mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-
+            var mockedArgs = GetMockedEventArgs();
             var userService = new Mock<IUserService>();
             userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
                        .Returns(SignInStatus.Success);
@@ -151,12 +124,7 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
             const string LockoutUrl = "Lockout";
 
             var mockedView = new Mock<ILoginView>();
-
-            var mockedArgs = new Mock<ILoginEventArgs>();
-            mockedArgs.Setup(a => a.Email).Returns(Email);
-            mockedArgs.Setup(a => a.Password).Returns(Password);
-            mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-
+            var mockedArgs = GetMockedEventArgs();
             var userService = new Mock<IUserService>();
             userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
                        .Returns(SignInStatus.LockedOut);
@@ -179,12 +147,7 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
             var expectedUrl = $"TwoFactorAuthenticationSignIn?ReturnUrl={ReturnUrl}&RememberMe={IsPersistent}";
 
             var mockedView = new Mock<ILoginView>();
-
-            var mockedArgs = new Mock<ILoginEventArgs>();
-            mockedArgs.Setup(a => a.Email).Returns(Email);
-            mockedArgs.Setup(a => a.Password).Returns(Password);
-            mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
-
+            var mockedArgs = GetMockedEventArgs();
             var userService = new Mock<IUserService>();
             userService.Setup(s => s.PasswordSignIn(Email, Password, IsPersistent))
                        .Returns(SignInStatus.RequiresVerification);
@@ -201,8 +164,17 @@ namespace RememBeer.Tests.Business.Logic.Account.Login.Presenter
             mockedView.Raise(x => x.OnLogin += null, mockedView.Object, mockedArgs.Object);
 
             userService.Verify(f => f.PasswordSignIn(Email, Password, IsPersistent), Times.Once());
-
             StringAssert.Contains(expectedUrl, mockedResponse.RedirectUrl);
+        }
+
+        private static Mock<ILoginEventArgs> GetMockedEventArgs()
+        {
+            var mockedArgs = new Mock<ILoginEventArgs>();
+            mockedArgs.Setup(a => a.Email).Returns(Email);
+            mockedArgs.Setup(a => a.Password).Returns(Password);
+            mockedArgs.Setup(a => a.RememberMe).Returns(IsPersistent);
+
+            return mockedArgs;
         }
     }
 }

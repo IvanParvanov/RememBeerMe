@@ -3,9 +3,9 @@
 using Ploeh.AutoFixture;
 
 using RememBeer.Business.Logic.Common.EventArgs;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
-namespace RememBeer.Tests.Business.Common.EventArgs
+namespace RememBeer.Tests.Business.Logic.Common.EventArgs
 {
     [TestFixture]
     public class SearchEventArgsTests : TestClassBase

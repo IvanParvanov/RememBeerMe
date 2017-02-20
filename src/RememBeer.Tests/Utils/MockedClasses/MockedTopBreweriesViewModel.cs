@@ -3,7 +3,7 @@
 using RememBeer.Business.Logic.Top.Breweries;
 using RememBeer.Models.Dtos;
 
-namespace RememBeer.Tests.Business.Mocks
+namespace RememBeer.Tests.Utils.MockedClasses
 {
     public class MockedTopBreweriesViewModel : TopBreweriesViewModel
     {

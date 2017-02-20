@@ -12,7 +12,7 @@ using RememBeer.Business.Services;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Models;
 using RememBeer.Models.Contracts;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Business.Services.BreweryServiceTests
 {

@@ -5,7 +5,7 @@ using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 using RememBeer.Models;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Models
 {

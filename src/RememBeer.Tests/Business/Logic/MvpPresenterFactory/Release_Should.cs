@@ -3,7 +3,7 @@
 using NUnit.Framework;
 
 using RememBeer.Business.Logic.MvpPresenterFactory;
-using RememBeer.Tests.Business.Mocks;
+using RememBeer.Tests.Utils.MockedClasses;
 
 using WebFormsMvp;
 

@@ -8,8 +8,8 @@ using RememBeer.Business.Logic.Admin.Brewery;
 using RememBeer.Business.Logic.Admin.Brewery.Contracts;
 using RememBeer.Business.Services.Contracts;
 using RememBeer.Data.Repositories;
-using RememBeer.Tests.Business.Mocks;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
+using RememBeer.Tests.Utils.MockedClasses;
 
 namespace RememBeer.Tests.Business.Logic.Admin.Brewery.Presenter
 {
@@ -62,8 +62,7 @@ namespace RememBeer.Tests.Business.Logic.Admin.Brewery.Presenter
             result.Setup(r => r.Successful).Returns(true);
 
             var service = new Mock<IBreweryService>();
-            service.Setup(
-                          s =>
+            service.Setup(s =>
                               s.UpdateBrewery(It.IsAny<int>(),
                                               It.IsAny<string>(),
                                               It.IsAny<string>(),
@@ -94,8 +93,7 @@ namespace RememBeer.Tests.Business.Logic.Admin.Brewery.Presenter
             result.Setup(r => r.Successful).Returns(false);
 
             var service = new Mock<IBreweryService>();
-            service.Setup(
-                          s =>
+            service.Setup(s =>
                               s.UpdateBrewery(It.IsAny<int>(),
                                               It.IsAny<string>(),
                                               It.IsAny<string>(),

@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace RememBeer.Tests.Common.MockedClasses
+namespace RememBeer.Tests.Utils.MockedClasses
 {
     public class MockedHttpResponse : HttpResponseBase
     {

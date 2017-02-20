@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 using RememBeer.Business.Logic.Reviews.My;
 using RememBeer.Models.Contracts;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Business.Logic.Reviews.My.EventArgs
 {

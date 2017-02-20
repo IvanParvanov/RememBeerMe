@@ -12,8 +12,8 @@ using RememBeer.Common.Constants;
 using RememBeer.Common.Services.Contracts;
 using RememBeer.Data.Repositories;
 using RememBeer.Models.Contracts;
-using RememBeer.Tests.Common;
-using RememBeer.Tests.Common.MockedClasses;
+using RememBeer.Tests.Utils;
+using RememBeer.Tests.Utils.MockedClasses;
 
 namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
 {
@@ -23,29 +23,20 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
         [Test]
         public void Call_ImgServiceUploadImageMethodOnceWithCorrectParams_WhenImageIsNotNull()
         {
+            var args = MockedEventArgsGenerator.GetBeerReviewInfoEventArgs();
             var view = new Mock<ICreateReviewView>();
             var imgUpload = new Mock<IImageUploadService>();
-            var review = new Mock<IBeerReview>();
-            var imageToUpload = new byte[50];
             var createReviewResult = new Mock<IDataModifiedResult>();
             createReviewResult.Setup(r => r.Successful)
                               .Returns(false);
-            createReviewResult.Setup(r => r.Errors)
-                              .Returns(new string[0]);
             var reviewService = new Mock<IBeerReviewService>();
             reviewService.Setup(r => r.CreateReview(It.IsAny<IBeerReview>()))
                          .Returns(createReviewResult.Object);
 
-            var args = new Mock<IBeerReviewInfoEventArgs>();
-            args.Setup(a => a.BeerReview)
-                .Returns(review.Object);
-            args.Setup(a => a.Image)
-                .Returns(imageToUpload);
-
             var presenter = new CreateReviewPresenter(reviewService.Object, imgUpload.Object, view.Object);
-            view.Raise(v => v.OnCreateReview += null, view.Object, args.Object);
+            view.Raise(v => v.OnCreateReview += null, view.Object, args);
 
-            imgUpload.Verify(i => i.UploadImage(imageToUpload, Constants.DefaultThumbnailSizePx, Constants.DefaultThumbnailSizePx), Times.Once);
+            imgUpload.Verify(i => i.UploadImage(args.Image, Constants.DefaultThumbnailSizePx, Constants.DefaultThumbnailSizePx), Times.Once);
         }
 
         [Test]
@@ -140,8 +131,7 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
         public void Call_ReviewServiceCreateReviewMethodOnceWithCorrectParams()
         {
             var view = new Mock<ICreateReviewView>();
-            var review = new Mock<IBeerReview>();
-            var imageToUpload = new byte[50];
+            var args = MockedEventArgsGenerator.GetBeerReviewInfoEventArgs();
             var createReviewResult = new Mock<IDataModifiedResult>();
             createReviewResult.Setup(r => r.Successful)
                               .Returns(false);
@@ -154,25 +144,18 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
             imgUpload.Setup(img => img.UploadImage(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>()))
                      .Returns((string)null);
 
-            var args = new Mock<IBeerReviewInfoEventArgs>();
-            args.Setup(a => a.BeerReview)
-                .Returns(review.Object);
-            args.Setup(a => a.Image)
-                .Returns(imageToUpload);
-
             var presenter = new CreateReviewPresenter(reviewService.Object, imgUpload.Object, view.Object);
-            view.Raise(v => v.OnCreateReview += null, view.Object, args.Object);
+            view.Raise(v => v.OnCreateReview += null, view.Object, args);
 
-            reviewService.Verify(s => s.CreateReview(review.Object), Times.Once);
+            reviewService.Verify(s => s.CreateReview(args.BeerReview), Times.Once);
         }
 
         [Test]
         public void Set_ViewErrorMessageText_WhenCreateReviewFails()
         {
             var expectedMessage = this.Fixture.Create<string>();
+            var args = MockedEventArgsGenerator.GetBeerReviewInfoEventArgs();
             var view = new Mock<ICreateReviewView>();
-            var review = new Mock<IBeerReview>();
-            var imageToUpload = new byte[50];
             var createReviewResult = new Mock<IDataModifiedResult>();
             createReviewResult.Setup(r => r.Successful)
                               .Returns(false);
@@ -186,14 +169,8 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
             imgUpload.Setup(img => img.UploadImage(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>()))
                      .Returns((string)null);
 
-            var args = new Mock<IBeerReviewInfoEventArgs>();
-            args.Setup(a => a.BeerReview)
-                .Returns(review.Object);
-            args.Setup(a => a.Image)
-                .Returns(imageToUpload);
-
             var presenter = new CreateReviewPresenter(reviewService.Object, imgUpload.Object, view.Object);
-            view.Raise(v => v.OnCreateReview += null, view.Object, args.Object);
+            view.Raise(v => v.OnCreateReview += null, view.Object, args);
 
             view.VerifySet(v => v.ErrorMessageText = expectedMessage, Times.Once);
         }
@@ -201,10 +178,8 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
         [Test]
         public void RedirectToCorrectUrl_WhenCreateReviewIsSuccessful()
         {
+            var args = MockedEventArgsGenerator.GetBeerReviewInfoEventArgs();
             var view = new Mock<ICreateReviewView>();
-
-            var review = new Mock<IBeerReview>();
-            var imageToUpload = new byte[50];
             var createReviewResult = new Mock<IDataModifiedResult>();
             createReviewResult.Setup(r => r.Successful)
                               .Returns(true);
@@ -215,20 +190,14 @@ namespace RememBeer.Tests.Business.Logic.Reviews.Create.Presenter
             var imgUpload = new Mock<IImageUploadService>();
             imgUpload.Setup(img => img.UploadImage(It.IsAny<byte[]>(), It.IsAny<int>(), It.IsAny<int>()))
                      .Returns((string)null);
-
-            var args = new Mock<IBeerReviewInfoEventArgs>();
-            args.Setup(a => a.BeerReview)
-                .Returns(review.Object);
-            args.Setup(a => a.Image)
-                .Returns(imageToUpload);
-
             var mockedResponse = new MockedHttpResponse();
+
             var presenter = new CreateReviewPresenter(reviewService.Object, imgUpload.Object, view.Object)
                             {
                                 HttpContext = new MockedHttpContextBase(mockedResponse)
                             };
 
-            view.Raise(v => v.OnCreateReview += null, view.Object, args.Object);
+            view.Raise(v => v.OnCreateReview += null, view.Object, args);
 
             Assert.AreEqual("/Reviews/My", mockedResponse.RedirectUrl);
         }

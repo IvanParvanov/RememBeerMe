@@ -2,7 +2,7 @@
 
 using WebFormsMvp;
 
-namespace RememBeer.Tests.Business.Mocks
+namespace RememBeer.Tests.Utils.MockedClasses
 {
     public interface IDisposablePresenter : IDisposable, IPresenter
     {

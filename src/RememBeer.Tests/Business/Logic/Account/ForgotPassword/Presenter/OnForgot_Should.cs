@@ -12,10 +12,11 @@ namespace RememBeer.Tests.Business.Logic.Account.ForgotPassword.Presenter
     [TestFixture]
     public class OnForgot_Should
     {
+        const string Email = "test@abv.bg";
+
         [Test]
         public void CallFindByNameMethodOnceWithCorrectParams()
         {
-            const string Email = "test@abv.bg";
             var mockedView = new Mock<IForgotPasswordView>();
             var mockedArgs = new Mock<IForgotPasswordEventArgs>();
             mockedArgs.Setup(a => a.Email).Returns(Email);
@@ -34,10 +35,7 @@ namespace RememBeer.Tests.Business.Logic.Account.ForgotPassword.Presenter
         [Test]
         public void SetViewProperties_WhenUserIsNotFound()
         {
-            const string Email = "test@abv.bg";
             var mockedView = new Mock<IForgotPasswordView>();
-            mockedView.SetupSet(v => v.FailureMessage = "");
-            mockedView.SetupSet(v => v.ErrorMessageVisible = true);
 
             var mockedArgs = new Mock<IForgotPasswordEventArgs>();
             mockedArgs.Setup(a => a.Email).Returns(Email);
@@ -49,17 +47,14 @@ namespace RememBeer.Tests.Business.Logic.Account.ForgotPassword.Presenter
             new ForgotPasswordPresenter(userService.Object, mockedView.Object);
             mockedView.Raise(x => x.OnForgot += null, mockedView.Object, mockedArgs.Object);
 
-            mockedView.VerifySet(v => v.FailureMessage = It.IsAny<string>());
-            mockedView.VerifySet(v => v.ErrorMessageVisible = true);
+            mockedView.VerifySet(v => v.FailureMessage = It.IsAny<string>(), Times.Once);
+            mockedView.VerifySet(v => v.ErrorMessageVisible = true, Times.Once);
         }
 
         [Test]
         public void SetViewProperties_WhenUserIsFoundButNotConfirmed()
         {
-            const string Email = "test@abv.bg";
             var mockedView = new Mock<IForgotPasswordView>();
-            mockedView.SetupSet(v => v.FailureMessage = "");
-            mockedView.SetupSet(v => v.ErrorMessageVisible = true);
 
             var mockedArgs = new Mock<IForgotPasswordEventArgs>();
             mockedArgs.Setup(a => a.Email).Returns(Email);
@@ -73,17 +68,14 @@ namespace RememBeer.Tests.Business.Logic.Account.ForgotPassword.Presenter
             new ForgotPasswordPresenter(userService.Object, mockedView.Object);
             mockedView.Raise(x => x.OnForgot += null, mockedView.Object, mockedArgs.Object);
 
-            mockedView.VerifySet(v => v.FailureMessage = It.IsAny<string>());
-            mockedView.VerifySet(v => v.ErrorMessageVisible = true);
+            mockedView.VerifySet(v => v.FailureMessage = It.IsAny<string>(), Times.Once);
+            mockedView.VerifySet(v => v.ErrorMessageVisible = true, Times.Once);
         }
 
         [Test]
         public void SetViewProperties_WhenUserIsFound()
         {
-            const string Email = "test@abv.bg";
             var mockedView = new Mock<IForgotPasswordView>();
-            mockedView.SetupSet(v => v.LoginFormVisible = false);
-            mockedView.SetupSet(v => v.DisplayEmailVisible = true);
 
             var mockedArgs = new Mock<IForgotPasswordEventArgs>();
             mockedArgs.Setup(a => a.Email).Returns(Email);
@@ -98,8 +90,8 @@ namespace RememBeer.Tests.Business.Logic.Account.ForgotPassword.Presenter
             new ForgotPasswordPresenter(userService.Object, mockedView.Object);
             mockedView.Raise(x => x.OnForgot += null, mockedView.Object, mockedArgs.Object);
 
-            mockedView.VerifySet(v => v.LoginFormVisible = false);
-            mockedView.VerifySet(v => v.DisplayEmailVisible = true);
+            mockedView.VerifySet(v => v.LoginFormVisible = false, Times.Once);
+            mockedView.VerifySet(v => v.DisplayEmailVisible = true, Times.Once);
         }
     }
 }

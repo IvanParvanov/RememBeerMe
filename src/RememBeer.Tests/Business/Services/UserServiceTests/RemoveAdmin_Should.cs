@@ -11,7 +11,7 @@ using Ploeh.AutoFixture;
 using RememBeer.Business.Services;
 using RememBeer.Models.Factories;
 using RememBeer.Models.Identity.Contracts;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 using Constants = RememBeer.Common.Constants.Constants;
 

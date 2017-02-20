@@ -12,7 +12,7 @@ using RememBeer.Business.Services.RankingStrategies;
 using RememBeer.Models.Contracts;
 using RememBeer.Models.Dtos;
 using RememBeer.Models.Factories;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Business.Services.RankingStrategies.DoubleOverallScoreStrategyTests
 {

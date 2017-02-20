@@ -7,7 +7,7 @@ using Ploeh.AutoFixture;
 using RememBeer.Business.Services;
 using RememBeer.Models.Factories;
 using RememBeer.Models.Identity.Contracts;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Business.Services.UserServiceTests
 {

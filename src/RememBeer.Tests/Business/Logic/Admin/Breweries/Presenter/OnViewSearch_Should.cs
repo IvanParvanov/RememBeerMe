@@ -4,15 +4,12 @@ using Moq;
 
 using NUnit.Framework;
 
-using Ploeh.AutoFixture;
-
 using RememBeer.Business.Logic.Admin.Breweries;
 using RememBeer.Business.Logic.Admin.Breweries.Contracts;
-using RememBeer.Business.Logic.Common.EventArgs.Contracts;
 using RememBeer.Business.Services.Contracts;
 using RememBeer.Models.Contracts;
-using RememBeer.Tests.Business.Mocks;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
+using RememBeer.Tests.Utils.MockedClasses;
 
 namespace RememBeer.Tests.Business.Logic.Admin.Breweries.Presenter
 {
@@ -22,45 +19,35 @@ namespace RememBeer.Tests.Business.Logic.Admin.Breweries.Presenter
         [Test]
         public void CallBreweryServiceSearchMethodOnceWithCorrectParams()
         {
-            var expectedPattern = this.Fixture.Create<string>();
-
             var viewModel = new MockedBreweriesViewModel();
             var view = new Mock<IBreweriesView>();
             view.Setup(v => v.Model)
                 .Returns(viewModel);
-
             var service = new Mock<IBreweryService>();
-
+            var args = MockedEventArgsGenerator.GetSearchEventArgs();
             var presenter = new BreweriesPresenter(service.Object, view.Object);
 
-            var args = new Mock<ISearchEventArgs>();
-            args.Setup(a => a.Pattern).Returns(expectedPattern);
+            view.Raise(v => v.BrewerySearch += null, view.Object, args);
 
-            view.Raise(v => v.BrewerySearch += null, view.Object, args.Object);
-
-            service.Verify(s => s.Search(expectedPattern), Times.Once);
+            service.Verify(s => s.Search(args.Pattern), Times.Once);
         }
 
         [Test]
         public void SetResultFromServiceToViewModel()
         {
-            var expectedPattern = this.Fixture.Create<string>();
             var expectedBreweries = new List<IBrewery>();
 
             var viewModel = new MockedBreweriesViewModel();
             var view = new Mock<IBreweriesView>();
             view.Setup(v => v.Model)
                 .Returns(viewModel);
-
+            var args = MockedEventArgsGenerator.GetSearchEventArgs();
             var service = new Mock<IBreweryService>();
-            service.Setup(s => s.Search(expectedPattern))
+            service.Setup(s => s.Search(args.Pattern))
                    .Returns(expectedBreweries);
             var presenter = new BreweriesPresenter(service.Object, view.Object);
-
-            var args = new Mock<ISearchEventArgs>();
-            args.Setup(a => a.Pattern).Returns(expectedPattern);
-
-            view.Raise(v => v.BrewerySearch += null, view.Object, args.Object);
+           
+            view.Raise(v => v.BrewerySearch += null, view.Object, args);
 
             Assert.AreSame(expectedBreweries, view.Object.Model.Breweries);
         }

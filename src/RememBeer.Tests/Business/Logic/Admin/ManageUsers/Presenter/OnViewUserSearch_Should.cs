@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Business.Logic.Admin.ManageUsers.Presenter
 {

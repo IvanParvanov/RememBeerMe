@@ -11,27 +11,20 @@ using Ploeh.AutoFixture;
 using RememBeer.Business.Logic.Account.ManagePassword;
 using RememBeer.Business.Logic.Account.ManagePassword.Contracts;
 using RememBeer.Business.Services.Contracts;
-using RememBeer.Tests.Common.MockedClasses;
+using RememBeer.Tests.Utils;
+using RememBeer.Tests.Utils.MockedClasses;
 
 namespace RememBeer.Tests.Business.Logic.Account.ManagePassword.Presenter
 {
     [TestFixture]
-    public class OnChangePassword_Should
+    public class OnChangePassword_Should : TestClassBase
     {
-        private Fixture f;
-
-        [OneTimeSetUp]
-        public void Init()
-        {
-            this.f = new Fixture();
-        }
-
         [Test]
         public void CallUserServiceChangePasswordMethod_WithCorrectParameters()
         {
-            var expectedId = this.f.Create<string>();
-            var expectedOld = this.f.Create<string>();
-            var expectedNew = this.f.Create<string>();
+            var expectedId = this.Fixture.Create<string>();
+            var expectedOld = this.Fixture.Create<string>();
+            var expectedNew = this.Fixture.Create<string>();
 
             var view = new Mock<IManagePasswordView>();
             var args = new Mock<IChangePasswordEventArgs>();

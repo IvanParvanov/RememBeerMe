@@ -8,7 +8,7 @@ using NUnit.Framework;
 using RememBeer.Business.Services;
 using RememBeer.Models.Factories;
 using RememBeer.Models.Identity.Contracts;
-using RememBeer.Tests.Business.Mocks;
+using RememBeer.Tests.Utils.MockedClasses;
 
 namespace RememBeer.Tests.Business.Services.UserServiceTests
 {

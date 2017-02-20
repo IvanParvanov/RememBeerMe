@@ -117,7 +117,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Business\Common\EventArgs\PaginationEventArgsTests.cs" />
+    <Compile Include="Business\Logic\Common\EventArgs\PaginationEventArgsTests.cs" />
     <Compile Include="Business\Logic\Account\Common\UserServicePresenterTests.cs" />
     <Compile Include="Business\Logic\Account\Confirm\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Logic\Account\Confirm\Presenter\OnSubmit_Should.cs" />
@@ -147,8 +147,8 @@
     <Compile Include="Business\Logic\Reviews\My\EventArgs\UserReviewsEventArgsTests.cs" />
     <Compile Include="Business\Logic\Top\Breweries\Presenter\OnViewInitialize_Should.cs" />
     <Compile Include="Business\Logic\Top\Breweries\ViewModel\TopBreweriesViewModelTests.cs" />
-    <Compile Include="Business\Mocks\MockedApplicationUser.cs" />
-    <Compile Include="Business\Mocks\MockedApplicationUserManager.cs" />
+    <Compile Include="Utils\MockedClasses\MockedApplicationUser.cs" />
+    <Compile Include="Utils\MockedClasses\MockedApplicationUserManager.cs" />
     <Compile Include="Business\Logic\Account\ForgotPassword\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Logic\Account\ForgotPassword\Presenter\OnForgot_Should.cs" />
     <Compile Include="Business\Logic\Account\Login\EventArgs\Ctor_Should.cs" />
@@ -158,18 +158,18 @@
     <Compile Include="Business\Logic\Account\ManagePassword\Presenter\OnChangePassword_Should.cs" />
     <Compile Include="Business\Logic\Account\Register\EventArgs\Ctor_Should.cs" />
     <Compile Include="Business\Logic\Account\Register\Presenter\OnRegister_Should.cs" />
-    <Compile Include="Business\Common\EventArgs\IdentifiableEventArgsTests.cs" />
-    <Compile Include="Business\Common\EventArgs\SearchEventArgsTests.cs" />
-    <Compile Include="Business\Mocks\IDisposablePresenter.cs" />
-    <Compile Include="Business\Mocks\MockedBreweriesViewModel.cs" />
-    <Compile Include="Business\Mocks\MockedManageUsersViewModel.cs" />
-    <Compile Include="Business\Mocks\MockedSingleBreweryViewModel.cs" />
+    <Compile Include="Business\Logic\Common\EventArgs\IdentifiableEventArgsTests.cs" />
+    <Compile Include="Business\Logic\Common\EventArgs\SearchEventArgsTests.cs" />
+    <Compile Include="Utils\MockedClasses\IDisposablePresenter.cs" />
+    <Compile Include="Utils\MockedClasses\MockedBreweriesViewModel.cs" />
+    <Compile Include="Utils\MockedClasses\MockedManageUsersViewModel.cs" />
+    <Compile Include="Utils\MockedClasses\MockedSingleBreweryViewModel.cs" />
     <Compile Include="Business\Logic\MvpPresenterFactory\Create_Should.cs" />
     <Compile Include="Business\Logic\MvpPresenterFactory\Release_Should.cs" />
     <Compile Include="Business\Logic\Reviews\Common\Presenters\BeerReviewPresenterTests.cs" />
     <Compile Include="Business\Logic\Reviews\Common\ViewModels\BeerReviewViewModelTests.cs" />
     <Compile Include="Business\Logic\Reviews\Default\Presenter\OnViewinitialise_Should.cs" />
-    <Compile Include="Business\Mocks\MockedBeerReviewViewModel.cs" />
+    <Compile Include="Utils\MockedClasses\MockedBeerReviewViewModel.cs" />
     <Compile Include="Business\Logic\Reviews\My\EventArgs\BeerReviewEventArgsTests.cs" />
     <Compile Include="Business\Logic\Reviews\My\Presenter\OnDeleteReview_Should.cs" />
     <Compile Include="Business\Logic\Reviews\My\Presenter\OnViewInitialise_Should.cs" />
@@ -178,9 +178,9 @@
     <Compile Include="Business\Logic\Top\Beers\Common\TopPresenterBase\Ctor_Should.cs" />
     <Compile Include="Business\Logic\Top\Beers\Presenter\OnViewInitialize_Should.cs" />
     <Compile Include="Business\Logic\Top\Beers\ViewModel\Setters_Should.cs" />
-    <Compile Include="Business\Mocks\MockedTopBeersViewModel.cs" />
-    <Compile Include="Business\Mocks\MockedTopBreweriesViewModel.cs" />
-    <Compile Include="Business\Mocks\MockedUserDetailsViewModel.cs" />
+    <Compile Include="Utils\MockedClasses\MockedTopBeersViewModel.cs" />
+    <Compile Include="Utils\MockedClasses\MockedTopBreweriesViewModel.cs" />
+    <Compile Include="Utils\MockedClasses\MockedUserDetailsViewModel.cs" />
     <Compile Include="Business\Services\BeerReviewServiceTests\CountUserReviews_Should.cs" />
     <Compile Include="Business\Services\BeerReviewServiceTests\CreateReview_Should.cs" />
     <Compile Include="Business\Services\BeerReviewServiceTests\Ctor_Should.cs" />
@@ -201,10 +201,11 @@
     <Compile Include="Business\Services\UserServiceTests\RemoveAdmin_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\Search_Should.cs" />
     <Compile Include="Business\Services\UserServiceTests\UpdateUser_Should.cs" />
-    <Compile Include="Common\MockedClasses\MockedHttpContextBase.cs" />
-    <Compile Include="Common\MockedClasses\MockedHttpRequest.cs" />
-    <Compile Include="Common\MockedClasses\MockedHttpResponse.cs" />
-    <Compile Include="Common\TestClassBase.cs" />
+    <Compile Include="Utils\MockedEventArgsGenerator.cs" />
+    <Compile Include="Utils\MockedClasses\MockedHttpContextBase.cs" />
+    <Compile Include="Utils\MockedClasses\MockedHttpRequest.cs" />
+    <Compile Include="Utils\MockedClasses\MockedHttpResponse.cs" />
+    <Compile Include="Utils\TestClassBase.cs" />
     <Compile Include="Business\Services\BreweryServiceTests\Ctor_Should.cs" />
     <Compile Include="Business\Services\BreweryServiceTests\GetAll_Should.cs" />
     <Compile Include="Business\Services\RankingStrategies\DoubleOverallScoreStrategyTests\Ctor_Should.cs" />

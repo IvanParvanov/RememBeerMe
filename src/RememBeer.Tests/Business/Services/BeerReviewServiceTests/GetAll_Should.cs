@@ -1,21 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
 
-using Moq;
-
-using NUnit.Framework;
-
-using Ploeh.AutoFixture;
-
-using RememBeer.Business.Services;
-using RememBeer.Data.Repositories.Base;
-using RememBeer.Data.Repositories.Enums;
-using RememBeer.Models;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Business.Services.BeerReviewServiceTests
 {

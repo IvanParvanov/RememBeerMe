@@ -1,7 +1,7 @@
 ﻿using RememBeer.Business.Logic.Admin.Brewery;
 using RememBeer.Models.Contracts;
 
-namespace RememBeer.Tests.Business.Mocks
+namespace RememBeer.Tests.Utils.MockedClasses
 {
     public class MockedSingleBreweryViewModel : SingleBreweryViewModel
     {

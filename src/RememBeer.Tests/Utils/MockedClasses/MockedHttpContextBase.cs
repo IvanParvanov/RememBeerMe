@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Principal;
 using System.Web;
 
-namespace RememBeer.Tests.Common.MockedClasses
+namespace RememBeer.Tests.Utils.MockedClasses
 {
     public class MockedHttpContextBase : HttpContextBase
     {

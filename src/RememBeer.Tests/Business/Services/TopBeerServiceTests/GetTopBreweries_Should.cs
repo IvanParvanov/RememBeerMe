@@ -12,7 +12,7 @@ using RememBeer.Business.Services.RankingStrategies.Contracts;
 using RememBeer.Data.Repositories.Base;
 using RememBeer.Models;
 using RememBeer.Models.Dtos;
-using RememBeer.Tests.Common;
+using RememBeer.Tests.Utils;
 
 namespace RememBeer.Tests.Business.Services.TopBeerServiceTests
 {
