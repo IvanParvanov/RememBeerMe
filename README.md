@@ -12,8 +12,8 @@
 <hr/>
 
 ### Project startup
- 1. Install NuGet dependencies
- 2. Create a RememBeerMeSettings.config file in the src/RememBeer.WebClient folder
+ * Install NuGet dependencies
+ * Create a RememBeerMeSettings.config file in the src/RememBeer.WebClient folder
     - The file must have the following structure: 
     
             <appSettings>   
@@ -33,8 +33,8 @@
                 <add key="ImageUploadApiSecret" value="YourCloundinaryApiSecret" />
             </appSettings>
             
-3. Optionally run RemembeerMeDbSeed.sql to import brewery and beer data.
-4. Start the application.
+* Optionally run RemembeerMeDbSeed.sql to import brewery and beer data.
+* Start the application.
 
 ###Temporarily hosted on:
 - [My ASP](http://j0hnybg-001-site1.dtempurl.com/)

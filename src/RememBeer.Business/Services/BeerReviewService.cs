@@ -43,7 +43,7 @@ namespace RememBeer.Business.Services
 
         public int CountUserReviews(string userId)
         {
-            return this.repository.GetAll(x => x.IsDeleted == false && x.ApplicationUserId == userId).Count();
+            return this.repository.All.Count(x => x.ApplicationUserId == userId && x.IsDeleted == false);
         }
 
         public IDataModifiedResult UpdateReview(IBeerReview review)
