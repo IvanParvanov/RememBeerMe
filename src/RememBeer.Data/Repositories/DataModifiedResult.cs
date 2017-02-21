@@ -5,7 +5,7 @@ namespace RememBeer.Data.Repositories
 {
     public class DataModifiedResult : IDataModifiedResult
     {
-        public static DataModifiedResult Success => new DataModifiedResult(true);
+        public static IDataModifiedResult Success => new DataModifiedResult(true);
 
         private readonly IEnumerable<string> errors;
 
