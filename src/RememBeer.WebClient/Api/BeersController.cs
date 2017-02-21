@@ -43,7 +43,7 @@ namespace RememBeer.WebClient.Api
         {
             return this.beers
                        .GetAll((beer) => beer.IsDeleted == false && beer.Name.StartsWith(name) || beer.Brewery.Name.StartsWith(name),
-                               beer => beer.Name,
+                               beer => beer.Name.StartsWith(name) ? (beer.Name == name ? 0 : 1) : 2,
                                SortOrder.Ascending,
                                b => new BeerDto()
                                     {

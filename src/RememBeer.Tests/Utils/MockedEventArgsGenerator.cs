@@ -43,7 +43,6 @@ namespace RememBeer.Tests.Utils
             return args.Object;
         }
 
-
         public static ISearchEventArgs GetSearchEventArgs()
         {
             var expectedPattern = Fixture.Create<string>();

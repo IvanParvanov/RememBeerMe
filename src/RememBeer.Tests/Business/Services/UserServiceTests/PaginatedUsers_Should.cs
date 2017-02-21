@@ -29,8 +29,10 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
                                                             int expectedPageSize,
                                                             int expectedTotalCount)
         {
-            var usernameComparer = Comparer<ApplicationUser>
-                .Create((a, b) => string.Compare(a.UserName, b.UserName, StringComparison.Ordinal));
+            var usernameComparer = Comparer<ApplicationUser>.Create((a, b) =>
+                                                                        string.Compare(a.UserName,
+                                                                                       b.UserName,
+                                                                                       StringComparison.Ordinal));
 
             var users = new List<MockedApplicationUser>();
             for (var i = 0; i < expectedTotalCount; i++)
@@ -56,7 +58,7 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var result = service.PaginatedUsers(currentPage, expectedPageSize, out actualTotal);
 
             var actualUsers = result as IApplicationUser[] ?? result.ToArray();
-            var actualCount = actualUsers.Count();
+            var actualCount = actualUsers.Length;
 
             Assert.AreEqual(expectedTotalCount, actualTotal);
             Assert.AreEqual(expectedPageSize, actualCount);
@@ -71,8 +73,10 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
                                                                           int expectedPageSize,
                                                                           int totalCount)
         {
-            var usernameComparer = Comparer<ApplicationUser>
-                .Create((a, b) => string.Compare(a.UserName, b.UserName, StringComparison.Ordinal));
+            var usernameComparer = Comparer<ApplicationUser>.Create((a, b) =>
+                                                                        string.Compare(a.UserName,
+                                                                                       b.UserName,
+                                                                                       StringComparison.Ordinal));
             var expectedFoundCount = totalCount / 2;
 
             var searchPattern = this.Fixture.Create<string>();
@@ -86,7 +90,7 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
                           });
             }
 
-            for (int i = 0; i < expectedFoundCount; i++)
+            for (var i = 0; i < expectedFoundCount; i++)
             {
                 users.Add(new MockedApplicationUser()
                           {
@@ -109,7 +113,7 @@ namespace RememBeer.Tests.Business.Services.UserServiceTests
             var result = service.PaginatedUsers(currentPage, expectedPageSize, out actualTotal, searchPattern);
 
             var actualUsers = result as IApplicationUser[] ?? result.ToArray();
-            var actualCount = actualUsers.Count();
+            var actualCount = actualUsers.Length;
 
             Assert.AreEqual(expectedFoundCount, actualTotal);
             Assert.GreaterOrEqual(expectedPageSize, actualCount);

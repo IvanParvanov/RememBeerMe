@@ -25,14 +25,13 @@ namespace RememBeer.WebClient
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(() => kernel.Get<IRememBeerMeDbContext>());
             app.CreatePerOwinContext<IApplicationUserManager>(
-                                                              (a, b) =>
+                                                              (factoryOptions, owinContext) =>
                                                               {
                                                                   var dbContext = kernel.Get<IRememBeerMeDbContext>();
                                                                   return kernel.Get<IIdentityFactory>()
-                                                                               .GetApplicationUserManager(a,
-                                                                                                          b,
-                                                                                                          (DbContext)
-                                                                                                          dbContext);
+                                                                               .GetApplicationUserManager(factoryOptions,
+                                                                                                          owinContext,
+                                                                                                          (DbContext) dbContext);
                                                               });
 
             app.CreatePerOwinContext<IApplicationSignInManager>(kernel.Get<IIdentityFactory>()
@@ -41,29 +40,24 @@ namespace RememBeer.WebClient
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             // Configure the sign in cookie
+            var onValidateIdentity = SecurityStampValidator
+                                                        .OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
+                                                                                                  validateInterval: TimeSpan.FromMinutes (30),
+                                                                                                  regenerateIdentity: (manager, user) =>
+                                                                                                                        user.GenerateUserIdentityAsync(manager));
+
+            var cookieAuthProvider = new CookieAuthenticationProvider
+                                     {
+                                         OnValidateIdentity = onValidateIdentity
+                                             
+                                     };
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
                                         {
                                             AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                                             LoginPath = new PathString("/Account/Login"),
-                                            Provider = new CookieAuthenticationProvider
-                                                       {
-                                                           OnValidateIdentity =
-                                                               SecurityStampValidator.OnValidateIdentity
-                                                                   <ApplicationUserManager, ApplicationUser>(
-                                                                                                             validateInterval
-                                                                                                             :
-                                                                                                             TimeSpan.
-                                                                                                                 FromMinutes
-                                                                                                                 (30),
-                                                                                                             regenerateIdentity
-                                                                                                             :
-                                                                                                             (manager,
-                                                                                                              user) =>
-                                                                                                                 user.
-                                                                                                                     GenerateUserIdentityAsync
-                                                                                                                     (manager))
-                                                       }
-                                        });
+                                            Provider = cookieAuthProvider
+            });
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 

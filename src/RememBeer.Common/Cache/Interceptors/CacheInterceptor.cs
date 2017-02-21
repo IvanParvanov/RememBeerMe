@@ -22,8 +22,6 @@ namespace RememBeer.Common.Cache.Interceptors
 
         public TimeSpan? Timeout { get; set; }
 
-        public string CacheKeyPrefix { get; set; }
-
         public void Intercept(IInvocation invocation)
         {
             var timeOut = this.cache.DefaultTimeoutInMinutes;
@@ -46,7 +44,7 @@ namespace RememBeer.Common.Cache.Interceptors
         private string GetCacheKey(IProxyRequest request)
         {
             var sb = new StringBuilder();
-            sb.Append(this.CacheKeyPrefix);
+            sb.Append(request.Target.GetType().FullName);
             sb.Append(".");
             sb.Append(request.Method.Name);
             sb.Append(".");

@@ -27,7 +27,7 @@ namespace RememBeer.WebClient.Api
         public IEnumerable<BeerTypeDto> Get(string type)
         {
             return this.beerTypes.GetAll(t => t.Type.Contains(type),
-                                         t => t.Type,
+                                         t => t.Type.StartsWith(type) ? (t.Type == type ? 0 : 1) : 2,
                                          SortOrder.Ascending,
                                          b => new BeerTypeDto()
                                               {

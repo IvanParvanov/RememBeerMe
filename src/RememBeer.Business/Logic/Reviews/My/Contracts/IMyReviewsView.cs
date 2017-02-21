@@ -1,10 +1,12 @@
 ﻿using System;
 
+using RememBeer.Business.Logic.Common.Contracts;
+
 using WebFormsMvp;
 
 namespace RememBeer.Business.Logic.Reviews.My.Contracts
 {
-    public interface IMyReviewsView : IView<ReviewsViewModel>
+    public interface IMyReviewsView : IView<ReviewsViewModel>, IViewWithSuccess
     {
         /// <summary>
         /// Triggered when a the view is being initialized.
@@ -20,9 +22,5 @@ namespace RememBeer.Business.Logic.Reviews.My.Contracts
         /// Triggered when a review needs to be deleted.
         /// </summary>
         event EventHandler<IBeerReviewInfoEventArgs> ReviewDelete;
-
-        string SuccessMessageText { get; set; }
-
-        bool SuccessMessageVisible { get; set; }
     }
 }
