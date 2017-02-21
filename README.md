@@ -60,8 +60,8 @@
    
      Administrators can change brewery information, add new beers to a brewery and delete old ones if needed.
      
-### Test Coverage
-    TODO
+### Unit Test Coverage
+![Coverage](docs/img/coverage.PNG)
     
 ### Screenshots
 ![home](docs/img/home-screen.PNG)
